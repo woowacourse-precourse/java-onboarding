@@ -56,6 +56,14 @@ public class Problem6 {
             arrayListIdx.clear();
         }
 
+        // 중복된 닉네임의 이메일을 정렬하기 위해서 ArrayList로 이동
+        Iterator it2 = emailSet.iterator();
+        while (it2.hasNext()) {
+            String part = (String) it.next();
+            answer.add(part);
+        }
+
+
         return answer;
     }
 
