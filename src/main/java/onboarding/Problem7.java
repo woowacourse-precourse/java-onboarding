@@ -2,22 +2,9 @@ package onboarding;
 
 import java.util.*;
 
-public class Problem7 {
-
-    /*
-    기능 목록
-    1. 주어진 유저에 대해, 주어진 사람들의 포인트를 매긴다.
-        1) 아는 친구
-        2) 방문 횟수
-    2. 이것에 대해 포인트로는 내림차순, 이름으론 사전순(=오름차순)으로 정렬한다.
-    3. 이름만 return한다.
-     */
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
-
-        HashMap<String, ArrayList<String>> map = new HashMap<>();
-
-
+class FriendConnection{
+    public static HashMap<String,ArrayList<String>> connect(List<List<String>> friends){
+        HashMap<String,ArrayList<String>> map = new HashMap<>();
         for (List<String> friend : friends){
             ArrayList<String> list;
             if (map.containsKey(friend.get(0))){
@@ -41,25 +28,51 @@ public class Problem7 {
             }
             map.put(friend.get(1),list2);
         }
-        System.out.println("map = " + map);
+        return map;
+    }
+}
+public class Problem7 {
+
+    /*
+    기능 목록
+    1. 주어진 유저에 대해, 주어진 사람들의 포인트를 매긴다.
+        1) 아는 친구
+        2) 방문 횟수
+    2. 이것에 대해 포인트로는 내림차순, 이름으론 사전순(=오름차순)으로 정렬한다.
+    3. 이름만 return한다.
+     */
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> answer = new ArrayList<>();
+
+        HashMap<String, ArrayList<String>> friend_map = FriendConnection.connect(friends);
+        //각 사람들끼리의 친구관계 설정.
+
+
 
         HashMap<String,Integer> point_map = new HashMap<>();
 
-        ArrayList<String> user_friend_list = map.get(user);
+        ArrayList<String> user_friend_list = friend_map.get(user);
 
-        //친구의 친구 = 10점
-        for (String person: user_friend_list){
-            ArrayList<String> friend_friend_list = map.get(person);
-            for (String p : friend_friend_list){
-                if (p.equals(user)) continue;
-                if (point_map.containsKey(p)){
-                    point_map.put(p,point_map.get(p)+10);
-                }
-                else{
-                    point_map.put(p,10);
+        //친구의 친구 = 10점. user에 대한 ArrayList가 생성되지 않았을때에 대한 NPE처리 필요.
+        if (user_friend_list != null) {
+            for (Map.Entry<String, ArrayList<String>> entry : friend_map.entrySet()) {
+                String key = entry.getKey();
+                ArrayList<String> values = entry.getValue();
+
+                if (user_friend_list.contains(key) || key.equals(user)) continue;   //사용자, 혹은 사용자와 1촌인 사람은 제외
+
+                for (String person : values) {
+                    if (user_friend_list.contains(person)) {
+                        if (point_map.containsKey(key)) {
+                            point_map.put(key, point_map.get(key) + 10);
+                        } else {
+                            point_map.put(key, 10);
+                        }
+                    }
                 }
             }
         }
+
 
         //방문자 1점씩.
         for(String visitor:visitors){
@@ -67,7 +80,8 @@ public class Problem7 {
                 point_map.put(visitor,point_map.get(visitor)+1);
             }
             else{
-                if (user_friend_list.contains(visitor)) continue;
+                //여기서도 NPE처리.
+                if (user_friend_list!= null && user_friend_list.contains(visitor)) continue;
                 else point_map.put(visitor,1);
             }
         }
@@ -106,6 +120,7 @@ public class Problem7 {
         for (ArrayList<String> p : point_list){
             answer.add(p.get(0));
         }
-        return answer;
+        if (answer.size()<5) return answer;
+        else return answer.subList(0,5);
     }
 }
