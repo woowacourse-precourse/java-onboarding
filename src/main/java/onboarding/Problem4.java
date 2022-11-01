@@ -13,21 +13,9 @@ public class Problem4 {
 
     public static String solution(String word) {
         String answer = "";
-        if(checkLengthException(word)){
-            return null;
-        }
         HashMap<Character, Character> alphabetMap = createAlphabetMap();
         answer = getFrogText(word, alphabetMap);
         return answer;
-    }
-
-
-    // word 길이 1이상 1000 이하 검증
-    private static boolean checkLengthException(String word){
-        if(word.length() >= 1 && word.length() <= 1000){
-            return false;
-        }
-        return true;
     }
 
     // [Key:알파벳, Value:청개구리 알파벳]을 가진 HashMap 생성
