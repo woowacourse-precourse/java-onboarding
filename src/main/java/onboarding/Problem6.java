@@ -16,7 +16,8 @@ public class Problem6 {
 	private static final int UNDUPLICATED = 1;
 
 	public static List<String> solution(List<List<String>> forms) {
-		Problem6ValidateChecker.isFormsValidate(forms);
+		//ProblemTest코드 실행 시 유효성 검사를 위한 validateChecker클래스
+		//Problem6ValidateChecker.isFormsValidate(forms);
 		Map<String,String> nickEmailMapper = genNickEmailMapper(forms);
 		List<String> nickNameList = genNickNameList(forms);
 		List<String> patternList = genPatternList(nickNameList);
