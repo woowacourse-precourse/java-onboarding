@@ -21,3 +21,15 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+---
+
+### 기능 정리
+- 닉네임 나누기 (2글자, 3글자, ...)
+- 나눈 닉네임을 등록.
+  - 닉네임을 나눈후 HashMap에서 동일 닉네임이 있는지 확인하기. 
+  - 중복이 있다면, 이메일 중복 알림 HashSet에 담기.
+  - 중복이 없다면, 쪼갠 닉네임들과 이메일을 HashMap에 담기
+- 이메일 중복 알림 HashSet을 List에 담기
+- 담은 이메일을 정렬하기.
