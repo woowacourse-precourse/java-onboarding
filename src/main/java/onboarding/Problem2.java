@@ -20,7 +20,6 @@ public class Problem2 {
             }
             if(check != 0) {
                 check = 0;
-                System.out.println(answer);
                 cryptogram = answer.toString();
                 answer.setLength(0);
             } else break;

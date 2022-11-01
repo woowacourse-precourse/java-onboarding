@@ -39,9 +39,9 @@ public class Problem6 {
         }
 
         for (int i = 0; i < name1.length() - 1; i++) {
-            String subName1 = name1.substring(i, i + 2);
+            final String subName1 = name1.substring(i, i + 2);
             for (int j = 0; j < name2.length() - 1; j++) {
-                String subName2 = name2.substring(j, j + 2);
+                final String subName2 = name2.substring(j, j + 2);
                 if (subName1.equals(subName2)) {
                     return true;
                 }
