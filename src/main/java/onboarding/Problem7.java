@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -109,6 +108,28 @@ public class Problem7 {
             }else{
                 if(user_score.get(visit_idx) >= 0)  user_score.set(visit_idx, user_score.get(visit_idx) + 1);
             }
+        }
+
+        // 4. 높은 점수부터 순회하여 출력한다. 단, 같은 점수시 알파벳 순으로 정렬해 출력한다.
+        int max_score;
+        int nickname_idx;
+        while(true){
+            max_score = 0;
+            nickname_idx = -1;
+
+            for(int i = 0; i < user_score.size(); i++){
+                if(user_score.get(i) > max_score){
+                    max_score = user_score.get(i);
+                    nickname_idx = i;
+                }
+                else if (user_score.get(i) == max_score && nickname_idx != -1 && user_nickname.get(nickname_idx).compareTo(user_nickname.get(i)) > 0){
+                    nickname_idx = i;
+                }
+            }
+
+            if(max_score == 0) break;
+            answer.add(user_nickname.get(nickname_idx));
+            user_score.set(nickname_idx, 0);
         }
 
         // check arrays
