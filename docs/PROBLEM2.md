@@ -21,3 +21,14 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+---
+## 기능 구현
+
+- completeDecrypt()
+    - 입력받은 값이 한글자인지 확인 및 에러 체크
+- decrypt()
+    - 중복이 없어질때까지 Deduplicate()실행
+- Deduplicate()
+    - 입력받은 값의 중복을 한 번 제거
+- error()
+    - 에러 검출
