@@ -63,7 +63,7 @@ public class Problem6 {
                 totalEmailWithPart.addAll(emailWithPart);
             }
         }
-        totalEmailWithPart.sort(Comparator.naturalOrder());
+        totalEmailWithPart = sortEmail(totalEmailWithPart);
         return totalEmailWithPart;
     }
 
