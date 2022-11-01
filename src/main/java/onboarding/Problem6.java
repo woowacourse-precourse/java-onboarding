@@ -112,4 +112,5 @@ public class Problem6 {
 //        forms.add(inser2);
 //        System.out.println(solution(forms));
 //    }
+
 }
