@@ -7,4 +7,13 @@ public class Problem2 {
         String answer = "answer";
         return completeDecrypt(cryptogram);
     }
+
+    public static String completeDecrypt(String cryptogram){
+        if(cryptogram.length()==1){
+            return cryptogram;
+        }
+        decryption=(error(cryptogram)) ? "" : (Deduplicate(cryptogram).length() == 0) ? Deduplicate(cryptogram) : decrypt(cryptogram);
+
+        return decryption;
+    }
 }
