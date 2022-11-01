@@ -17,6 +17,7 @@ public class Problem5 {
 			isValidMoney(money);
 		} catch (IllegalStateException moneyIsNotValidException) {
 			moneyIsNotValidException.printStackTrace();
+			return answer;
 		}
 
 		answer = countMoney(money);
