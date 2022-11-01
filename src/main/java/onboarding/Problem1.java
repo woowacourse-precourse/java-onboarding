@@ -23,6 +23,12 @@ class Problem1 {
             return -1;
         }
 
+        //예외 사항 - 페이지의 왼쪽이 홀수가 아닐 경우
+        if (pobi.get(0) % 2 != 1 || crong.get(0) % 2 != 1) {
+            return -1;
+        }
+
+
         return answer;
     }
 }
