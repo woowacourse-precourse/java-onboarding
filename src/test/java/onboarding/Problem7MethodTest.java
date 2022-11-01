@@ -82,4 +82,29 @@ class Problem7MethodTest {
                 "bedi", 3
         ));
     }
+
+    @Test
+    void sortAndSlicingFriendsTest() {
+        HashMap<String, Integer> map1 = new HashMap<>(Map.of(
+                "mrko", 20,
+                "bedi", 10,
+                "donut", 20,
+                "shakevan", 3,
+                "andole", 10
+        ));
+        HashMap<String, Integer> map2 = new HashMap<>(Map.of(
+                "mrko", 20,
+                "bedi", 10,
+                "jun", 23,
+                "donut", 20,
+                "shakevan", 3,
+                "andole", 10
+        ));
+
+        List<String> result1 = sortAndSlicingFriends(map1);
+        List<String> result2 = sortAndSlicingFriends(map2);
+
+        assertThat(result1).isEqualTo(List.of("donut", "mrko", "andole", "bedi", "shakevan"));
+        assertThat(result2).isEqualTo(List.of("jun", "donut", "mrko", "andole", "bedi"));
+    }
 }
