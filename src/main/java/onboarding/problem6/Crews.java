@@ -27,7 +27,7 @@ public class Crews {
     }
 
     private boolean isDuplicatedCrewName(String crewName, String string) {
-        if (crewName.indexOf(string) != -1) {
+        if (crewName.contains(string)) {
             return true;
         }
         return false;
