@@ -11,10 +11,8 @@ public class Validator {
         int rightPage = pages.get(1);
 
         if (checkRangeError(leftPage, rightPage)) {return false;}
-
         if (checkEvenOddError(leftPage, rightPage)) {return false;}
-
-        return checkContinuousError(leftPage, rightPage);
+        return !checkContinuousError(leftPage, rightPage);
     }
 
     private static boolean checkContinuousError(int leftPage, int rightPage) {
