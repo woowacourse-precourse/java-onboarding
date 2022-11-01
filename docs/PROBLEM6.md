@@ -21,3 +21,13 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### 기능 목록
+| 메서드 | 기능 정의 |
+| --- | --- |
+| result | 겹치는 크루의 닉네임이 담긴 set에서 그에 해당하는 이메일 주소를 list에 넣는 기능을 함 |
+| compare | 닉네임에서 부분적인 2글자 이상의 연속 문자열과 나머지 크루의 닉네임중 일부가 겹치면, 겹치는 크루의 닉네임을 set에 넣는 기능을 함|
+| piece | 크루의 닉네임에서 부분적인 2글자 이상의 연속 문자열을 List에 넣는 기능을 함 |
+| members | List<List<String>>에서 크루들의 닉네임만 뽑는 기능을 함 |
+| solution | 크루들의 닉네임을 list에 담아 for문을 돌면서 piece메소드와 compare메소드를 활용하여 set을 반환함. 이메일 주소를 정렬한 리스트를 반환하는 기능을 함 |
