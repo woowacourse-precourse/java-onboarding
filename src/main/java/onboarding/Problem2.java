@@ -7,12 +7,14 @@ public class Problem2 {
         //Stack으로 구현
         Stack<Character> stack = new Stack<>();
 
-        //시작문자는 먼저 넣기
-        stack.add(cryptogram.charAt(0));
         //입력된 문자열을 하나씩 돌리기
-        for(int i=1; i<cryptogram.length(); i++){
+        for(int i=0; i<cryptogram.length(); i++){
+            //스택이 비어있을 경우 add
+            if(stack.isEmpty()){
+                stack.add(cryptogram.charAt(i));
+            }
             //스텍의 최상위 문자와 입력된 문자가 같을 시 pop
-            if(stack.peek() == cryptogram.charAt(i)){
+            else if(stack.peek() == cryptogram.charAt(i)){
                 stack.pop();
             }
             //그렇지 않을 경우 add
