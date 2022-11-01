@@ -14,10 +14,16 @@ class Person{
 public class Problem7 {
 
     //친구의 친구 찾아서 점수 10++
-    public static int findFriends() {
-
+    public static int findFriends(int cnt, int perNum, List<Person> people) {
+        if (cnt == 2) return 0;
+        List<Integer> list = people.get(perNum).friendList;
+        for (int i = 0; i < list.size(); i++) {
+            if (cnt == 1 && people.get(list.get(i)).friendFlag == false && people.get(list.get(i)).userself == false)
+                people.get(list.get(i)).score += 10;
+            findFriends(cnt + 1, list.get(i), people);
+        }
+        return 0;
     }
-
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         List<String> answer = new ArrayList<>();
@@ -57,7 +63,7 @@ public class Problem7 {
         }
 
         //2. 친구의 친구 점수 처리 findFriends()
-
+        findFriends(0, personNum.get(user), people);
         //3. 방문자 점수 처리
         for (int i = 0; i < visitors.size(); i++) {
             //친구 관계가 아닐 경우 people에 저장
