@@ -30,6 +30,15 @@ public class Problem7 {
                 score.add(10);
             }
         }
+        for (int i = 1; i < visitors.size(); i++) {
+            if (name.contains(visitors.get(i))) {
+                a = score.get(name.indexOf(visitors.get(i)));
+                score.add(name.indexOf(visitors.get(i)), a + 1);
+            } else {
+                name.add(visitors.get(i));
+                score.add(1);
+            }
+        }
 
         return answer;
     }
