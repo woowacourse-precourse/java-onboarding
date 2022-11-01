@@ -31,7 +31,24 @@ public class Problem7 {
             List<String> acquaintance = getAcquaintance();
             Map<String, Integer> result = new HashMap<>();
 
+            calculateAcquaintanceScore(acquaintance, result);
+
             return getNameList(result);
+        }
+
+        private void calculateAcquaintanceScore(List<String> acquaintance, Map<String, Integer> result) {
+
+            for (List<String> friend : friends) {
+
+                for (String aqt : acquaintance) {
+
+                    if (friend.get(0).equals(aqt) && !friend.get(1).equals(user)) {
+                        result.put(friend.get(1), getValue(result, friend.get(1)) + 10);
+                    } else if (friend.get(1).equals(aqt) && !friend.get(0).equals(user)) {
+                        result.put(friend.get(0), getValue(result, friend.get(0)) + 10);
+                    }
+                }
+            }
         }
 
         private List<String> getNameList(Map<String, Integer> result) {
@@ -70,6 +87,11 @@ public class Problem7 {
             }
 
             return acquaintance;
+        }
+
+        private int getValue(Map<String, Integer> result, String friend) {
+            Integer integer = result.get(friend);
+            return integer == null ? 0 : integer;
         }
     }
 }
