@@ -42,6 +42,18 @@ public class Problem7 {
             }
         }
 
+        boolean t=true;
+        boolean f=false;
+
+        for(int i=0;i<visitors.size();i++)
+        {
+            if(map.containsKey(visitors.get(i))==t)
+                map.put(visitors.get(i),map.get(visitors.get(i))+1);
+            else
+                map.put(visitors.get(i),1);
+        }
+
+
         return answer;
     }
 }
