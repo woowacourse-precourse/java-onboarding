@@ -36,38 +36,41 @@ public class Problem7 {
         }
     }
 
-    private static void visitingScore(List<String> visitors, List<String> friendsList) {
+    private static void visitingScore(List<String> visitors, List<String> usersFriendsList) {
         for (String visitor : visitors) {
-            if (recommendScore.containsKey(visitor) && !friendsList.contains(visitor)) {
+            if (recommendScore.containsKey(visitor) && !usersFriendsList.contains(visitor)) {
                 recommendScore.put(visitor, recommendScore.get(visitor) + 1);
                 continue;
             }
-            if (!friendsList.contains(visitor)) {
+            if (!usersFriendsList.contains(visitor)) {
                 recommendScore.put(visitor, 1);
             }
         }
     }
 
-    private static void scoreInitial(String user, List<List<String>> friends, List<String> visitors) {
-        recommendScore.clear();
+    private static List<String> extractingList(String user, List<String> usersFriendsList, List<List<String>> friends) {
         List<String> initialList = new ArrayList<>();
-        List<String> friendsList = usersFriendsList(user, friends);
-        for (String friend : friendsList) {
+        for (String friend : usersFriendsList) {
             for (List<String> names : friends) {
                 if (names.contains(friend)) {
                     int index = names.indexOf(friend);
-                    if (index == 0 && !friendsList.contains(names.get(1)) && !names.get(1).equals(user)) {
+                    if (index == 0 && !usersFriendsList.contains(names.get(1)) && !names.get(1).equals(user)) {
                         initialList.add(names.get(1));
-                    } else if (!friendsList.contains(names.get(0)) && !names.get(0).equals(user)) {
+                    } else if (!usersFriendsList.contains(names.get(0)) && !names.get(0).equals(user)) {
                         initialList.add(names.get(0));
                     }
                 }
             }
         }
+        return initialList;
+    }
 
+    private static void scoreInitial(String user, List<List<String>> friends, List<String> visitors) {
+        recommendScore.clear();
+        List<String> usersFriendsList = usersFriendsList(user, friends);
+        List<String> initialList = extractingList(user, usersFriendsList, friends);
         friendScore(initialList);
-        visitingScore(visitors, friendsList);
-
+        visitingScore(visitors, usersFriendsList(user, friends));
     }
 
     private static List<String> sorting() {
