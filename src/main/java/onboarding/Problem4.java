@@ -1,7 +1,11 @@
 package onboarding;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class Problem4 {
 
+    private static final String SPLIT_VALUE = "";
     private static final char NOTHING = ' ';
     private static final int LETTER_CHARACTER_INDEX = 0;
     private static final int ALPHABET_UPPER_CASE_MAX_ASCII_CODE = 'Z';
@@ -9,6 +13,17 @@ public class Problem4 {
     private static final int ALPHABET_TOTAL_SIZE = 'Z' - 'A';
 
     public static String solution(String word) {
+        return reverseWord(word);
+    }
+
+    private static String reverseWord(String word) {
+        String[] letters = parseToLetters(word);
+        String reversedWord =
+                Arrays.stream(letters)
+                        .map(letter -> parseLetter(letter))
+                        .collect(Collectors.joining());
+
+        return reversedWord;
     }
 
     private static String parseLetter(String letter) {
@@ -22,6 +37,10 @@ public class Problem4 {
             return letter;
         }
         return reverseLetter(letter);
+    }
+
+    private static String[] parseToLetters(String word) {
+        return word.split(SPLIT_VALUE);
     }
 
     private static String parseToWord(char parsedLetter) {
