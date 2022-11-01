@@ -1,6 +1,5 @@
 package onboarding;
 
-import javax.swing.*;
 import java.util.*;
 
 public class Problem7 {
@@ -9,6 +8,7 @@ public class Problem7 {
         HashMap<String, Integer> friendsMap = new HashMap<>();
         List<String> oldFriendNames = checkOldFriends(friends, user, friendsMap, visitors);
         putNewFriends(friends, oldFriendNames, friendsMap, user);
+        putVisitor(visitors, oldFriendNames, friendsMap);
         return answer;
     }
 
@@ -33,6 +33,17 @@ public class Problem7 {
                     if(!friendsMap.containsKey(newFriendName)) friendsMap.put(newFriendName, 10);
                 }
             }
+        }
+    }
+
+    private static void putVisitor(List<String> visitor, List<String> oldFriendName, HashMap friendsMap){
+        for(int i = 0; i < visitor.size(); i++){
+            String visitorName = visitor.get(i);
+            if(friendsMap.containsKey(visitorName)) friendsMap.put(visitorName, (int)friendsMap.get(visitorName)+1);
+            if(!friendsMap.containsKey(visitorName)) friendsMap.put(visitorName, 1);
+        }
+        for(int i = 0; i < friendsMap.size() - 1; i++){
+            friendsMap.remove(oldFriendName.get(i));
         }
     }
 }
