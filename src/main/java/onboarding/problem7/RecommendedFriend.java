@@ -12,10 +12,10 @@ public class RecommendedFriend implements Comparable<RecommendedFriend> {
 
 	@Override
 	public int compareTo(RecommendedFriend other) {
-		if (score.compareTo(other.score) == SAME) {
-			return name.compareTo(other.name);
+		if (score == other.score) {
+			return other.name.compareTo(name);
 		}
-		return score.compareTo(other.score);
+		return Integer.compare(score, other.score);
 	}
 
 	public String getName() {
