@@ -7,10 +7,8 @@ public class Problem4 {
 
     static final int ASCII_a = 97;
     static final int ASCII_z = 122;
-
     static final int ASCII_A = 65;
     static final int ASCII_Z = 90;
-
 
     public static String solution(String word) {
 
@@ -20,13 +18,12 @@ public class Problem4 {
         Map<Character, Character> upperMap = createMap(ASCII_A, ASCII_Z);
 
         for (int i = 0; i < word.length(); i++) {
-            Character currentChar = word.charAt(i);
             if (ASCII_a <= word.charAt(i) && word.charAt(i) <= ASCII_z) {
-                answer.append(oppositeLower(currentChar, lowerMap));
+                answer.append(oppositeLower(word.charAt(i), lowerMap));
             } else if (ASCII_A <= word.charAt(i) && word.charAt(i) <= ASCII_Z) {
-                answer.append(oppositeUpper(currentChar, upperMap));
+                answer.append(oppositeUpper(word.charAt(i), upperMap));
             } else {
-                answer.append(currentChar);
+                answer.append(word.charAt(i));
             }
         }
 
@@ -41,7 +38,6 @@ public class Problem4 {
         for (int i = startAscii; i <= endAscii; i++) {
             wordMap.put((char)i, (char)end--);
         }
-
         return wordMap;
     }
 
