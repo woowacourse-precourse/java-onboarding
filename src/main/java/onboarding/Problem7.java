@@ -26,6 +26,15 @@ public class Problem7 {
                 map.put(visitors.get(i), 0);
             }
         }
+        for (int i = 0; i < friends.size(); ++i) {
+            if (!friends.get(i).get(0).equals(user) && !friends.get(i).get(1).equals(user)
+                    && userFriends.contains(friends.get(i).get(0))) {
+                map.put(friends.get(i).get(1), map.get(friends.get(i).get(1)) + 10);
+            } else if (!friends.get(i).get(1).equals(user) && !friends.get(i).get(1).equals(user)
+                    && userFriends.contains(friends.get(i).get(1))) {
+                map.put(friends.get(i).get(0), map.get(friends.get(i).get(0)) + 10);
+            }
+        }
         return answer;
     }
 }
