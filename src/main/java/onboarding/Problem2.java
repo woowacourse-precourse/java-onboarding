@@ -6,8 +6,18 @@ import java.util.regex.Pattern;
 public class Problem2 {
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return getRemoveConsecutiveDuplicateCryptogram(cryptogram);
+    }
+
+    private static String getRemoveConsecutiveDuplicateCryptogram(String cryptogram) {
+        Pattern consecutiveDuplicatePattern = createConsecutiveDuplicatePattern(cryptogram);
+
+        int cryptogramLength = 0;
+        while (cryptogramLength != cryptogram.length()) {
+            cryptogramLength = cryptogram.length();
+            cryptogram = consecutiveDuplicatePattern.matcher(cryptogram).replaceAll("");
+        }
+        return cryptogram;
     }
 
     private static Pattern createConsecutiveDuplicatePattern(String cryptogram) {
