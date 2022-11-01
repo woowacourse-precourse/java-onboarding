@@ -13,7 +13,7 @@ public class Problem7 {
         User userObject = new User(user);
         userObject.addFriends(friends);
         userObject.addFriendRecommendScore(friends, visitors);
-        return userObject.findToRecommendedFriends(MAX_NUMBER_TO_RECOMMENDED_FRIENDS);
+        return userObject.findToRecommendedFriends();
     }
 
     private static class User {
@@ -70,13 +70,14 @@ public class Problem7 {
                     .collect(Collectors.toList());
         }
         
-        public List<String> findToRecommendedFriends(int maxElementNum) {
+        public List<String> findToRecommendedFriends() {
             return this.getFriendRecommendScore().entrySet().stream()
                     .sorted(Collections.reverseOrder(Map.Entry.<String, Integer>comparingByValue())
                             .thenComparing(Map.Entry.comparingByKey()))
-                    .limit(maxElementNum)
+                    .limit(MAX_NUMBER_TO_RECOMMENDED_FRIENDS)
                     .map(Map.Entry::getKey)
                     .collect(Collectors.toList());
         }
     }
+
 }
