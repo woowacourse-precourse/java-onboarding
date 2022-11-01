@@ -33,8 +33,15 @@ public class Problem7 {
 
         List<String> answer = new ArrayList<>();
 
-        for (String key : scoreResult.keySet()) {
-            answer.add(key);
+        if (scoreResult.keySet().size() > 5) {
+            ArrayList<String> resultList = new ArrayList<>(scoreResult.keySet());
+            for (int i = 0; i <= 4; i++) {
+                answer.add(resultList.get(i));
+            }
+        } else if (scoreResult.keySet().size() <= 5) {
+            for (String key : scoreResult.keySet()) {
+                answer.add(key);
+            }
         }
 
         return answer;
@@ -100,6 +107,11 @@ public class Problem7 {
         int commonFriendScore = 10 * (int)commonFriendCount.get(person);
         int visitScore = (int)visitCount.get(person);
         int scoreResult = commonFriendScore + visitScore;
+        return scoreResult;
+    }
+
+    private static HashMap<String, Integer> removeZeros(HashMap<String, Integer> scoreResult) {
+        scoreResult.values().remove(0);
         return scoreResult;
     }
 
