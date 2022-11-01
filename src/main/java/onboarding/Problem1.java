@@ -5,10 +5,10 @@ import java.util.List;
 import static java.lang.Math.max;
 
 class Problem1 {
-    public static int getScore(List<Integer> player) {
+    public static int getScore(List<Integer> pages) {
         int score = 0;
-        for (int i = 0; i < player.size(); i++) {
-            String page = String.valueOf(player.get(i));
+        for (int i = 0; i < pages.size(); i++) {
+            String page = String.valueOf(pages.get(i));
             String[] digits = page.split("");
 
             int mul = 1, sum = 0;
@@ -16,9 +16,7 @@ class Problem1 {
                 sum += Integer.valueOf(digits[j]);
                 mul *= Integer.valueOf(digits[j]);
             }
-
-            score = max(score, sum);
-            score = max(score, mul);
+            score = max(score, max(sum, mul));
         }
         return score;
     }
