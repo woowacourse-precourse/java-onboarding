@@ -6,7 +6,6 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
-
         HashMap<String, Integer> refArr = new HashMap<>();
         List<String> friendArr = new ArrayList<>();
         String userfriend;
@@ -59,7 +58,13 @@ public class Problem7 {
                 .forEach(k -> {
                     valueArr.add(String.valueOf(k.getKey()));
                 });
+
         answer = valueArr;
+
+        // 5. 친구 추천은 최대 5명으로 제한.
+        if (answer.size() > 5) {
+            answer = answer.subList(0,5);
+        }
         return answer;
     }
 }
