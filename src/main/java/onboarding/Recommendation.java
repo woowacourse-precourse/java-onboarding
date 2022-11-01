@@ -56,6 +56,25 @@ class Recommendation {
 
     void acquainScore() {
         List<String> userFriend = userFriend();
+        int value;
+
+        for(int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j < userFriend.size(); j++) {
+                if (friends.get(i).get(0).equals(userFriend.get(j))) {
+                    if(friends.get(i).get(1).equals(user)) {
+                        continue;
+                    }
+                    value = users.get(friends.get(i).get(1));
+                    users.put(friends.get(i).get(1), value + 10);
+                } else if (friends.get(i).get(1).equals(userFriend.get(j))) {
+                    if(friends.get(i).get(0).equals(user)) {
+                        continue;
+                    }
+                    value = users.get(friends.get(i).get(0));
+                    users.put(friends.get(i).get(0), value + 10);
+                }
+            }
+        }
     }
 
     List<String> userFriend() {
