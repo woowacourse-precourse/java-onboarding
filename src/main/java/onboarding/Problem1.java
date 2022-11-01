@@ -8,10 +8,10 @@ class Problem1 {
     private static final int LEFT = 0;
     private static final int RIGHT = 1;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-
         if ( !verifyException(pobi) || !verifyException(crong)) {
             return -1;
         }
+
         int pobiScore = getMaxNumber(pobi);
         int crongScore = getMaxNumber(crong);
 
@@ -22,7 +22,7 @@ class Problem1 {
        if (pobiScore > crongScore) {
            return 1;
        }
-       if (crongScore > pobiScore) {
+       if (pobiScore < crongScore) {
            return 2;
        }
        return 0;
