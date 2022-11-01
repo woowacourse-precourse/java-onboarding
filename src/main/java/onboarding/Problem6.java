@@ -23,4 +23,23 @@ public class Problem6 {
         return true;
     }
 
+    private static boolean isValidNickname(String nickname){
+        if(nickname.length() == 0 || nickname.length() > 19)
+            return false;
+        for(int i=0; i<nickname.length(); i++)
+            if(!nickname.substring(i, i+1).matches("[가-힣]+"))
+                return false;
+
+        return true;
+    }
+
+    private static List<List<String>> trimInvalidFormat(List<List<String>> forms){
+        List<List<String>> validFormat = new ArrayList<>();
+        for(List<String> crew: forms)
+            if(isValidEmail(crew.get(0)) && isValidNickname(crew.get(1)))
+                validFormat.add(crew);
+
+        return validFormat;
+    }
+
 }
