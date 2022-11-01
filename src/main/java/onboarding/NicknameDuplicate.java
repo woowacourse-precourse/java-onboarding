@@ -38,6 +38,7 @@ class NicknameDuplicate {
 
     List<String> duplicate() {
         Set<String> nicknameDup = new HashSet<>();
+        List<String> result;
 
         for(int i = 0; i < forms.size(); i++) {
             String nicknameA = forms.get(i).get(1);
@@ -52,7 +53,7 @@ class NicknameDuplicate {
             }
         }
 
-        List<String> result = new ArrayList<>(nicknameDup);
+        result = new ArrayList<>(nicknameDup);
         sort(result);
 
         return result;
