@@ -9,12 +9,50 @@ public class Problem7 {
     private static final int VISIT_POINT = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        isUserValid(user, friends, visitors);
         setFriends(friends, user);
         updateScore(friends, visitors);
         removeUnnecessary();
 
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    public static void isUserValid(String user, List<List<String>> friends, List<String> visitors) {
+        String lowerAlphabets = "^[a-z]*$";
+
+        if (user.length() == 0 || user.length() > 30) {
+            throw new IllegalArgumentException("user는 길이가 1 이상 30 이하인 문자열이다.");
+        }
+        if (!user.matches(lowerAlphabets)) {
+            throw new IllegalArgumentException("사용자 아이디는 알파벳 소문자로만 이루어져 있다.");
+        }
+
+        if (friends.size() == 0 || friends.size() > 10000) {
+            throw new IllegalArgumentException("friends는 길이가 1 이상 10,000 이하인 리스트/배열이다.");
+        }
+        for (List<String> friend : friends) {
+            for (String id : friend) {
+                if (id.length() == 0 || id.length() > 30) {
+                    throw new IllegalArgumentException("아이디는 길이가 1 이상 30 이하인 문자열이다.");
+                }
+                if (!id.matches(lowerAlphabets)) {
+                    throw new IllegalArgumentException("사용자 아이디는 알파벳 소문자로만 이루어져 있다.");
+                }
+            }
+        }
+
+        if (visitors.size() > 10000) {
+            throw new IllegalArgumentException("visitors는 길이가 0 이상 10,000 이하인 리스트/배열이다.");
+        }
+        for (String visitor : visitors) {
+            if (visitor.length() == 0 || visitor.length() > 30) {
+                throw new IllegalArgumentException("아이디는 길이가 1 이상 30 이하인 문자열이다.");
+            }
+            if (!visitor.matches(lowerAlphabets)) {
+                throw new IllegalArgumentException("사용자 아이디는 알파벳 소문자로만 이루어져 있다.");
+            }
+        }
     }
 
     public static void removeUnnecessary() {
