@@ -44,6 +44,16 @@ public class Problem7 {
         return true;
     }
 
+    //  친구 목록 유효성 검사
+    private static void verifyFriends(List<List<String>> friends){
+        //  verify friends list length : 길이가 1 이상 10,000 이하
+        if(!verifyFriendsLength(friends)) throw new RuntimeException("INVALID_INPUT_LENGTH");
+        //  verify frindes id length: 아이디의 길이가 1이상 30이하
+        for(List<String> friend : friends){
+            if(!verifyFriendsId(friend)) throw new RuntimeException("INVALID_ID_LENGTH");
+        }
+    }
+
     //  친구 목록 유효성 검사 - ID
     private static Boolean verifyFriendsId(List<String> friend){
         for(String s : friend){
