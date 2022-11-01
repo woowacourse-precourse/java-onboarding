@@ -6,6 +6,9 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
 
+        HashMap<String, HashSet<String>> friendMap = makeFriend(friends);
+        HashMap<String, Integer> scoreMap = new HashMap<>();
+        recommendFriend(user, friendMap, visitors, scoreMap);
 
         return answer;
     }
@@ -37,5 +40,20 @@ public class Problem7 {
     public static boolean isFriend(String user, String friend, HashMap<String, HashSet<String>> friendMap){
         if (friendMap.get(user).contains(friend) || friend.equals(user)) return true;
         else return false;
+    }
+
+    public static void recommendFriend(String user, HashMap<String, HashSet<String>> friendMap, List<String> visitors, HashMap<String, Integer> scoreMap){
+        for (String friend : friendMap.get(user)){
+            for (String friendOfFriend : friendMap.get(friend)){
+                if (isFriend(user, friendOfFriend, friendMap)) continue;
+                if (scoreMap.containsKey(friendOfFriend)) scoreMap.put(friendOfFriend, scoreMap.get(friendOfFriend) + 10);
+                else scoreMap.put(friendOfFriend, 10);
+            }
+        }
+        for (String visitor : visitors){
+            if (isFriend(user, visitor, friendMap)) continue;
+            if (scoreMap.containsKey(visitor)) scoreMap.put(visitor, scoreMap.get(visitor) + 1);
+            else scoreMap.put(visitor, 1);
+        }
     }
 }
