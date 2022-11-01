@@ -30,8 +30,9 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
         TreeMap<String, Integer> userList = new TreeMap<String, Integer>();
-        TreeMap<String, Integer> friendList = new TreeMap<String, Integer>();
+        ArrayList<String> friendList = new ArrayList<String>();
 
+        int users = 0;
         for (int i = 0; i < friends.size(); i++) {
             for (int j = 0; j < 2; j++) {
                 String name = friends.get(i).get(j);
@@ -39,19 +40,45 @@ public class Problem7 {
                 if (name != user) {
                     userList.put(name, 0);
                     if (friends.get(i).contains(user)) {
-                        friendList.put(name, 0);
-                }
+                        friendList.add(name);
+                    }
 
                 }
             }
         }
 
         for (int i = 0; i < visitors.size(); i++) {
-            userList.put(visitors.get(i), 0);
+            userList.put(visitors.get(i),0);
+
         }
 
 
-        List<String> totalscores = new ArrayList<>(friendList.keySet());
+        for (int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j < 2; j++) {
+                if (friends.get(i).contains(friendList.get(j))) {
+                    userList.put(friends.get(i).get(j), userList.get(friends.get(i).get(j)) + 10);
+                }
+            }
+        }
+
+        for (int i = 0; i < visitors.size(); i++) {
+            for (int j = 0; j < friendList.size(); j++) {
+                if (visitors.get(i).contains(friendList.get(j))){
+                    userList.put(visitors.get(i), userList.get(visitors.get(i)) + 1);
+                }
+            }
+
+        }
+
+
+        userList.put(user, 0);
+
+        for(int i=0; i< friendList.size(); i++){
+            userList.put(friendList.get(i), 0);
+        }
+
+
+        List<String> totalscores = new ArrayList<>(friendList);
 
         return totalscores;
     }
