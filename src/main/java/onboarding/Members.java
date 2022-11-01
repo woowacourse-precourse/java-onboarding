@@ -28,7 +28,6 @@ public class Members {
                 .collect(Collectors.toList()));
     }
 
-
     private List<String> duplicateNames(List<String> names, String str, int index) {
         List<String> duplicateNames = new ArrayList<>();
 
@@ -44,19 +43,18 @@ public class Members {
         return duplicateNames;
     }
 
-    private String getEmailForName(String name) {
+    private List<String> getEmailForName(String name) {
         return members.stream()
                 .filter(member -> name.equals(member.getNickname()))
                 .map(member -> member.getEmail())
-                .collect(Collectors.joining());
+                .collect(Collectors.toList());
     }
 
     private List<String> getEmailsForNames(List<String> names) {
         List<String> emails = new ArrayList<>();
 
         for (int i = 0; i < names.size(); i++)
-            emails.add(getEmailForName(names.get(i)));
-
+            emails.addAll(getEmailForName(names.get(i)));
         return emails.stream()
                 .sorted()
                 .collect(Collectors.toList());
