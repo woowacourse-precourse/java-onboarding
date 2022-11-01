@@ -27,4 +27,11 @@ public class Problem6 {
         return false;
     }
 
+    public static boolean isAlreadyAnswerIndexes(List<Integer> answerIndexes, int index) {
+        if (answerIndexes.contains(index)) {
+            return true;
+        }
+        return false;
+    }
+
 }
