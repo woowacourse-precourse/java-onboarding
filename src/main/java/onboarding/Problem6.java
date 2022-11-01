@@ -63,11 +63,18 @@ public class Problem6 {
         return Boolean.FALSE;
     }
 
+    private List<String> getDivide2WordList(List<String> candidates, String value) {
+        for (int i = 0; i < value.length() - 1; i++) {
+            candidates.add(value.substring(i, i + 2));
+        }
+        return candidates;
+    }
+
     public List<String> getDuplicateCandidate(HashMap<String, String> nameMap) {
         List<String> candidates = new ArrayList<>();
         for (String value : nameMap.values()) {
             if (checkNameNotAlreadyAdd(candidates, value)) {
-                candidates.add(value);
+                candidates = getDivide2WordList(candidates, value);
             }
         }
         return candidates;
