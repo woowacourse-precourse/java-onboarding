@@ -25,7 +25,7 @@ public class Problem3 {
     }
 
     public static boolean canNumber(int number) {
-        if (number >= 1 && number <= 10000) return true;
+        if (number >= MIN && number <= MAX) return true;
         return false;
     }
 
