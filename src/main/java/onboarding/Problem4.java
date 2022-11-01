@@ -25,7 +25,7 @@ public class Problem4 {
 
         initLetters();
 
-        return makeReverseWord(word);
+        return makeReversedWord(word);
     }
 
     public static void validateLength(String word) {
@@ -51,15 +51,15 @@ public class Problem4 {
         }
     }
 
-    private static String makeReverseWord(String word) {
-        String reverseWord = "";
+    private static String makeReversedWord(String word) {
+        String reversedWord = "";
         char[] letters = word.toCharArray();
 
         for (char letter : letters) {
-            reverseWord += convertLetter(letter);
+            reversedWord += convertLetter(letter);
         }
 
-        return reverseWord;
+        return reversedWord;
     }
 
     private static char convertLetter(char letter) {
