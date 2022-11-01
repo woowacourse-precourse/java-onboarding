@@ -6,8 +6,10 @@ public class Problem4 {
     private static int MAX_WORD_LENGTH = 1000;
 
     public static String solution(String word) {
-        if (isOutOfRange(word)) return "";
-        
+        if (isOutOfRange(word)) {
+            throw new IllegalArgumentException("유효한 단어의 길이를 입력해주세요. (1 ~ 1000자)");
+        }
+
         return convertWord(word);
     }
 
