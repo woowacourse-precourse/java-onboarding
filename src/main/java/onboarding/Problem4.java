@@ -2,7 +2,6 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
         StringBuilder sb = new StringBuilder();
         String lower = "abcdefghijklmnopqrstuvwxyz";
         String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -15,6 +14,7 @@ public class Problem4 {
                 sb.append(word.charAt(i));
             }
         }
+        String answer = sb.toString();
         return answer;
     }
 }
