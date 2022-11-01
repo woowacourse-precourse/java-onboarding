@@ -5,11 +5,17 @@ import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
+        List<String> IsFalse= new ArrayList<>();
+        IsFalse.add("false");
+
         boolean checkDomain = checkDomain(forms);
         if(!checkDomain) {
-            List<String> falseDomain = new ArrayList<>();
-            falseDomain.add("false");
-            return falseDomain;
+            return IsFalse;
+        }
+
+        boolean checkNickName = checkNickName(forms);
+        if(!checkNickName) {
+            return IsFalse;
         }
 
 
@@ -22,6 +28,18 @@ public class Problem6 {
             String checkForms = forms.get(i).get(j);
 
             if(!checkForms.contains("email.com")) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean checkNickName(List<List<String>> forms) {
+        String pattern = "^[a-zA-Z]*$";
+        for(int i = 0,j=1; i<forms.size(); i++) {
+            String checkForms = forms.get(i).get(j);
+
+            if(!checkForms.matches(pattern)) {
                 return false;
             }
         }
