@@ -76,6 +76,18 @@ public class Problem7 {
         return true;
     }
 
+    //입력값을 최종적으로 검증하는 기능
+    public static boolean checkInputValidation(String user, List<List<String>> friends,
+        List<String> visitors) {
+        if (!(checkUserLengthValidation(user) && checkFriendsLengthValidation(friends)
+            && checkFriendsIdLengthValidation(friends)
+            && checkUserIdConsistOfLowercaseAlphabet(user, friends, visitors)
+            && checkFriendRelationshipOverlap(friends))) {
+            return false;
+        }
+        return true;
+    }
+
     //user 친구들을 친구리스트에 구성하는 기능
     public static void putUserFriendToList(String user, List<List<String>> friends) {
         for (List<String> friend : friends) {
@@ -151,7 +163,8 @@ public class Problem7 {
     }
 
     //추천점수가 0인 사용자 제거 기능
-    public static Map<String, Integer> deleteRecommendScoreZero(Map<String, Integer> unknownUserScore) {
+    public static Map<String, Integer> deleteRecommendScoreZero(
+        Map<String, Integer> unknownUserScore) {
         return unknownUserScore.entrySet().stream()
             .filter(e -> e.getValue() > 0)
             .collect(Collectors.toMap(Entry::getKey, Entry::getValue));
@@ -160,9 +173,9 @@ public class Problem7 {
     //추천 점수 순으로 정렬 후 같은 점수에 대해서는 사용자 아이디를 오름차순으로 정렬하는 기능
     public static List<String> sortRecommendScore(Map<String, Integer> unknownUserScore) {
         List<String> sortScoreList = new ArrayList<>(unknownUserScore.keySet());
-        sortScoreList.sort((o1 ,o2) -> {
+        sortScoreList.sort((o1, o2) -> {
             int compare = (unknownUserScore.get(o1) - unknownUserScore.get(o2)) * -1;
-            if(compare == 0) {
+            if (compare == 0) {
                 return o1.compareTo(o2);
             }
             return compare;
@@ -171,8 +184,8 @@ public class Problem7 {
     }
 
     //추천 사용자를 추출하는 기능
-    public static List<String> extractRecommendUserAllOrTop5 (List<String> list) {
-        if(list.size() >= 5) {
+    public static List<String> extractRecommendUserAllOrTop5(List<String> list) {
+        if (list.size() >= 5) {
             return list.stream()
                 .limit(5)
                 .collect(Collectors.toList());
