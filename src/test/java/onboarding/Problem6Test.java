@@ -1,7 +1,5 @@
 package onboarding;
 
-import onboarding.problem6.RepositoryFactory;
-import onboarding.problem6.SnsRepository;
 import onboarding.problem6.User;
 import org.junit.jupiter.api.*;
 
@@ -42,16 +40,9 @@ public class Problem6Test {
     }
 
     @Nested
-    static class UserRepositoryTest{
+    class UserRepositoryTest{
 
-        private static SnsRepository repository= RepositoryFactory.makeRepository();
-        private static User beforeUser;
-
-        @BeforeEach
-        void before(){
-            User user = new User("jm@email.com", "제엠");
-            beforeUser = repository.save(user);
-        }
+        private SnsRepository repository=UserRepository.of();
 
         @AfterEach
         void after(){
@@ -59,37 +50,39 @@ public class Problem6Test {
         }
 
         @Test
-        void 저장(){
+        void testSave(){
             User user = new User("jm@email.com", "제이엠");
-            User saveUser = repository.save(user);
-            Optional<User> findUser=repository.findById(1);
+            User saveUser = (User) repository.save(user);
+            Optional<Domain> findUser=repository.findById(saveUser.getId());
             findUser.orElseThrow(()->new RuntimeException());
             assertThat(saveUser).isEqualTo(findUser.get());
         }
 
         @Test
-        void 검색(){
-            Optional<User> findUser=repository.findById(0);
+        void testSearch(){
+            User user = new User("jm@email.com", "제엠");
+            User save = (User)repository.save(user);
+            Optional<Domain> findUser=repository.findById(save.getId());
             findUser.orElseThrow(()->new RuntimeException());
-            assertThat(beforeUser).isEqualTo(findUser.get());
+            assertThat(save).isEqualTo((User)findUser.get());
         }
 
         @Test
-        void 검색실패(){
-            Optional<User> findUser=repository.findById(1);
+        void testSearchFail(){
+            User user = new User("jm@email.com", "제엠");
+            User save = (User)repository.save(user);
+            Optional<Domain> findUser=repository.findById(save.getId()+20);
             assertThat(Optional.empty()).isEqualTo(findUser);
         }
 
         @Test
-        void 업데이트(){
-            beforeUser.setNickName("제이");
-            User updateUser=repository.update(beforeUser);
-            assertThat(beforeUser).isEqualTo(updateUser);
+        void testUpdate(){
+            User user = new User("jm@email.com", "제엠");
+            User save = (User)repository.save(user);
+            save.setNickName("제이");
+            User updateUser=(User) repository.update(save);
+            assertThat(save).isEqualTo(updateUser);
         }
     }
 
-    @Nested
-    class UserServiceTest{
-
-    }
 }

@@ -1,10 +1,15 @@
-package onboarding.problem7;
+package onboarding;
 
 import java.lang.reflect.Field;
 import java.util.*;
 
 public class UserRepository implements SnsRepository {
-    protected Map<Integer,Domain> dataBase=new HashMap<>();
+    private static final SnsRepository repo=new UserRepository(new HashMap<>());
+    protected Map<Integer, Domain> dataBase;
+
+    public UserRepository(Map<Integer, Domain> dataBase) {
+        this.dataBase = dataBase;
+    }
 
     @Override
     public Domain save(Domain domain) {
@@ -53,5 +58,9 @@ public class UserRepository implements SnsRepository {
         } catch (NoSuchFieldException | IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static SnsRepository of(){
+        return repo;
     }
 }

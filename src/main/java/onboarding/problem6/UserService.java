@@ -1,21 +1,28 @@
 package onboarding.problem6;
 
-import java.util.List;
+import onboarding.Domain;
+import onboarding.RepositoryFactory;
+import onboarding.SnsRepository;
 
-public class UserService implements SnsService {
-    static SnsRepository repository=RepositoryFactory.makeRepository();
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class UserService{
+    static SnsRepository repository;
     static OverLapChecker overLapChecker=new OverLapChecker();
 
-    @Override
+    public UserService(RepositoryFactory repositoryFactory) {
+        repository=repositoryFactory.makeRepository();
+    }
+
     public void save(User user) {
         user.validNickName();
         user.validEmail();
         repository.save(user);
     }
 
-    @Override
     public List<String> getOverlapList() {
-        List<User> all = repository.findAll();
+        List<User> all = repository.findAll().stream().map(d->(User)d).collect(Collectors.toList());
         return overLapChecker.findOverLapList(all);
     }
 }

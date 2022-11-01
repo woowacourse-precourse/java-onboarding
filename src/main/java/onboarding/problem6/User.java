@@ -1,9 +1,10 @@
 package onboarding.problem6;
 
+import onboarding.Domain;
+
 import java.util.regex.Pattern;
 
-public class User {
-    private int index;
+public class User extends Domain {
 
     private String email;
 
@@ -12,14 +13,6 @@ public class User {
     public User(String email,String nickName) {
         this.email = email;
         this.nickName = nickName;
-    }
-
-    public void setIndex(int index) {
-        this.index = index;
-    }
-
-    public int getIndex() {
-        return index;
     }
 
     public void setNickName(String nickName) {

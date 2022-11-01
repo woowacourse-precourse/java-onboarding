@@ -1,18 +1,22 @@
 package onboarding;
 
+import onboarding.problem7.Problem7RepositoryFactory;
 import onboarding.problem7.Problem7Service;
 import onboarding.problem7.Problem7SnsRepository;
-import onboarding.problem7.RepositoryFactory;
 import onboarding.problem7.User;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-    static final Problem7SnsRepository repo=RepositoryFactory.makeProblem7SnsRepository();
-    static final Problem7Service problem7Service=new Problem7Service();
+
+    private static Problem7SnsRepository repo;
+    private static Problem7Service problem7Service;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        Problem7RepositoryFactory problem7RepositoryFactory = new Problem7RepositoryFactory();
+        repo=(Problem7SnsRepository) problem7RepositoryFactory.makeRepository();
+        problem7Service=new Problem7Service(problem7RepositoryFactory);
         repo.removeAll();
         problem7Service.save(user);
         for(int i=0;i<friends.size();i++){

@@ -88,14 +88,7 @@ public class Problem7Test {
     @Nested
     static class UserRepositoryTest{
 
-        private static SnsRepository repository= RepositoryFactory.makeSnsRepository();
-        private static Domain beforeUser;
-
-        @BeforeEach
-        void before(){
-            User user = new User("제엠");
-            beforeUser = repository.save(user);
-        }
+        private static SnsRepository repository= Problem7Repository.of();
 
         @AfterEach
         void after(){
@@ -106,40 +99,53 @@ public class Problem7Test {
         void 저장(){
             User user = new User("mrko");
             Domain saveUser = repository.save(user);
-            Optional<Domain> findUser=repository.findById(1);
+            Optional<Domain> findUser=repository.findById(saveUser.getId());
             findUser.orElseThrow(()->new RuntimeException());
             assertThat(saveUser).isEqualTo(findUser.get());
         }
 
         @Test
         void 검색(){
-            Optional<Domain> findUser=repository.findById(0);
-            findUser.orElseThrow(()->new RuntimeException());
-            assertThat(beforeUser).isEqualTo(findUser.get());
+            User user = new User("mrko");
+            User saveUser =(User) repository.save(user);
+            Optional<Domain> findUserOptional=repository.findById(saveUser.getId());
+            findUserOptional.orElseThrow(()->new RuntimeException());
+            User findUser = (User) findUserOptional.get();
+            assertThat(saveUser).isEqualTo(findUser);
         }
 
         @Test
         void 검색실패(){
-            Optional<Domain> findUser=repository.findById(1);
+            User user = new User("mrko");
+            Domain saveUser = repository.save(user);
+            Optional<Domain> findUser=repository.findById(saveUser.getId()+20);
             assertThat(Optional.empty()).isEqualTo(findUser);
         }
 
         @Test
         void 업데이트(){
-            User beforeUser = (User) UserRepositoryTest.beforeUser;
-            beforeUser.setUserName("db");
-            Domain updateUser=repository.update(UserRepositoryTest.beforeUser);
-            assertThat(UserRepositoryTest.beforeUser).isEqualTo(updateUser);
+            User user = new User("mrko");
+            User saveUser = (User)repository.save(user);
+            saveUser.setUserName("db");
+            Domain updateUser=repository.update(saveUser);
+            assertThat(saveUser).isEqualTo(updateUser);
         }
     }
 
     @Nested
-    class UserServiceTest{
-        private Problem7Service userService= new Problem7Service();
-        private Problem7SnsRepository repository= RepositoryFactory.makeProblem7SnsRepository();
+    static class UserServiceTest{
+        private static Problem7Service userService;
+        private static Problem7SnsRepository repository;
 
-        @AfterEach
-        void after(){
+        @BeforeAll
+        static void before(){
+            Problem7RepositoryFactory problem7RepositoryFactory = new Problem7RepositoryFactory();
+            repository=(Problem7SnsRepository) problem7RepositoryFactory.makeRepository();
+            userService=new Problem7Service(problem7RepositoryFactory);
+        }
+
+        @BeforeEach
+        void beforeEach(){
             repository.removeAll();
         }
 
@@ -147,8 +153,6 @@ public class Problem7Test {
         void 저장(){
             User user=new User("mrko");
             userService.save(user);
-            User user1=new User("mrko");
-            userService.save(user1);
             Optional<Domain> findUser = repository.findById(0);
             findUser.orElseThrow(()->new RuntimeException());
             assertThat(user).isEqualTo(findUser.get());

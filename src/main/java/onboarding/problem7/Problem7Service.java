@@ -1,10 +1,16 @@
 package onboarding.problem7;
 
+import onboarding.RepositoryFactory;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7Service {
-    private static Problem7SnsRepository repository=RepositoryFactory.makeProblem7SnsRepository();
+    private Problem7SnsRepository repository;
+
+    public Problem7Service(RepositoryFactory repositoryFactory) {
+        repository=(Problem7Repository)repositoryFactory.makeRepository();
+    }
 
     public void save(String userName) {
         User user = new User(userName);

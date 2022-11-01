@@ -1,4 +1,4 @@
-package onboarding.problem7;
+package onboarding;
 
 public class Domain {
     private int id;

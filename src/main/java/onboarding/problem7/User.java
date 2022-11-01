@@ -1,11 +1,12 @@
 package onboarding.problem7;
 
+import onboarding.Domain;
+
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.regex.Pattern;
 
-public class User extends Domain{
+public class User extends Domain {
 
     private String userName;
 
