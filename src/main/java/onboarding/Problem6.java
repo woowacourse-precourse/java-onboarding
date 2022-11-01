@@ -10,8 +10,9 @@ public class Problem6 {
         return answer;
     }
 
+    // 전체 맴버 닉네임 중복 검증
     private static List<String> checkNicknameDuplication(List<List<String>> memberList) {
-        SortedSet<String> checkedEmail = new TreeSet<>();
+        SortedSet<String> duplicateMemberEmail = new TreeSet<>();
         List<String> member, compareMember, nicknamePieces;
         String nickname, email, compareNickname, compareEmail;
 
@@ -23,7 +24,7 @@ public class Problem6 {
             if (checkNicknameLength(nickname)) {
                 continue;
             }
-            nicknamePieces = seperateNickName(nickname);
+            nicknamePieces = seperateNickname(nickname);
 
             for (int j = i + 1; j < memberList.size(); j++) {
                 compareMember = memberList.get(j);
@@ -31,13 +32,14 @@ public class Problem6 {
                 compareNickname = compareMember.get(1);
 
                 if (checkDuplication(compareNickname, nicknamePieces)) {
-                    checkedEmail.addAll(Arrays.asList(email, compareEmail));
+                    duplicateMemberEmail.addAll(Arrays.asList(email, compareEmail));
                 }
             }
         }
-        return new ArrayList<>(checkedEmail);
+        return new ArrayList<>(duplicateMemberEmail);
     }
 
+    // 입력받은 닉네임과 중복 검사 단위로 나눈 문자열의 중복 사항 검증
     private static boolean checkDuplication(String nickname, List<String> nicknamePieces) {
         boolean sign = false;
         for (String piece : nicknamePieces) {
@@ -49,7 +51,8 @@ public class Problem6 {
         return sign;
     }
 
-    private static List<String> seperateNickName(String nickname) {
+    // 닉네임을 2글자씩 분리
+    private static List<String> seperateNickname(String nickname) {
         List<String> nickNamePieces = new ArrayList<>();
         String piece;
         for (int i = 0; i < nickname.length() - 1; i++) {
