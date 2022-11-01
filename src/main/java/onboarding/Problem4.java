@@ -11,6 +11,17 @@ public class Problem4 {
         }
         return (char)elementascii;
     }
+
+    static char changeLowerElement (char element) {
+        int elementascii = element;
+        if (elementascii >= 97 && elementascii <= 109) {
+            elementascii = 110 + (109 - elementascii);
+        }else if (elementascii <= 122 && elementascii > 109) {
+            elementascii = 109 - (elementascii - 110);
+        }
+        return (char)elementascii;
+    }
+
     public static String solution(String word) {
         String answer = "";
         return answer;
