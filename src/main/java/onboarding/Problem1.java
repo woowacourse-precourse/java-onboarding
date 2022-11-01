@@ -1,19 +1,17 @@
 package onboarding;
 import java.util.List;
 class Problem1 {
-    private static final int FIRST_PAGE = 1;
-    private static final int LAST_PAGE = 400;
     private static final int POBI_WIN = 1;
     private static final int CRONG_WIN = 2;
     private static final int TIE = 0;
     private static final int EXCEPTION = -1;
     private static final int INTERVAL = 1;
 
-    public static int getMax(List<Integer> player){
-        int leftSum = addDigits(player.get(0));
-        int rightSum = addDigits(player.get(1));
-        int leftProduct = multiplyDigits(player.get(0));
-        int rightProduct = multiplyDigits(player.get(1));
+    public static int getMax(List<Integer> bbororo){
+        int leftSum = add(bbororo.get(0));
+        int rightSum = add(bbororo.get(1));
+        int leftProduct = multiply(bbororo.get(0));
+        int rightProduct = multiply(bbororo.get(1));
 
         int leftMax = Math.max(leftSum, leftProduct);
         int rightMax = Math.max(rightSum, rightProduct);
@@ -21,64 +19,51 @@ class Problem1 {
         return Math.max(leftMax, rightMax);
     }
 
-    public static int addDigits(int pageNumber){
+    public static int add(int page){
         int sum = 0;
-        while(pageNumber > 0){
-            int digit = pageNumber % 10;
-            sum += digit;
-            pageNumber /= 10;
+        while(page > 0){
+            int n = page % 10;
+            sum += n;
+            page /= 10;
         }
         return sum;
     }
-    public static int multiplyDigits(int pageNumber){
-        int product = 1;
-        while(pageNumber > 0){
-            int digit = pageNumber % 10;
-            product *= digit;
-            pageNumber /= 10;
+    public static int multiply(int page){
+        int multi = 1;
+        while(page > 0){
+            int n = page % 10;
+            multi *= n;
+            page /= 10;
         }
-        return product;
+        return multi;
     }
 
-    public static boolean checkValidity(List<Integer> player){
-        int leftPageNumber;
-        int rightPageNumber;
-//        if(!checkListSize(player)){
-//            return false;
-//        }
-        leftPageNumber = player.get(0);
-        rightPageNumber = player.get(1);
-        return checkInterval(leftPageNumber, rightPageNumber);
+    public static boolean checkValidity(List<Integer> bbororo){
+        int leftPage;
+        int rightPage;
+
+        leftPage = bbororo.get(0);
+        rightPage = bbororo.get(1);
+        return checkInterval(leftPage, rightPage);
     }
-    /*public static boolean checkListSize(List<Integer> player){
-        return (player.size() == 2);
-    }*/
-    /*public static boolean checkPageNumberRange(int pageNumber){
-        return (pageNumber >= FIRST_PAGE && pageNumber <= LAST_PAGE);
-    }*/
-    public static boolean checkInterval(int leftPageNumber, int rightPageNumber){
-        return (rightPageNumber - leftPageNumber == INTERVAL);
+    public static boolean checkInterval(int leftPage, int rightPage){
+        return (rightPage - leftPage == INTERVAL);
     }
-    /*public static boolean isOdd(int pageNumber){
-        return (pageNumber % 2 == 1);
-    }
-    public static boolean isEven(int pageNumber){
-        return (pageNumber % 2 == 0);
-    }*/
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         boolean isValidInput = checkValidity(pobi) && checkValidity(crong);
 
         if(isValidInput){
-            int pobiTotalMax = getMax(pobi);
-            int crongTotalMax = getMax(crong);
-            if(pobiTotalMax > crongTotalMax){
+            int pobiMax = getMax(pobi);
+            int crongMax = getMax(crong);
+            if(pobiMax > crongMax){
                 answer = POBI_WIN;
             }
-            if(pobiTotalMax < crongTotalMax){
+            if(pobiMax < crongMax){
                 answer = CRONG_WIN;
             }
-            if(pobiTotalMax == crongTotalMax){
+            if(pobiMax == crongMax){
                 answer = TIE;
             }
         }
