@@ -33,6 +33,8 @@ public class Problem4 {
     }
 
     private static boolean isCharacterLowerCase(char character) {
+        if (character >= 'a' && character <= 'z') return true;
+        return false;
     }
 
 }
