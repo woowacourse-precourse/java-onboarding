@@ -10,7 +10,7 @@ public class Problem6 {
 
         final List<Crew> crews = getCrews(forms);
 
-        addMapBySubstringInNickname(crewMap, crews);
+        insertSubstringOfNicknameIntoMap(crewMap, crews);
 
         return getEmailListByDuplicatedNickname(crewMap);
     }
@@ -21,7 +21,7 @@ public class Problem6 {
                 .collect(Collectors.toList());
     }
 
-    private static void addMapBySubstringInNickname(Map<String, List<Crew>> crewMap, List<Crew> crews) {
+    private static void insertSubstringOfNicknameIntoMap(Map<String, List<Crew>> crewMap, List<Crew> crews) {
         crews.forEach(crew -> {
             final String nickname = crew.getNickname();
             IntStream.range(0, nickname.length() - 1)
