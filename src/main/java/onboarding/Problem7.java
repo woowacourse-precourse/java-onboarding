@@ -16,6 +16,12 @@ public class Problem7 {
         //나머지 친구 맵에 밸류로 친구 등록
         registerFriendInUnknownFriends(friends, unknownFriends);
 
+        //나머지 친구들 점수를 매길 맵
+        HashMap<String, Integer> scoreOfVisitors = new HashMap<>();
+
+        //방문자들 점수 매기기
+        initScoreOfVisitors(scoreOfVisitors, visitors, unknownFriends, userFriends);
+
         return answer;
     }
 
@@ -74,4 +80,19 @@ public class Problem7 {
 
         }
     }
+
+    public static void initScoreOfVisitors(HashMap<String, Integer> scoreOfVisitors,
+                                           List<String> visitors,
+                                           Map<String, List<String>> unknownFriends,
+                                           List<String> userFriends) {
+
+        for (String visitor : visitors) {
+
+            if (!unknownFriends.containsKey(visitor) && !userFriends.contains(visitor)) {
+                scoreOfVisitors.put(visitor, 0);
+            }
+
+        }
+    }
+
 }
