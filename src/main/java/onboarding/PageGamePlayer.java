@@ -6,14 +6,17 @@ public class PageGamePlayer {
     private int leftPage, rightPage;
 
     public PageGamePlayer(List<Integer> list) {
-        validPageList(list);
-        this.leftPage = list.get(0);
-        this.rightPage = list.get(1);
+        if (validPageList(list)) {
+            this.leftPage = list.get(0);
+            this.rightPage = list.get(1);
+        }
     }
 
-    private void validPageList(List<Integer> pages) {
+    private boolean validPageList(List<Integer> pages) {
         if (pages.size() != 2)
-            throw new IllegalArgumentException("2개의 페이지를 입력해주세요.");
+            return false;
+
+        return true;
     }
 
     public boolean isValid() {
