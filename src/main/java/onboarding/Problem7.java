@@ -15,11 +15,17 @@ public class Problem7 {
 	public static final int BOTH_KNOW_SCORE = 10;
 	public static final int TIMELINE_VISIT_SCORE = 1;
 
+	public static final int EXCEPTION = -1;
+
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = new ArrayList<>(Collections.emptyList());
 		Map<String, Integer> map = new HashMap<>(); // [사람 이름, 추천 점수]를 담을 HashMap
 		Set<String> notYetFriend = new HashSet<>(); // 추천 친구 대상 set (사용자와 아직 친구가 아닌 사람들)
 		Set<String> alreadyFriend = new HashSet<>(); // 사용자와 이미 친구인 사람들 set
+
+		if (checkRestrictions(user, friends, visitors) == EXCEPTION) {
+			return answer;
+		}
 
 		initNotYetFriend(user, friends, visitors, notYetFriend, alreadyFriend);
 
@@ -51,6 +57,28 @@ public class Problem7 {
 		}
 
 		return answer;
+	}
+
+	/**
+	 * 제한사항을 위배했는지 체크하는 메서드
+	 * @param user
+	 * @param friends
+	 * @param visitors
+	 * @return
+	 */
+	private static Integer checkRestrictions(String user, List<List<String>> friends, List<String> visitors) {
+		if (!isUserRangeValid(user)) {
+			return EXCEPTION;
+		}
+		return 0;
+	}
+
+	// user 의 길이가 1 이상 30 이하가 아닌 경우 예외
+	private static boolean isUserRangeValid(String user) {
+		if (user.length() < 1 || user.length() > 30) {
+			return false;
+		}
+		return true;
 	}
 
 	/**
