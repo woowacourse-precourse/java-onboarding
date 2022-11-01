@@ -16,7 +16,6 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
 
         if (isException(pobi) || isException(crong)) {
             return -1;
@@ -25,6 +24,12 @@ class Problem1 {
         int pobiScore = getMaxNumber(pobi);
         int crongScore = getMaxNumber(crong);
 
+        return judgeGame(pobiScore, crongScore);
+    }
+
+    private static int judgeGame(int pobiScore, int crongScore) {
+        int answer = 0;
+
         if (pobiScore < crongScore) {
             answer = 2;
         } else if (crongScore < pobiScore) {
@@ -32,13 +37,12 @@ class Problem1 {
         } else {
             answer = 0;
         }
-
         return answer;
     }
 
     private static boolean isException(List<Integer> member) {
         boolean result = false;
-        
+
         //예외 사항 - 페이지가 연속적이지 않을 경우
         if (member.get(1) - member.get(0) != 1) {
             result = true;
