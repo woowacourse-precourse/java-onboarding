@@ -8,7 +8,7 @@ public class Problem2 {
         int leftIndex = 0;
         int rightIndex = 1;
 
-        while (rightIndex != cryptogram.length()) {
+        while (rightIndex < cryptogram.length()) {
             if (cryptogram.charAt(leftIndex) == cryptogram.charAt(rightIndex)) {
                 cryptogram = cryptogram.substring(0, leftIndex) + cryptogram.substring(rightIndex + 1);
                 leftIndex = 0;
