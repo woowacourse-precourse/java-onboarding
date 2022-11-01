@@ -2,7 +2,13 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 class Person implements Comparable<Person> {
@@ -64,12 +70,14 @@ class Person implements Comparable<Person> {
     }
 
 }
+
 public class Problem7 {
     private static final int VISITORS_MIN_SIZE = 0;
     private static final int VISITORS_MAX_SIZE = 10000;
     private static final int FRIENDS_RELATION_MIN_SIZE = 1;
     private static final int FRIENDS_RELATION_MAX_SIZE = 10000;
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+    public static List<String> solution(String user, List<List<String>> friends,
+        List<String> visitors) {
         vaildityChecker(user, friends, visitors);
 
         List<String> userFriends = new ArrayList<>();
@@ -77,8 +85,8 @@ public class Problem7 {
         List<Person> answerList = getTenPointName(user, friends, userFriends);
         getOnePointName(answerList, visitors, userFriends);
         listSort(answerList);
-
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        makeAnswer(answerList, answer);
         return answer;
     }
     private static void vaildityChecker(String user, List<List<String>> friends,
@@ -151,12 +159,14 @@ public class Problem7 {
             }
         }
     }
+
     private static String setUserFriends(String user, String leftName, String rightName) {
         if (leftName.contains(user)) {
             return rightName;
         }
         return leftName;
     }
+
     private static List<Person> getTenPointName(String user, List<List<String>> friends,
         List<String> userFriends) {
         List<Person> tenPointNames = new ArrayList<>();
@@ -180,6 +190,7 @@ public class Problem7 {
             addFriend(tenPointNames, leftFriend);
         }
     }
+
     private static void addFriend(List<Person> tenPointNames, Person friend) {
         if (tenPointNames.isEmpty()) {
             friend.addTenPoint();
@@ -232,7 +243,14 @@ public class Problem7 {
             }
         }
     }
+
     private static void listSort(List<Person> answerList) {
         Collections.sort(answerList);
+    }
+
+    private static void makeAnswer(List<Person> answerList, List<String> answer) {
+        for (Person friend : answerList) {
+            answer.add(friend.name);
+        }
     }
 }
