@@ -1,5 +1,12 @@
 package onboarding;
 
+/*
+* 1. 상수 설정
+* 2. 제시된 책의 수 확인
+* 3. 각 수를 더하거나, 곱하는 메소드 정의
+* 4. 큰 수 반환
+* */
+
 import java.util.List;
 
 class Problem1 {
