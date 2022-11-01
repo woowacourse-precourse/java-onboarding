@@ -9,12 +9,22 @@ public class Problem3 {
     }
 
     public static int getClapCount(int number) {
-
-        return -1;
+        int clapCount = 0;
+        for(int i = 1; i <= number; i++) {
+            String numString = Integer.toString(i);
+            clapCount += getNumberCount(numString);
+        }
+        return clapCount;
     }
 
-    public static int getNumberCount(String numberStr) {
+    public static int getNumberCount(String numString) {
+        int numberCount = 0;
+        for(int i = 0; i < numString.length(); i++) {
+            if(numString.charAt(i) == '3' || numString.charAt(i) == '6' || numString.charAt(i) == '9') {
+                numberCount++;
+            }
+        }
 
-        return -1;
+        return numberCount;
     }
 }
