@@ -11,27 +11,7 @@ public class Problem6 {
         Crews crews = new Crews(forms.stream()
                 .map(form -> new Crew(form.get(0), form.get(1)))
                 .collect(Collectors.toList()));
-        return getDuplicatedCrewEmailList(forms, getDuplicatedStringList(getDuplicatedStringCounts(forms)));
-    }
-
-    public static Map<String, Integer> getDuplicatedStringCounts(List<List<String>> forms) {
-        Map<String, Integer> stringCount = new HashMap<>();
-        for (List<String> crew : forms) {
-            countSubStringInName(stringCount, crew.get(1));
-        }
-        return stringCount;
-    }
-
-    private static void countSubStringInName(Map<String, Integer> stringCount, String name) {
-        for (int start = 0; start < name.length(); start++) {
-            for (int end = start + 1; end < name.length(); end++) {
-                putSubString(stringCount, name, start, end);
-            }
-        }
-    }
-
-    private static void putSubString(Map<String, Integer> stringCount, String name, int start, int end) {
-        stringCount.put(name.substring(start, end + 1), stringCount.getOrDefault(name.substring(start, end + 1), 0) + 1);
+        return getDuplicatedCrewEmailList(forms, getDuplicatedStringList(crews.getDuplicatedStringCounts()));
     }
 
     public static List<String> getDuplicatedStringList(Map<String, Integer> stringCount) {
