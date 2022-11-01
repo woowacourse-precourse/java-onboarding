@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Collections;
 
 public class Problem7 {
+    private static final int MAX_RECOMMEND_SIZE = 5;
     private static Map<String, List<String>> map = new HashMap<>();
     private static Set<String> userFriends = new HashSet<>();
     private static Map<String, Integer> scores = new HashMap<>();
@@ -19,7 +20,8 @@ public class Problem7 {
         add10PointsToKnowTogether(user);
         add1PointToVisitor(user, visitors);
 
-        List<String> answer = getFirendRecommendations();
+        List<String> allRecomendations = getAllRecommendations();
+        List<String> answer = getTop5Recommendations(allRecomendations);
         return answer;
     }
 
@@ -85,7 +87,7 @@ public class Problem7 {
         }
     }
 
-    private static List<String> getFirendRecommendations() {
+    private static List<String> getAllRecommendations() {
         List<String> list = new ArrayList<>(scores.keySet());
         Collections.sort(list, (o1, o2) -> {
             if (scores.get(o1) == scores.get(o2)) {
@@ -94,5 +96,16 @@ public class Problem7 {
             return scores.get(o2) - scores.get(o1);
         });
         return list;
+    }
+
+    private static List<String> getTop5Recommendations(List<String> allRecommendations) {
+        List<String> answer = new ArrayList<>(MAX_RECOMMEND_SIZE);
+        for (int i = 0; i < allRecommendations.size(); i++) {
+            if (i == MAX_RECOMMEND_SIZE) {
+                break;
+            }
+            answer.add(allRecommendations.get(i));
+        }
+        return answer;
     }
 }
