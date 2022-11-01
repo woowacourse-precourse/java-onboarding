@@ -17,35 +17,21 @@ public class Problem2 {
         STACK = new Stack<>();
     }
 
-    private static void removeDuplicateString(String str) {
-        for (Character c : str.toCharArray()) {
-            if(!STACK.isEmpty()) {
-                Character last = STACK.peek();
-                int duplicate = 0;
-                if (!c.equals(last)) {
-                    removeDuplicateByStack(last, duplicate);
-                }
+    private static void removeDuplicateString(String cryptogram) {
+        Character prev = ' ';
+
+        for(Character c : cryptogram.toCharArray()){
+            if (STACK.empty()) {
+                STACK.push(c);
+                continue;
             }
-            STACK.add(c);
-        }
 
-        Character last = STACK.peek();
-        int duplicate = 0;
-        removeDuplicateByStack(last, duplicate);
-    }
-
-    private static void removeDuplicateByStack(Character last, int cnt) {
-        for (int i = STACK.size(); i > 0; i--) {
-            if (last != STACK.elementAt(i-1)) {
-                break;
-            }
-            cnt += 1;
-        }
-
-        if (cnt > 1) {
-            for (int i = 0; i < cnt; i++) {
+            if (STACK.peek().equals(c)) {
                 STACK.pop();
+            } else if (!prev.equals(c)) {
+                STACK.push(c);
             }
+            prev = c;
         }
     }
 
