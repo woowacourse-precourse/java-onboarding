@@ -29,7 +29,10 @@ public class Problem7 {
                                             List<String> visitors) {
         Map<String, List<String>> allUserFriendsList = new HashMap<>();
         Map<String, Integer> scoreBoard = new HashMap<>();
-        return new ArrayList<>();
+        findFriends(friends, allUserFriendsList);
+        addAcquaintanceScore(allUserFriendsList,user,scoreBoard);
+        addVisitedScore(visitors,allUserFriendsList,user,scoreBoard);
+        return changeRecommendedRankingList(scoreBoard);
     }
 
     /**
