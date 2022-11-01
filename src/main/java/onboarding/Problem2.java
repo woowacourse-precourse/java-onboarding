@@ -10,7 +10,6 @@ public class Problem2 {
 
 
         ArrayList<Character> list = new ArrayList<Character>();
-        ArrayList<Character> list2 = new ArrayList<Character>();
         for (int i=0;i<cryptogram.length();i++) {
             char currentChr = cryptogram.charAt(i);
             list.add(currentChr);
@@ -19,6 +18,7 @@ public class Problem2 {
             if (list.get(i)==list.get(i-1)) {
                 list.remove(i);
                 list.remove(i-1);
+                i--;
                 i--;
                 count++;
             }

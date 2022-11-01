@@ -12,20 +12,6 @@ public class Problem7 {
         List<Recommend> recommend = new ArrayList<>();
         String[] ID = new String[2];
 
-        friends.add(new ArrayList<String>(Arrays.asList("donut","andole")));
-        friends.add(new ArrayList<String>(Arrays.asList("donut","jun")));
-        friends.add(new ArrayList<String>(Arrays.asList("donut","mrko")));
-        friends.add(new ArrayList<String>(Arrays.asList("shakevan","andole")));
-        friends.add(new ArrayList<String>(Arrays.asList("shakevan","jun")));
-        friends.add(new ArrayList<String>(Arrays.asList("shakevan","mrko")));
-
-
-
-        visitors.add("bedi");
-        visitors.add("bedi");
-        visitors.add("donut");
-        visitors.add("bedi");
-        visitors.add("shakevan");
         List<String> userFriend = new ArrayList<>();
         for (int i=0;i<friends.size();i++) {
             for (int j=0;j<friends.get(i).size();j++) {
@@ -112,7 +98,6 @@ public class Problem7 {
             }
         }
 
-        List<Recommend> ans = new ArrayList<>();
 
         for (int i=0;i<recommend.size()-1;i++) { // 버블정렬
             for (int j=i+1;j< recommend.size();j++) {
