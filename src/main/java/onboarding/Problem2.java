@@ -10,6 +10,13 @@ public class Problem2 {
         String answer = "answer";
         return answer;
     }
+
+    private static Boolean isNonDuplicate(int OverlappedCharacterSize) {
+        if (OverlappedCharacterSize < 2) {
+            return true;
+        }
+        return false;
+    }
     private static void cryptogramTypeValidation(String cryptogram) {
         if (!Pattern.matches(ENGLISH_PATTERN, cryptogram)) {
             throw new IllegalArgumentException("영소문자만 입력 가능합니다");
