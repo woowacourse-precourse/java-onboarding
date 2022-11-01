@@ -16,4 +16,15 @@ public class FrogTest {
 		assertThatThrownBy(() -> new Frog(word2))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
+	
+	@Test
+	public void 엄마_말씀_변환_테스트() {
+	    //given
+		String word = "I love you";
+		Frog frog = new Frog(word);
+	    //when
+		String frogSpeak = frog.speak();
+	    //then
+		assertThat("R olev blf").isEqualTo(frogSpeak);
+	}
 }

@@ -16,4 +16,13 @@ public class Frog {
 			throw new IllegalArgumentException("문자열의 길이는 1~1000이어야 합니다.");
 		}
 	}
+
+	public String speak() {
+		StringBuilder stringBuilder = new StringBuilder();
+		char[] words = word.toCharArray();
+		for (char w : words) {
+			stringBuilder.append(FrogDictionary.convert(w));
+		}
+		return stringBuilder.toString();
+	}
 }
