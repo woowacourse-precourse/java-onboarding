@@ -25,6 +25,7 @@
 ### <기능 목록>
 - duplicateIndex: nickName index를 key로, 포함 횟수를 value로 하는 HashMap
 - caseOfNickName: 두 글자 배열
+
 1. 닉네임으로 만들 수 있는 연속된 두 글자 조합 생성
    - 매개변수로 받은 forms에서 닉네임만 뽑아서 배열로
    - 각 닉네임으로 만들 수 있는 연속된 두 글자를 caseOfNickName에 추가
