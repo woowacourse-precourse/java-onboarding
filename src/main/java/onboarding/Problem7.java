@@ -18,6 +18,22 @@ public class Problem7 {
         }
         friendSet.remove(user);
 
+        //나와 친구인 사람과 친구인 사람 list 만들기
+        for (List<String> list: friends) {
+            for (String friend: friendSet) {
+                //list 안에 친구가 있는지 확인
+                isAlreadyFriend(list, friend, friendSet, user, recommendList);
+            }
+        }
+
         return answer;
+    }
+
+    static void isAlreadyFriend(List<String> list, String friend, Set<String> friendSet, String user, HashMap<String, Integer> recommend) {
+        if (list.contains(friend)) {
+            for (int i=0; i<list.size(); i++) {
+                
+            }
+        }
     }
 }
