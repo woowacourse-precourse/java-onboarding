@@ -5,7 +5,7 @@ package onboarding;
  * 1. 박수 세는 알고리즘
  */
 public class Problem3 {
-    private static int isClap(int number){
+    private static int countClap(int number){
         int tmp = 0;
         int clapCount = 0;
         while (number != 0){
@@ -20,7 +20,7 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
         while (number > 0){
-            answer += isClap(number--);
+            answer += countClap(number--);
         }
         return answer;
     }
