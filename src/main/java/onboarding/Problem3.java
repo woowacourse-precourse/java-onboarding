@@ -3,7 +3,18 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        answer = getCumulativeNumberOfClap(number);
         return answer;
+    }
+
+    private static int getCumulativeNumberOfClap(int number) {
+        int clap = 0;
+
+        for (int i = 1; i <= number; i++) {
+            clap += getNumberOfClap(i);
+        }
+
+        return clap;
     }
 
     private static int getNumberOfClap(int number) {
