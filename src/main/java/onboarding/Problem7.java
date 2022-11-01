@@ -35,8 +35,8 @@ public class Problem7 {
             graph.put(userFrom, new HashSet<>(List.of(userTo)));
     }
     private static void scoreFriendOfFriend(HashMap<String, HashSet<String>> graph, HashMap<String, Integer> scoreMap, String user, String friend) {
-        HashSet<String> friendList = graph.get(friend);
-        HashSet<String> friendOfUser = graph.get(user);
+        HashSet<String> friendList = graph.getOrDefault(friend, new HashSet<>());
+        HashSet<String> friendOfUser = graph.getOrDefault(user, new HashSet<>());
 
         for (String friendOfFriend: friendList) {
             if (friendOfFriend.equals(user))
