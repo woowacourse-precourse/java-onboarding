@@ -24,3 +24,24 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+---
+## 기능 구현
+
+- organize()
+  - user을 제외한 방문자와 친구 목록들을 중복없이 List에 저장하게 함
+- rankMemberList()
+  - sortMemberList()의 값이 에러 검출되는지 체크
+- sortMemberList()
+  - MemberScoreList()와 MemberFriendList()를 받아 오름차순으로 정렬하였다.
+- MemberScoreList()
+  - 추천 점수가 0점이 아닌 친구들의 점수만 List에 넣고 반환하였다.
+- MemberFriendList()
+  - 추천 점수가 0점이 아닌 친구들만 List에 넣고 반환하였다.
+- makeMemberInfo()
+  - 중복없이 저장하게한 orgainze 값을 받아 user와 user의 친구들을 제거한 후, 친구들이 어떤 점수를 갖고있는지를 생성자로 반환하였다.
+- reverseList()
+  - 문자열 List의 첫번째 값과 두번째 값을 바꾸게함
+- error()
+  - 에러 검출
+- class Member
+  - Member class에 사람 이름, 그사람의 친구들, 방문횟수, 추천 점수를 저장하게 하였다.

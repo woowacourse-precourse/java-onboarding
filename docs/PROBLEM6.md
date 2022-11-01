@@ -21,3 +21,18 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+---
+## 기능 구현
+
+- AllMemberCheck()
+    - 에러를 체크하고, firstMemberCheck()과 MemberCheck()을 잇는 역할
+- firstMemberCheck()
+    - 이중 List의 첫번째(0번)의 닉네임을 따로 빼어 다른 닉네임들과 checkequals를 비교. true면 email 출력
+- MemberCheck()
+    - 이중 List의 index 번째의 닉네임과 다른 닉네임들을 checkequals를 비교하여 이메일을 출력시킴
+- checkequals()
+    - 문자열을 두 개 비교하였을때, 연속적인 중복 글자가 2개이상 있는 경우를 체크
+- error()
+    - 에러 검출
+- OnlyKoreanNickName
+    - 닉네임 입력을 받을때 한글만 받게함

@@ -19,3 +19,12 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+---
+## 기능 구현
+
+- reverseString()
+    - 영어 소문자를 소문자로 reverse 변환하고, 대문자를 대문자로 reverse 변환
+- BuildertoString()
+    - StringBuilder 형을 String으로 바꿈
+- error()
+    - 에러 검출
