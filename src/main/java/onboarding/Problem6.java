@@ -1,7 +1,10 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 class Student {
 
@@ -15,10 +18,12 @@ class Student {
 }
 
 public class Problem6 {
+
     public static List<String> solution(List<List<String>> forms) {
         List<Student> students = initStudents(forms);
-        List<String> answer = List.of("answer");
-        return answer;
+        Set<String> overlapNickNames = new HashSet<>();
+
+        return sortAnswer(overlapNickNames);
     }
 
     static List<Student> initStudents(List<List<String>> forms) {
@@ -29,5 +34,12 @@ public class Problem6 {
         }
 
         return students;
+    }
+
+    static List<String> sortAnswer(Set<String> set) {
+        List<String> answer = new ArrayList<>(set);
+        Collections.sort(answer);
+
+        return answer;
     }
 }
