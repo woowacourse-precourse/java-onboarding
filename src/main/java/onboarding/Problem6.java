@@ -28,4 +28,8 @@ public class Problem6 {
         return emails.substring(emails.indexOf('@')).equals(str);
     }
 
+    private static boolean checkNickValid(String nickname) {
+        return nickname.matches("^[가-힣]*$") == true;
+    }
+
 }
