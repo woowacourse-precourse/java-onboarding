@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem6Debugging {
 
@@ -42,9 +39,21 @@ public class Problem6Debugging {
                 }
                 nickName = forms.get(formsFirstRowLength - 1).get(1);
                 int nickNameLength = nickName.length();
-                //예외사항4 : 닉네임은 한글만 가능하고 전체 길이는 1자 이상 20자 미만이다.
+                //예외사항4 : 전체 길이는 1자 이상 20자 미만이다.
+
+
                 if (nickNameLength<1 || nickNameLength>20){
                     System.out.println("Please, Enter Nickname length between 1~20");
+
+                }
+                //예외사항 5 : 닉네임은 한글만 가능하다.
+                for (int i = 0 ; i < nickNameLength ; i++) {
+                    char unicode = nickName.charAt(i);
+
+                    if (unicode<'\uAC00' || unicode >'\uD7AF'){
+                        System.out.println("please, Enter Korean Nickname (complete word)");
+
+                    }
 
                 }
 
