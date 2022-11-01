@@ -7,4 +7,24 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    public static boolean checkValue(List<Integer> list) {
+
+        int left = list.get(0);
+        int right = list.get(1);
+
+        if (left < 1 || 400 <= left) {
+            return true;
+        }
+        if (right <= 1 || 400 < right) {
+            return true;
+        }
+        if (left % 2 != 1) {
+            return true;
+        }
+        if (right - left != 1) {
+            return true;
+        }
+        return false;
+    }
 }
