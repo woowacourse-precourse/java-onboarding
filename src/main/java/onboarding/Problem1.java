@@ -35,7 +35,35 @@ class Problem1 {
             crongs2 += Integer.parseInt(String.valueOf(crong2.charAt(i)));
             crongm2 *= Integer.parseInt(String.valueOf(crong2.charAt(i)));
         }
+        int pmax=0,cmax=0;
+        if(pobis1>=pobis2){
+            pmax = pobis1;
+        }else{
+            pmax = pobis2;
+        }
+        if(pmax<pobim1){
+            pmax = pobim1;
+        }else if(pmax <= pobim2){
+            pmax = pobim2;
+        }
+        if(crongs1>=crongs2){
+            cmax = crongs1;
+        }else{
+            cmax = crongs2;
+        }
+        if(cmax<crongm1){
+            cmax = crongm1;
+        }else if(cmax <= crongm2){
+            cmax = crongm2;
+        }
 
+        if(pmax > cmax){
+            answer = 1;
+        }else if(cmax > pmax){
+            answer = 2;
+        }else{
+            answer = 0;
+        }
 
 
         return answer;
