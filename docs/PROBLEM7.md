@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 기능 목록
+
+1. 사용자와 함께 아는 친구 수 세기
+2. 사용자의 타임 라인에 방문한 횟수 세기
+3. 추천 점수 기준으로 내림차순 정렬하여 최대 5명 반환하되 추천 점수 같은 경우는 이름순으로 정렬, 추천 점수 0점인 경우 추천하지 않는다
