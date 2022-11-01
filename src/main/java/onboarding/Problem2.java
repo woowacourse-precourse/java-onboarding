@@ -66,4 +66,10 @@ public class Problem2 {
             sb.append(cryptogram.charAt(cryptogram.length() - 1));
         }
     }
+
+    public static void verifyStringChange() {
+        if (checkModify(checkPre, checkCurrent)) {
+            checkModifyText = true;
+        }
+    }
 }
