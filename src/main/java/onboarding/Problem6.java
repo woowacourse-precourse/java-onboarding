@@ -12,16 +12,16 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         data = forms;
-        data = validateEmail(data);
+        data = validateEmail();
         data = validateLength();
         HashSet<String> letters = makeLetterSet(data);
         TreeSet<String> emails = getDuplicateSet(letters, data);
         return new ArrayList<>(emails);
     }
 
-    public static List<List<String>> validateEmail(List<List<String>> forms){ // @email.com을 포함하는 체크
-        return forms.stream()
-                .filter(data->data.get(0).contains("@email.com"))
+    public static List<List<String>> validateEmail(){ // @email.com을 포함하는 체크
+        return data.stream()
+                .filter(object->object.get(0).contains("@email.com"))
                 .collect(Collectors.toList());
     }
 
