@@ -6,6 +6,7 @@ public class Problem3 {
         int answer = 0;
         String temp;
         int count=0;
+
         for(int i=1;i<=number;i++) {
             temp=i+"";
             for (int j=0;j<temp.length();j++) {
@@ -14,6 +15,7 @@ public class Problem3 {
                 }
             }
         }
+
         answer = count;
         return answer;
     }

@@ -8,8 +8,6 @@ public class Problem6 {
 
         Set<List<String>> set = new HashSet<>();
 
-
-
         for (int i=0;i<forms.size();i++) {
             for (int n=i+1;n<forms.size();n++) {
                 for (int j = 1; j < forms.get(i).get(1).length(); j++) {
@@ -27,8 +25,8 @@ public class Problem6 {
         for (int i=0;i<ans.size();i++) {
             answer.add(ans.get(i).get(0));
         }
-        Collections.sort(answer);
 
+        Collections.sort(answer);
 
         return answer;
     }

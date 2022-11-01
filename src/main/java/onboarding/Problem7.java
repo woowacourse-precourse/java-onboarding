@@ -22,7 +22,6 @@ public class Problem7 {
                 }
             }
         }
-//        donut shakevan
 
         for (int i=0;i<friends.size();i++) {
             for (int j = 0; j < 2; j++) {
@@ -65,7 +64,6 @@ public class Problem7 {
                 }
             }
         }
-        // 기존 recommend 목록이랑 겹치면 visitor랑 비교해서 recommend에 포인트올리고 visitor는 삭제
 
         for (int i=0;i<visitors.size()-1;i++) {
             Recommend tempRecommend = new Recommend();
@@ -77,7 +75,6 @@ public class Problem7 {
                 }
             }
             recommend.add(tempRecommend);
-
         }
 
         for (int i=0;i<recommend.size()-1;i++) {
@@ -117,9 +114,6 @@ public class Problem7 {
             }
             answer.add(recommend.get(i).getName());
         }
-
-
-
 
         return answer;
     }
