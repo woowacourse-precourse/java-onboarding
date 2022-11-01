@@ -15,9 +15,17 @@ public class Problem6 {
 
             for (int j = 0; j < name.length() - 1; j++) {
                 final String key = name.substring(j, j+2);
+                if(crewList.containsKey(key)){
+                    final String email = crewList.get(key);
+                    if(!email.equals(forms.get(i).get(0))){
+                        emails.add(email);
+                        emails.add(forms.get(i).get(0));
+                    }
+                }
+                crewList.put(key, forms.get(i).get(0));
             }
         }
-        
+
         return answer;
     }
 }
