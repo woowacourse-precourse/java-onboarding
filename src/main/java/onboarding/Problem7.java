@@ -54,6 +54,25 @@ public class Problem7 {
 			scoreTable.put(visitor, score + 1);
 		}
 	}
+	private static void removeUserAndFriends(String user) {
+		List<String> userFriends = friendTable.get(user);
+
+		scoreTable.remove(user);
+		for (String friend : userFriends)
+			scoreTable.remove(friend);
+	}
+	private static void removeIfZero(boolean flag, String key) {
+		if (flag)
+			scoreTable.remove(key);
+	}
+	private static void removeZeros() {
+		String id;
+
+		for (Map.Entry<String, Integer> entry : scoreTable.entrySet()) {
+			id = entry.getKey();
+			removeIfZero(scoreTable.get(id) == 0, id);
+		}
+	}
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		scoreTable = new Hashtable<>();
 		friendTable = new Hashtable<>();
@@ -61,8 +80,8 @@ public class Problem7 {
 		setFriendTable(friends);
 		scoreMutualFriends(user);
 		scoreVisitors(visitors);
-//		removeUserAndFriends(user);
-//		removeZeros();
+		removeUserAndFriends(user);
+		removeZeros();
 //		return (getSortedList());
 	}
 
