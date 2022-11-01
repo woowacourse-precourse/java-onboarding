@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -18,6 +19,16 @@ public class Problem2 {
         for (int i=0; i<cryptogram.length(); i++) {
             Character temp = cryptogram.charAt(i);
             charList.add(temp);
+        }
+
+        for (int j=0; j<charList.size()-1; j++) {
+            Character currentChar = charList.get(j);
+            Character nextChar = charList.get(j+1);
+            // index 'i' == 'i+1'인 경우
+            if(currentChar == nextChar) {
+                charList.remove(j);
+                charList.remove(j+1);
+            }
         }
 
         System.out.print(charList);
