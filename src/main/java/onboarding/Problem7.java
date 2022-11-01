@@ -81,4 +81,22 @@ public class Problem7 {
         return result;
     }
 
+    public static Map<String, Integer> scoreByVisit(Map<String,Integer> nameMap,List<String> visitors, List<String> friendsList){
+        Map<String,Integer> result = nameMap;
+        for(int i=0; i<visitors.size(); i++){
+            String visitorname = visitors.get(i);
+            if(!friendsList.contains(visitorname)) {
+                if (!result.containsKey(visitorname)) {
+                    result.put(visitorname, 1);
+                }
+                else if (result.containsKey(visitorname)) {
+                    int score = result.get(visitorname);
+                    result.put(visitorname, score+1 );
+                }
+            }
+        }
+        return result;
+    }
+
+
 }
