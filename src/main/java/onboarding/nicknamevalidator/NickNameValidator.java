@@ -3,8 +3,10 @@ package onboarding.nicknamevalidator;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class NickNameValidator {
@@ -29,29 +31,21 @@ public class NickNameValidator {
 
 	private void initOccurrences() {
 		for (Crew crew : crews) {
-			initOccurrenceWith(crew);
+			initOccurrenceWith(crew.getNickname());
 		}
 	}
 
-	private void initOccurrenceWith(final Crew crew) {
-		for (String word : getPermutationOf(crew.getNickname())) {
+	private void initOccurrenceWith(final String nickname) {
+		for (String word : getWordsOf(nickname)) {
 			occurrences.merge(word, 1,
 				(occurrences, ignored) -> occurrences + 1);
 		}
 	}
 
-	static List<String> getPermutationOf(final String word) {
-		List<String> permutation = new ArrayList<>();
-		for (int i = 0; i < word.length(); i++) {
-			permutation.addAll(permute(word, i));
-		}
-		return permutation;
-	}
-
-	private static List<String> permute(final String word, int startIndex) {
-		List<String> words = new ArrayList<>();
-		for (int i = startIndex+1; i < word.length(); i++) {
-			words.add(word.substring(startIndex, i+1));
+	private Set<String> getWordsOf(final String nickname) {
+		Set<String> words = new HashSet<>();
+		for (int i = 0; i < nickname.length() - 1; i++) {
+			words.add(nickname.substring(i, i + 2));
 		}
 		return words;
 	}
