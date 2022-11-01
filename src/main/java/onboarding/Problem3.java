@@ -4,24 +4,20 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-//        int num = 1; // 자릿수 구분
-//        int answer = 0;
-//        int tmpNumber = number;
-//        while (tmpNumber/10 != 0) {
-//
-//            num *= 10;
-//            int tmpAnswer = 0;
-//            int tmp = number / num;
-//            int remaider = tmpNumber % 10;
-//            tmpAnswer += 3 * tmp;
-//            tmpAnswer += remaider / 3;
-//
-//            answer += tmpAnswer * num / 10;
-//            tmpNumber /= 10;
-//            System.out.println(answer);
+        int answer = 0;
+        // 1~number까지 순회
+        for (int num = 1; num <= number; num++) {
+            String str = Integer.toString(num);
+            // 숫자를 문자열로 만들어서 자릿수 하나씩 탐색
+            for (int i = 0; i < str.length(); i++) {
+                char ch = str.charAt(i);
+                // 3, 6, 9에 해당되면 +1 count
+                if (ch == '3' || ch == '6' || ch == '9') {
+                    answer += 1;
+                }
+            }
+        }
 
-
-        int answer = 1;
 
         return answer;
     }
