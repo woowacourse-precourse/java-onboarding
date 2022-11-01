@@ -96,7 +96,14 @@ class Problem1 {
     	} else {
         	cResults.add(cNum1 * cNum2 * cNum3);
     	}
-
+    	
+    	// 4. 2~3 과정에서 가장 큰 수를 본인의 점수로 한다.
+    	Collections.sort(pResults, Collections.reverseOrder());
+    	Collections.sort(cResults, Collections.reverseOrder());
+    	
+    	int pScore = pResults.get(0);
+    	int cScore = cResults.get(0);
+    	
 
 		return answer;
 	}
