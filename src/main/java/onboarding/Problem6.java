@@ -17,10 +17,17 @@ public class Problem6 {
             String id = list.get(1);
             for (int i = 0; i < id.length() - 1; i++) {
                 String key = id.substring(i, i + 2);
-
-
+                if (map.containsKey(key)) {
+                    answer.add(email);
+                    if (!answer.contains(map.get(key))) {
+                        answer.add(map.get(key));
+                    }
+                    break;
+                }
+                map.put(key, email);
 
             }
+        }
 
         return answer;
     }
