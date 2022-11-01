@@ -17,8 +17,38 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         HashMap<String, String> nameMap = p6.initNameMap(forms);
         HashMap<String, Boolean> answerMap = p6.initAnswerMap(forms);
+        List<String> duplicateCandidate = p6.getDuplicateCandidate(nameMap);
+
 
         return answer;
+    }
+
+    public HashMap<String, Boolean> getAnswerMap(HashMap<String, Boolean> answerMap,
+                                                 HashMap<String, String> nameMap, List<String> duplicateCandidate) {
+        for (String key : nameMap.keySet()) {
+            if (compare(nameMap.get(key), duplicateCandidate)) {
+                answerMap.replace(key, answerMap.get(key), Boolean.TRUE);
+            }
+        }
+        return answerMap;
+    }
+
+    private Boolean compare(String value,List<String> duplicateCandidate) {
+        for (String compareWord : duplicateCandidate) {
+            if (compareEachAlphabet(value, compareWord)) {
+                return Boolean.TRUE;
+            }
+        }
+        return Boolean.FALSE;
+    }
+
+    private Boolean compareEachAlphabet(String value, String candidate) {
+        for (int i = 0; i < value.length() - 1; i++) {
+            if (value.substring(i, i + 2).equals(candidate)) {
+                return Boolean.TRUE;
+            }
+        }
+        return Boolean.FALSE;
     }
 
     public List<String> getDuplicateCandidate(HashMap<String, String> nameMap) {
