@@ -69,4 +69,11 @@ public class Problem7 {
         if (length > MAX_LIST_LENGTH) return false;
         return true;
     }
+
+    //  방문자 목록 유효성 검사
+    private static void verifyVisitors(List<String> visitors){
+        int length = visitors.size();
+        if (length == 0) throw new RuntimeException("INVALID_INPUT_LENGTH");
+        if (length > MAX_LIST_LENGTH) throw new RuntimeException("INVALID_INPUT_LENGTH");
+    }
 }
