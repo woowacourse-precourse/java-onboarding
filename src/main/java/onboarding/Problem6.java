@@ -84,4 +84,8 @@ public class Problem6 {
         saveEmailCheckedByEmailRegex = checkEmailDuplication(saveEmailForDuplicatedName);
         emailSort(saveEmailCheckedByEmailRegex);
     }
+
+    public static void emailSort(List<String> emails) {
+        emails.sort(String.CASE_INSENSITIVE_ORDER);
+    }
 }
