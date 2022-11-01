@@ -27,7 +27,12 @@ public class Problem4 {
         return reverseResult;
     }
 
-    public static void
+    public static boolean isAlpha(int chToInt) {
+        if (chToInt >= 'A' && chToInt <= 'z') {
+            return true;
+        }
+        return false;
+    }
 
     public static void splitAlpha(String word, List<Character> originSrc) {
         StringTokenizer st = new StringTokenizer(word, TOKEN, true);
