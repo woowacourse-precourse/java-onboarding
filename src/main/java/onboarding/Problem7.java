@@ -8,12 +8,19 @@ public class Problem7 {
     private static List<String> userFriends;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         initUserFriends(user, friends);
 
         getCofriends(friends);
         getVisitors(visitors);
 
+        List<Map.Entry<String, Integer>> candidates = sortScores(user);
+        for (int i = 0; i < Math.min(5, candidates.size()); i++) {
+            if (candidates.get(i).getValue().equals(100)) {
+                break;
+            }
+            answer.add(candidates.get(i).getKey());
+        }
         return answer;
     }
 
@@ -46,5 +53,23 @@ public class Problem7 {
             }
             scores.put(visitor, scores.getOrDefault(visitor, 0) + 1);
         }
+    }
+
+    private static List<Map.Entry<String, Integer>> sortScores(String user) {
+        scores.remove(user);
+        for (String s : scores.keySet()) {
+            if (scores.get(s).equals(0)) {
+                scores.remove(s);
+            }
+        }
+
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(scores.entrySet());
+        entryList.sort((o1, o2) -> {
+            if (o1.getValue().equals(o2.getValue())) {
+                return o1.getKey().compareTo(o2.getKey());
+            }
+            return o2.getValue() - o1.getValue();
+        });
+        return entryList;
     }
 }
