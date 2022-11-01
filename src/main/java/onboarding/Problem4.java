@@ -12,7 +12,7 @@ public class Problem4 {
             if (word.charAt(i) >= 65 && word.charAt(i) <= 90) {
                 sb.append((char)(155 - word.charAt(i)));
             }
-            if (word.charAt(i) >= 97 && word.charAt(i) <= 122){
+            else if (word.charAt(i) >= 97 && word.charAt(i) <= 122){
                 sb.append((char)(219 - word.charAt(i)));
             }
             else {
