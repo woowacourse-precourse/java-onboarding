@@ -30,6 +30,13 @@ public class Problem2 {
             } else { //2글자인데 서로 다르면 그냥 단어 리턴
                 return cryptogram;
             }
+        }else { //3글자 이상일때
+            //첫 글자와 두번째 글자가 같지않을 경우 첫 글자를 저장
+            if (!(arr[0].equals(arr[1]))) {
+                sb.append(arr[0]);
+                count += 1; //횟수 + 1
+            }
+
         }
 
         return word;
