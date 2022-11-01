@@ -5,19 +5,46 @@ import java.util.*;
 public class Problem7 {
 
     static Map<String, Integer> peopleMap;
+    static ArrayList<String> answer;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         peopleMap = new HashMap<>();
-        List<String> answer = Collections.emptyList();
+        answer = new ArrayList<>();
+
+
         Map<String, ArrayList<String>> friendGraph = new HashMap<>();
+
 
         makePeopleMap(user, friends, visitors);
         friendGraph = makeGraph(friends);
         countVisitors(visitors);
         countFriends(user, friendGraph);
 
-
+        findAnswer();
         return answer;
+    }
+
+
+    public static void findAnswer(){
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(peopleMap.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        });
+
+        int count = 0;
+        for(Map.Entry<String, Integer> entry : entryList){
+            if (count == 5){
+                break;
+            }
+            if (entry.getValue() != 0){
+                answer.add(entry.getKey());
+                count += 1;
+            }
+
+        }
     }
 
     public static void countFriends(String user, Map<String, ArrayList<String>> graph){
