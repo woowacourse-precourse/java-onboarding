@@ -13,13 +13,6 @@ public class Problem7 {
         return answer;
     }
 
-    public static List<String> getUserFriendList(String user, List<List<String>> friends) {
-        return friends.stream()
-                      .filter(userAndFriends -> userAndFriends.contains(user))
-                      .map(userAndFriend -> getFriend(user, userAndFriend))
-                      .collect(Collectors.toList());
-    }
-
     public static Map<String, List<String>> createRelationMap(List<List<String>> friends) {
 
         Map<String, List<String>> relationMap = new HashMap<>();
@@ -70,11 +63,4 @@ public class Problem7 {
         }
         relationMap.put(user, new ArrayList<>());
     }
-
-    private static String getFriend(String user, List<String> userAndFriends) {
-        return userAndFriends.stream()
-                             .filter(friend -> !friend.equals(user))
-                             .collect(Collectors.joining());
-    }
-
 }
