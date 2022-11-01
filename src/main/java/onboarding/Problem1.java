@@ -10,6 +10,17 @@ class Problem1 {
         while(page > 0) {sum += page%10; page /= 10;}
         return sum;
     }
+
+    public static int CompareMax(int c1, int c2){
+        int max = 0;
+
+        if(c1>c2){max = c1;}
+        else if(c1==c2){max = c1;}
+        else{max = c2;}
+
+        return max;
+    }
+
     public static int Mul(int page){
         int sum = 0;
 
