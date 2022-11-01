@@ -57,4 +57,16 @@ public class Problem7 {
         }
     }
 
+    public static int compareByScoreAndName(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+        int comparison = (o1.getValue() - o2.getValue()) * -1;
+        return comparison == 0 ? o1.getKey().compareTo(o2.getKey()) : comparison;
+    }
+
+    private static List<Map.Entry<String, Integer>> sort(HashMap<String, Integer> map) {
+        List<Map.Entry<String, Integer>> entries = new LinkedList<>(map.entrySet());
+        entries.sort(Problem7::compareByScoreAndName);
+
+        return entries;
+    }
+
 }
