@@ -17,16 +17,22 @@
 
 ### 기능 목록
 - 주어진 한 자리수의 값이 3, 6, 9인지 확인하는 함수
-> int checkSingleDigitNumber(int)
-> input: 한 자리수 정수
-> return: 3, 6, 9의 값이라면 1, 아니면 0
+  - input: 한 자리수 정수
+  - return: 3, 6, 9의 값이라면 1, 아니면 0
+```java
+int checkSingleDigitNumber(int)
+```
 
 - 주어진 여러 자리수의 값에 3, 6, 9가 몇 개 들어있는지 확인하는 함수
-> int calcMultiDigitNumbers(int)
-> input: 정수
-> return: 정수에 있는 3, 6, 9 개수
+  - return: 정수에 있는 3, 6, 9 개수
+  - input: 정수
+```java
+int calcMultiDigitNumbers(int)
+```
 
 - 1부터 number까지의 3, 6, 9 개수를 구하는 함수
-> int calcNumberOfClap(int)
-> input: number
-> return: 1부터 number까지 손뼉을 쳐야하는 횟수
+  - input: number
+  - return: 1부터 number까지 손뼉을 쳐야하는 횟수
+```java
+int calcNumberOfClap(int)
+```
