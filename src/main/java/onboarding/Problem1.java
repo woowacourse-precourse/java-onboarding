@@ -5,6 +5,10 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = 0;
+        // 4. 예외사항에 대한 처리를 한다.
+        if (!(Math.abs(pobi.get(0)-pobi.get(1)) == 1 && Math.abs(crong.get(0)-crong.get(1)) == 1)){
+            return -1;
+        }
         // 1. 포비의 왼쪽 페이지와 오른쪽 페이지에서 나올 수 있는 가장 큰 수 중 더 큰 수를 구한다.
         int pmax_total = 0;
         for (int i = 0; i < 2; i++) {
@@ -51,13 +55,13 @@ class Problem1 {
         }
         // 3. 포비와 크롱의 점수를 비교해 승, 패, 무승부를 정한다.
         if(pmax_total == cmax_total){
-            System.out.println(0);
+            answer = 0;
         }
         else if(pmax_total > cmax_total){
-            System.out.println(1);
+            answer = 1;
         }
         else if(pmax_total < cmax_total){
-            System.out.println(2);
+            answer = 2;
         }
         return answer;
     }
