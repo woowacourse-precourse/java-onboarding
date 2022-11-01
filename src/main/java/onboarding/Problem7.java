@@ -8,7 +8,7 @@ public class Problem7 {
         List<String> visitorPeople = new ArrayList<>(visitors);
 
         Set<String> findAllPeople = allPeopleMember(friends, visitorPeople, user);
-        final List<String> allPeople = new ArrayList<>(findAllPeople);
+        List<String> allPeople = new ArrayList<>(findAllPeople);
 
         HashMap<String, Integer> friendScore = new HashMap<>();
 
