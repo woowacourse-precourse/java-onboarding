@@ -71,6 +71,28 @@ public class Problem7 {
             friendScore.put(visitors.get(i),score);
         }
 
+        /*최대 5명 추출*/
+
+        for(int i=0; i<userFriends.size(); i++){
+            if(friendScore.containsKey(userFriends.get(i)))
+                friendScore.remove(userFriends.get(i));
+        }
+
+        List<String> recommendFriend = new ArrayList<>(friendScore.keySet());
+
+        recommendFriend.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                if(friendScore.get(o2) == friendScore.get(o1)) return o1.compareTo(o2);
+                return friendScore.get(o2).compareTo(friendScore.get(o1));
+            }
+        });
+
+        for(String key:recommendFriend) {
+            answer.add(key);
+            if(answer.size()==5) break;
+        }
+
         return answer;
     }
 }
