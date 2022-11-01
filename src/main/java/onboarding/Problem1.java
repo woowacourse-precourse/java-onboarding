@@ -3,6 +3,11 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    private static final int EXCEPTION = -1;
+    private static final int DRAW = 0;
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (isException(pobi) && isException(crong)) {
             int pobiMaxNum = getMaxNumber(pobi.get(0),pobi.get(1));
@@ -10,7 +15,7 @@ class Problem1 {
 
             return getWinner(pobiMaxNum, crongMaxNum);
         }
-        return -1;
+        return EXCEPTION;
     }
 
     // 가장 큰 수를 구하는 기능을 하는 함수
@@ -24,13 +29,12 @@ class Problem1 {
     // 승부 체크 기능을 하는 함수
     public static int getWinner(Integer pobiMaxNum, Integer crongMaxNum) {
         if (pobiMaxNum.equals(crongMaxNum)) { // pobi, crong DRAW
-            return 0;
-        } else if (pobiMaxNum > crongMaxNum) {   // pobi WIN
-            return 1;
-        } else if (pobiMaxNum < crongMaxNum) {  // crong WIN
-            return 2;
+            return DRAW;
         }
-        return -1;
+        if (pobiMaxNum > crongMaxNum) {   // pobi WIN
+            return POBI_WIN;
+        }
+        return CRONG_WIN;   // crong WIN
     }
 
     // 페이지 번호의 각 자리 숫자를 모두 더하는 기능을 하는 함수
@@ -68,27 +72,19 @@ class Problem1 {
      */
 
     public static boolean isException(List<Integer> page) {
-        if (isPageRange(page) && isContinuous(page) && isEvenOrOdd(page) && isNotNull(page))  return true;
-        return false;
+        return isPageRange(page) && isContinuous(page) && isEvenOrOdd(page);
     }
 
     public static boolean isPageRange (List<Integer> page) {
-        if (page.get(0) >= 1 && page.get(0) <= 400 && page.get(1) >= 1 && page.get(1) <= 400) return true;
-        return false;
+        return page.get(0) > 1 && page.get(0) < 400 && page.get(1) > 1 && page.get(1) < 400;
     }
 
     public static boolean isContinuous(List<Integer> page) {
-        if ((page.get(1) - page.get(0)) == 1)  return true;
-        return false;
+        return page.get(1) - page.get(0) == 1;
     }
 
     public static boolean isEvenOrOdd(List<Integer> page){
-        if ((page.get(0) % 2 == 1) && (page.get(1) % 2 == 0)) return true;
-        return false;
+        return page.get(0) % 2 == 1 && page.get(1) % 2 == 0;
     }
 
-    public static boolean isNotNull(List<Integer> page) {
-        if (page.get(0) != null && page.get(1) != null) return true;
-        return false;
-    }
 }
