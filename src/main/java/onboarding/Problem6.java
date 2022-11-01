@@ -56,6 +56,10 @@ public class Problem6 {
         return false;
     }
 
-
+    public static boolean canEmail(List<List<String>> forms) {
+        if (forms.get(FORM_EMAIL).contains(DOMAIN) && forms.get(FORM_EMAIL).toString().length() >= MIN_EMAIL
+                && forms.get(FORM_EMAIL).toString().length() <= MAX_EMAIL) return true;
+        return false;
+    }
 
 }
