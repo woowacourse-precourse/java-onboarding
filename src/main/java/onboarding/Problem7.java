@@ -94,19 +94,19 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        List<String> ls = new ArrayList<>();
+        List<String> deduplication_fri = new ArrayList<>();
         List<String> user_fri = new ArrayList<>();
         Map<String, Integer> Friends_score = new HashMap<>();
         for (int i = 0; i < friends.size(); i++) {
-            ls.add(friends.get(i).get(0));
-            ls.add(friends.get(i).get(1));
+            deduplication_fri.add(friends.get(i).get(0));
+            deduplication_fri.add(friends.get(i).get(1));
         }
         for (int j = 0; j < visitors.size(); j++) {
-            ls.add(visitors.get(j));
+            deduplication_fri.add(visitors.get(j));
         }
-        ls = ls.stream().distinct().collect(Collectors.toList());
-        ls.remove(user);
-        Friends_score = friendslist_set(ls, userfriends_set(friends, user));
+        deduplication_fri = deduplication_fri.stream().distinct().collect(Collectors.toList());
+        deduplication_fri.remove(user);
+        Friends_score = friendslist_set(deduplication_fri, userfriends_set(friends, user));
 
         answer = get_result(visitorsAdd_score(Friends_score, visitors, friends, userfriends_set(friends, user)));
         return answer;
