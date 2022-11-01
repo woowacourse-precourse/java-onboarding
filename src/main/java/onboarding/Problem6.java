@@ -11,21 +11,25 @@ public class Problem6 {
         for (List<String> form : forms) {
             String nickName = form.get(1);
 
-            for (int i = 0; i < nickName.length(); i++) {
-                for (int j = i; j < nickName.length(); j++) {
-                    if (j - i >= 1) {
-                        String subName = nickName.substring(i, j + 1);
-
-                        findDupSubNick(alertNickName, nickAndForm, form, subName);
-                        nickAndForm.put(subName, form);
-                    }
-                }
-            }
+            makeSubNick(alertNickName, nickAndForm, form, nickName);
         }
 
         result = new ArrayList<>(alertNickName);
         Collections.sort(result);
         return result;
+    }
+
+    private static void makeSubNick(Set<String> alertNickName, Map<String, List<String>> nickAndForm, List<String> form, String nickName) {
+        for (int i = 0; i < nickName.length(); i++) {
+            for (int j = i; j < nickName.length(); j++) {
+                if (j - i >= 1) {
+                    String subName = nickName.substring(i, j + 1);
+
+                    findDupSubNick(alertNickName, nickAndForm, form, subName);
+                    nickAndForm.put(subName, form);
+                }
+            }
+        }
     }
 
     private static void findDupSubNick(Set<String> alertNickName, Map<String, List<String>> nickAndForm, List<String> form, String subName) {
