@@ -24,6 +24,28 @@ public class Problem7 {
     }
 
     /**
+     * 친구의 친구의 추천 점수 구하기
+     * @param friendsFriends
+     * @return List<FriendsFriends>
+     */
+    private static List<FriendsFriends> scoreFriends(List<String> friendsFriends) {
+        List<FriendsFriends> scoreList = new ArrayList<>();
+
+        for (int i = 0; i < friendsFriends.size() - 1; i++) {
+            int score = 1;
+            for (int j = i + 1; j < friendsFriends.size(); j++) {
+                if (friendsFriends.get(i).equals(friendsFriends.get(j))) {
+                    score++;
+                } else {
+                    continue;
+                }
+                scoreList.add(new FriendsFriends(friendsFriends.get(i), score * 10));
+            }
+        }
+        return scoreList;
+    }
+
+    /**
      * 친구의 친구 찾기
      * @param userFriends
      * @param friends
