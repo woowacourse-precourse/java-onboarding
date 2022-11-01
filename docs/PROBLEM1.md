@@ -31,18 +31,18 @@
 - (1) 페이지 번호의 각 자리 숫자를 더하는 기능
 
   ```java
-  private static int getAddDigitsResult(int pageNumber)
+  public static int getAddDigitsResult(int pageNumber)
   ```
 - (2) 페이지 번호의 각 자리 숫자를 곱하는 기능
 
   ```java
-  private static int getMultiplyDigitsResult(int pageNumber)
+  public static int getMultiplyDigitsResult(int pageNumber)
   ```
 
 - (3) 왼쪽 페이지 큰 수 구하는 기능
 
   ```java
-  private static int getLeftPageMaximum(List<Integer> pageList)
+  public static int getLeftPageMaximum(List<Integer> pageList)
   ```
 
   - 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱한 수 중 큰 값 반환
@@ -50,7 +50,7 @@
 - (4) 오른쪽 페이지 큰 수 구하는 기능
 
   ```java
-  private static int getRightPageMaximum(List<Integer> pageList)
+  public static int getRightPageMaximum(List<Integer> pageList)
   ```
 
   - 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱한 수 중 큰 값 반환
@@ -58,7 +58,7 @@
 - (5) 본인의 점수를 결정 하는 기능
 
   ```java
-  private static int getScore(List<Integer> pageList)
+  public static int getScore(List<Integer> pageList)
   ```
 
   - 왼쪽, 오른쪽 페이지 수 중 가장 큰 수를 본인의 점수로 반환
@@ -66,7 +66,7 @@
 - (6) 게임 결과를 얻는 기능
 
   ```java
-  private static int getGameResult(List<Integer> pobi, List<Integer> crong)
+  public static int getGameResult(List<Integer> pobi, List<Integer> crong)
   ```
 
   - pobi win : 1
@@ -77,7 +77,7 @@
 - (7) 예외 처리 기능
 
   ```java
-  private static boolean isWrongInput(List<Integer> user)
+  public static boolean isWrongInput(List<Integer> user)
   ```
 
   - case1 : pobi, crong 각각의 길이가 2가 아닌 경우
