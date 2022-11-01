@@ -23,6 +23,10 @@ public class Problem7 {
                 addFriendScore(firstFriend, 10);
             }
         }
+        for(int i=0;i<visitors.size();i++){
+            if(userFriends.contains(visitors.get(i))) continue;
+            addFriendScore(visitors.get(i),1);
+        }
 
         return answer;
     }
