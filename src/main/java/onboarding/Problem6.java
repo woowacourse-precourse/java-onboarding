@@ -10,7 +10,7 @@ public class Problem6 {
 
 
         int formsFirstRowLength = forms.toArray().length;
-        int formsFirstRowNumber = formsFirstRowLength - 1; //열에 맞는 번호를 위해 미리 길이에서 1을 빼줌
+
 
         String nickName ="";
         String emailAddress ="";
@@ -21,8 +21,8 @@ public class Problem6 {
 
 
         while(formsFirstRowLength > 0){
-            emailAddress = forms.get(formsFirstRowNumber).get(0);
-            nickName = forms.get(formsFirstRowNumber).get(1);
+            emailAddress = forms.get(formsFirstRowLength - 1).get(0);
+            nickName = forms.get(formsFirstRowLength - 1).get(1);
             int nickNameLength = nickName.length();
 
             for (int i = 0; i < nickNameLength - 1; i++){
