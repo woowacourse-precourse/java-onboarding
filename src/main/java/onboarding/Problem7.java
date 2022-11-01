@@ -34,6 +34,11 @@ class Problem7 {
             }
         }
 
+        while (withfriendList.remove(String.valueOf(user))){} ; // user제거
+//        System . out . println ( withfriendList );
+        Set<String> set = new HashSet<String>(withfriendList);
+        List<String> tmpwithfriendList = new ArrayList<String>(set);
+
         return answer;
     }
 }
