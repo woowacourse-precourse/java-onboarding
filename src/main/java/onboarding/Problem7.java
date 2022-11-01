@@ -4,8 +4,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import net.bytebuddy.implementation.bytecode.Removal;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 public class Problem7 {
@@ -75,7 +73,6 @@ public class Problem7 {
                 }
             }
         }
-        System.out.println(userFriendsList);
 
         //frinedTofriend
         List<String> newFrienList = new ArrayList<>();
@@ -114,6 +111,18 @@ public class Problem7 {
             }
         }
         }
-    System.out.println(newFrienList);
+    List<Integer> score = new ArrayList<>();
+    for(int k = 0; k < newFrienList.size();k++){
+        int count = 0;
+        for(int i = 0; i < friends.size();i++){
+            for(int j =0; j < friends.get(i).size();j++){
+                if(friends.get(i).get(j).contains(newFrienList.get(k))){
+                    count += 1;
+                }
+            }
+        }
+        score.add(count * 10);
+    }
+
     }
 }
