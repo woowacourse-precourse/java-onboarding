@@ -29,7 +29,7 @@ public class Problem7 {
     public static boolean checkFriendsIdLengthValidation(List<List<String>> friends) {
         for (List<String> friend : friends) {
             if (!(USER_MIN_LENGTH <= friend.get(0).length()
-                && friend.get(1).length() <= FRIENDS_MAX_LENGTH)) {
+                && friend.get(1).length() <= USER_MAX_LENGTH)) {
                 return false;
             }
         }
