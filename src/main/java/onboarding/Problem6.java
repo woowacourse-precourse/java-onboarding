@@ -65,6 +65,9 @@ public class Problem6 {
 		if (!isCrewRangeValid(forms)) {
 			return EXCEPTION;
 		}
+		if (!isEmailRangeValid(forms)) {
+			return EXCEPTION;
+		}
 		return 0;
 	}
 
@@ -72,6 +75,16 @@ public class Problem6 {
 	private static boolean isCrewRangeValid(List<List<String>> forms) {
 		if (forms.size() < 1 || forms.size() > 10000) {
 			return false;
+		}
+		return true;
+	}
+
+	// 이메일의 전체 길이가 11자 이상 20자 미만이 아닌 경우 예외
+	private static boolean isEmailRangeValid(List<List<String>> forms) {
+		for (List<String> form : forms) {
+			if (form.get(0).length() < 11 || form.get(0).length() >= 20) {
+				return false;
+			}
 		}
 		return true;
 	}
