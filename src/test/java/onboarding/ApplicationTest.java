@@ -96,6 +96,7 @@ class ApplicationTest {
         }
     }
 
+
     @Nested
     class Problem6Test {
         @Test
