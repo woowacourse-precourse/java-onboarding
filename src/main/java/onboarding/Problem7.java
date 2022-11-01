@@ -8,6 +8,14 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+
+    // 방문자 체크
+    private static void checkVisitors(List<String> visitors) {
+        for (String visitor : visitors) {
+            addPoint(visitor, 1);
+        }
+    }
+
     // 새친구 점수 추가
     private static void NewFriends(String user, List<List<String>> friends, String oldFriend) {
         // user의 새 친구 찾기
