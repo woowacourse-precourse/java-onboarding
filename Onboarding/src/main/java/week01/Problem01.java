@@ -2,7 +2,7 @@ package week01;
 
 public class Problem01 {
     public int solution(int[] pobi, int[] crong){
-        int answer;
+        int result;
         int left_high_num;
         int right_high_num;
         int pobi_max_num;
@@ -16,17 +16,17 @@ public class Problem01 {
         right_high_num = Math.max(sum(crong[1]),multiply(crong[1]));
         crong_max_num = Math.max(left_high_num,right_high_num);
 
-        if(pobi[0] != pobi[1]+1 || crong[0] != crong[1]+1)
-            answer = -1;
+        if(pobi[0] != pobi[1]-1 || crong[0] != crong[1]-1)
+            result = -1;
         else if(pobi_max_num > crong_max_num)
-            answer = 1;
+            result = 1;
         else if (pobi_max_num < crong_max_num)
-            answer = 2;
+            result = 2;
         else if (pobi_max_num == crong_max_num)
-            answer = 0;
+            result = 0;
         else
-            answer = -1;
-        return answer;
+            result = -1;
+        return result;
     }
     public int sum (int num){
         int hap = 0;

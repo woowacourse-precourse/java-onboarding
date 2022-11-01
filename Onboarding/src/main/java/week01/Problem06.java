@@ -9,12 +9,9 @@ public class Problem06 {
     public String[] solution(String[][] arr){
         List<String> strList = similarNameSet(arr);
         String[] s = getEmailList(arr, strList);
-        for(int i = 0; i<s.length; i++){
-            System.out.println(s[i]);
-        }
         return s;
     }
-    private static String[] getEmailList(String[][] arr, List<String> strList) {
+    public String[] getEmailList(String[][] arr, List<String> strList) {
         ArrayList<String> strAry = new ArrayList<>();
         for(int i = 0; i< arr.length; i++){
             for(int j = 0; j< strList.size(); j++){
@@ -27,7 +24,7 @@ public class Problem06 {
         Arrays.sort(s);
         return s;
     }
-    private static List<String> similarNameSet(String[][] arr) {
+    public List<String> similarNameSet(String[][] arr) {
         HashSet<String> set = new HashSet<>();
         for(int i = 0; i < arr.length-1; i++){
             for(int j = i+1; j < arr.length; j++){
@@ -40,7 +37,7 @@ public class Problem06 {
         List<String> strList = new ArrayList<>(set);
         return strList;
     }
-    private static String[] rtString(String str_1, String str_2){
+    public String[] rtString(String str_1, String str_2){
         String[] answer = new String[2];
         String name_1;
         String name_2;

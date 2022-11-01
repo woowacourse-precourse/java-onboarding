@@ -14,7 +14,7 @@ public class Problem03 {
         }
         return cnt;
     }
-    private int getCnt(int cnt, int[] arr) {
+    public int getCnt(int cnt, int[] arr) {
         for(int i = 0; i< arr.length; i++){
             if(arr[i] == 3 || arr[i] == 6 || arr[i] == 9){
                 cnt++;

@@ -15,7 +15,7 @@ public class Problem02 {
         return result;
     }
 
-    private static String deleteDuplicate(String cryptogram){
+    public String deleteDuplicate(String cryptogram){
         String answer = "";
         char prev;
         char pres;
