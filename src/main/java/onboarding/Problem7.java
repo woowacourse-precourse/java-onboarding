@@ -87,11 +87,14 @@ public class Problem7 {
             public int compare(Person o1, Person o2) {
                 if (o1.score == o2.score) return o1.name.compareTo(o2.name);
                 else return Integer.compare(o2.score, o1.score);
-                //return scoreTable.get(o2).compareTo(scoreTable.get(o1));  //내림차순
             }
         });
-        //5. 점수가 0이 아닌 people.name -> answer
 
+        //5. 점수가 0이 아닌 people.name -> answer
+        for (int i = 0; i < 5; i++) {
+            if (people.get(i).score == 0) break;
+            answer.add(people.get(i).name);
+        }
         return answer;
     }
 }
