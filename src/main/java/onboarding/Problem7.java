@@ -71,6 +71,10 @@ public class Problem7 {
             // notFriend 항목이 가지고 있는 친구리스트 확인 후 점수 계산
             int sameFriendCount = calScore(findFriends(notfriend, friends));
 
+            //두 점수의 합산이 0점이 아니면 추천목록에 이름과 점수 추가
+            if(visitCount + sameFriendCount != 0){
+                recommend.put(notfriend, visitCount + sameFriendCount);
+            }
         }
 
     }
