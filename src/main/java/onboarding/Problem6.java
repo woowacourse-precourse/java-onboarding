@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -15,6 +13,8 @@ public class Problem6 {
 
             map = findDuplicateNickname(nickname, forms, map);
         }
+
+        answer = makeResultList(map, answer);
 
         return answer;
     }
@@ -88,5 +88,25 @@ public class Problem6 {
         }
 
         return map;
+    }
+
+    private static List<String> makeResultList(HashMap<String, ArrayList<String>> map, List<String> answer) {
+        Set<String> set = new HashSet<>();
+
+        for (String key : map.keySet()) {
+            List<String> list = map.get(key);
+
+            for (int i = 0; i < list.size(); i++) {
+                set.add(list.get(i));
+            }
+        }
+
+        for (String s : set) {
+            answer.add(s);
+        }
+
+        Collections.sort(answer);
+
+        return answer;
     }
 }
