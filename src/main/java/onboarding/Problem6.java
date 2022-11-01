@@ -17,12 +17,23 @@ public class Problem6 {
         return nicknameList;
     }
     // 본인 제외 닉네임 리스트
-    public static List<String> nicknameExcept(List<String> nickname, int index){
+    public static List<String> exceptTargetNickname(List<String> nickname, int index){
         List<String> nicknames = new ArrayList<>();
         for(int i=0; i<nickname.size(); i++){
             if(i!=index) nicknames.add(nickname.get(i));
         }
         return nicknames;
+    }
+    // 문자를 두 글자 씩 자르기
+    public static List<String> splitWord(String nickname){
+        List<String> splitNickname = new ArrayList<>();
+        for(int j=0; j<nickname.length()-1; j++){
+            if(nickname.length()==2){
+                splitNickname.add(nickname);
+            }
+            splitNickname.add(nickname.substring(j,j+2));
+        }
+        return splitNickname;
     }
 
 }
