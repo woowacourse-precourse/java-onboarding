@@ -1,8 +1,8 @@
 package onboarding.problem7.service;
 
 import onboarding.problem7.collection.Visitors;
-import onboarding.problem7.repository.MemberRepository;
 import onboarding.problem7.entity.Member;
+import onboarding.problem7.repository.MemberRepository;
 import onboarding.problem7.vo.Relation;
 
 import java.util.List;
