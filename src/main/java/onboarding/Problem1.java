@@ -34,8 +34,8 @@ public class Problem1 {
     public static int getSumOfDigits(int number) {
         int sum = 0;
         do {
-            int lsn = number % 10;
-            sum += lsn;
+            int leastSignificantDigit = number % 10;
+            sum += leastSignificantDigit;
             number /= 10;
         } while (number > 0);
         return sum;
@@ -44,8 +44,8 @@ public class Problem1 {
     public static int getProductOfDigits(int number) {
         int product = 1;
         do {
-            int lsn = number % 10;
-            product *= lsn;
+            int leastSignificantDigit = number % 10;
+            product *= leastSignificantDigit;
             number /= 10;
         } while (number > 0);
         return product;
