@@ -4,27 +4,6 @@ import java.util.*;
 
 public class Problem7 {
 
-    public static void main(String[] args) {
-        List<List<String>> friends = new ArrayList<>();
-        List<String> list1 = Arrays.asList("donut", "andole");
-        List<String> list2 = Arrays.asList("donut", "jun");
-        List<String> list3 = Arrays.asList("donut", "mrko");
-        List<String> list4 = Arrays.asList("shakevan", "andole");
-        List<String> list5 = Arrays.asList("shakevan", "jun");
-        List<String> list6 = Arrays.asList("shakevan", "mrko");
-        friends.add(list1);
-        friends.add(list2);
-        friends.add(list3);
-        friends.add(list4);
-        friends.add(list5);
-        friends.add(list6);
-        List<String> visitors = Arrays.asList("bedi", "bedi", "donut", "bedi", "shakevan");
-        List<String> answer = solution("mrko", friends, visitors);
-        for (String s : answer) {
-            System.out.println(s);
-        }
-    }
-
     static class User implements Comparable<User> {
         private String name;
         private int score;
