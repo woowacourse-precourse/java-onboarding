@@ -29,4 +29,15 @@ public class Problem7 {
         Collections.sort(newlist);
         return newlist;
     }
+
+    public static List<String> rankMemberList(String user, List<List<String>> friends, List<String> visitors){
+        List<String> special = new ArrayList<>();
+        if(!error(user, friends, visitors)) {
+            for (int i = 0; i < sortMemberList(user, friends, visitors).length; i++) {
+                special.add(sortMemberList(user, friends, visitors)[i][1]);
+            }
+            return special;
+        }
+        else return special;
+    }
 }
