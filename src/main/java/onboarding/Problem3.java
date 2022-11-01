@@ -4,6 +4,7 @@ public class Problem3 {
     public static int solution(int number) {
         int count = 0;
 
+
         if(number <=2)
             return 0;
 
