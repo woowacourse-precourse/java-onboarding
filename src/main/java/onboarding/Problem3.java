@@ -1,10 +1,16 @@
 package onboarding;
 
+/**
+ * [기능 목록]
+ * 1. 박수 치는 개수 구하는 기능
+ */
+
 public class Problem3 {
     public static int solution(int number) { // 3 6 9 Game
         // 박수 치는 개수
         int count = 0;
 
+        //1. 박수 치는 개수 구하는 기능
         for(int i = 1; i < number+1; i++){
             // 1부터 number까지
             int cur_num = i;
