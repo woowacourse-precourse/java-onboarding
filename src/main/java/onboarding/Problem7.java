@@ -18,7 +18,8 @@ public class Problem7 {
 
         addVisitorScore(score, visitors);
         addFriendScore(score, user, friendsInfo);
-
+        removeUserFriendScore(score, friendsInfo.get(user));
+        
         return answer;
     }
 
@@ -56,6 +57,12 @@ public class Problem7 {
             }
         }
 
+    }
+
+    private static void removeUserFriendScore(Map<String, Integer> score, List<String> userFriends) {
+        for (String userFriend : userFriends) {
+            score.remove(userFriend);
+        }
     }
 
 }
