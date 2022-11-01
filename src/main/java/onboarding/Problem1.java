@@ -19,8 +19,7 @@ class Problem1 {
         pobiMax = getMaxScore(pobiLeftPage, pobiRightPage);
         crongMax = getMaxScore(crongLeftPage, crongRightPage);
 
-        answer = getCompareScore(pobiMax, crongMax);
-        return answer;
+        return getCompareScore(pobiMax, crongMax);
     }
 
     public static boolean checkException(int leftPage, int rightPage){
@@ -29,8 +28,8 @@ class Problem1 {
                 ||(leftPage > 398) ||(rightPage > 398)
                 ||((leftPage % 2) == 0) ||((rightPage % 2) == 1))
             return true;
-        else
-            return false;
+
+        return false;
     }
 
     public static int getMaxScore(int leftPage, int rightPage){
@@ -59,11 +58,11 @@ class Problem1 {
     public static int getCompareScore(int pobiMax, int crongMax){
         if(pobiMax > crongMax)
             return 1;
-        else if(pobiMax < crongMax)
-            return 2;
-        else if(pobiMax == crongMax)
-            return 0;
 
-        return -1;
+        if(pobiMax < crongMax)
+            return 2;
+
+        // pobiMax == corongMax
+        return 0;
     }
 }
