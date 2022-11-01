@@ -21,6 +21,17 @@ public class Problem7 {
         graph = new ArrayList[userSet.size()];
         List<String> users = new ArrayList<>(userSet);
 
+        for(int i = 0; i < userSet.size(); i++) {
+            graph[i] = new ArrayList<>();
+        }
+
+        for(List<String> data : friends){
+            int user1 = users.indexOf(data.get(0));
+            int user2 = users.indexOf(data.get(1));
+            graph[user1].add(user2);
+            graph[user2].add(user1);
+        }
+
         //3. 주어진 사용자 아이디와 친구인 사용자를 조사하여 점수를 부여한다.
         //4. visitor 리스트를 조사하여, 방문한 사용자에게 1점씩 부여한다.
         //5. 모든 점수를 부여했다면 점수가 높은 5명을 추린다.
