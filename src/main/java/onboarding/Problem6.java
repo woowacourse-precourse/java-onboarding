@@ -6,8 +6,10 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 public class Problem6 {
-    private static LinkedHashMap<String, Boolean> map;
+    private static LinkedHashMap<String, Boolean> visited;
     private static List<String> answer;
+
+    // 닉네임 비슷한지
     public static boolean nickNameSimilarCheck(String nickName1,String nickName2)
     {
         for (int i = 0 ; i<nickName1.length()-1; i++)
@@ -17,14 +19,20 @@ public class Problem6 {
         }
         return false;
     }
+
+    // 연속 리스트에 들어가 있는지 체크
     public static boolean visitedCheck(String email)
     {
-        return map.get(email);
+        return visited.get(email);
     }
+
+    // 연속리스트에 ADD.
     public static void visitedAdd (String email){
         answer.add(email);
-        map.put(email,true);
+        visited.put(email,true);
     }
+
+
     public static void   nickNameCheck(List<String> form1,List<String> form2)
     {
         String nickName1 = form1.get(1);
@@ -32,6 +40,7 @@ public class Problem6 {
         String nickName2 = form2.get(1);
         String email2 = form2.get(0);
 
+        // 두 닉네임이 비슷한지 체크
         if(nickNameSimilarCheck(nickName1, nickName2))
         {
             if (!visitedCheck(email1))
@@ -43,17 +52,19 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         answer = new ArrayList<>();
-        map = new LinkedHashMap<>();
+        visited = new LinkedHashMap<>();
+
+        // 연속리스트에 있는지 (방문 여부) 체크
         for (int i = 0 ; i < forms.size() ; i++){
-            map.put(forms.get(i).get(0), false);
+            visited.put(forms.get(i).get(0), false);
         }
+        // 닉네임 체크
         for (int i = 0 ; i < forms.size(); i++)
         {
             for (int j = i + 1 ; j< forms.size(); j++)
-            {
                 nickNameCheck(forms.get(i), forms.get(j));
-            }
         }
+        // 연속리스트 오름차순 정렬
         Collections.sort(answer);
         return answer;
     }
