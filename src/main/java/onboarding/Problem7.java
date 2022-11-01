@@ -18,7 +18,7 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
         if (!verificationTotalCheck(user, friends, visitors)) {
-            return answer = List.of("Check Restrictions");
+            return List.of("Check Restrictions");
         }
 
         User target = new User(user, friends, visitors);
@@ -36,6 +36,12 @@ public class Problem7 {
         }
         if (!verificationCheckAboutVisitors(visitors)) {
             return false;
+        }
+        for (List<String> friend : friends) {
+            if (!verificationCheckAboutID(friend.get(FIRST_FRIEND)) ||
+                    !verificationCheckAboutID(friend.get(SECOND_FRIEND))) {
+                return false;
+            }
         }
         return true;
     }
