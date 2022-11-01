@@ -6,6 +6,23 @@ public class Problem3 {
         return answer;
     }
 
+    //  입력된 숫자에 박수를 몇번 치는지 계산하는 메소드
+    private static int checkNumber(int number, int countClap){
+        //  Edge-Case
+        if(number == 0) return countClap;
+
+        //  Base-Case
+        if(countDigit(number) == 0) return countClap + checkClap(number);
+
+        //  Recursive-Case
+        int targetNum = number / tenPowDigit(number);
+
+        countClap += checkClap(targetNum);
+        number %= tenPowDigit(number);
+
+        return checkNumber(number, countClap);
+    }
+
     //  입력된 한자리 숫자가 3,6,9에 해당하는 확인하는 메소드
     private static int checkClap(int number){
         if(number % 3 == 0) return 1;
