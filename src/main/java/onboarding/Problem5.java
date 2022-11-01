@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -27,6 +28,7 @@ public class Problem5 {
             answer.add(changes);
             idx++;
         }
+        if(idx < CHANGES_VALUE.length) answer.addAll(appendZero(CHANGES_VALUE.length - idx));
 
         return answer;
     }
@@ -37,5 +39,13 @@ public class Problem5 {
 
     static boolean isMoneyBiggerThanChange(int money, int idx) {
         return money >= CHANGES_VALUE[idx];
+    }
+
+    static List<Integer> appendZero(int size) {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            list.add(0);
+        }
+        return list;
     }
 }
