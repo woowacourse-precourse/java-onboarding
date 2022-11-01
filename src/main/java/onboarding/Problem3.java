@@ -4,7 +4,7 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
         for(int i=0; i<=number; i++) {
-        	String num1 = String.valueOf(number);
+        	String num1 = String.valueOf(i);
         	String[] num2 = num1.split("");
         	for(String num3 : num2) {
         		if(Integer.parseInt(num3) % 3 == 0 && Integer.parseInt(num3) != 0) {
@@ -16,14 +16,14 @@ public class Problem3 {
     }
     
     public static void main(String[] args){
-    //	System.out.println(solution(3));
+    	//System.out.println(solution(13));
         /*int number = 123;
     	String num1 = String.valueOf(number);
     	String[] num2 = num1.split("");*/
-    	int answer = 0;
+    	/*int answer = 0;
     	int number = 33;
         for(int i=0; i<=number; i++) {
-        	String num1 = String.valueOf(number);
+        	String num1 = String.valueOf(i); 
         	String[] num2 = num1.split("");
         	System.out.println(num1);
         	for(String num3 : num2) {
@@ -32,7 +32,7 @@ public class Problem3 {
         		}
         	}
         }
-    	System.out.println(answer);
+    	System.out.println(answer);*/
     }
 }
 /*1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30
