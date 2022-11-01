@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -8,7 +10,7 @@ public class Problem6 {
         if(forms.size() < 1 || forms.size() > 10000){
             return list;
         }
-        if(nameException(forms)){
+        if(nameException(forms) || emailException(forms)){
             return list;
         }
         for(int i = 0; i < forms.size(); i++){
@@ -23,6 +25,24 @@ public class Problem6 {
         }
         List<String> answer = printEmail(list);
         return answer;
+    }
+
+    public static boolean emailException(List<List<String>> forms) {
+        for(int i = 0; i < forms.size(); i++) {
+            String email = forms.get(i).get(0);
+            if(email.length() < 11 || email.length() >= 20 || !isValidEmail(email)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isValidEmail(String email) {
+        String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@email.com";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(email);
+        if(m.matches()) return true;
+        return false;
     }
 
     public static boolean nameException(List<List<String>> forms){

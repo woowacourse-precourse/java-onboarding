@@ -42,4 +42,20 @@ public class Problem6Test {
         boolean result2 = true;
         assertThat(Problem6.nameException(forms2)).isEqualTo(result2);
     }
+
+    @Test
+    @DisplayName("Email Test")
+    void emailTest() {
+        List<List<String>> forms1 = List.of(
+                List.of("jm@e.com", "제이엠")
+        );
+        boolean result1 = true;
+        assertThat(Problem6.emailException(forms1)).isEqualTo(result1);
+        List<List<String>> forms2 = List.of(
+                List.of("jm@naver.com", "제이엠"),
+                List.of("jasonnnnnnnnnn@email.com", "제이슨")
+        );
+        boolean result2 = true;
+        assertThat(Problem6.emailException(forms2)).isEqualTo(result2);
+    }
 }
