@@ -10,6 +10,13 @@
 
 임의의 문자열 cryptogram이 매개변수로 주어질 때, 연속하는 중복 문자들을 삭제한 결과를 return 하도록 solution 메서드를 완성하라.
 
+### 🔥 구현 기능 목록
+
+- [x] FEATURE1. 중복 문자 유무 및 시작 및 끝 지점 확인 함수
+- [x] FEATURE2. 중복 문자 제거 함수
+- [x] FEATURE3. solution 함수
+- [ ] FEATURE4. 예외 처리 구현
+
 ### 제한사항
 
 - cryptogram은 길이가 1 이상 1000 이하인 문자열이다.
