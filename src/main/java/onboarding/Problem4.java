@@ -1,10 +1,7 @@
 package onboarding;
 
 public class Problem4 {
-
-    static char[] lowerCase = new char[26];
     static char[] reverseLowerCase = new char[26];
-    static char[] upperCase = new char[26];
     static char[] reverseUpperCase = new char[26];
 
     public static String solution(String word) {
@@ -13,35 +10,28 @@ public class Problem4 {
     }
 
     public static String reverseWord(String word) {
-        createArray();
-        StringBuilder wordToSb = new StringBuilder(word);
+        createReversAlphabet();
+        StringBuilder wordSB = new StringBuilder(word);
 
-        for (int i = 0; i < wordToSb.length(); i++) {
-            char alphabet = wordToSb.charAt(i);
-            
+        for (int i = 0; i < wordSB.length(); i++) {
+            char alphabet = wordSB.charAt(i);
+
             if (alphabet >= 'A' && alphabet <= 'Z') {
                 int index = alphabet - 'A';
-                wordToSb.setCharAt(i, reverseUpperCase[index]);
+                wordSB.setCharAt(i, reverseUpperCase[index]);
             }
             if (alphabet >= 'a' && alphabet <= 'z') {
                 int index = alphabet - 'a';
-                wordToSb.setCharAt(i, reverseLowerCase[index]);
+                wordSB.setCharAt(i, reverseLowerCase[index]);
             }
         }
-        return wordToSb.toString();
+        return wordSB.toString();
     }
 
-    public static void createArray() {
-        for (int i = 0; i < upperCase.length; i++) {
-            upperCase[i] = (char) (65 + i);
-        }
-        for (int i = 0; i < lowerCase.length; i++) {
-            lowerCase[i] = (char) (97 + i);
-        }
-        for (int i = 0; i < reverseUpperCase.length; i++) {
+    public static void createReversAlphabet() {
+        int alphabetLength = 26;
+        for (int i = 0; i < alphabetLength; i++) {
             reverseUpperCase[i] = (char) (90 - i);
-        }
-        for (int i = 0; i < reverseLowerCase.length; i++) {
             reverseLowerCase[i] = (char) (122 - i);
         }
     }
