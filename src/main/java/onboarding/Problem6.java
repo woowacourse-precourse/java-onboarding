@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -138,7 +140,7 @@ public class Problem6 {
                 }
             }
         }
-        return List.copyOf(result);
+        return new ArrayList<>(result);
     }
 
     // 이메일 리스트 오름차순으로 정렬하는 기능
