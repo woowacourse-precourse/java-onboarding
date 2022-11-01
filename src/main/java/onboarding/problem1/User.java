@@ -56,4 +56,9 @@ public class User {
     private void calculateUserScore(int[] pageScore){
         userScore = Math.max(pageScore[0], pageScore[1]);
     }
+
+    public int getUserScore(){
+        calculateUserScore(calculatePageScore(pages.get(0), pages.get(1)));
+        return userScore;
+    }
 }
