@@ -68,7 +68,7 @@ public class Problem7 {
         entryList.sort((o1, o2) -> {
             String key1, key2;
 
-            if (o2.getValue() != o1.getValue()) {
+            if (!o2.getValue().equals(o1.getValue())) {
                 return o2.getValue() - o1.getValue();
             }
             key1 = o1.getKey();
