@@ -19,12 +19,17 @@ import java.util.*;
 public class Problem7 {
     static List<String> userFriend;
     static List<String> acrossFriends;
+    static Map<String, Integer> scoreList;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
         userFriend = new ArrayList<>();
         acrossFriends = new ArrayList<>();
+        scoreList = new TreeMap<>();
+
+        isFriend(user, friends);
+        isAcrossFriend(user, friends);
 
         return answer;
     }
@@ -55,10 +60,17 @@ public class Problem7 {
             /* 위 예외사항 제외하고 user친구 목록에 포함되는 사람이 있다면, 다른 한 명을 함께아는 친구목록(acrossFriends)에 추가 */
             if (userFriend.contains(friend.get(0))) {
                 acrossFriends.add(friend.get(1));
+                getScore(friend.get(1), 10);
             } else if (userFriend.contains(friend.get(1))) {
                 acrossFriends.add(friend.get(0));
+                getScore(friend.get(0), 10);
             }
         }
+    }
+
+    /** 점수 부여 **/
+    private static void getScore(String person, int score) {
+        scoreList.put(person, scoreList.getOrDefault(person, 0) + score);
     }
 
 
