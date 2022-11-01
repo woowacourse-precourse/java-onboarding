@@ -20,15 +20,14 @@ public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = new ArrayList<>(Collections.emptyList());
 		Map<String, Integer> map = new HashMap<>(); // [사람 이름, 추천 점수]를 담을 HashMap
-		Set<String> notYetFriend = new HashSet<>(); // 추천 친구 대상 set (사용자와 아직 친구가 아닌 사람들)
+		Set<String> notYetFriend; // 추천 친구 대상 set (사용자와 아직 친구가 아닌 사람들)
 		Set<String> alreadyFriend = new HashSet<>(); // 사용자와 이미 친구인 사람들 set
 
 		if (checkRestrictions(user, friends, visitors) == EXCEPTION) {
 			return answer;
 		}
 
-		initNotYetFriend(user, friends, visitors, notYetFriend, alreadyFriend);
-
+		notYetFriend = initNotYetFriend(user, friends, visitors, alreadyFriend);
 		alreadyFriend.remove(user); // 사용자 본인은 제외
 
 		// HashMap 초기화
@@ -198,12 +197,11 @@ public class Problem7 {
 	 * @param user
 	 * @param friends
 	 * @param visitors
-	 * @param notYetFriend
 	 * @param alreadyFriend
 	 */
-	private static void initNotYetFriend(String user, List<List<String>> friends, List<String> visitors,
-		Set<String> notYetFriend,
+	private static Set<String> initNotYetFriend(String user, List<List<String>> friends, List<String> visitors,
 		Set<String> alreadyFriend) {
+		Set<String> notYetFriend = new HashSet<>();
 
 		// friendSet 초기화
 		for (List<String> friend : friends) {
@@ -218,5 +216,6 @@ public class Problem7 {
 		for (String s : alreadyFriend) {
 			notYetFriend.remove(s);
 		}
+		return notYetFriend;
 	}
 }
