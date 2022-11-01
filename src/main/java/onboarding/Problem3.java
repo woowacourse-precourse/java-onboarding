@@ -25,7 +25,6 @@ public class Problem3 {
             .filter(c -> c == '9')
             .count();
 
-        System.out.println(count);
         return count;
     }
 }
