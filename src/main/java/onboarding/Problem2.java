@@ -10,6 +10,10 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+
+        // 1. 정규식 초기화
+        String regex = "^\\w*(\\w)\\1\\w*$";
+
         return answer;
     }
 }
