@@ -3,9 +3,7 @@ package onboarding.problem7.controller;
 import onboarding.problem7.domain.User;
 import onboarding.problem7.utils.Constants;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class FriendRecommendation {
     private String targetUserName;
@@ -14,6 +12,8 @@ public class FriendRecommendation {
     private List<String> visitors;
     private HashMap<String, User> userTable = new HashMap<>();
     private HashMap<String, Integer> recommendPointTable = new HashMap<>();
+
+    private ArrayList<String> recommendedUserList = new ArrayList<>();
 
     public FriendRecommendation(String targetUserName, List<List<String>> friends, List<String> visitors){
         this.targetUserName = targetUserName;
@@ -57,7 +57,7 @@ public class FriendRecommendation {
         }
     }
 
-    public void updateVisitorPoints(){
+    private void updateVisitorPoints(){
         for(String visitor: visitors){
             addPointsToRecommendPointTable(visitor, Constants.POINT_OF_VISITOR);
         }
@@ -94,5 +94,17 @@ public class FriendRecommendation {
         return point;
     }
 
+    private void sortPointTable(){
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(recommendPointTable.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        });
 
+        for(Map.Entry<String, Integer> entry : entryList){
+            recommendedUserList.add(entry.getKey());
+        }
+    }
 }
