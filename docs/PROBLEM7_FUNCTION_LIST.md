@@ -16,25 +16,25 @@
 
 검증 & 예외처리 목록
 ---
-* user 길이 검증(1 ~ 30)
+* user 길이 검증(1 ~ 30) (validateUserLength)
   * ex) user 길이 1보다 작거나 30보다 큰 경우 -> 예외처리
   
   
-* friends 길이 검증(1 ~ 10000)
+* friends 길이 검증(1 ~ 10000) (validateFriendsLength)
   * ex) friends 길이 1보다 작거나 10000보다 큰 경우 -> 예외처리
 
 
-* friends 각 원소 길이 검증(2)
+* friends 각 원소 길이 검증(2) (validateFriendsElementLength)
   * ex) friends = [["userA", "userB", "userC"]] -> 예외처리
   
   
-* 아이디 길이 검증(1 ~ 30)
+* 아이디 길이 검증(1 ~ 30) (validateIdLength)
   * ex) friends = [["userA", "abcdefghijklmnopqrstuvwxyzabcde"] -> 예외처리
 
 
-* 아이디 형식 검증
+* 아이디 형식 검증 (validateIdFormat)
   * ex) 아이디에 알파벳 외의 문자 있을 경우 -> 예외처리
 
 
-* visitors 길이 검증(0 ~ 10000)
+* visitors 길이 검증(0 ~ 10000) (validateVisitorsLength)
   * ex) visitors 길이 10000보다 큰 경우 -> 예외처리
