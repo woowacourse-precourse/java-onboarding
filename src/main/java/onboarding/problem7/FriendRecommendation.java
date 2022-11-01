@@ -18,6 +18,14 @@ public class FriendRecommendation {
         this.visitors = visitors;
     }
 
+    public List<String> start(){
+        makeFriendGraph();
+        countBothKnowFriends();
+        countVisit();
+        return calculateRecommendationScore();
+    }
+
+    
     private void makeFriendGraph(){
         for (List<String> friend : friends){
             String friend1 = friend.get(0);
