@@ -91,4 +91,16 @@ public class Problem7 {
             }
         }
     }
+
+    public static void updateScore(List<List<String>> friends, List<String> visitors) {
+        for (List<String> friend : friends) {
+            if (myFriendsSet.contains(friend.get(0)) || myFriendsSet.contains(friend.get(1))) {
+                updateRecommendScore(friend.get(0), ACQUAINTANCE_POINT);
+                updateRecommendScore(friend.get(1), ACQUAINTANCE_POINT);
+            }
+        }
+        for (String visitor : visitors) {
+            updateRecommendScore(visitor, VISITOR_POINT);
+        }
+    }
 }
