@@ -20,7 +20,7 @@ public class Problem7 {
         result = new LinkedList<>(friend_friend.entrySet());
         friendScoreSort();
 
-        List<String> answer = Collections.emptyList();
+        List<String> answer = isResult();
 
         return answer;
     }
@@ -98,6 +98,16 @@ public class Problem7 {
             }
         });
     }
-    
+
+    public static List<String> isResult(){
+
+        List<String> answer= new ArrayList<>();
+
+        for(int i=0;i<result.size();i++){
+            answer.add(result.get(i).getKey());
+        }
+        return answer;
+    }
+
 
 }
