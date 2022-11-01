@@ -1,8 +1,14 @@
 ## 🚀 기능 목록
+<<<<<<< HEAD
 1. - [ ] 입력 된 forms에서 이메일, 닉네임을 추출하는 메서드(getEmailFromCrew, getNicknameFromCrew)
 2. - [ ] 입력 된 닉네임을 두 글자씩 토큰화하여 Set으로 리턴하는 nicknameToTokens 메서드 (중복 제거)
 3. - [ ] 해당 토큰을 Key, 나오는 개수를 Value로 한 tokenAndCountMap에 추가하는 addTokenAndCountToMap 메서드
 4. - [ ] tokenAndCountMap에서 특정 token이 여러개 중복되어있는지 판별하는 isDuplicatedToken 메서드
+=======
+1. - [ ] 닉네임을 2글자씩 분해하는 메서드(3글자 이상도 중복이므로 2글자씩 분해)
+2. - [ ] index번째 이후의 크루 중 index번째 크루와 중복되는 email list가 있는지 확인하는 메서드
+3. - [ ] 주어진 2글자 word를 포함하는 크루의 email들을 Set으로 리턴하는 메서드
+>>>>>>> 2388fb98bc5ee90f3741e1fc37c786f0efaa0595
 
 ## 🚀 기능 요구 사항
 
