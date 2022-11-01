@@ -33,6 +33,21 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+        @Test
+        void case4() {
+            List<Integer> pobi = List.of(1, 2);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case5() {
+            List<Integer> pobi = List.of(4, 5);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -110,6 +125,20 @@ class ApplicationTest {
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+
+        @Test
+        void sameCharRepeatedNicknameTest() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("ab@email.com", "하하하"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -127,6 +156,57 @@ class ApplicationTest {
             );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "jun", "bedi");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        void isNewFriendTest() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("donut", "shakevan"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            List<String> result = List.of("andole", "jun", "bedi");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        void getNRecommendListTest() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("donut", "junki"),
+                    List.of("donut", "hong"),
+                    List.of("donut", "shakevan"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            List<String> result = List.of("andole", "jun", "hong", "junki", "bedi");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        void sortRecommendListTest() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "mrko"),
+                    List.of("donut", "junki"),
+                    List.of("donut", "hong"),
+                    List.of("donut", "bo")
+            );
+            List<String> visitors = List.of();
+            List<String> result = List.of("andole", "bo", "hong", "junki");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }

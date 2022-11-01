@@ -21,3 +21,18 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### 👉진행 방향
+1. 사람들의 닉네임을 두 글자 단위로 나눠 nicknameMap에 모두 저장한다. [ ex) 제이엠 => "제이", "이엠" 저장]
+2. 사람들의 닉네임을 다시 하나씩 확인하면서 nicknameMap에 두 개 이상 들어 있는지 확인(중복 확인).
+3. 중복된 값일 경우 duplicateNickname에 Set에 저장해둔다.
+4. duplicateNickname에 저장되어 있는 값들을 정렬 후 반환한다.
+
+### ❗ 예외
+* "하하하"와 같이 한 사람의 닉네임을 두 글자 단위로 나눴을 때 똑같은 문자열이 나오는 경우
+
+### 💻구현 기능
+* 사람들의 닉네임을 두 글자씩 잘라 map에 넣기 
+(이 때, "하하하"와 같은 닉네임이 있을 수 있으므로 두 글자씩 잘라 Set에 저장했다가 map에 넣는다.)
+* 사람들의 닉네임에 map을 통해 중복되어 있는지 확인
