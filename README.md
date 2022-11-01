@@ -5,7 +5,8 @@
 - [문제 1 풀이](./src/main/java/onboarding/Problem1.java) 
 - [x] [문제 2](./docs/PROBLEM2.md)
 - [문제 2 풀이](./src/main/java/onboarding/Problem2.java)
-- [ ] [문제 3](./docs/PROBLEM3.md)
+- [x] [문제 3](./docs/PROBLEM3.md)
+- - [문제 3 풀이](./src/main/java/onboarding/Problem3.java)
 - [ ] [문제 4](./docs/PROBLEM4.md)
 - [ ] [문제 5](./docs/PROBLEM5.md)
 - [ ] [문제 6](./docs/PROBLEM6.md)
@@ -31,6 +32,9 @@
 - [x] 문자열 유효 체크 - 길이
 - [x] 문자열 유효 체크 - 소문자
 - [x] 중복 문자 삭제
-### 문제 2
+### 문제 3
 - [x] 숫자 유효 체크 - 범위
+- [x] solution
+### 문제 4
+- [x] 문자열 유효 체크 - 길이
 - [ ] solution
