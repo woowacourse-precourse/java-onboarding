@@ -4,8 +4,8 @@ import java.util.*;
 import java.util.Map.Entry;
 
 public class Problem7 {
-    private static void getFriendsList(HashMap<String, List<String>> friendsList, List<List<String>> friends){
-        for(int i = 0; i < friends.size(); i++){
+    private static void getFriendsList(HashMap<String, List<String>> friendsList, List<List<String>> friends) {
+        for (int i = 0; i < friends.size(); i++) {
             String member1 = friends.get(i).get(0);
             String member2 = friends.get(i).get(1);
 
@@ -14,13 +14,34 @@ public class Problem7 {
         }
     }
 
-    private static void connectFrined(HashMap<String, List<String>> friendsList, String member, String friend){
-        if(!friendsList.containsKey(member)) {
+    private static void connectFrined(HashMap<String, List<String>> friendsList, String member, String friend) {
+        if (!friendsList.containsKey(member)) {
             List<String> memberFriendsList = new ArrayList<>();
             friendsList.put(member, memberFriendsList);
         }
         friendsList.get(member).add(friend);
     }
+
+    private static void shareFriends(HashMap<String, List<String>> friendsList, HashMap<String, Integer> recommendScore, String user) {
+        for (int i = 0; i < friendsList.get(user).size(); i++) {
+            String frinedName = friendsList.get(user).get(i);
+            getShareFriendScore(friendsList, recommendScore, frinedName, user);
+        }
+    }
+
+    private static void getShareFriendScore(HashMap<String, List<String>> friendsList, HashMap<String, Integer> recommendScore, String member, String user) {
+        for (int i = 0; i < friendsList.get(member).size(); i++) {
+            String friendName = friendsList.get(member).get(i);
+            if (friendName.equals(user)) {
+                continue;
+            }
+            if (!recommendScore.containsKey(friendName)) {
+                recommendScore.put(friendName, 0);
+            }
+            recommendScore.put(friendName, recommendScore.get(friendName) + 10);
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         List<String> userFriends = new ArrayList<>();
@@ -28,6 +49,8 @@ public class Problem7 {
         HashMap<String, Integer> recommendScore = new HashMap<>();
 
         getFriendsList(friendsList, friends);
+
+        shareFriends(friendsList, recommendScore, user);
 
         return answer;
     }
