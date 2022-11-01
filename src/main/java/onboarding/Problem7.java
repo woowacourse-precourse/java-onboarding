@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 /*
@@ -11,21 +12,26 @@ import java.util.List;
 *   3. 사용자와 함께 아는 친구의 점수를 추가해주는 기능
 *   4. 방문자 점수를 추가해주는 기능
  */
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         return answer;
     }
-    public static List<String> findUsersFriends(String user, List<List<String>> friedns) {
-        ArrayList<String> friendList = new ArrayList<>();
-        for(List<String> friend : friedns){
-            if(friend.get(0).equals(user)) {
-                friendList.add(friend.get(1));
+    public static String findMyFriends( String myname, List<String> friends){
+        String myfriend = "";
+        if(friends.contains(myname)){
+            if(friends.get(0).equals(myname)) {
+                myfriend= friends.get(1);
             }
-            if(friend.get(1).equals(user)){
-                friendList.add(friend.get(0));
+            else if(friends.get(1).equals(myname)){
+                myfriend = friends.get(0);
             }
         }
-        return friendList;
+        return myfriend;
     }
+
 }
