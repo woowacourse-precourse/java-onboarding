@@ -21,6 +21,7 @@ public class Problem7 {
             newList.add(person1);
             map.put(person2, newList);
         }
+
         userFriend = map.get(user);
 
         checkKnowingTogether(user);
@@ -40,11 +41,12 @@ public class Problem7 {
     }
     public static void checkVisitors(List<String> visitors){
         for (String visitor : visitors) {
-            if(userFriend.contains(visitor)) continue;
+            if(userFriend != null && userFriend.contains(visitor)) continue;
             answerMap.put(visitor, answerMap.getOrDefault(visitor, 0)+1);
         }
     }
     public static void checkKnowingTogether(String user){
+        if(userFriend == null) return;
         for (String s : userFriend) {
             List<String> list = map.get(s);
             for (String s1 : list) {
