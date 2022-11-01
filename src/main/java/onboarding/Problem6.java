@@ -27,4 +27,31 @@ public class Problem6 {
         }
         return table;
     }
+
+    static boolean KMP(String parent, String pattern) {
+        int[] table = makeTable(pattern);
+
+        int n1 = parent.length();
+        int n2 = pattern.length();
+
+        int idx = 0;
+        for(int i=0; i< n1; i++) {
+            while(idx>0 && parent.charAt(i) != pattern.charAt(idx)) {
+                idx = table[idx-1];
+            }
+            if(parent.charAt(i) == pattern.charAt(idx)) {
+                if(idx>=1) {
+//                    System.out.println("겹침!!");
+                    return true;
+                }
+                if(idx == n2-1) {
+                    idx =table[idx];
+                }else {
+                    idx += 1;
+
+                }
+            }
+        }
+        return false;
+    }
 }
