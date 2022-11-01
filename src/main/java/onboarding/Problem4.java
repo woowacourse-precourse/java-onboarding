@@ -7,6 +7,8 @@ public class Problem4 {
         char[] tempArr = word.toCharArray();
         for (int i = 0; i < tempArr.length; i++) {
             ascii = setAsciiOfAlphabet(tempArr[i]);
+            if (ascii != 0) answer = answer + getChangedAlphabet(ascii, tempArr[i]);
+            else answer = answer + tempArr[i];
         }
         return answer;
     }
