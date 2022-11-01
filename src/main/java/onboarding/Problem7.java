@@ -90,14 +90,12 @@ public class Problem7 {
 
     // 점수가 높은 5명을 담고있는 hash를 정렬하여 retrun
     public static List<String> sort_Heap(HashMap<String, Integer> top5_hash){
-        System.out.println("top5_hash = " + top5_hash);
         List<String> result = new ArrayList<>();
         while(top5_hash.size()>0){
             Map.Entry<String, Integer> max = maxEntry(top5_hash);
             result.add(max.getKey());
             top5_hash.remove(max.getKey());
         }
-        System.out.println("result = " + result);
         return result;
     }
 

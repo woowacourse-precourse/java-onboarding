@@ -22,4 +22,5 @@ public class Problem2 {
         answer = cryptogram;
         return answer;
     }
+
 }
