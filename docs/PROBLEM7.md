@@ -24,3 +24,31 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 7번 기능 목록
+
+친구 추천 알고리즘.
+
+### 기능 1. User의 친구를 friends에서 분리.
+- 현재 friends에는 3 종류의 사람이 존재하는데, 본인user, 본인의 친구friend, 그리고 unknown이다.
+- User의 친구를 별도로 저장한다.
+### 기능 2 추천 대상을 friends에서 분리.
+- User도 user의 친구도 아닌, unknown에 해당하는 인원이 바로 추천의 대상. 
+- 이들을 별도의 컨테이너(이하 추천리스트)로 분리하는 것으로 이후의 점수 부여 및 우선순위로 정렬을 용이하게 한다. 
+- 단, 추천 점수가 없는 경우는 추천리스트에 추가하지 않는다.
+### 기능 3. 공통친구, mutual friends를 찾는다.
+- 추천의 우선순위를 위해서 각각의 인원에게 점수를 부여한다. 
+- 공동의 친구가 존재하는 인원에게는 +10점. 
+- 따라서 user의 friend를 이용하여 friends로부터 공통의 친구를 찾는다.
+
+### 기능 4. visitor를 반영
+- Visitor를 검색하여서 점수를 갱신한다. 
+- 추천 대상에 없던 인원은 추천 리스트에 추가한다.
+
+### 기능 5. 추천리스트의 정렬
+앞서 구현한 추천리스트를 주어진 우선순위에 맞게 정렬한다. 정렬 기준은 다음과 같다.
+-	먼저 점수를 기준으로, 높은 점수가 앞으로 오도록 정렬한다.
+-	동점의 경우에는 사전 순으로 정렬한다.
+### comparator
+사용자 정의 객체의 정렬을 위해서 Java의 객체간 우열 관계를 정의하는 comparator를 구현한다. 
+Comparator는 인터페이스이므로, 목적을 수행하기 위해서는 overriding하여 별도의 구현을 해주어야 한다.
