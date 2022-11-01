@@ -106,19 +106,4 @@ public class Problem7 {
         for(int scoreListIterator = 0; scoreListIterator < scoreList.size() && scoreListIterator < 5; scoreListIterator++) answer.add(scoreList.get(scoreListIterator).getName());
         return answer;
     }
-
-    public static void main(String args[]) {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-        List<String> result = List.of("andole", "jun", "bedi");
-        System.out.println(solution(user, friends, visitors));
-    }
 }
