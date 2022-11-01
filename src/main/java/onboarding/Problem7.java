@@ -2,7 +2,9 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class Problem7 {
@@ -13,6 +15,7 @@ public class Problem7 {
     private static final int FRIENDS_MAX_LENGTH = 10000;
     private static final String LOWERCASE_ALPHABET = "^[a-z]*$";
     private static final List<String> FRIENDS_LIST = new ArrayList<>();
+    private static final Map<String, Integer> UNKNOWN_USER_SCORE = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -58,7 +61,7 @@ public class Problem7 {
     //동일한 친구관계가 중복되어 있는지 검증하는 기능
     public static boolean checkFriendRelationshipOverlap(List<List<String>> friends) {
         Set<List<String>> deleteSameFriendRelationship = Set.copyOf(friends);
-        if(!(friends.size() == deleteSameFriendRelationship.size())) {
+        if (!(friends.size() == deleteSameFriendRelationship.size())) {
             return false;
         }
         return true;
@@ -66,13 +69,30 @@ public class Problem7 {
 
     //user 친구들을 친구리스트에 구성하는 기능
     public static void putUserFriendToList(String user, List<List<String>> friends) {
-        for(List<String> friend : friends) {
-            if(friend.get(0).equals(user)) {
+        for (List<String> friend : friends) {
+            if (friend.get(0).equals(user)) {
                 FRIENDS_LIST.add(friend.get(1));
             }
-            if(friend.get(1).equals(user)) {
+            if (friend.get(1).equals(user)) {
                 FRIENDS_LIST.add(friend.get(0));
             }
         }
     }
+
+    //user가 모르는 sns 사용자들을 map에 넣는 기능
+    public static void putFriendsUserUnknown(String user, List<List<String>> friends) {
+        for (List<String> friend : friends) {
+            if (friend.contains(user)
+                || FRIENDS_LIST.contains(friend.get(0)) && FRIENDS_LIST.contains(friend.get(1))) {
+                continue;
+            }
+            if (!FRIENDS_LIST.contains(friend.get(0))) {
+                UNKNOWN_USER_SCORE.put(friend.get(0), 0);
+            }
+            if (!FRIENDS_LIST.contains(friend.get(1))) {
+                UNKNOWN_USER_SCORE.put(friend.get(1), 0);
+            }
+        }
+    }
+
 }
