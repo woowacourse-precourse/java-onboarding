@@ -27,4 +27,24 @@ class Problem1 {
         }
         return mul;
     }
+  //각 자리의 더한 값들 비교
+    public static int maxSum(int num){
+        int max=0;
+        if((num+1)%10 != 0){
+            max=sumNum(num+1);
+        }else {
+            max=sumNum(num);
+        }
+        return max;
+    }
+    //각 자리의 곱한 값들 비교
+    public static int maxMul(int num){
+        int max=1;
+        if((num+1)%10 != 0){
+            max=mulNum(num+1);
+        }else{
+            max=mulNum(num);
+        }
+        return max;
+    }
 }
