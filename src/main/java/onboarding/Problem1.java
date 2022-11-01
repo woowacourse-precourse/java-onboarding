@@ -33,5 +33,11 @@ class Problem1 {
         return multiplyResult;
     }
 
+    public static boolean canPage(List<Integer> user) {
+        if (user.get(LEFT) >= MIN && user.get(LEFT) <= MAX && user.get(RIGHT) >= MIN && user.get(RIGHT) <= MAX && (user.get(RIGHT) - user.get(LEFT)) == 1
+                && user.get(LEFT) % 2 == 1 && user.get(RIGHT) % 2 == 0)
+            return true;
+        return false;
+    }
 
 }
