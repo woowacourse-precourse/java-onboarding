@@ -18,7 +18,7 @@ public class Problem7 {
 
         userFriends = createUserFriendsSet(user, friends);
         calculateFriendsRelationScore(user, friends);
-
+        calculateTimelineVisitScore(visitors);
 
         return answer;
     }
@@ -47,5 +47,11 @@ public class Problem7 {
         if (userFriends.contains(p1)) {
             friendsScore.put(p2, friendsScore.getOrDefault(p2, 0) + KNOW_TOGETHER_SCORE);
         }
+    }
+
+    private static void calculateTimelineVisitScore(List<String> visitors) {
+        visitors.forEach(visitor ->
+                friendsScore.put(visitor, friendsScore.getOrDefault(visitor, 0) + TIMELINE_VISIT_SCORE)
+        );
     }
 }
