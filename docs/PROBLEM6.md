@@ -21,3 +21,12 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+-------------
+# 기능 요구사항
+
+## Problem6
+
+- [x] 중복되는 글자와 중복이 발생한 인덱스 담을 해시맵 만들기
+- [x] 첫 번째 리스트를 끝까지 돌며 두 번째 리스트에서 두글자씩 뽑아 중복 체크하는 기능 구현
+- [x] 해시맵에서 중복되는 인데스가 있는지 체크하고 뽑아서 set에 넣기. (중복 제거용)
