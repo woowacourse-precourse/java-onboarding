@@ -24,8 +24,6 @@ public class Problem3 {
     * 시간복잡도는 O(5*N) = O(N)
     * */
     public static int solution(int number) {
-        int answer = Problem3Solve.get369Number(number);
-
-        return answer;
+        return Problem3Solve.get369Number(number);
     }
 }
