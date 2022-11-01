@@ -55,6 +55,9 @@ class Problem1 {
             if(!left.isValidPage() || !right.isValidPage()) {
                 return false;
             }
+            if(!left.isLeftPage() || right.isLeftPage()) {
+                return false;
+            }
             if(!right.isNextPage(left)) {
                 return false;
             }
@@ -90,6 +93,13 @@ class Problem1 {
 
         boolean isNextPage(Page previousPage) {
             if(number == previousPage.number + 1) {
+                return true;
+            }
+            return false;
+        }
+
+        boolean isLeftPage() {
+            if(number % 2 == 1) {
                 return true;
             }
             return false;
