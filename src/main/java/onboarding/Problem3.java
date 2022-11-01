@@ -1,8 +1,11 @@
 package onboarding;
 
+import model.ClapGame;
+
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        ClapGame clapGame = new ClapGame(number);
+        clapGame.start();
+        return clapGame.getClapNumber();
     }
 }
