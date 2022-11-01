@@ -8,12 +8,24 @@ class Problem1 {
         return answer;
     }
 
-    
+
     private static int pageAddition(int number) {
         int result = 0;
 
         while (number > 0) {
             result += number % 10;
+            number /= 10;
+        }
+
+        return result;
+    }
+
+
+    private static int pageMultiply(int number) {
+        int result = 1;
+
+        while (number > 0) {
+            result *= number % 10;
             number /= 10;
         }
 
