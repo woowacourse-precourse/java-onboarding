@@ -7,7 +7,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         List<String> friendList = new ArrayList<>();   // 사용자의 친구 목록
-        Map<String, Integer> recommendedFriends = new HashMap<>();   // 친구 추천 목록
+        TreeMap<String, Integer> recommendedFriends = new TreeMap<>();   // 친구 추천 목록
 
         createFriendList(user, friends, friendList);
         checkFriendOfFriend(user, friends, friendList, recommendedFriends);
@@ -24,7 +24,6 @@ public class Problem7 {
                 for (String name : friend) {
                     if (!name.equals(user)) friendList.add(name);
                 }
-
             }
         }
     }
@@ -32,12 +31,15 @@ public class Problem7 {
     // 2. 사용자의 친구 목록에 포함되어있는지 체크 ( = 사용자의 친구와 친구인지 확인 ) -> 맞으면 +10점
     public static void checkFriendOfFriend(String user, List<List<String>> friends, List<String> friendList, Map<String, Integer> recommendedFriends) {
         for (List<String> friend : friends) {
-            for (String name : friend) {
-                if (!friendList.contains(name) && !name.equals(user)) {
-                    if (recommendedFriends.containsKey(name)){
-                        recommendedFriends.put(name, recommendedFriends.get(name) + 10);
+            if(friendList.contains(friend.get(0)) ||friendList.contains(friend.get(1))) {
+                for (String name : friend) {
+                    if (!friendList.contains(name) && !name.equals(user)) {
+                        System.out.println(name);
+                        if (recommendedFriends.containsKey(name)){
+                            recommendedFriends.put(name, recommendedFriends.get(name) + 10);
+                        }
+                        else recommendedFriends.put(name, 10);
                     }
-                    else recommendedFriends.put(name, 10);
                 }
             }
         }
@@ -56,6 +58,7 @@ public class Problem7 {
     // 4. 친구 추천 목록 만들기
     public static void makeRecommendFriendsList(Map<String, Integer> recommendedFriends, List<String> friendList, List<String> answer) {
         List<Map.Entry<String, Integer>> entryList = new ArrayList<>(recommendedFriends.entrySet());
+        int cnt = 0;
 
         // value 값을 기준으로 내림차순 정렬 하기
         entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
@@ -65,10 +68,12 @@ public class Problem7 {
             }
         });
 
-        // 내림차순 정렬된 것을 answer에 넣기
+        // 내림차순 정렬된 것을 answer에 넣기 (상위 5명까지만)
         for(Map.Entry<String, Integer> entry : entryList){
-            if (!friendList.contains(entry.getKey()))
+            if (!friendList.contains(entry.getKey()) && cnt < 5) {
                 answer.add(entry.getKey());
+                cnt += 1;
+            }
         }
     }
 }
