@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Problem4 {
     public static int change(int charIndex){
         if(Character.isUpperCase(charIndex)){
-            charIndex = 155-charIndex;
-        }else charIndex = 219-charIndex;
+            charIndex = 155-charIndex; // 대문자일 경우
+        }else charIndex = 219-charIndex; // 소문자일 경우
         return charIndex;
     }
 
@@ -14,7 +14,7 @@ public class Problem4 {
         ArrayList<Character> cArr = new ArrayList<>();
         for(int i = 0; i < word.length(); i++){
             int index = word.charAt(i);
-            if(index >= 65 && index <= 122){
+            if(index >= 65 && index <= 122){ // 알파벳인지 아닌지
                 cArr.add((char)change(index));
             } else cArr.add((char)index);
         }
