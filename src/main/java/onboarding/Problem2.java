@@ -11,15 +11,19 @@ public class Problem2 {
         return cryptogram;
     }
 
-    // 중복 문자 삭제
-    private static String replace(String input) {
-        List<Integer> delete = deleteIdx(input);
-        char[] chars = input.toCharArray();
-        for (int i : delete) {
-            String temp = Character.toString(chars[i])+Character.toString(chars[i]);
-            input = input.replace(temp,"");
+            for (int i =0; i<charInput.length; i++) {
+                // 중복되지 않은 문자 answer에 포함
+                if (!check[i]) {
+                    temp += String.valueOf(charInput[i]);
+                } else if (check[i]) again = true;
+            }
+            cryptogram = temp;
+            temp = "";
+            if (again == false) break;
         }
-        return input;
+
+        String answer = cryptogram;
+        return answer;
     }
 
     private static boolean[] checkJungbok(char[] input) {
