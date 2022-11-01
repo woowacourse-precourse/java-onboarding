@@ -28,6 +28,7 @@ public class Problem7 {
 
         return answer;
     }
+
     private static HashMap<String, Integer> sortMap(HashMap<String, Integer> scoresMap) {
 
         List<Map.Entry<String, Integer>> entries = new LinkedList<>(scoresMap.entrySet());
@@ -44,48 +45,67 @@ public class Problem7 {
 
         return result;
     }
-    private static HashMap<String, Integer> toRemoveZero(HashMap<String, Integer> scoresMap) {
 
+    private static HashMap<String, Integer> toRemoveZero(HashMap<String, Integer> scoresMap) {
         List<String> keys = new LinkedList<>(scoresMap.keySet());
 
         for (String key : keys) {
-            int score = scoresMap.get(key);
-
-            if (score == 0) {
-                scoresMap.remove(key);
-            }
+            scoresMap = removeMap(key, scoresMap);
         }
 
         return scoresMap;
     }
+
     public static HashMap<String, Integer> toKnowTogether(User user, List<List<String>> friends, HashMap<String, Integer> scoresMap) {
 
-        String name = user.getName();
-        List<String> myFriends = user.getFriendsList();
         int friendSize = friends.size();
 
         for (int i = 0; i < friendSize; i++) {
-
             List<String> relation = friends.get(i);
+            scoresMap = updateFriends(scoresMap, user, relation);
+        }
 
-            String friendA = relation.get(0);
-            String friendB = relation.get(1);
+        return scoresMap;
+    }
 
-            if (friendA.equals(name) || friendB.equals(name)) {
-                continue;
-            }
+    private static HashMap<String, Integer> putMap(HashMap<String, Integer> scoresMap, String name) {
+        if (scoresMap.containsKey(name)) {
+            int score = scoresMap.get(name) + 1;
+            scoresMap.put(name, score);
+        }
+        return scoresMap;
+    }
 
-            if (myFriends.contains(friendA)) {
-                int score = scoresMap.get(friendB) + 10;
-                scoresMap.put(friendB, score);
-                continue;
-            }
+    private static HashMap<String, Integer> removeMap(String key, HashMap<String, Integer> scoresMap) {
+        int score = scoresMap.get(key);
 
-            if (myFriends.contains(friendB)) {
-                int score = scoresMap.get(friendA) + 10;
-                scoresMap.put(friendA, score);
-                continue;
-            }
+        if (score == 0) {
+            scoresMap.remove(key);
+        }
+
+        return scoresMap;
+    }
+    private static HashMap<String, Integer> updateFriends(HashMap<String, Integer> scoresMap, User user, List<String> relation) {
+
+        String name = user.getName();
+        List<String> myFriends = user.getFriendsList();
+
+        String friendA = relation.get(0);
+        String friendB = relation.get(1);
+
+        if (friendA.equals(name) || friendB.equals(name)) {
+            return scoresMap;
+        }
+
+        if (myFriends.contains(friendA)) {
+            int score = scoresMap.get(friendB) + 10;
+            scoresMap.put(friendB, score);
+            return scoresMap;
+        }
+
+        if (myFriends.contains(friendB)) {
+            int score = scoresMap.get(friendA) + 10;
+            scoresMap.put(friendA, score);
         }
 
         return scoresMap;
@@ -97,15 +117,12 @@ public class Problem7 {
 
         for (int i = 0; i < visitorSize; i++) {
             String name = visitors.get(i);
-
-            if (scoresMap.containsKey(name)) {
-                int score = scoresMap.get(name) + 1;
-                scoresMap.put(name, score);
-            }
+            scoresMap = putMap(scoresMap, name);
         }
 
         return scoresMap;
     }
+
     public static HashMap<String, Integer> initFriendScores(User user, List<String> allUsers) {
 
         String name = user.getName();
@@ -139,17 +156,20 @@ public class Problem7 {
 
         for (int i = 0; i < friendSize; i++) {
             List<String> relation = friends.get(i);
+            myFriends = addFriend(myFriends, relation, user);
+        }
+        return myFriends;
+    }
 
-            String friendA = relation.get(0);
-            String friendB = relation.get(1);
+    private static List<String> addFriend(List<String> myFriends, List<String> relation, String user) {
+        String friendA = relation.get(0);
+        String friendB = relation.get(1);
 
-            if (friendA.equals(user)) {
-                myFriends.add(friendB);
-            }
-            if (friendB.equals(user)) {
-                myFriends.add(friendA);
-            }
-
+        if (friendA.equals(user)) {
+            myFriends.add(friendB);
+        }
+        if (friendB.equals(user)) {
+            myFriends.add(friendA);
         }
         return myFriends;
     }
@@ -167,21 +187,20 @@ public class Problem7 {
             String friendA = relation.get(0);
             String friendB = relation.get(1);
 
-            if (!allUsers.contains(friendB)) {
-                allUsers.add(friendB);
-            }
-            if (!allUsers.contains(friendA)) {
-                allUsers.add(friendA);
-            }
-
+            allUsers = addUser(allUsers, friendB);
+            allUsers = addUser(allUsers, friendA);
         }
 
         for (int i = 0; i < visitorSize; i++) {
             String visitor = visitors.get(i);
+            allUsers = addUser(allUsers, visitor);
+        }
+        return allUsers;
+    }
 
-            if (!allUsers.contains(visitor)) {
-                allUsers.add(visitor);
-            }
+    private static List<String> addUser(List<String> allUsers, String friend) {
+        if (!allUsers.contains(friend)) {
+            allUsers.add(friend);
         }
         return allUsers;
     }
