@@ -3,12 +3,29 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
-    // 토큰들을 저장할 해시맵 선언 (문자열, 리스트)
+    static HashMap<String, ArrayList> map = new HashMap<>();
     public static List<String> solution(List<List<String>> forms) {
-        // forms를 순회하면서 토큰화
-        // 값들을 해시맵에 저장
-        // 해시맵에 겹치는게 있다면 리스트에 추가
-        // 반환
-        return new ArrayList<>();
+        Set<String> set = new HashSet<>();
+
+        for (int i = 0; i < forms.size(); i++) {
+            List<String> form = forms.get(i);
+            String email = form.get(0);
+            String nickname = form.get(1);
+
+            for (int j = 0; j < nickname.length()-1; j++) {
+                String token = nickname.substring(j, j+2);
+                if (map.containsKey(token)) {
+                    ArrayList emails = map.get(token);
+                    emails.add(email);
+                    set.addAll(emails);
+                } else {
+                    map.put(token, new ArrayList(List.of(email)));
+                }
+            }
+
+        }
+        ArrayList<String> answer = new ArrayList<>(set);
+        Collections.sort(answer);
+        return answer;
     }
 }
