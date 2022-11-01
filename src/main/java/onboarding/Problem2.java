@@ -8,6 +8,9 @@ public class Problem2 {
         return answer;
     }
 
+    public String getDecodedCryptograph() {
+        return cryptograph.toString();
+    }
     private boolean isHappenedDecryption(){
 
         if(findDecodedSection()){
