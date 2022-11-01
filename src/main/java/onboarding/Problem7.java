@@ -47,6 +47,14 @@ public class Problem7 {
             }
 
         }
+        for (String visitor : visitors) {
+            if(result.containsKey(visitor)){
+                result.put(visitor,result.get(visitor)+1);
+            }
+            else{
+                result.put(visitor,1);
+            }
+        }
 
 
 
