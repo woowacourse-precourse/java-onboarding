@@ -3,7 +3,7 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
-String Temp;
+        String Temp;
 		
 		for (int i = 1; i-1 <number; i++) {
 			Temp = Integer.toString(i);

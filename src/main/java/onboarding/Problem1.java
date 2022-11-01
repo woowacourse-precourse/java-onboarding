@@ -7,21 +7,21 @@ class Problem1 {
     	
     	int[] pobi_page = new int[2];
     	int[] crong_page = new int[2];
-    	int num = pobi.indexOf(0);
+    	int num = pobi.get(0);
         pobi_page[0] = sum_multiple_max(num);
-    	num = pobi.indexOf(1);
+    	num = pobi.get(1);
         pobi_page[1] = sum_multiple_max(num);
-    	num = crong.indexOf(0);
+    	num = crong.get(0);
         crong_page[0] = sum_multiple_max(num);
-    	num = crong.indexOf(1);
+    	num = crong.get(1);
         crong_page[1] = sum_multiple_max(num);
         int pobi_score = Math.max(pobi_page[0],pobi_page[1]);
         int crong_score = Math.max(crong_page[0], crong_page[1]);
         
         int answer = Integer.MAX_VALUE;
-        if(pobi.indexOf(0) < 2 || pobi.indexOf(1) > 399 || crong.indexOf(0) < 2 || crong.indexOf(1) > 399 
-        		|| pobi.indexOf(0) % 2 == 0 || pobi.indexOf(0) + 1 != pobi.indexOf(1) || 
-        		crong.indexOf(0) % 2 == 0 || crong.indexOf(0) + 1 != crong.indexOf(1) ) {
+        if(pobi.get(0) < 2 || pobi.get(1) > 399 || crong.get(0) < 2 || crong.get(1) > 399 
+        		|| pobi.get(0) % 2 == 0 || pobi.get(0) + 1 != pobi.get(1) || 
+        		crong.get(0) % 2 == 0 || crong.get(0) + 1 != crong.get(1) ) {
         	answer = -1;
         } else if(pobi_score > crong_score) {
         	answer = 1;

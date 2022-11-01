@@ -24,8 +24,13 @@ public class Problem2 {
             }
         }
  
-        chars[k++] = chars[i - 1];
+        if(k!=0) {
+        	chars[k++] = chars[i - 1];
+        } else {
+        	chars = "".toCharArray();
+        }
  
+
         String s = new String(chars).substring(0, k);
  
         if (k != chars.length) {
