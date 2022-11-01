@@ -41,10 +41,25 @@ public class Problem2 {
         return -1;
     }
 
+    public static boolean validation(String cryptogram) {
+        if (cryptogram.length() < 1 || cryptogram.length() > 1000){
+            return false;
+        }
+        if (!cryptogram.equals(cryptogram.toLowerCase())){
+            return false;
+        }
+        return true;
+    }
+
     public static String solution(String cryptogram) {
         String answer;
         List<Character> charArr = new ArrayList<>();
-        for(int i=0; i<cryptogram.length(); i++){
+
+        if (validation(cryptogram)){
+            return "입력 오류";
+        }
+
+        for (int i = 0; i < cryptogram.length(); i++) {
             charArr.add(cryptogram.charAt(i));
         }
 
