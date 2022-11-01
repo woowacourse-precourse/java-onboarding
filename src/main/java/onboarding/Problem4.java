@@ -5,30 +5,32 @@ package onboarding;
  */
 public class Problem4 {
     public static String solution(String word) {
-        return changeAlphabet(word);
+        return changeFrogString(word);
     }
 
-    private static String changeAlphabet(String word) {
+    private static String changeFrogString(String word) {
         StringBuilder answer = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
-            char temp = word.charAt(i); // 현재 문자
-
-            if (97 <= temp && temp <= 122){
-                temp = changeFrogLowerCase(temp);
-            } else if(65 <= temp && temp <= 90) {
-                temp = changeFrogUpperCase(temp);
-            }
+            char temp = changeFrogCharacter(word.charAt(i));
             answer.append(temp);
         }
         return answer.toString();
     }
 
-    private static char changeFrogLowerCase(char temp) {
-        return (char) (122 - (temp - 97));
+    private static char changeFrogCharacter(char temp) {
+        if ('a' <= temp && temp <= 'z'){
+            temp = changeFrogLowerCase(temp);
+        } else if('A' <= temp && temp <= 'Z') {
+            temp = changeFrogUpperCase(temp);
+        }
+        return temp;
     }
 
+    private static char changeFrogLowerCase(char temp) {
+        return (char) ('z' - (temp - 'a'));
+    }
 
     private static char changeFrogUpperCase(char temp) {
-        return (char) (65 - (temp - 90));
+        return (char) ('A' - (temp - 'Z'));
     }
 }

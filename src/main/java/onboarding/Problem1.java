@@ -9,39 +9,25 @@ import java.util.List;
 class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (checkPageException(pobi) && checkPageException(crong)) {
-            // 각 점수 계산
-            int poingOfPobi = calcPoint(pobi);
-            int pointOfCrong = calcPoint(crong);
-
-            return calcWinner(poingOfPobi, pointOfCrong);
+        if (checkPageException(pobi) || checkPageException(crong)) {
+            return -1;      // 예외사항은 -1을 return
         }
-        // 예외사항은 -1을 return
-        return -1;
+        return calcWinner(calcPoint(pobi), calcPoint(crong));
     }
 
     private static boolean checkPageException(List<Integer> pages) {
         int right = pages.get(1);
-        // 오른쪽 페이지가 2 < right < 400 인지 확인
-        if(2 < right && right < 400) {
-            int left = pages.get(0);
-            // 왼쪽 페이지 + 1이 오른쪽 페이지의 값이 맞는지 확인
-            if (left + 1 == right) {
-                // 오른쪽 페이지가 짝수가 맞는지 확인
-                return right % 2 == 0;
-            }
+        if(2 < right && right < 400 && pages.get(0) + 1 == right) { // 오른쪽 페이지가 2 < right < 400 인지 확인, 왼쪽 페이지 + 1이 오른쪽 페이지의 값이 맞는지 확인
+            return right % 2 == 1; // 오른쪽 페이지가 짝수가 맞는지 확인
         }
-        return false;
+        return true;
     }
 
     private static int calcPoint(List<Integer> pages) {
         int point = 0;
         for(Integer page: pages) {
             List<Integer> digits = digitPage(page);
-            int addPoint = addDigit(digits);
-            int multiplePoint = mutiplyDigit(digits);
-            // 가장 큰 수를 return 한다.
-            point = Math.max(point, Math.max(addPoint, multiplePoint));
+            point = Math.max(point, Math.max(addDigit(digits), mutiplyDigit(digits))); // 가장 큰 수를 return 한다.
         }
         return point;
     }
@@ -66,12 +52,7 @@ class Problem1 {
 
     private static int calcWinner(int poingOfPobi, int pointOfCrong) {
         // 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0을 return
-        if (poingOfPobi > pointOfCrong) {
-            return  1;
-        } else if (pointOfCrong > poingOfPobi) {
-            return  2;
-        }
-        return 0;
+        return (poingOfPobi == pointOfCrong) ? 0 : ((poingOfPobi > pointOfCrong) ? 1 : 2);
     }
 }
 

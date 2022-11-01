@@ -9,18 +9,13 @@ public class Problem3 {
     }
 
     private static int calcClap(int number) {
-        // 1의 자리인 경우, 3으로 나눈 몫을 return한다.
         if(number < 10) {
-            return number / 3;
+            return number / 3; // 1의 자리인 경우, 3으로 나눈 몫을 return한다.
         }
 
         int answer = 0;
-        // 3. 1234인 경우, 1 ~ 999까지 박수소리에, 1 ~ 234까지의 박수의 수를 더하면 1234의 박수의 수를 구할 수 있다.
-        answer += calcClapZeroToHighDigit(number);
-        System.out.println("calcClapZeroToHighDigit = " + answer);
-        // 4 - 2. 이때, 각 자릿수가 3의 배수일 때, 해당 자릿수 이하의 수 + 1만큼을 더해주어야, 실제 박수 소리를 구할 수 있다.
-        answer += calcLowerClap(number);
-        // 재귀로 처리
+        answer += calcClapZeroToHighDigit(number); // 1 ~ 현재 자리수 - 1 까지의 박수소리
+        answer += calcLowerClap(number);  // 각 자릿수가 3의 배수일 때, 해당 자릿수 이하의 수 + 1만큼을 더해주어야, 실제 박수 소리를 구할 수 있다.
         answer += calcClap(getLowerNumber(number));
         return answer;
     }
@@ -30,7 +25,7 @@ public class Problem3 {
         int length = getLength(number);
         int multipleOfTen = getMultipleOfTen(number);
 
-        int answer = tempMaxDigit * 3 * (multipleOfTen / 10) * (length - 1);    // 0 ~ 현재 자리수 - 1 까지의 박수소리
+        int answer = tempMaxDigit * 3 * (multipleOfTen / 10) * (length - 1);
         if (tempMaxDigit > 3) {
             answer += ((tempMaxDigit - 1) / 3) * multipleOfTen;
         }
@@ -38,8 +33,8 @@ public class Problem3 {
     }
 
     private static int calcLowerClap(int number) {
-        if(getMaxDigit(number) % 3 == 0) {     // 현재 자릿수의 값이 3의 배수라면, 하위값만큼 더 박수 수가 추가된다. +1은 하윗값이 0인 경우이다.
-            return getLowerNumber(number) + 1;  //  + 1;
+        if(getMaxDigit(number) % 3 == 0) {  // 현재 자릿수의 값이 3의 배수라면, 하위값 + 1만큼 박수 수가 추가된다.
+            return getLowerNumber(number) + 1;
         }
         return 0;
     }

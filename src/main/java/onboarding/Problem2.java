@@ -4,6 +4,10 @@ package onboarding;
  * @Problem: 연속하는 중복 문자들을 삭제한 결과를 return 하도록 solution 메서드를 완성하라.
  */
 public class Problem2 {
+    public static String solution(String cryptogram) {
+        return decodeCryptogram(cryptogram);
+    }
+
     private static String deleteContinuousCharacter(String cryptogram) {
         StringBuilder sb = new StringBuilder();
         cryptogram = cryptogram + '!'; // 허수 추가
@@ -24,16 +28,11 @@ public class Problem2 {
         String tempCryptogram = cryptogram;
         while (tempCryptogram.length() > 0) {
             String nextCryptogram = deleteContinuousCharacter(tempCryptogram);
-            // 문자열 비교
-            if (tempCryptogram.equals(nextCryptogram)) {
+            if (tempCryptogram.equals(nextCryptogram)) {  // 문자열 비교
                 return tempCryptogram;
             }
             tempCryptogram = nextCryptogram;
         }
-        return "";
-    }
-
-    public static String solution(String cryptogram) {
-        return decodeCryptogram(cryptogram);
+        return tempCryptogram;
     }
 }

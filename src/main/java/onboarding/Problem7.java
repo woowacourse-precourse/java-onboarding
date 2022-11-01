@@ -17,9 +17,9 @@ public class Problem7 {
     }
 
     private static Map<String, List<String>> getFriendMap(List<List<String>> friends) {
-        // 1. 이름을 key, 친구의 이름 List value로 갖는 Map을 만든다.
+        // 이름을 key, 친구의 이름 List value로 갖는 Map을 만든다.
         Map<String, List<String>> friendMap = new HashMap<>();
-        // 2. friends의 0, 1 인덱스를 각각 key로 두고, 서로를 value에 추가한다.
+        // friends의 0, 1 인덱스를 각각 key로 두고, 서로를 value에 추가한다.
         for(List<String> friend : friends) {
             putFriendAtMap(friendMap, friend, 0, 1);
             putFriendAtMap(friendMap, friend, 1, 0);
@@ -28,7 +28,7 @@ public class Problem7 {
     }
 
     private static Map<String, Integer> getPointOfFriend(String user, List<String> visitors, Map<String, List<String>> friendMap) {
-        // 3. Name, Point를 각각 key, value로 갖는 Map을 만든다.
+        // Name, Point를 각각 key, value로 갖는 Map을 만든다.
         Map<String, Integer> pointOfFriend = new HashMap<>();
         List<String> friendsOfUser = friendMap.getOrDefault(user, new ArrayList<>());
         countFriendOfFriendPoint(user, friendMap, pointOfFriend, friendsOfUser);
@@ -52,7 +52,7 @@ public class Problem7 {
         for (String friend : friendsOfUser) {
             List<String> friendsOfFriend = friendMap.get(friend);
             for (String friendOfFriend : friendsOfFriend) {
-                if (!friendsOfUser.contains(friendOfFriend) && !friendOfFriend.equals(user)) {  // 4 - 1, User 자신과, 이미 친구인 사람은 제외 한다.
+                if (!friendsOfUser.contains(friendOfFriend) && !friendOfFriend.equals(user)) {  // User 자신과, 이미 친구인 사람은 제외 한다.
                     putPointAtMap(pointOfFriend, friendOfFriend, POINT_OF_FRIEND_OF_FRIEND);
                 }
             }
@@ -60,7 +60,7 @@ public class Problem7 {
     }
 
     private static void countVisitorPoint(List<String> visitors, Map<String, Integer> pointOfFriend, List<String> friendsOfUser) {
-        // 6. visitors를 참고하여, 해당하는 사람에게 점수를 1점씩 추가한다.
+        // visitors를 참고하여, 해당하는 사람에게 점수를 1점씩 추가한다.
         for (String visitor : visitors) {
             if (!friendsOfUser.contains(visitor)) {
                 putPointAtMap(pointOfFriend, visitor, POINT_OF_VISITOR);
@@ -78,10 +78,10 @@ public class Problem7 {
 
     private static List<String> getAnswer(Map<String, Integer> pointOfFriend) {
         return pointOfFriend.keySet().stream()
-                .sorted(((o1, o2) -> {      // 7. 점수 순서, 동점인 경우, 알파벳 순서로 정렬한다.
+                .sorted(((o1, o2) -> { // 점수 순서, 동점인 경우, 알파벳 순서로 정렬한다.
                     return compareStringByInteger(pointOfFriend, o1, o2);
                 }))
-                .limit(5)       // 8. 최대 상위 5명까지의 이름을 List로 반환한다.
+                .limit(5) // 최대 상위 5명까지의 이름을 List로 반환한다.
                 .collect(Collectors.toList());
     }
 
