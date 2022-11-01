@@ -1,64 +1,74 @@
 package onboarding;
 
-import java.util.Stack;
+import java.util.ArrayDeque;
+import java.util.Collection;
+import java.util.Deque;
 import java.util.stream.Collectors;
 
-/**
- * ex.     bannonnoa
- *      			      | stack[]
- * i: 0...2	stack.push()  | stack[b, a, n]
- * i: 3     stack.pop()   | stack[b, a]
- * i: 4     stack.push()  | stack[b, a, o]
- * i: ...
- */
-
 public class Problem2 {
-	private static Stack<Character> decryptionStack;
 	public static String solution(String cryptogram) {
-		decryptionStack = new Stack<>();
-		int cursor = 0;
-		while (cursor < cryptogram.length()) {
-			int afterVisit = visitCharAt(cryptogram, cursor);
-			cursor = afterVisit;
-		}
+		Deque<Character> decryptionQueue = getCharacterQueueByString(cryptogram);
+		int beforeSize;
 
-		return covertCharacterStackToString(decryptionStack);
+		do {
+			beforeSize = decryptionQueue.size();
+			decryptionQueue = removeSerialChar(decryptionQueue);
+		} while (!isDecrypted(decryptionQueue, beforeSize));
+
+		return covertCharacterCollectionToString(decryptionQueue);
 	}
 
-	private static int visitCharAt(String cryptogram, int cursor) {
-		char visitLetter = cryptogram.charAt(cursor);
-		if (addable(visitLetter)) {
-			decryptionStack.add(visitLetter);
-			return cursor + 1;
-		}
-
-		return isDuplicateLetter(cryptogram, cursor);
+	private static boolean isDecrypted(Deque<Character> decryptionQueue, int beforeSize) {
+		return beforeSize == decryptionQueue.size();
 	}
 
-	private static boolean addable(char letter) {
-		if (decryptionStack.empty()) {
-			return true;
+	private static Deque<Character> getCharacterQueueByString(String string) {
+		Deque<Character> queue = new ArrayDeque<>();
+		for (char character : string.toCharArray()) {
+			queue.offer(character);
 		}
 
-		if (decryptionStack.peek() != letter) {
-			return true;
-		}
-		return false;
+		return queue;
 	}
 
-	private static int isDuplicateLetter(String cryptogram, int cursor) {
-		Character lastLetter = decryptionStack.peek();
-		while (cursor < cryptogram.length()
-			&& cryptogram.charAt(cursor) == lastLetter) {
-			cursor += 1;
+	private static Deque<Character> removeSerialChar(Deque<Character> decryptionQueue) {
+		Deque<Character> tmpQueue = new ArrayDeque<>();
+
+		while (!decryptionQueue.isEmpty()) {
+			moveCharacterTo(decryptionQueue, tmpQueue);
 		}
 
-		decryptionStack.pop();
-		return cursor;
+		return tmpQueue;
 	}
 
-	private static String covertCharacterStackToString(Stack<Character> stack) {
-		return stack.stream()
+	private static void moveCharacterTo(Deque<Character> decryptionQueue, Deque<Character> tmpQueue) {
+		Character c = decryptionQueue.poll();
+		if (tmpQueue.isEmpty()) {
+			tmpQueue.offerLast(c);
+			return;
+		}
+
+		if (tmpQueue.peekLast() == c) {
+			skipDuplicatedCharacter(decryptionQueue, tmpQueue);
+			return;
+		}
+
+		tmpQueue.offerLast(c);
+	}
+
+	private static void skipDuplicatedCharacter(Deque<Character> decryptionQueue, Deque<Character> tmpQueue) {
+		while (tmpQueue.peekLast() == decryptionQueue.peekFirst()) {
+			decryptionQueue.poll();
+		}
+		tmpQueue.pollLast();
+
+		if (!decryptionQueue.isEmpty()) {
+			tmpQueue.offerLast(decryptionQueue.poll());
+		}
+	}
+
+	private static String covertCharacterCollectionToString(Collection<Character> collection) {
+		return collection.stream()
 			.map(String::valueOf)
 			.collect(Collectors.joining());
 	}
