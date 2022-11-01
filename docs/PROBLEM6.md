@@ -21,3 +21,18 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+<br>
+
+---
+
+## 기능 구현 목록
+- 지원자의 모든 닉네임의 연속적인 두 글자를 key 값, 해당 key값을 닉네임에 포함하는 지원자들의 email 리스트를 value 값으로 하는 `consecutiveLettersMap` 을 만든다.
+    - `forms` 의 각 요소를 순회하며 다음의 과정을 반복한다.
+        - email의 도메인을 확인한다.
+        - 닉네임이 모두 한글인지 확인한 후, `consecuitveLettersMap` 에 추가한다.
+            - 각 지원자의 닉네임의 모든 연속적인 두 글자를 key, email을 value arraylist에 담아 생성한다.
+            - 이미 key값이 존재하는 경우에는, arraylist에 email을 추가한다.
+- 중복되는 글자를 가진 지원자의 이메일 리스트 `crewEmailList`를 만든다.
+    - `consecutiveEmailList` 에 value인 arraylist에 두 개 이상의 email이 담겨져 있는 key값 email을 `crewEmailList`에 중복되지 않게 삽입한다.
+    - 마지막으로 오름차순 정렬
