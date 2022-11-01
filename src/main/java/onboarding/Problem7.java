@@ -50,6 +50,14 @@ public class Problem7 {
         return scoreMap;
     }
 
+    private static HashMap<String, Integer> scoreVisitors(HashMap<String, Integer> scoreMap, List<String> visitors) {
+        for (String visitor : visitors) {
+            scoreMap.put(visitor, scoreMap.getOrDefault(visitor, 0) + 1);
+        }
+
+        return scoreMap;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         HashMap<String, List<String>> friendMap;
@@ -58,6 +66,8 @@ public class Problem7 {
         friendMap = createFriendMap(friends);
 
         scoreMap = scoreFriendsOfFriends(user, friendMap);
+
+        scoreMap = scoreVisitors(scoreMap, visitors);
 
         return answer;
     }
