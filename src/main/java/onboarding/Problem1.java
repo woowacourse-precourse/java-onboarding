@@ -29,10 +29,6 @@ class Problem1 {
         return getWinner(pobiScore, crongScore);
     }
 
-    private static boolean isInValidPageNumber(List<Integer> pobi, List<Integer> crong) {
-        return isInValidPageNumber(pobi) || isInValidPageNumber(crong);
-    }
-
     private static List<List<Integer>> getEachDigitOfTwoPages(List<Integer> pages) {
         List<List<Integer>> digitsOfTwoPages = new ArrayList<>();
 
@@ -97,6 +93,10 @@ class Problem1 {
         }
 
         return TIE;
+    }
+
+    private static boolean isInValidPageNumber(List<Integer> pobi, List<Integer> crong) {
+        return isInValidPageNumber(pobi) || isInValidPageNumber(crong);
     }
 
     private static boolean isInValidPageNumber(List<Integer> pages) {
