@@ -86,18 +86,13 @@ public class Problem7 {
     }
 
     private static List<String> getFirendRecommendations() {
-        List<Map.Entry<String, Integer>> scoreEntries = new ArrayList<>(scores.entrySet());
-        Collections.sort(scoreEntries, (o1, o2) -> {
-            if (o1.getValue() == o2.getValue()) {
-                if (o1.getKey().compareTo(o2.getKey()) < 0) {
-                    return -1;
-                }
+        List<String> list = new ArrayList<>(scores.keySet());
+        Collections.sort(list, (o1, o2) -> {
+            if (scores.get(o1) == scores.get(o2)) {
+                return o1.compareTo(o2);
             }
-            if (o1.getValue() < o2.getValue()) {
-                return -1;
-            }
-            return 1;
+            return scores.get(o2) - scores.get(o1);
         });
-        return new ArrayList<>(scores.keySet());
+        return list;
     }
 }
