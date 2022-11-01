@@ -46,4 +46,25 @@ public class Problem7 {
 
     }
 
+    static void consider_friend_of_friend(String user){
+
+        ArrayList<String> friend_list = friend_map.get(user);
+
+        for(String friend : friend_list) {
+            ArrayList<String> friend_of_friend_list = friend_map.get(friend);
+
+            for(String friend_of_friend : friend_of_friend_list) {
+
+                if(friend_map.get(user).contains(friend_of_friend) || user.equals(friend_of_friend)) continue;
+
+                if(score_map.containsKey(friend_of_friend)) {
+                    score_map.put(friend_of_friend, score_map.get(friend_of_friend)+SCORE_OF_COMMON_FRIEND);
+                }
+                else {
+                    score_map.put(friend_of_friend, SCORE_OF_COMMON_FRIEND);
+                }
+            }
+        }
+    }
+
 }
