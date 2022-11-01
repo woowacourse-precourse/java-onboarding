@@ -27,6 +27,25 @@ class Decryption{
         }
         return length;
     }
+
+    /**
+     * 문자열에 연속되는 중복 문자들이 있다면 삭제를 수행
+     * @return 삭제가 수행되면 true, 삭제가 수행되지 않았으면 false
+     */
+    Boolean deleteOverlap(){
+        int index = 0;
+        Boolean isDelete = false;
+        while(index < cypherText.length()){
+            Integer length = getOverlapLength(index);
+            cypherText.delete(index, index + length);
+            if(length.equals(0)){
+                index++;
+                continue;
+            }
+            isDelete = true;
+        }
+        return isDelete;
+    }
 }
 public class Problem2 {
     public static String solution(String cryptogram) {
