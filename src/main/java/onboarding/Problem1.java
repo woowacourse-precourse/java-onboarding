@@ -36,8 +36,15 @@ class Problem1 {
             return (sum > multi) ? sum : multi;
         }
     }
+    //main 함수
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if(!isVaildInput(pobi) || !isVaildInput(crong))
+            return -1;
+        int pobiMaxvalue = getMaxValue(pobi);
+        int crongMaxvalue = getMaxValue(crong);
+
+        if(pobiMaxvalue == crongMaxvalue)
+            return 0;
+        return (pobiMaxvalue > crongMaxvalue) ? 1 : 2;
     }
 }
