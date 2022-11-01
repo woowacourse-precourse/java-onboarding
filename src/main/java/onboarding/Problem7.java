@@ -14,6 +14,7 @@ public class Problem7 {
     private static final int FRIENDS_MIN_LENGTH = 1;
     private static final int FRIENDS_MAX_LENGTH = 10000;
     private static final int KNOW_WITH_FRIEND_SCORE = 10;
+    private static final int VISIT_SCORE = 1;
     private static final String LOWERCASE_ALPHABET = "^[a-z]*$";
     private static final List<String> FRIENDS_LIST = new ArrayList<>();
     private static final Map<String, Integer> UNKNOWN_USER_SCORE = new HashMap<>();
@@ -119,6 +120,15 @@ public class Problem7 {
             if (FRIENDS_LIST.contains(friend.get(1))) {
                 UNKNOWN_USER_SCORE.replace(friend.get(0),
                     UNKNOWN_USER_SCORE.get(friend.get(0)) + KNOW_WITH_FRIEND_SCORE);
+            }
+        }
+    }
+
+    //user sns를 방문한 사람들에게 점수를 산출하는 기능
+    public static void plusUnknownVisitorUserScore(List<String> visitors) {
+        for(String visitor : visitors) {
+            if(!FRIENDS_LIST.contains(visitor)) {
+                UNKNOWN_USER_SCORE.replace(visitor, UNKNOWN_USER_SCORE.get(visitor) + VISIT_SCORE);
             }
         }
     }
