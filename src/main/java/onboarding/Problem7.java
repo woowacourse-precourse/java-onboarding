@@ -81,4 +81,15 @@ public class Problem7 {
         }
         return scoreMap;
     }
+
+    private static Map<String, Integer> getScoreMapWithVisitors(List<String> visitors,
+                                                                Map<String, Integer> scoreMap
+    ) {
+        for (String visitor : visitors) {
+            scoreMap.computeIfAbsent(visitor, k -> 0);
+            scoreMap.put(visitor, scoreMap.get(visitor) + 1);
+        }
+
+        return scoreMap;
+    }
 }
