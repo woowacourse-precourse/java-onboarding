@@ -3,88 +3,102 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static ArrayList sortByValue(HashMap<String, Integer> map) {
-        ArrayList<String> keyList = new ArrayList(map.keySet());
-        Collections.sort(keyList, new Comparator() {
-            public int compare(Object o1, Object o2) {
-
+    // 점수별 내림차순 정렬 함수
+    public static List<String> sortByValue(HashMap<String, Integer> map) {
+        List<String> result = new ArrayList<String>();
+        List<String> keyList = new ArrayList<String>(map.keySet());
+        Collections.sort(keyList, new Comparator<String>() {
+            public int compare(String o1, String o2) {
                 return map.get(o2).compareTo(map.get(o1));
-
             }
         });
-// 나중에 하기 -> 5개만 뽑기
-//        if (keyList.size() > 5){
-//            ArrayList<String> keyList = keyList.subList(0,5);
-//        }
-        return keyList;
+
+        // 최대 5명 return
+        if(keyList.size()>5){
+            result = keyList.subList(0,5);
+        }
+        else {
+            result = keyList;
+        }
+
+        return result;
     }
 
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<String>();
-
-        String user1 = "mrko";
-        List<List<String>> friends1 = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        List<String> visitors1 = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-        List<String> result = List.of("andole", "jun", "bedi");
-
-        HashMap<String, Integer> FriendScore = new HashMap<String, Integer>();
-        List<String> Friend = new ArrayList<String>();
-        List<String> NotFriend = new ArrayList<String>();
-        List<String> Visitor = new ArrayList<String>();
-
+    public static List<String> makeFriend(List<List<String>> listD, String user){
         // Friend 명단 만들기
-        for (int i = 0; i < friends.size(); i++){
-            if(friends1.get(i).contains(user1)){
+        List<String> result = new ArrayList<String>();
+        for (int i = 0; i < listD.size(); i++){
+            if(listD.get(i).contains(user)){
                 for(int j = 0; j < 2; j++){
-                    if(!friends1.get(i).get(j).equals(user1)){
-                        Friend.add(friends1.get(i).get(j));
+                    if(!listD.get(i).get(j).equals(user)){
+                        result.add(listD.get(i).get(j));
                     }
                 }
             }
         }
-
-        // 함께 아는 친구 수 계산
-        for (int i = 0; i < friends1.size(); i++){
+        return result;
+    }
+    // 함께 아는 친구 리스트 (중복 허용) 생성 함수
+    public static List<String> make_together(List<List<String>> listD, String user , List<String> Friend){
+        // 함께 아는 친구 리스트
+        List<String> result = new ArrayList<String>();
+        for (int i = 0; i < listD.size(); i++){
             for (int j = 0; j < Friend.size(); j++){
                 String name_f = Friend.get(j);
-                if(friends1.get(i).contains(name_f)){
+                if(listD.get(i).contains(name_f)){
                     for(int k = 0; k < 2; k++){
-                        if(!friends1.get(i).get(k).equals(name_f) &&
-                                !friends1.get(i).get(k).equals(user1)){
-                            NotFriend.add(friends1.get(i).get(k));
+                        if(!listD.get(i).get(k).equals(name_f) &&
+                                !listD.get(i).get(k).equals(user)){
+                            result.add(listD.get(i).get(k));
                         }
                     }
                 }
             }
         }
-        Set<String> set = new HashSet<String>(NotFriend);
+        return result;
+    }
+    // 함께 아는 친구 점수 배정
+    public static void count_together(HashMap<String, Integer> score, List<String> togehter){
+        Set<String> set = new HashSet<String>(togehter);
         for (String str : set){
-            FriendScore.put(str, 10*(Collections.frequency(NotFriend,str)));
+            score.put(str, 10*(Collections.frequency(togehter,str)));
         }
-
-        // 방문자 수 계산
-        for (int i = 0; i < visitors1.size(); i++){
-            if(!Friend.contains(visitors1.get(i))){
-                Visitor.add(visitors1.get(i));
+    }
+    // 방문자 리스트 (중복허용) 생성 함수
+    public static List<String> make_visitor(List<String> l, List<String> Friend){
+        // 방문자 리스트
+        List<String> result = new ArrayList<String>();
+        for (int i = 0; i < l.size(); i++){
+            if(!Friend.contains(l.get(i))){
+                result.add(l.get(i));
             }
         }
-
-        Set<String> set1 = new HashSet<String>(Visitor);
-        for (String str : set1){
-            if(FriendScore.keySet().contains(str)){
-                FriendScore.replace(str, FriendScore.get(str) + (Collections.frequency(Visitor,str)));
+        return result;
+    }
+    // 방문 점수 배정
+    public static void count_visit(HashMap<String, Integer> score, List<String> visitor){
+        Set<String> set = new HashSet<String>(visitor);
+        for (String str : set){
+            if(score.keySet().contains(str)){
+                score.replace(str, score.get(str) + (Collections.frequency(visitor,str)));
             }
             else {
-                FriendScore.put(str, (Collections.frequency(Visitor,str)));
+                score.put(str, (Collections.frequency(visitor,str)));
             }
         }
+    }
+
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> answer = new ArrayList<String>();
+
+        HashMap<String, Integer> FriendScore = new HashMap<String, Integer>();
+        List<String> Friend = makeFriend(friends, user);
+
+        List<String> Together = make_together(friends, user, Friend);
+        count_together(FriendScore, Together);
+
+        List<String> Visitor = make_visitor(visitors,Friend);
+        count_visit(FriendScore, Visitor);
 
         // 점수 높은 순으로 sort
         answer = sortByValue(FriendScore);
