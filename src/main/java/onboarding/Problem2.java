@@ -8,8 +8,7 @@ public class Problem2 {
     }
 
     public static String getDecryption(String cryptogram) {
-        Stack<Character> characters = deduplication(cryptogram);
-        String result = toString(characters);
+        String result = deduplication(cryptogram);
 
         if (isComplete(cryptogram, result)) {
             return result;
@@ -18,7 +17,7 @@ public class Problem2 {
         return getDecryption(result);
     }
 
-    private static Stack<Character> deduplication(String cryptogram) {
+    private static String deduplication(String cryptogram) {
         Stack<Character> characters = new Stack<>();
         char[] chars = cryptogram.toCharArray();
 
@@ -31,7 +30,7 @@ public class Problem2 {
             before = now;
         }
 
-        return characters;
+        return toString(characters);
     }
 
     private static void makeCharacters(Stack<Character> characters, char before, char now) {
