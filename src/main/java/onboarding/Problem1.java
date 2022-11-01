@@ -50,6 +50,21 @@ class Problem1 {
 
             crongMaxNum = Math.max(addNum,multipleNum);
         }
+
+
+        if(pobiMaxNum > crongMaxNum)
+        {
+            answer = 1;
+        }
+        else if(pobiMaxNum == crongMaxNum)
+        {
+            answer = 0;
+        }
+        else
+        {
+            answer = 2;
+        }
+
         return answer;
     }
 }
