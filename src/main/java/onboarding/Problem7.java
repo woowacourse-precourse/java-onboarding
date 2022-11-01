@@ -68,17 +68,23 @@ public class Problem7 {
                 values.add(score.get(k));
             }
         }
-        //정렬
+        //점수순 정렬
         for (int i = 0; i < keys.size(); i++) {
             for (int j = i + 1; j < keys.size(); j++) {
                 if (values.get(i) < values.get(j)) {
                     Collections.swap(values, i, j);
                     Collections.swap(keys, i, j);
                 }
+                if (values.get(i) == values.get(j)) {
+                    //이름순 정렬
+                    if (keys.get(i).compareTo(keys.get(j))>0){
+                        Collections.swap(keys, i, j);
+                    }
+                }
             }
         }
-        if (keys.size()>5)
-            return(keys.subList(0,5));
+        if (keys.size() > 5)
+            return (keys.subList(0, 5));
         return keys;
     }
 
