@@ -15,33 +15,36 @@ public class Problem1 {
     }
 
     private static int computeScore(int pobiScore, int crongScore) {
-        int gameScore = 0;
-
+        if (pobiScore == -1 || crongScore == -1) {
+            return -1;
+        }
         if (pobiScore > crongScore) {
-            gameScore = 1;
+            return 1;
         }
         if (pobiScore < crongScore) {
-            gameScore = 2;
+            return 2;
         }
 
-        return gameScore;
+        return 0;
     }
 
     private static boolean isInvalidPage(List<Integer> openPage) {
-        if (openPage.size() != 2) {
-            return true;
-        }
-
         int leftPage = openPage.get(0);
         int rightPage = openPage.get(1);
 
-        if (leftPage == 1 || rightPage == 400) {
+        if (openPage.size() != 2) {
+            return true;
+        }
+        if (leftPage <= 1 || leftPage >= 399) {
+            return true;
+        }
+        if (rightPage <= 2 || rightPage >= 400) {
             return true;
         }
         if (leftPage % 2 == 0 || rightPage % 2 == 1) {
             return true;
         }
-        if (rightPage - leftPage != 1) {
+        if (leftPage + 1 != rightPage) {
             return true;
         }
 
@@ -49,23 +52,23 @@ public class Problem1 {
     }
 
     private static int findMaxScore(List<Integer> openPage) {
-        int leftPage = openPage.get(0);
-        int rightPage = openPage.get(1);
-
-        return Math.max(countPageScore(leftPage), countPageScore(rightPage));
+        return openPage.stream()
+                .mapToInt(Problem1::countPageScore)
+                .max()
+                .orElseGet(() -> -1);
     }
 
     private static int countPageScore(int page) {
-        int plusValue = 0;
-        int multipleValue = 1;
+        int plusNum = 0;
+        int multipleNum = 1;
 
         while (page > 0) {
-            plusValue += (page % 10);
-            multipleValue *= (page % 10);
+            plusNum += (page % 10);
+            multipleNum *= (page % 10);
 
             page /= 10;
         }
 
-        return Math.max(plusValue, multipleValue);
+        return Math.max(plusNum, multipleNum);
     }
 }
