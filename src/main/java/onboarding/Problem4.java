@@ -18,7 +18,7 @@ public class Problem4 {
         return res;
     }
     public static String solution(String word) {
-        String answer = "";
+        String answer = changeAlphabet(word);
         return answer;
     }
 }
