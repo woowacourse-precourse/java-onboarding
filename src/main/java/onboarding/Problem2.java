@@ -16,10 +16,11 @@ public class Problem2 {
         String lastString;
 
         for (int i = 0; i < cryptogram.length() - 1; i++) {
-            if (hasDuplication(cryptogram, i)) {
+            if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
                 if (startIndex == -1) startIndex = i;
                 lastIndex = i + 1;
             }
+            if (cryptogram.charAt(i) != cryptogram.charAt(i + 1) && startIndex != -1) break;
         }
         if (startIndex == -1) return cryptogram;
         startString = cryptogram.substring(0, startIndex);
@@ -28,10 +29,6 @@ public class Problem2 {
         return startString + lastString;
     }
 
-    public static boolean hasDuplication(String str, int index) {
-        if (str.charAt(index) == str.charAt(index + 1)) return true;
-        return false;
-    }
 
     public static boolean hasDuplication(String str) {
         for (int index = 0; index < str.length() - 1; index++) {
