@@ -5,7 +5,7 @@
  */
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,8 +18,21 @@ public class Problem5 {
         if(checkNum(money) == 0) {
             return null;
         }
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
+        List<Integer> unit = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
+
+        for (int i = 0; i < unit.size(); i++) {
+            int cnt = 0;    // 각 unit(단위)에 대한 개수를 담는 변수
+
+            /* unit의 길이까지, 혹은 money가 0원이 될 때까지 반복한다. */
+            if (money >= unit.indexOf(i) || money != 0) {
+                cnt = money / unit.get(i);
+                money = money % unit.get(i);
+            }
+            answer.add(cnt);
+        }
         return answer;
+
     }
     
     private static int checkNum(int money) {

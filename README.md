@@ -9,7 +9,8 @@
 - [문제 3 풀이](./src/main/java/onboarding/Problem3.java)
 - [x] [문제 4](./docs/PROBLEM4.md)
 - [문제 4 풀이](./src/main/java/onboarding/Problem4.java)
-- [ ] [문제 5](./docs/PROBLEM5.md)
+- [x] [문제 5](./docs/PROBLEM5.md)
+- [문제 5 풀이](./src/main/java/onboarding/Problem5.java)
 - [ ] [문제 6](./docs/PROBLEM6.md)
 - [ ] [문제 7](./docs/PROBLEM7.md)
 ---
@@ -41,4 +42,4 @@
 - [x] solution
 ### 문제 5
 - [x] 숫자 유효 체크 - 범위
-- [ ] solution
+- [x] solution
