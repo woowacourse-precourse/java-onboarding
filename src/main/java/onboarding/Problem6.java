@@ -39,6 +39,10 @@ public class Problem6 {
         List<String> form = getForm(forms, index);
         return form.get(0);
     }
+    private static String getNickname(List<List<String>> forms, int index) {
+        List<String> form = getForm(forms, index);
+        return form.get(1);
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
