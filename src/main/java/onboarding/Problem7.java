@@ -27,4 +27,22 @@ public class Problem7 {
         }
         return setFriendsOfUser;
     }
+    public static void getFriendsOfFriends(Set<String> setFriendsOfUser,List<List<String>> friends){
+        for(String name : setFriendsOfUser) {
+            for(int i=0; i<=friends.size()-1; i++) {
+                if(friends.get(i).get(0).equals(name)) {
+                    addScore(friends.get(i).get(1),10);
+                } else if(friends.get(i).get(1).equals(name)) {
+                    addScore(friends.get(i).get(0),10);
+                }
+            }
+        }
+    }
+
+    public static void getVisitors(List<String> visitors){
+        for(String name : visitors) {
+            addScore(name, 1);
+        }
+    }
+
 }
