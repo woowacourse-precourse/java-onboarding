@@ -1,20 +1,19 @@
 package onboarding;
 
 import java.util.*;
-import java.io.*;
 
 public class Problem2 {
-    static class Decryptor{
+    static class Decrypt {
         Stack<Character> stack;
         StringBuilder sb;
 
-        public Decryptor() {
+        public Decrypt() {
             this.stack = new Stack<>();
             this.stack.push('/');
             this.sb = new StringBuilder();
         }
 
-        public String decrypto(String cryptogram) {
+        public String decrypt(String cryptogram) {
             int strLen = cryptogram.length();
 
             for (int i = 0; i < strLen; i++) {
@@ -41,7 +40,7 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
-        Decryptor decryptor = new Decryptor();
-        return decryptor.decrypto(cryptogram);
+        Decrypt decrypt = new Decrypt();
+        return decrypt.decrypt(cryptogram);
     }
 }
