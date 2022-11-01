@@ -61,4 +61,18 @@ public class Problem7 {
             if (!visitor.equals(user)) userPoints.put(visitor, userPoints.getOrDefault(visitor, 0)+1);
         }
     }
+
+
+    private static List<String> getUsersOrderByPoints(String user, HashMap<String, Integer> userPoints) {
+        List<String> usersOrderByPoints = new ArrayList<String>(userPoints.keySet());
+
+        usersOrderByPoints.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return userPoints.get(02).compareTo(userPoints.get(o1));
+            }
+        });
+
+        return usersOrderByPoints;
+    }
 }
