@@ -4,7 +4,13 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer;
+
+        HashMap<String, ArrayList<String>> relationMap = createRelation(friends);
+        HashMap<String, Integer> recommendationScore = calculateRecommendationScore(user, relationMap, visitors);
+
+        answer = sortRecommendationScore(recommendationScore);
+
         return answer;
     }
 
@@ -77,7 +83,7 @@ public class Problem7 {
         }
     }
 
-    
+
     private static List<String> sortRecommendationScore(HashMap<String, Integer> recommendationScore) {
         List<Map.Entry<String, Integer>> recommendationList = new ArrayList<>(recommendationScore.entrySet());
         List<String> sortedRecommendationList = new ArrayList<>();
