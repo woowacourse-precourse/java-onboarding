@@ -28,6 +28,7 @@ public class Problem3 {
             if (clabNumber.contains(n % 10)) {
                 count++;
             }
+            
             n /= 10;
         }
 
