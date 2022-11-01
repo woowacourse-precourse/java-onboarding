@@ -19,3 +19,9 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 목록
+| 메서드 | 기능 정의 |
+| --- | --- |
+| fun | 문자의 아스키코드를 활용하여 반대로 변환하는 기능 | 
+| solution | 입력받은 String변수 word에 장난을 쳐서(fun) 반환하는 기능 |

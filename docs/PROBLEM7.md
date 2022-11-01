@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 기능 목록
+| 메서드 | 기능 정의 |
+| --- | --- |
+| user_friend | 사용자와 직접적으로 연결된 친구들의 리스트를 반환하는 기능 |
+| friend_friend | 사용자와 직접 연결된 친구들의 친구의 이름과 점수를 Map으로 반환하는 기능 |
+| visited | 방문한 기록의 리스트에서 사용자와 연결되지 않은 친구의 이름과 점수를 Map으로 반환하는 기능 |
+| sorted | Map의 value값에 의해 정렬하는 기능 |
+| solution | List에 정렬된 Map의 key값(이름)을 넣어 리스트를 반환하는 기능 |
