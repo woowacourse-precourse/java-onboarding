@@ -3,6 +3,8 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    private static int FIRST_PAGE = 1;
+    private static int LAST_PAGE =400;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
             try {
                 if (!(validPage(pobi) && validPage(crong))){
@@ -25,12 +27,15 @@ class Problem1 {
         for (Integer num : integerList){
             if (num ==null) return false;                 //요소값 중 하나라도 null값이면, false
 
-            if (num == 1 || num == 400)  return false; //요소값 중 하나라도 첫페이지나 마지막페이지면, false
-            if (1 > num || num >400) return false; //요소값 중 하나라도 페이지 수를 넘어가면, false
+//            if (num ==  FIRST_PAGE || num == LAST_PAGE)  return false; //요소값 중 하나라도 첫페이지나 마지막페이지면, false
+            if ( FIRST_PAGE >= num || num >= LAST_PAGE) return false; //요소값 중 하나라도 페이지 수를 넘어가면, false
         }
 
         // 페이지 연결 체크
-        if (integerList.get(0)+1 != integerList.get(1)) return false;
+        int lpage = integerList.get(0);
+        int rpage = integerList.get(1);
+        if (!(lpage%2!=0 && rpage%2==0)) return false;
+        if (lpage+1 != rpage) return false;
 
         return true;
     }
