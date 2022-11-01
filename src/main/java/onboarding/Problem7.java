@@ -32,6 +32,13 @@ public class Problem7 {
 
         List<Map.Entry<String,Integer>> entryList = new LinkedList<>(scoreCard.entrySet());
 
+        entryList.sort((Map.Entry<String,Integer> s1, Map.Entry<String,Integer> s2)->{
+            if(s2.getValue()==s1.getValue()){
+                return s1.getKey().compareTo(s2.getKey());
+            }
+            return s2.getValue()-s1.getValue();
+        });
+
 
         List<String> answer = List.of();
         return answer;
