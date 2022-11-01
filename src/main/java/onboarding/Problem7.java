@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /*
  * 기능 구현 사항
@@ -12,54 +9,50 @@ import java.util.List;
  * */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<String>();
         HashMap<String, SNSUser> friendList = new HashMap<>();
-        for (List<String> friend:
-             friends) {
+        for (List<String> friend :
+                friends) {
             String firstFriend = friend.get(0);
             String secondFriend = friend.get(1);
             addFriend(friendList, firstFriend, secondFriend);
             addFriend(friendList, secondFriend, firstFriend);
         }
+        SNSUser myAccount = friendList.get(user);
+        for (String opponent :
+                friendList.keySet()) {
+            if (!Objects.equals(user, opponent)) {
+                friendList.get(opponent).compareFriend(myAccount);
+            }
+        }
 
+        for (String visitor :
+                visitors) {
+            if (!friendList.containsKey(visitor)) {
+                SNSUser newUser = new SNSUser(visitor);
+                newUser.addVisitor();
+                friendList.put(visitor, newUser);
+            } else
+                friendList.getOrDefault(visitor, new SNSUser(visitor)).addVisitor();
+        }
+
+
+        List<SNSUser> friendScoreList = new ArrayList<>(friendList.values());
+        Collections.sort(friendScoreList);
+        for (SNSUser friend:
+                friendScoreList.subList(0, 5)) {
+            if(!myAccount.getFriendList().contains(friend.getUserName()) && !Objects.equals(friend.getUserName(), user)){
+                answer.add(friend.getUserName());
+            }
+        }
 
         return answer;
     }
 
-    public static HashMap<String, SNSUser> addFriend(HashMap<String, SNSUser> friendList, String me, String myFriend){
-        SNSUser mySNS = friendList.getOrDefault(me, new SNSUser());
-        mySNS.friendList.add(myFriend);
+    public static void addFriend(HashMap<String, SNSUser> friendList, String me, String myFriend) {
+        SNSUser mySNS = friendList.getOrDefault(me, new SNSUser(me));
+        mySNS.addFriend(myFriend);
         friendList.put(me, mySNS);
-        return friendList;
     }
-
-
-    static class SNSUser implements Comparable<SNSUser>{
-        private int score;
-        private List<String> friendList;
-
-        public SNSUser(){
-            this.score = 0;
-            this.friendList = new ArrayList<>();
-        }
-
-        public void addFriend(String friend){
-            this.friendList.add(friend);
-        }
-
-        @Override
-        public int compareTo(SNSUser o) {
-            return this.score - o.score;
-        }
-
-        public void compareFriend(SNSUser user){
-            // todo
-        }
-
-        public void addVisitor(){
-            this.score++;
-        }
-    }
-
 }
 
