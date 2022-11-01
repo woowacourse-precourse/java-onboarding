@@ -3,6 +3,12 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+
+        while (number > 2) {
+            answer += check(number);
+            number -= 1;
+        }
+
         return answer;
     }
 
