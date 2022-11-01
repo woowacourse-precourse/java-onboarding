@@ -1,20 +1,17 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		int answer = Integer.MAX_VALUE;
-		int pobiScore = -1;
-		int crongScore = -1;
 
 		if (checkRestrictions(pobi) == -1 || checkRestrictions(crong) == -1) {
 			return -1;
 		}
 
-		pobiScore = calcPageNumberScore(pobi, pobiScore);
-		crongScore = calcPageNumberScore(crong, crongScore);
+		int pobiScore = calcPageNumberScore(pobi);
+		int crongScore = calcPageNumberScore(crong);
 
 		if (pobiScore == crongScore) {
 			answer = 0;
@@ -46,55 +43,27 @@ class Problem1 {
 	/**
 	 * 한자리씩 쪼갠 숫자의 합과 곱을 계산하여 score 의 최댓값 갱신
 	 * @param pages
-	 * @param score
 	 * @return
 	 */
-	private static int calcPageNumberScore(List<Integer> pages, int score) {
-		for (Integer i : pages) {
-			List<Integer> singleDigits = splitIntoSingleDigits(i);
-			score = Math.max(score, addAllElements(singleDigits));
-			score = Math.max(score, multiplyAllElements(singleDigits));
+	private static int calcPageNumberScore(List<Integer> pages) {
+		int pageSum = 0;
+		int pageMultiplication = 1;
+		int greater = 0;
+		int score = -1;
+		int singleDigit = 0;
+
+		for (Integer page : pages) {
+			while (page > 0) {
+				singleDigit = page % 10;
+				pageSum += singleDigit;
+				pageMultiplication *= singleDigit;
+				greater = Math.max(pageSum, pageMultiplication);
+				page /= 10;
+			}
+			if (greater > score) {
+				score = greater;
+			}
 		}
 		return score;
-	}
-
-	/**
-	 * 숫자를 한자리씩 쪼개어 리스트로 반환하는 메서드
-	 * @param num
-	 * @return
-	 */
-	private static List<Integer> splitIntoSingleDigits(Integer num) {
-		List<Integer> singleDigits = new ArrayList<>();
-		while (num > 0) {
-			singleDigits.add(num % 10);
-			num /= 10;
-		}
-		return singleDigits;
-	}
-
-	/**
-	 * 리스트의 요소를 모두 더하는 메서드
-	 * @param singleDigits
-	 * @return
-	 */
-	private static Integer addAllElements(List<Integer> singleDigits) {
-		Integer result = 0;
-		for (Integer integer : singleDigits) {
-			result += integer;
-		}
-		return result;
-	}
-
-	/**
-	 * 리스트의 요소를 모두 곱하는 메서드
-	 * @param singleDigits
-	 * @return
-	 */
-	private static Integer multiplyAllElements(List<Integer> singleDigits) {
-		Integer result = 1;
-		for (Integer integer : singleDigits) {
-			result *= integer;
-		}
-		return result;
 	}
 }
