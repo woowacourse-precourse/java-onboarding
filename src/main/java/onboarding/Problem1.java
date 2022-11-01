@@ -15,27 +15,42 @@ class Problem1 {
 
         Set<Integer> candidateNumbersOfPobiMaxScore = new HashSet<>(NUMBER_OF_CANDIDATES_FOR_SCORE);
 
-        String StringOfPobiLeftPage = convertIntToString(pobi.get(LEFT_INDEX_IN_LIST));
-        candidateNumbersOfPobiMaxScore.add(getSumPageDigits(StringOfPobiLeftPage));
-        candidateNumbersOfPobiMaxScore.add(getMultipliedPageDigits(StringOfPobiLeftPage));
+        int pobiLeftPage = pobi.get(LEFT_INDEX_IN_LIST);
+        String pobiLeftPageText = convertIntToString(pobiLeftPage);
+        candidateNumbersOfPobiMaxScore.add(getSumDigits(pobiLeftPageText));
+        candidateNumbersOfPobiMaxScore.add(getMultipliedDigits(pobiLeftPageText));
 
-        String StringOfPobiRightPage = convertIntToString(pobi.get(RIGHT_INDEX_IN_LIST));
-        candidateNumbersOfPobiMaxScore.add(getSumPageDigits(StringOfPobiRightPage));
-        candidateNumbersOfPobiMaxScore.add(getMultipliedPageDigits(StringOfPobiRightPage));
+        int pobiRightPage = pobi.get(RIGHT_INDEX_IN_LIST);
+        String pobiRightPageText = convertIntToString(pobiRightPage);
+        candidateNumbersOfPobiMaxScore.add(getSumDigits(pobiRightPageText));
+        candidateNumbersOfPobiMaxScore.add(getMultipliedDigits(pobiRightPageText));
 
         int pobiScore = getMaxNumberOfList(candidateNumbersOfPobiMaxScore);
 
         Set<Integer> candidateNumbersOfCrongMaxScore = new HashSet<>(NUMBER_OF_CANDIDATES_FOR_SCORE);
 
-        String StringOfCrongLeftPage = convertIntToString(crong.get(LEFT_INDEX_IN_LIST));
-        candidateNumbersOfCrongMaxScore.add(getSumPageDigits(StringOfCrongLeftPage));
-        candidateNumbersOfCrongMaxScore.add(getMultipliedPageDigits(StringOfCrongLeftPage));
+        int crongLeftPage = crong.get(LEFT_INDEX_IN_LIST);
+        String crongLeftPageText = convertIntToString(crongLeftPage);
+        candidateNumbersOfCrongMaxScore.add(getSumDigits(crongLeftPageText));
+        candidateNumbersOfCrongMaxScore.add(getMultipliedDigits(crongLeftPageText));
 
-        String StringOfCrongRightPage = convertIntToString(crong.get(RIGHT_INDEX_IN_LIST));
-        candidateNumbersOfCrongMaxScore.add(getSumPageDigits(StringOfCrongRightPage));
-        candidateNumbersOfCrongMaxScore.add(getMultipliedPageDigits(StringOfCrongRightPage));
+        int crongRightPage = crong.get(RIGHT_INDEX_IN_LIST);
+        String crongRightPageText = convertIntToString(crongRightPage);
+        candidateNumbersOfCrongMaxScore.add(getSumDigits(crongRightPageText));
+        candidateNumbersOfCrongMaxScore.add(getMultipliedDigits(crongRightPageText));
+
+        if (isEvenNumber(pobiLeftPage) || isEvenNumber(crongLeftPage)) {
+            return ResultType.EXCEPTION.result;
+        }
+
+        if (isOddNumber(pobiRightPage) || isOddNumber(crongRightPage)) {
+            return ResultType.EXCEPTION.result;
+        }
 
         int crongScore = getMaxNumberOfList(candidateNumbersOfCrongMaxScore);
+
+        System.out.println("pobiScore = " + pobiScore);
+        System.out.println("crongScore = " + crongScore);
 
         if (pobiScore > crongScore) {
             return ResultType.POBI_WIN.getResult();
@@ -67,7 +82,7 @@ class Problem1 {
     /**
      * String 자료형의 각 자리를 더한 값을 자료형으로 반환하는 메서드
      */
-    private static int getSumPageDigits(String page) {
+    private static int getSumDigits(String page) {
         int sum = 0;
 
         for (int i = 0; i < page.length(); i++) {
@@ -81,12 +96,13 @@ class Problem1 {
     /**
      * String 자료형의 각 자리를 곱한 값을 반환하는 메서드
      */
-    private static int getMultipliedPageDigits(String page) {
+    private static int getMultipliedDigits(String page) {
         int multipliedNumber = 1;
-
+        System.out.println("=========================");
         for (int i = 0; i < page.length(); i++) {
             char aChar = page.charAt(i);
             int digit = Character.getNumericValue(aChar);
+            System.out.println("digit = " + digit);
             multipliedNumber *= digit;
         }
         return multipliedNumber;
@@ -97,6 +113,14 @@ class Problem1 {
      */
     private static int getMaxNumberOfList(Set<Integer> numbers) {
         return Collections.max(numbers);
+    }
+
+    private static boolean isEvenNumber(int number) {
+        return number % 2 == 0;
+    }
+
+    private static boolean isOddNumber(int number) {
+        return number % 2 != 0;
     }
 
     /**
