@@ -8,6 +8,9 @@ import java.util.Objects;
 
 public class FriendSystem {
     private static final int MAX_FAIR_INDEX = 1;
+    private static final int ZERO_POINT = 0;
+    private static final int FRIEND_POINT = 10;
+    private static final int VISITOR_POINT = 1;
     private String user;
     private final HashSet<String> friends;
     private final Map<String, Integer> friendMap;
@@ -68,10 +71,7 @@ public class FriendSystem {
 
     private void checkIsOtherFriend(String otherFriend) {
         if (!Objects.equals(otherFriend, user)) {
-            if (!friendMap.containsKey(otherFriend)) {
-                friendMap.put(otherFriend, 0);
-            }
-            friendMap.put(otherFriend, friendMap.get(otherFriend)+10);
+            friendMap.put(otherFriend, getFriendPoint(otherFriend)+FRIEND_POINT);
         }
     }
 
@@ -83,10 +83,14 @@ public class FriendSystem {
 
     private void addVisitorFriend(String visitor) {
         if (!friends.contains(visitor)) {
-            if (!friendMap.containsKey(visitor)) {
-                friendMap.put(visitor, 0);
-            }
-            friendMap.put(visitor, friendMap.get(visitor)+1);
+            friendMap.put(visitor, getFriendPoint(visitor)+VISITOR_POINT);
         }
+    }
+
+    private int getFriendPoint(String recommendedFriend) {
+        if (!friendMap.containsKey(recommendedFriend)) {
+            return ZERO_POINT;
+        }
+        return friendMap.get(recommendedFriend);
     }
 }
