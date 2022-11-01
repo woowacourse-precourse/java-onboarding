@@ -5,17 +5,16 @@ import java.util.Map.Entry;
 
 public class Problem7 {
     public static boolean isContainUser(String user, List<String> friend) {
-        if(friend.contains(user)) {
+        if (friend.contains(user)) {
             return true;
         }
         return false;
     }
 
     public static String getFriendName(String user, List<String> friend) {
-        if(user.equals(friend.get(0))) {
+        if (user.equals(friend.get(0))) {
             return friend.get(1);
-        }
-        else {
+        } else {
             return friend.get(0);
         }
     }
@@ -23,8 +22,8 @@ public class Problem7 {
     public static Set<String> getFriendSet(String user, List<List<String>> friends){
         Set<String> friendSet = new HashSet<>();
 
-        for(List<String> friend: friends) {
-            if(isContainUser(user, friend)) {  // user가 있는 친구 목록일 경우
+        for (List<String> friend: friends) {
+            if (isContainUser(user, friend)) {  // user가 있는 친구 목록일 경우
                 String friendName = getFriendName(user, friend);
                 friendSet.add(friendName);
             }
@@ -34,11 +33,11 @@ public class Problem7 {
     }
 
     public static boolean isSameFriend(String user, String userFriend, List<String> friend) {
-        if(isContainUser(user, friend)) {   // user가 있다면 체크 X
+        if (isContainUser(user, friend)) {   // user가 있다면 체크 X
             return false;
         }
 
-        if(!isContainUser(userFriend, friend)) {    // user의 친구가 없다면 false
+        if (!isContainUser(userFriend, friend)) {    // user의 친구가 없다면 false
             return false;
         }
 
@@ -46,8 +45,8 @@ public class Problem7 {
     }
 
     public static String getSameFriendName(String user, Set<String> friendSet, List<String> friend) {
-        for(String userFriend : friendSet) {
-            if(isSameFriend(user, userFriend, friend)) {
+        for (String userFriend : friendSet) {
+            if (isSameFriend(user, userFriend, friend)) {
                 return getFriendName(userFriend, friend);
             }
         }
@@ -58,14 +57,14 @@ public class Problem7 {
     public static Map<String, Integer> getFriendsScore(String user, Set<String> friendSet, List<List<String>> friends) {
         Map<String, Integer> scoreMap = new HashMap<>();
 
-        for(List<String> friend : friends) {
+        for (List<String> friend : friends) {
             String friendName = getSameFriendName(user, friendSet, friend);
 
-            if(friendName == null) {
+            if (friendName == null) {
                 continue;
             }
 
-            if(!scoreMap.containsKey(friendName)) {
+            if (!scoreMap.containsKey(friendName)) {
                 scoreMap.put(friendName, 0);
             }
             scoreMap.put(friendName, scoreMap.get(friendName) + 10);
@@ -77,12 +76,12 @@ public class Problem7 {
     public static Map<String, Integer> getVisitorScore(List<String> visitors, Set<String> friendSet) {
         Map<String, Integer> scoreMap = new HashMap();
 
-        for(String visitor : visitors) {
+        for (String visitor : visitors) {
             if(friendSet.contains(visitor)) {   // 이미 친구인 사용자는 제외
                 continue;
             }
 
-            if(!scoreMap.containsKey(visitor)) {
+            if (!scoreMap.containsKey(visitor)) {
                 scoreMap.put(visitor, 0);
             }
             scoreMap.put(visitor, scoreMap.get(visitor) + 1);
@@ -96,7 +95,7 @@ public class Problem7 {
         entryList.sort(new Comparator<Entry<String, Integer>>() {
             @Override
             public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
-                if(o1.getValue() == o2.getValue()) {
+                if (o1.getValue() == o2.getValue()) {
                     return o1.getKey().compareTo(o2.getKey());
                 }
                 return o2.getValue() - o1.getValue();
@@ -110,7 +109,7 @@ public class Problem7 {
         List<Entry<String, Integer>> entryList = getSortedEntries(totalScore);
 
         List<String> result = new ArrayList<>();
-        for(int i = 0; i < 5 && i < entryList.size(); i++) {    // 5명 미만인 경우도 고려
+        for (int i = 0; i < 5 && i < entryList.size(); i++) {    // 5명 미만인 경우도 고려
             String name = entryList.get(i).getKey();
             result.add(name);
         }
