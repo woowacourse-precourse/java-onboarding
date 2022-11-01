@@ -35,6 +35,12 @@ public class Problem7 {
 
     }
 
+    private static HashMap<String, Integer> deleteAlreadyFriend(HashMap<String, Integer> recommend, HashMap<String, HashSet<String>> graph, String user){
+        HashSet<String> userFriends = graph.get(user);
+        for(String friend:userFriends)
+            recommend.remove(friend); //이미 친구이면 기존 추천에서 삭제
+        return recommend;
+    }
 
 
 
@@ -44,6 +50,7 @@ public class Problem7 {
         //사용자들 추천 점수 0으로 세팅
         HashMap<String, Integer> recommend = new HashMap<>();
         addPointByVisitor(recommend, visitors);
+        deleteAlreadyFriend(recommend, graph, user);
 
         return null;
     }
