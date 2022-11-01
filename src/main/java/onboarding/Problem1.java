@@ -33,6 +33,9 @@ class Problem1 {
                     scoreSum = 0;
                     scoreMultiply = 1;
                 }
+                // 3. 모두 더한 값과 모두 곱한 값 중 가장 큰 값을 본인의 점수로 함.
+                maxScore = Collections.max(userScoreArr);
+                totalScoreArr.add(maxScore);
             }
         }
         return answer;
