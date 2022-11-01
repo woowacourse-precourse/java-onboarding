@@ -10,6 +10,7 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         setFriends(friends, user);
+        updateScore(friends, visitors);
 
         List<String> answer = Collections.emptyList();
         return answer;
