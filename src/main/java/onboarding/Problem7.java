@@ -31,8 +31,21 @@ public class Problem7 {
         
         // 방문자 확인
         for(int i=0; i<visitors.size(); i++) { // 5
+        	// 방문 했을 때 점수 추가
         	if(!scoreMap.containsKey(visitors.get(i))) scoreMap.put(visitors.get(i), visit);
         	else scoreMap.put(visitors.get(i), scoreMap.get(visitors.get(i))+visit);
+        	
+        	for(int j=0; j<userFriends.size(); j++) { // 유저의 친구 목록
+        		// 유저의 친구 목록에 방문자가 있을 때
+        		if(visitors.get(i)==userFriends.get(j)) {
+        			for(int k=0; k<friends.size(); k++) { // 6
+        				if(friends.get(k).get(0).equals(visitors.get(i)) && !friends.get(k).get(1).equals(user)){
+        					if(!scoreMap.containsKey(friends.get(k).get(1))) scoreMap.put(friends.get(k).get(1), knowFriend);
+        					else scoreMap.put(friends.get(k).get(1), scoreMap.get(friends.get(k).get(1))+knowFriend);
+        				}
+        			}
+        		}
+        	}
         }
         
         // 점수
