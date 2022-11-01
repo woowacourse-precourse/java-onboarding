@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -52,15 +51,6 @@ public class Problem7 {
             }
         }
 
-        // 친구가 아닌 사이는 +10점
-        /*for(String notFriend: notFriends){
-            if(!map.containsKey(notFriend)){
-                map.put(notFriend, 10);
-            }
-            int prev = map.get(notFriend);
-            System.out.println("친구가 아닌 사이: "+notFriend+", score: "+prev);
-            map.put(notFriend, prev+10);
-        }*/
 
         // 방문자는 +1점
         for(int i=0; i<visitors.size(); i++){
@@ -84,9 +74,6 @@ public class Problem7 {
             answer.add(key);
         }
 
-        /*for (String key : map.keySet()) {
-            System.out.println("[key]:" + key + ", [value]:" + map.get(key));
-        }*/
 
         return answer;
     }
