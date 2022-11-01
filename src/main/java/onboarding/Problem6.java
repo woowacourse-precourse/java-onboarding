@@ -13,15 +13,15 @@ public class Problem6 {
 
     private static void checkIndexAndNickname(String[] nicknameArr) {
         String[] duplicateNicknames = new String[nicknameArr.length];
-        int checkIndex = 0;
-
-        for (int i = 0; i < nicknameArr.length; i++) {
-            for (int j = 0; j < nicknameArr[i].length(); j++) {
-                for (int k = 0; k < nicknameArr[j].length(); k++) {
-
-                }
+        int[] indexs = new int[nicknameArr.length * 5];
+        int index = 0;
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 2; j++) {
             }
         }
+
+
+
     }
 
     private static String[] fillNicknameArr(List<List<String>> forms) {
