@@ -12,6 +12,16 @@ class Problem1 {
         return answer;
     }
 
+    private static int getGameResult(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+        if (pobiScore < crongScore) {
+            return 2;
+        }
+        return 0;
+    }
+
     private static int getMaxScore(int plusNum, int multiplyNum) {
         return Math.max(plusNum, multiplyNum);
     }
