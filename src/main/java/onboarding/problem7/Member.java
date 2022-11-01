@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Member {
     private String name;
-    private List<Member> friends = new ArrayList<>();;
-    private List<Member> visitors = new ArrayList<>();;
+    private List<Member> friends = new ArrayList<>();
+    private List<Member> visitors = new ArrayList<>();
     private List<Member> recommendedFriends = new ArrayList<>();
 
     public Member(String name) {
@@ -56,4 +56,7 @@ public class Member {
         return recommendedFriends;
     }
 
+    public void setRecommendedFriends(List<Member> recommendedFriends) {
+        this.recommendedFriends = recommendedFriends;
+    }
 }
