@@ -12,8 +12,9 @@ public class Problem6 {
 
 
     private static List<String> sortSet(Set<String> overlapSet) {
-
-        return null;
+        List<String> overlapList = new ArrayList<>(overlapSet);
+        Collections.sort(overlapList);
+        return overlapList;
     }
 
     private static Set<String> findOverlapCrew(List<List<String>> forms){
