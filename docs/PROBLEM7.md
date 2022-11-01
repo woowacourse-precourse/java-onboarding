@@ -24,3 +24,18 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+## 기능 구현
+0. 사용자와 함께 아는 친구의 수 = user의 친구들을 중에서 친구인 수 = 10점, 방문한 유저 = 1점
+1. firends를 순회하며 user와 친구인 사용자(userFriend)를 찾는다.
+2. visitor를 순회하며 해당 사용자 점수 1점 증가
+3. userFriend와 친구이면서 user와는 친구가 아닌 유저(notFriend)의 점수 10점 증가
+4. visitor에 관한 리스트와 notFriend에 관한 리스트를 merge
+5. 기준에 따라 정렬 후, 최상위 5명만 반환한다.
+
+## 주의 사항
+1. 이미 친구가 아닌지 체크해준다.
+2. 동일 점수의 경우 이름순으로 정렬한다.
+3. 추천 점수가 0인 사용자는 제외한다.
+4. 추천 인원이 5명 미만일 경우를 고려한다.
