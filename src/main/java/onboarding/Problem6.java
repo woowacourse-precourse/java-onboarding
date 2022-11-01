@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -10,7 +11,7 @@ public class Problem6 {
 
     static String solutionAnswer(){
         String answer="";
-        List<String> list = new ArrayList<>();
+        List<String> list = new ArrayList<String>();
 
         list.add("제이엠");
         list.add("제이슨");
