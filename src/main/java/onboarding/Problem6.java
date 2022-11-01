@@ -25,15 +25,15 @@ public class Problem6 {
             List<String> others = new ArrayList<>(nicknames.subList(i+1,nicknames.size()));
             for (String other : others) {
                 for (String nowChecking : checkingNicknameSlices) {
-                    boolean doubleTF = isDouble(nowChecking, other);
+                    boolean tf = isDuplicated(nowChecking, other);
                 }
             }
         }
     }
 
-    private static boolean isDouble(String nowChecking, String otherNickname) {
-        boolean doubleTF = otherNickname.contains(nowChecking);
-        return doubleTF;
+    private static boolean isDuplicated(String nowChecking, String otherNickname) {
+        boolean tf = otherNickname.contains(nowChecking);
+        return tf;
     }
 
     private static List<String> devideIntoTwo(String nickname) {
