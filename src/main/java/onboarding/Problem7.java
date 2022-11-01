@@ -36,4 +36,16 @@ public class Problem7 {
                 scoreMap.put(friendkey, 0);
         }
     }
+
+    private static void scoringFriends(String user, Map<String, List<String>> friendList) {
+        List<String> userFriends = friendList.get(user);
+        for (String userFriend : userFriends) {
+            List<String> tartgetfFriends = friendList.get(userFriend);
+            for (String friend : tartgetfFriends) {
+                if(!user.equals(friend)){
+                    scoreMap.put(friend , scoreMap.get(friend) + 10);
+                }
+            }
+        }
+    }
 }
