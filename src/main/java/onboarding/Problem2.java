@@ -6,16 +6,33 @@ public class Problem2 {
     * 2. 더 이상 중복된 문자들이 없는지 확인
     * 3. 더 이상 중복된 문자들이 없을때까지 반복
     * */
+
     public static String solution(String cryptogram) {
         String answer = "answer";
-        CheckDuplicate(cryptogram);
+        answer = CheckDuplicate(cryptogram);
         return answer;
     }
 
-    private static void CheckDuplicate(String str) {
-        String res;
-        char[] arr = str.toCharArray();
-
+    private static String  CheckDuplicate(String str) {
+        while(isDuplicate(str.toCharArray())) {
+            char[] arr = str.toCharArray();
+            String res = "";
+            for (int i = 0; i < arr.length; i++) {
+                int curr = i;
+                while (curr < arr.length -1) {
+                    if (arr[curr] != arr[curr + 1])
+                        break;
+                    curr++;
+                }
+                if (curr == i) res += arr[i];
+                else{
+                    i = i + (curr-i)+1;
+                    if(i < arr.length) res += arr[i];
+                }
+            }
+            str = res;
+        }
+        return str;
     }
 
     private static boolean isDuplicate(char[] arr) {
