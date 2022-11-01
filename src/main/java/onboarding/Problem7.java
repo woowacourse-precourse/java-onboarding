@@ -17,8 +17,17 @@ public class Problem7 {
         for (int i = 0; i < allUserList.size(); i++) {
             friendGraph[i] = new ArrayList<>();
         }
+
         // 계정별 추천점수 배열 생성
         int[] score = new int[allUserList.size()];
+
+        // 계정당 할당번호 부여
+        int userNumber = 0;
+        for (String userName : allUserList) {
+            idToNumber.put(userName, userNumber);
+            numberToId.put(userNumber, userName);
+            userNumber += 1;
+        }
 
         return answer;
     }
