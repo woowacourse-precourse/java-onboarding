@@ -28,6 +28,14 @@ public class Problem6 {
                     nickname.length() < 1 || email.length() >= 20){
                 continue;
             }
+
+            String[] nicknameArray = nickname.split("");
+            for(int j = 0 ; j  < nickname.length() - 1 ; j++){
+                String unit = nicknameArray[j]+nicknameArray[j+1];
+                if(nicknameMap.containsKey(unit))
+                    nicknameMap.put(unit, nicknameMap.get(unit) + 1);
+                else nicknameMap.put(unit, 1);
+            }
         }
 
         return answer;
