@@ -20,7 +20,7 @@ public class Problem7 {
         keySet.sort((o1, o2) -> point.get(o2).compareTo(point.get(o1)));
         
         // 상위 5개를 추려서 추천 친구리스트에 담기
-        // for(int i = 0; i < keySet.size() && i < 5; i++) answer.add(keySet.get(i));
+        for(int i = 0; i < keySet.size() && i < 5; i++) answer.add(keySet.get(i));
 
         return answer;
     }
@@ -49,13 +49,14 @@ public class Problem7 {
     /**
      * User의 SNS의 방문한 사람 중 User와 친구가 아닌 사람을 찾는 메소드
      * @param visitors User의 SNS의 방문한 기록
+     * @param usersFriends User의 친구 List
      * @return visistUser
      */
-    private static List<String> getVisitUser(List<String> visitors, List<String> userList) {
+    private static List<String> getVisitUser(List<String> visitors, List<String> usersFriends) {
         HashSet<String> visistUserSet = new HashSet<>();
 
         for (String visistUserName : visitors) {
-            visistUserSet.add(visistUserName);
+            if(!usersFriends.contains(visistUserName)) visistUserSet.add(visistUserName);
         }
         return visistUserSet.stream().collect(Collectors.toList());
     }
