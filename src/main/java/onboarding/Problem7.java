@@ -87,8 +87,12 @@ public class Problem7 {
                                        Map<String, List<String>> allUserFriendsList,
                                        String user,
                                        Map<String, Integer> scoreBoard){
-
-
+        List<String> userFriends = allUserFriendsList.get(user);
+        for (String visitor : visitors) {
+            if (!userFriends.contains(visitor)){
+                scoreBoard.put(visitor,scoreBoard.getOrDefault(visitor,0)+1);
+            }
+        }
     }
 
     /**
