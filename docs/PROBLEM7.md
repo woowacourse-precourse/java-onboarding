@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 기능 목록
+1. user의 친구를 구하는 함수
+2. 함께 아는 친구를 구하는 함수
+3. 친구 추천 알고리즘의 10점인 경우를 만족하는 사용자들의 점수를 계산하는 함수
+4. 친구 추천 알고리즘의 1점인 경우를 만족하는 사용자들의 점수를 계산하는 함수
+5. 점수는 내림차순으로, 이름은 오름차순으로 정렬하는 함수
+6. 친구 추천 알고리즘을 만족하는 상위 5명만을 구하는 함수
+7. 메인 함수
