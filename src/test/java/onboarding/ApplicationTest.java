@@ -43,6 +43,12 @@ class ApplicationTest {
             String result = "brown";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+        @Test
+        void case3() {
+            String cryptogram = "crannmw";
+            String result = "cramw";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
 
         @Test
         void case2() {
