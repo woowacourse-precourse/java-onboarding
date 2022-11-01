@@ -8,8 +8,7 @@ import org.assertj.core.util.Sets;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
-        return answer;
+        return trimList(duplicatedNickname(trimInvalidFormat(forms)));
     }
 
     private static boolean isValidEmail(String email){
@@ -81,6 +80,14 @@ public class Problem6 {
             duplicatedEmail.add(formCopy.get(isduplicatedIdx.get(i)).get(0));
 
         return duplicatedEmail;
+    }
+
+    private static List<String> trimList(List<String> duplicatedEmail){
+        List<String> listCopy = duplicatedEmail;
+        listCopy = Lists.newArrayList(Sets.newHashSet(listCopy));
+        Collections.sort(listCopy);
+
+        return listCopy;
     }
 
 }
