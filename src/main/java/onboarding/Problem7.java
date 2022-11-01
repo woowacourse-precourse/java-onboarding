@@ -60,5 +60,41 @@ public class Problem7 {
             }
         }
     }
+    private static void setListSort(ArrayList<String> answer, List<String> keyList, List<Integer> valueList, List<Item> items) {
+        for(int i = 0; i < keyList.size(); i++){
+            items.add(new Item(valueList.get(i), keyList.get(i)));
+        }
 
+        Collections.sort(items, (o1, o2) -> {
+            if (o1.score < o2.score) return -1;
+            if (o1.score > o2.score) return 1;
+
+            if (o1.name.compareTo(o2.name) > 0) return -1;
+            if (o1.name.compareTo(o2.name) < 0) return 1;
+
+            return 0;
+        });
+        for(int i = (items.size()-1); i>=0; i--){
+            if(items.get(i).getScore() > 0) {
+                answer.add(items.get(i).getName());
+            }
+        }
+    }
+}
+
+class Item {
+    int score;
+    String name;
+
+    public Item(int score, String name) {
+        this.score = score;
+        this.name = name;
+
+    }
+    public String getName() {
+        return name;
+    }
+    public Integer getScore() {
+        return score;
+    }
 }
