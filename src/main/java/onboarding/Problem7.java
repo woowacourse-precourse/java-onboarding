@@ -45,7 +45,10 @@ public class Problem7 {
     }
 
     public static ArrayList<String> getFriendList(String user, HashMap<String, ArrayList<String>> friendGraph) {
+        ArrayList<String> friendList = new ArrayList<>();
+        friendList = friendGraph.get(user);
 
+        return friendList;
     }
 
     public static int findNearFriend(ArrayList<String> userFriendList, ArrayList<String> otherFriendList) {
