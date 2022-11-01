@@ -17,7 +17,9 @@ public class Problem2 {
 
         String validString = validation.getValidString();
         duplicatedStringRemoveProcess(validString);
-        return String.join("", stack);
+        String result = String.join("", stack);
+        stack.clear();
+        return result;
     }
 
     public static void main(String[] args) {
