@@ -107,4 +107,11 @@ public class FriendRecommendation {
             recommendedUserList.add(entry.getKey());
         }
     }
+    private List<String> getTopPointsUsers(){
+        sortPointTable();
+        if(recommendedUserList.size() < Constants.TOP_POINTS_USER_NUMBER){
+            return recommendedUserList;
+        }
+        return recommendedUserList.subList(0, Constants.TOP_POINTS_USER_NUMBER);
+    }
 }
