@@ -90,6 +90,27 @@ class User {
         this.visitors = visitors;
         this.friends = friends;
     }
+
+    /**
+     * 추천 친구 후보인 candidate가 user 본인이 아니고, 이미 등록된 친구가 아닐경우에만 추천 점수를 올린다.
+     * @param candidates - 추천 친구 후보 리스트
+     * @param extraPoint - 추가할 추천 점수
+     */
+    private void setRecommendPoint(List<String> candidates, int extraPoint){
+        if(candidates.isEmpty()){
+            return;
+        }
+        for(String candidate : candidates){
+            if(candidate == this.userName){
+                continue;
+            }
+            if(!this.friends.isEmpty() && this.friends.contains(candidate)){
+                continue;
+            }
+            Integer recommendPoint = this.recommendedFriend.getOrDefault(candidate, 0);
+            this.recommendedFriend.put(candidate, recommendPoint + extraPoint);
+        }
+    }
 }
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
