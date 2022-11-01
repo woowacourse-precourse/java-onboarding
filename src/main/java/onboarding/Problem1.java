@@ -10,23 +10,29 @@ class Problem1 {
         int crongCount = 0;
         int tieCount = 0;   // 무승부 카운트
 
-        for (int i = 0; i < 2; i++) {
-            if (maxNum(String.valueOf(pobi.get(i))) > maxNum(String.valueOf(crong.get(i)))) {
-                pobiCount++;
-            } else if (maxNum(String.valueOf(pobi.get(i))) < maxNum(String.valueOf(crong.get(i)))) {
-                crongCount++;
-            } else if (maxNum(String.valueOf(pobi.get(i))) == maxNum(String.valueOf(crong.get(i)))) {
-                tieCount++;
+        if(isSizeCheck(pobi, crong)) {
+            for (int i = 0; i < 2; i++) {
+                if (maxNum(String.valueOf(pobi.get(i))) > maxNum(String.valueOf(crong.get(i)))) {
+                    pobiCount++;
+                } else if (maxNum(String.valueOf(pobi.get(i))) < maxNum(String.valueOf(crong.get(i)))) {
+                    crongCount++;
+                } else if (maxNum(String.valueOf(pobi.get(i))) == maxNum(String.valueOf(crong.get(i)))) {
+                    tieCount++;
+                }
             }
+
+            if (pobiCount == 2) answer = 1;
+            else if (crongCount == 2) answer = 2;
+            else if (tieCount == 2) answer = 0;   // 무승부
+            else answer = -1;
         }
-
-        if(pobiCount == 2) answer = 1;
-        else if (crongCount == 2) answer = 2;
-        else if (tieCount == 2) answer = 0;   // 무승부
-        else answer = -1;
-
         return answer;
     }
+
+    private static boolean isSizeCheck(List<Integer> pobi, List<Integer> crong) {
+        return pobi.size() == 2 && crong.size() == 2;
+    }
+
     // 가장 큰 수 반환 메서드
     public static int maxNum(String numStr) {
         int sumAdd = 0;
