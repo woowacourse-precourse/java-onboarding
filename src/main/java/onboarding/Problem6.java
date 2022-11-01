@@ -25,7 +25,14 @@ public class Problem6 {
 
             String UserEmail = form.get(EMAIL_IDX);
 
-            usersInfo.put(UserName, UserEmail);
+            if(usersInfo.containsKey(UserName)){
+                AlerterEmails.add(UserEmail);
+                String existUserEmail = usersInfo.get(UserName);
+                AlerterEmails.add(existUserEmail);
+            }else{
+                usersInfo.put(UserName, UserEmail);
+
+            }
         }
     }
 }
