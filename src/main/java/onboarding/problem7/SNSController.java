@@ -130,8 +130,14 @@ public class SNSController {
     }
 
     public void addVisitors(String userName, List<String> visitedUserNames){
+        if(!users.containsKey(userName)){
+            addUser(userName);
+        }
         User user = users.get(userName);
         for(String visitedUserName : visitedUserNames){
+            if(!users.containsKey(visitedUserName)){
+                addUser(visitedUserName);
+            }
             user.addVisitedUser(visitedUserName);
         }
         users.put(userName, user);
