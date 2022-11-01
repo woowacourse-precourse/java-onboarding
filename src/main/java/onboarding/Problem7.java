@@ -14,13 +14,21 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         friendsScore = new HashMap<>();
-        List<String> answer = Collections.emptyList();
 
         userFriends = createUserFriendsSet(user, friends);
         calculateFriendsRelationScore(user, friends);
         calculateTimelineVisitScore(visitors);
 
-        return answer;
+        return recommendFriendsByScore();
+    }
+
+    private static List<String> recommendFriendsByScore() {
+        return friendsScore.entrySet().stream()
+                .filter(Problem7::recommendPolicy)
+                .sorted(Problem7::recommendListSortPolicy)
+                .limit(5)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
 
     private static Set<String> createUserFriendsSet(String user, List<List<String>> friends) {
@@ -54,7 +62,6 @@ public class Problem7 {
                 friendsScore.put(visitor, friendsScore.getOrDefault(visitor, 0) + TIMELINE_VISIT_SCORE)
         );
     }
-
 
     private static boolean recommendPolicy(Map.Entry<String, Integer> userScore) {
         return recommendIfNot0Score(userScore) && notAlreadyFriend(userScore);
