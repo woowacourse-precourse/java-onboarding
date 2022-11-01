@@ -98,6 +98,9 @@ class Problem1 {
                 .orElse(ANSWER_EXCEPTION);
     }
 
+    private static int comparePoint(int leftPoint, int rightPoint) {
+        return Math.max(leftPoint, rightPoint);
+    }
 
     private static int findWinner(int pobi, int crong) {
         int compareResult = Integer.compare(pobi, crong);
