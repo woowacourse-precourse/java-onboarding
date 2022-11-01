@@ -43,11 +43,10 @@ public class Problem7 {
                     ? 1 : score.get(visitors.get(i)) + 1);
         }
 
-//        return sortResult(score);
-
-        return new ArrayList<>(score.keySet());
+        return sortResult(score);
     }
 
+    //  친구 관계 Map을 만들기 위한 메소드
     public static void initFriendList(List<List<String>> friends) {
         Set<String> userSet = new HashSet<>();
         List<String> userList;
@@ -61,11 +60,13 @@ public class Problem7 {
 
         for (int i = 0; i < userList.size(); i++) {
             Set<String> set = new HashSet<>();
+            //  모든 행을 돌면서, 행 안의 모든 요소를 Set에 저장
             for (int j = 0; j < friends.size(); j++) {
                 if (friends.get(j).contains(userList.get(i))) {
                     set.addAll(friends.get(j));
                 }
             }
+            //  user의 이름은 제거
             set.remove(userList.get(i));
             userFriendList.add(new ArrayList<>(set));
         }
@@ -74,14 +75,6 @@ public class Problem7 {
             friendList.put(userList.get(i), userFriendList.get(i));
         }
     }
-
-//    public static int visitScore(String user, List<String> visitors) {
-//
-//    }
-//
-//    public static int knownFriendScore(String user, List<List<String>> friends) {
-//
-//    }
 
     public static boolean isFriend(String user, String target) {
         if (friendList.get(user).contains(target)) {
@@ -92,10 +85,35 @@ public class Problem7 {
     }
 
     public static List<String> sortResult(Map<String, Integer> score) {
-        List<String> res = new ArrayList<>(score.keySet());
+        List<String> res = new ArrayList<>();
+        int resListSize;
 
-//        res.sort();
+        for (Map.Entry<String, Integer> item : score.entrySet()) {
+            res.add(item.getKey() + "_" + item.getValue());
+        }
 
-        return null;
+        res.sort(new Comparator<String>() {
+            @Override
+            public int compare(String s1, String s2) {
+                String[] s1Ary = s1.split("_");
+                String[] s2Ary = s2.split("_");
+
+                if (Integer.parseInt(s1Ary[1]) == Integer.parseInt(s2Ary[1])) {
+                    //  점수가 동일할 경우 이름을 가지고 정렬
+                    return s1Ary[0].compareTo(s2Ary[0]);
+                } else {
+                    //  내림차순으로 만들어주기 위해 -1 곱하기
+                    return Integer.compare(Integer.parseInt(s1Ary[1]), Integer.parseInt(s2Ary[1])) * -1;
+                }
+            }
+        });
+
+        //  res의 사이즈가 5보다 작을 경우를 대비하여 Math.min으로 최소값 잡아주기
+        resListSize = Math.min(res.size(), 5);
+        for (int i = 0; i < resListSize; i++) {
+            res.set(i, res.get(i).split("_")[0]);
+        }
+
+        return res.subList(0, resListSize);
     }
 }
