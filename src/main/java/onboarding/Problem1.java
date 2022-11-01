@@ -15,7 +15,7 @@ class Problem1 {
 
             PageGame pageGame = new PageGame();
 
-            return pageGame.play(pobiPage, crongPage);
+            return pageGame.getGameWinner(pobiPage, crongPage);
 
         } catch (IllegalArgumentException e) {
             return EXCEPTION;
