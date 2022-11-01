@@ -37,9 +37,8 @@ public class Problem7 {
         recommendFriendList.sort((o1, o2) -> {
             if (o1.score == o2.score) {
                 return o1.id.compareTo(o2.id);
-            } else {
-                return o2.score - o1.score;
             }
+            return o2.score - o1.score;
         });
     }
 
