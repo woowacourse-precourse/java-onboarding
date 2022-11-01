@@ -12,4 +12,14 @@ public class Problem3 {
         }
     }
 
+    private static int addClapNumber(int clapCount, int number) {
+        if (isClapCondition(number)) {
+            clapCount++;
+        }
+        return clapCount;
+    }
+
+    private static boolean isClapCondition(int number) {
+        return number == 3 || number == 6 || number == 9;
+    }
 }
