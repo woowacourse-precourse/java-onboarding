@@ -1,6 +1,9 @@
 package onboarding;
 
+import org.mockito.internal.util.collections.ListUtil;
+
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Problem7 {
     static Map<String, List<String>> friendsDic(List<List<String>> friends){
@@ -40,6 +43,27 @@ public class Problem7 {
             }
         }
         return map;
+    }
+    static Map<String, Integer> compareFriends(String user, Map<String, List<String>> friendsMap, Map<String, Integer> pointMap){
+        List<String> userFriends = new ArrayList<>();
+        userFriends.addAll(friendsMap.get(user));
+        for(String i : friendsMap.keySet()){
+            if(i != user && !userFriends.contains(i)){
+                List<String> friendsList = new ArrayList<>();
+                friendsList.addAll(friendsMap.get(i));
+                for(int j=0; j<userFriends.size(); j++){
+                    if(userFriends.contains(friendsList.get(j))){
+                        int point = pointMap.get(friendsList.get(j));
+                        point += 10;
+                        pointMap.put(friendsList.get(j), point);
+                    }
+                }
+            }
+        }
+        return pointMap;
+    }
+    static Map<String, Integer> checkVisit(String user, Map<String, List<String>> friendsMap, Map<String, Integer> pointMap){
+
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
