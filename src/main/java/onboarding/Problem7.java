@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -31,7 +33,29 @@ import java.util.List;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        HashMap<String, Integer> scoreMap = new HashMap<>();
+
+        scoreMap = friendsListMap(user, friends, visitors);
+        System.out.println(scoreMap.keySet());
 
         return answer;
+    }
+
+    public static HashMap<String, Integer> friendsListMap(String user, List<List<String>> friends, List<String> visitors) {
+        HashMap<String, Integer> scoreMap = new HashMap<>();
+
+        for (List<String> withFriend : friends) { // 함께 아는 친구를 map에 저장
+            if (withFriend.get(1) == user || scoreMap.containsKey(withFriend.get(1)))  // 본인이거나 map에 이미 친구가 있을 떄 반복문 중단
+                break;
+            scoreMap.put(withFriend.get(1), 0);
+        }
+
+        for (String friend : visitors) {  // 방문자를 map에 저장
+            if (scoreMap.containsKey(friend)) // map에 이미 친구가 있을 떄 반복문 중단
+                break;
+            scoreMap.put(friend, 0);
+        }
+
+        return scoreMap;
     }
 }
