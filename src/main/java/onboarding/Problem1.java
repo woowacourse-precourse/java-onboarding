@@ -29,6 +29,17 @@ class Problem1 {
         return sum;
     }
 
+    public static int multiplyPage(List<Integer> list){
+        int mul = 1;
+        for (int i = 0; i < list.size(); i++) {
+            char[] chars = list.get(i).toString().toCharArray();
+            for(char x : chars){
+                mul *= Integer.parseInt(String.valueOf(x));
+            }
+        }
+        return mul;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = 0;
         return answer;
