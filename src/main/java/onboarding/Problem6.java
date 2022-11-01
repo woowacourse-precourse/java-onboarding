@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -15,6 +16,15 @@ public class Problem6 {
     		map.put(forms.get(i).get(1),forms.get(i).get(0));
     		nick.add(forms.get(i).get(1));
     	}
+    	for(int i=0;i<nick.size();i++) {
+    		for(int j=0;j<nick.size()-1;j++) {
+    			if(contain(nick.get(i), nick.get(j)) && i!=j && !answer.contains(map.get(nick.get(i)))) {
+    				answer.add(map.get(nick.get(i)));
+    			}
+    		}
+    	}
+    	Collections.sort(answer);
+        return answer;
     }
 	public static boolean contain(String nick, String part) {
     	for(int i=0;i<part.length()-1;i++) {
