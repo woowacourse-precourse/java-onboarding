@@ -6,7 +6,20 @@ public class Problem4 {
 
     public static String solution(String word) {
         HashMap<Character, Character> greenFrogDictionary = createGreenFrogDictionary();
-        return answer;
+        return getGreenFrogWord(greenFrogDictionary, word);
+    }
+
+    private static String getGreenFrogWord(
+        HashMap<Character, Character> greenFrogDictionary,
+        String word
+    ) {
+        StringBuilder greenFrogWord = new StringBuilder();
+        for (int i = 0; i < word.length(); i++) {
+            char letter = word.charAt(i);
+            Character greenFrogLetter = greenFrogDictionary.getOrDefault(letter, ' ');
+            greenFrogWord.append(greenFrogLetter);
+        }
+        return greenFrogWord.toString();
     }
 
     private static HashMap<Character, Character> createGreenFrogDictionary() {
