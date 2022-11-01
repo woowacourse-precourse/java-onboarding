@@ -1,5 +1,19 @@
 import java.util.List;
 
+class PlayerPro1 {
+
+  public final int score;
+
+  public PlayerPro1(int left, int right) {
+    PagePro1 page = new PagePro1(left, right);
+    score = page.getScore();
+  }
+
+  public int getScore() {
+    return this.score;
+  }
+
+}
 class Problem1 {
 
   public static int solution(List<Integer> pobi, List<Integer> crong) {
