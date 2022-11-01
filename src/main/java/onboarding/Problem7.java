@@ -1,11 +1,32 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> usersFriends = new ArrayList<>();
+        List<String> friendOfFriend = new ArrayList<>();
         List<String> answer = Collections.emptyList();
+
+        for (List<String> relations : friends) {
+            if (user.equals(relations.get(0))) {
+                usersFriends.add(relations.get(1));
+            } else if (user.equals(relations.get(1))) {
+                usersFriends.add(relations.get(0));
+            }
+        }
+        for (String friendName : usersFriends) {
+            for (List<String> relations : friends) {
+                if (friendName.equals(relations.get(0))) {
+                    friendOfFriend.add(relations.get(1));
+                } else if (friendName.equals(relations.get(1))) {
+                    friendOfFriend.add(relations.get(0));
+                }
+            }
+        }
+
         return answer;
     }
 }
