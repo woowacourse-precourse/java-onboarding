@@ -32,4 +32,15 @@ public class Problem7 {
         return friendsScore;
     }
 
+    public static Map<String, Integer> calculateScoreByVisitors(List<String> visitors, Map<String, Integer> scoreMap) {
+        for(String visitor : visitors) {
+            if(scoreMap.containsKey(visitor)) {
+                scoreMap.replace(visitor, scoreMap.get(visitor) + 1);
+            } else {
+                scoreMap.put(visitor, 1);
+            }
+        }
+        return scoreMap;
+    }
+
 }
