@@ -10,8 +10,18 @@ public class Problem7 {
         List<String> usersFriends = getUsersFriends(user, friends);
         HashMap<String, Integer> recommendMap = getFriendssFriends(user, friends, usersFriends);
         List<String> visitorExceptFriend = getVisitorExceptFriend(visitors, usersFriends);
+        setVisitorScore(recommendMap, visitorExceptFriend);
 
         return answer;
+    }
+
+    private static void setVisitorScore(HashMap<String, Integer> recommendMap, List<String> visitorExceptFriend) {
+        for (String name : visitorExceptFriend) {
+            if (recommendMap.containsKey(name)) {
+                recommendMap.put(name, recommendMap.get(name) + 1);
+            } else
+                recommendMap.put(name, 1);
+        }
     }
 
     private static List<String> getVisitorExceptFriend(List<String> visitors, List<String> usersFriends) {
