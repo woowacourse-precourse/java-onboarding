@@ -41,6 +41,7 @@ public class Problem7 {
         }
 
         List<String> recommendFriend = new ArrayList<>(friendScore.keySet());
+        Collections.sort(recommendFriend);
         recommendFriend.sort((o1, o2) -> friendScore.get(o2).compareTo(friendScore.get(o1)));
 
         if (recommendFriend.size() > 5) {
