@@ -2,7 +2,13 @@ package onboarding;
 
 public class Problem2 {
 	public static String solution(String cryptogram) {
-		
+		 boolean except=false;
+		 for(char a:cryptogram.toCharArray()) {
+			 if(!Character.isLowerCase(a))  except=true;
+		 }
+		 if(cryptogram.length() <= 1 || cryptogram.length()>=1000 || except) {
+			return null;
+		 }
 		 char left;
 		 char right;
 		 String answer=cryptogram;
