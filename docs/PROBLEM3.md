@@ -14,3 +14,12 @@
 | --- | --- |
 | 13 | 4 |
 | 33 | 14 |
+
+---
+
+## 기능 구현 목록
+
+- isProperNumber(int number)
+    - number가 적절한 값인지 확인
+- getClapCount(int number)
+    - 1부터 number까지 1씩증가 시키면서 3,6,9가 들어가있을때마다 카운트를 세고 그 카운트를 반환

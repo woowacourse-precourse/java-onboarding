@@ -21,3 +21,18 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+
+## 기능 구현 목록
+
+- isProperForms(List<String> forms)
+    - forms의 형태가 적절하면 true 리턴
+- isProperEmail(String email)
+    - 이메일 형식이 적절하면 true 리턴
+- isProperNickName(String nickName)
+    - 닉네임의 형태가 적절하면 true 리턴
+- isProperCrewRange(List<List<String>> forms)
+    - 크루원의 인원이 적절한지 확인
+- getOverlapNickName(List<String> list)
+    - 닉네임을 2글자씩 잘라서 중복된 값이 있다면 List에 담음

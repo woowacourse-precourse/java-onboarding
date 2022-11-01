@@ -19,3 +19,12 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+---
+
+## 기능 구현 목록
+
+- isProperLength(String word)
+    - 들어온 문자열의 길이가 적절한지 확인
+- reverseAlphabet(char letter)
+    - 들어온 알파벳이 영어면 역순으로 변경하여 반환 아니면 그대로 반환
