@@ -13,18 +13,25 @@ import java.time.LocalDateTime;
 // 2번 채택
 public class Problem3 {
     public static int solution(int number)  {
-        int answer = 0 ;
-//        valid(number);
-        for(int i = 3; i <= number; i++){
-            int num = i;
-            while(num > 0){
-                int mod = num % 10;
-                if(mod == 3 || mod == 6 || mod == 9)    //각자릿 수 마다 3, 6, 9가 존재하면 answer 1 증가
-                    answer +=  1;
-                num /= 10;
+
+        try{
+            int answer = 0 ;
+            valid(number);
+            for(int i = 3; i <= number; i++){
+                int num = i;
+                while(num > 0){
+                    int mod = num % 10;
+                    if(mod == 3 || mod == 6 || mod == 9)    //각자릿 수 마다 3, 6, 9가 존재하면 answer 1 증가
+                        answer +=  1;
+                    num /= 10;
+                }
             }
+            return answer;
+        }catch(Exception e){
+            System.out.println(e);
+            return -1;
         }
-        return answer;
+
     }
     public static int solution2(int number) throws Exception {
         int answer = 0;

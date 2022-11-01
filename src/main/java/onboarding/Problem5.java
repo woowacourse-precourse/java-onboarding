@@ -8,15 +8,21 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money){
-//        valid(money);
-        List<Integer> answer = new ArrayList<>();
-        Integer[] amount = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1}; //지폐의 단위 배열을 만들어준다.
+        try{
+            valid(money);
+            List<Integer> answer = new ArrayList<>();
+            Integer[] amount = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1}; //지폐의 단위 배열을 만들어준다.
 
-        for(int i = 0; i < amount.length; i++){ // 지폐의 큰 단위부터 나누어 몫을 저장한다.
-            answer.add(money / amount[i]);
-            money %= amount[i]; //나누고 난 나머지를 다시 money에 저장한다.
+            for(int i = 0; i < amount.length; i++){ // 지폐의 큰 단위부터 나누어 몫을 저장한다.
+                answer.add(money / amount[i]);
+                money %= amount[i]; //나누고 난 나머지를 다시 money에 저장한다.
+            }
+            return answer;
+        }catch(Exception e){
+            System.out.println(e);
+            return null;
         }
-        return answer;
+
     }
 
     public static void valid(int money) throws Exception {
