@@ -8,11 +8,22 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
         List<String> answer = new ArrayList<>();
-
+        \
         Collections.sort(answer);
         return answer;
     }
 
+    private static List<String> getOriginalStringUnit(List<String> stringUnit, int nickNameLength, String nickName) {
+        for(int n = 0; n< nickNameLength -1; n++){
+            for(int m = n; m< nickNameLength; m++){
+                String nickNameSubString = nickName.substring(n,m+1);
+                if(nickNameSubString.length()>=2){
+                    stringUnit.add(nickNameSubString);
+                }
+            }
+        }
+        return stringUnit;
+    }
     private static void checkOtherString(List<List<String>> forms, List<String> answer, int originalStringIndex, List<String> stringUnit, String email) {
         boolean overlap =false;
         overlap = reOverlap(forms, originalStringIndex, stringUnit, overlap);
