@@ -1,19 +1,19 @@
 package onboarding;
 
 public class Problem3 {
-    private int getNumOfTSN(int num){
+    private int getNumOfThreeSixNineDigit(int num){
         int ret = 0;
-        int a = num % 10;
-        int b = num % 100 / 10;
-        int c = num % 1000 / 100;
-        int d = num % 10000 / 1000;
-        if(a == 3 || a == 6 || a == 9)
+        int units = num % 10;
+        int tens = num % 100 / 10;
+        int hundreds = num % 1000 / 100;
+        int thousands = num % 10000 / 1000;
+        if(units == 3 || units == 6 || units == 9)
             ++ret;
-        if(b == 3 || b == 6 || b == 9)
+        if(tens == 3 || tens == 6 || tens == 9)
             ++ret;
-        if(c == 3 || c == 6 || c == 9)
+        if(hundreds == 3 || hundreds == 6 || hundreds == 9)
             ++ret;
-        if(d == 3 || d == 6 || d == 9)
+        if(thousands == 3 || thousands == 6 || thousands == 9)
             ++ret;
         return ret;
     }
@@ -21,7 +21,7 @@ public class Problem3 {
         int answer = 0;
         Problem3 p3 = new Problem3();
         for(int i = 1; i <= number; ++i)
-            answer += p3.getNumOfTSN(i);
+            answer += p3.getNumOfThreeSixNineDigit(i);
         return answer;
     }
 }
