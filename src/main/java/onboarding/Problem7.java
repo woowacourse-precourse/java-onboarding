@@ -63,6 +63,20 @@ public class Problem7 {
             }
         });
 
+        //최대 5명 return, 단, 점수가 0인 경우는 생각하지 않는다.(0일 때는 map에 들어가 있지 않음)
+        if(list.size()>=5){
+            int i=0;
+            for(Map.Entry<String, Integer> entry: list){
+                if(i>=5) break;
+                answer.add(entry.getKey());
+                i++;
+            }
+        }else{
+            for(Map.Entry<String, Integer> entry: list){
+                answer.add(entry.getKey());
+            }
+        }
+
         return answer;
     }
 }
