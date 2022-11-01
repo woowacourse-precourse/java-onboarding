@@ -13,6 +13,7 @@ import java.util.Iterator;
 public class Problem7 {
     public static final Integer KNOW_TOGETHER_SCORE = 10;
     public static final Integer VISIT_SCORE = 1;
+    public static final int MAX_RECOMMEND_NUMBER = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -106,6 +107,9 @@ public class Problem7 {
         }
         for (Map.Entry<String, Integer> entry : sortedTotalScoreMap.entrySet()) {
             recommendFriendList.add(entry.getKey());
+            if (recommendFriendList.size() == MAX_RECOMMEND_NUMBER) {
+                break;
+            }
         }
         return recommendFriendList;
     }
