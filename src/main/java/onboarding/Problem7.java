@@ -6,8 +6,32 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
+    public static class Rmdfriend implements Comparable<Rmdfriend> {
+        private String name;
+        private int score;
+        public Rmdfriend(String name, int score){
+            this.name = name;
+            this.score = score;
+        }
+        public String getName(){
+            return name;
+        }
+        public int getScore(){
+            return score;
+        }
+        @Override
+        public int compareTo(Rmdfriend o){
+            // 점수 내림차순
+            int result = -(this.getScore() - o.getScore());
+            // 점수 같을 경우 이름 오름차순 정렬
+            if (result == 0){
+                result = this.getName().compareTo(o.getName()); // this가 더 크면 1 반환, 더 작으면 -1 반환 같으면 0 반환
+            }
+            return result;
+        }
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         // 1. 사용자가 아는 친구 구하기
         HashMap<String, Integer> userFriends = new HashMap<>();
         int N = friends.size();
@@ -62,7 +86,19 @@ public class Problem7 {
                 score.put(key, value);
             }
         }
-
+        // 4. 추천할 친구 리스트를 점수가 가장 높은 순으로 정렬, 같은 경우 이름순으로 정렬하기
+        ArrayList<Rmdfriend> list = new ArrayList<Rmdfriend>();
+        int S = score.size();
+        for (String key: score.keySet()){
+            Rmdfriend r = new Rmdfriend(key, score.get(key));
+            list.add(r);
+        }
+        Collections.sort(list);
+        int L = list.size();
+        for (int i = 0; i < L; i++){
+            Rmdfriend r = list.get(i);
+            answer.add(r.getName());
+        }
         return answer;
     }
 }
