@@ -20,6 +20,7 @@ public class Problem7 {
         return relation;
     }
 
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         Map<String, Integer> result = new TreeMap<>(); //점수 계산용
@@ -40,6 +41,30 @@ public class Problem7 {
             }
             result.put(visitor,result.get(visitor)+1);
         }
+
+        //3. 점수가 가장 높은 순으로 정렬하여 최대 5명 return, 0점은 추천x
+        List<String> keySet = new ArrayList<>(result.keySet());
+
+        //user와 이미 친구인 경우 제외
+        keySet.remove(user);
+        for(String key:relation.keySet()){
+            if(relation.get(key).contains(user)){
+                keySet.remove(key);
+            }
+
+        }
+        // Value 값으로 내림차순 정렬
+        keySet.sort((k1, k2) -> result.get(k2).compareTo(result.get(k1)));
+        System.out.println(keySet);
+        //최대 5명만 추출, 0점인 경우 제외
+        int answerLength = Math.min(keySet.size(), 5);
+        for(int i = 0; answer.size() < answerLength; i++){
+            String key = keySet.get(i);
+            if( result.get(key)!=0){
+                answer.add(key);
+            }
+        }
+        return answer;
 
 
     }
