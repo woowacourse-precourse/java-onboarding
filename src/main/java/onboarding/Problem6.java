@@ -27,9 +27,18 @@ public class Problem6 {
             Student currStudent = students.get(current);
             String currNickName = currStudent.NickName;
 
-            for (int target = current + 1; target < students.size(); target++) {
-                Student targetStudent = students.get(target);
-                String targetNickName = targetStudent.NickName;
+            for (int index = 0; index < currNickName.length() - 1; index++) {
+                String targetWord = currNickName.substring(index, index + 2);
+
+                for (int target = current + 1; target < students.size(); target++) {
+                    Student targetStudent = students.get(target);
+                    String targetNickName = targetStudent.NickName;
+
+                    if (targetNickName.contains(targetWord)) {
+                        overlapNickNames.add(currStudent.Email);
+                        overlapNickNames.add(targetStudent.Email);
+                    }
+                }
             }
         }
 
