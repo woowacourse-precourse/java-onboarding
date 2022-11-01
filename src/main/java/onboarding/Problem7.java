@@ -25,5 +25,9 @@ public class Problem7 {
         }
     }
 
+    public static boolean isFriendsOfUser(List<String> friends, String user) {
+        return friends.contains(user);
+    }
+
 
 }
