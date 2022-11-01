@@ -30,31 +30,34 @@ public class Problem6 {
         return result;
     }
 
-    static List<String> addEmailList(List<String> emailPair, Map<String, String> formsMap,List<String> prevList) {
-        List<String> resultList = prevList;
-        String email1 = emailPair.get(0);
-        String email2 = emailPair.get(1);
+    static List<String> addEmailList(List<Crew> crewPair) {
+        List<String> emailList = new ArrayList<>();
 
-        if (isSimilar(formsMap.get(email1), formsMap.get(email2))){
-            resultList.add(email1);
-            resultList.add(email2);
+        Crew crew1 = crewPair.get(0);
+        Crew crew2 = crewPair.get(1);
+
+        if (isSimilar(crew1, crew2)){
+            emailList.add(crew1.getEmail());
+            emailList.add(crew2.getEmail());
         }
 
-        return resultList;
+        return emailList;
     }
 
-    static boolean isSimilar(String name1, String name2){
+    static boolean isSimilar(Crew crew1, Crew crew2){
 
-        Stream<String> tokenStream = getTokens(name1).stream();
+        Stream<String> tokenStream = getTokens(crew1).stream();
+        String name2 = crew2.getName();
         Stream<String> containedTokens =  tokenStream.filter(token -> name2.contains(token));
 
         return containedTokens.count() > 0;
 
     }
 
-    static List<String> getTokens(String name) {
+    static List<String> getTokens(Crew crew) {
         List<String> result = new ArrayList<String>();
 
+        String name = crew.getName();
         for (int i = 0; i < name.length() - 1; i++) {
             String token = name.substring(i, i + 2);
             result.add(token);
@@ -63,14 +66,14 @@ public class Problem6 {
         return result;
     }
 
-    static List<List<String>> getCombination(List<String> keys){
-        List<List<String>> result = new ArrayList<>();
-        int keyCnt = keys.size();
+    static List<List<Crew>> getCombination(List<Crew> crews){
+        List<List<Crew>> result = new ArrayList<>();
+        int keyCnt = crews.size();
 
         for (int i = 0; i < keyCnt - 1; i++){
-            String key1 = keys.get(i);
-            List<String> remainKeys = keys.subList(i + 1, keyCnt);
-            remainKeys.stream().forEach(key2 -> result.add(List.of(key1, key2)));
+            Crew crew1 = crews.get(i);
+            List<Crew> remainCrews = crews.subList(i + 1, keyCnt);
+            remainCrews.stream().forEach(crew2 -> result.add(List.of(crew1, crew2)));
         }
 
         return result;
