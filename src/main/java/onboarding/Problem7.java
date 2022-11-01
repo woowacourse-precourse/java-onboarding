@@ -84,5 +84,40 @@ public class Problem7 {
 
     }
 
+    //추천점수는 내림차순으로 정렬하고 추천점수가 같을때는 이름순으로 정렬하는 기능 추가
+    public static List<String> getResultList(HashMap<String, Integer> pointList) {
+        //추천점수에 대해 내림차순정렬을 하고 점수가 같을때는 아이디를 기준으로 오름차순정렬을 한다.
+        List<Entry<String, Integer>> entryList = new ArrayList<>(pointList.entrySet());
+        Collections.sort(entryList,new Comparator<Entry<String, Integer>>() {
+            @Override
+            public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
+                //추천점수에 대해 내림차순 정렬을하고
+                if (o1.getValue() < o2.getValue()) {
+                    return 1;
+                }
+                //추천점수가 같을시 아이디에 대해 오름차순 정렬을 한다.
+                if (o1.getValue().equals(o2.getValue())) {
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+                return -1;
+            }
+        });
+
+        //추천점수가 0인 유저를 제외하고 나머지 유저 결과를 리스트에 담는다 (최대 5명까지 가능하도록한다)
+        List<String> result = new ArrayList<>();
+        int count =0;
+        for (Entry<String, Integer> entry : entryList) {
+            if (entry.getValue().equals(0)) {
+                continue;
+            }
+            if (count == 5) {
+                break;
+            }
+            result.add(entry.getKey());
+            count++;
+        }
+        return result;
+    }
+
 
 }
