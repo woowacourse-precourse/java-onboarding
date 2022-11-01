@@ -24,3 +24,37 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 구현 과정
+
+`HashMap<String, ArrayList<String>> friendsMap`
+
+`HashMap<String, Integer> userScoreMap` 사용
+
+---
+
+1. 친구 관계에 대한 정보를 `friendsMap`에 저장
+
+  - `A`가 `B, C, D`와 친구라고 하면 `A`가 `Key`, `{B, C, D}`가 `Value`
+  - `B`, `C`, `D`도 `A`와 친구이므로 마찬가지로 저장
+
+
+2. 타임라인에 방문한 친구들에 대해 추천 점수 1점씩 추가
+
+  - `A, B, C`가 사용자의 타임라인에 방문했다면, `A, B, C` 각각 1점 추가
+
+
+3. 사용자의 친구의 친구들에 대해 추천 점수 10점씩 추가
+
+  - 사용자 `A`가 `B, C, D`와 친구이고 이 중 `B`가 `E, F`와 친구라면
+    <br>`E, F` 각각 추천 점수 10점 추가
+
+
+4. 친구 이름에 대한 추천 점수가 `userScoreMap`에 저장된다.
+  - `B` 친구 추천 점수가 10점이라면 `(B, 10)`의 `(Key, value)`로 저장
+
+
+5. `userScoreMap`을 `value(친구 추천 점수)`를 기준으로 내림차순 정렬
+
+
+6. 정렬된 `userScoreMap`에서 최대 5명을 반환 (추천 점수가 0인 인원은 제외)

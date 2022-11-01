@@ -21,3 +21,33 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 구현 과정
+
+`HashMap<String, ArrayList<String>>` 사용
+
+결과값들을 `ArrayList<String> result`에 저장
+
+---
+1. 한 닉네임에 대해 연속적으로 나타나는 두 글자 부분 문자열을 모두 확인
+
+   - ex) `제이엠` => `제이`, `이엠`
+
+
+2. 해당 부분 문자열을 `key`로 갖고, 그 닉네임을 신청한 이메일을 `value`에 포함시키는
+   HashMap 생성
+
+   - ex) `jm@email.com` 유저가 생성한 닉네임을 통해 다음과 같은 <br>
+     `(key, value)`쌍을 HashMap에 추가
+
+      - `("제이", {jm@email.com})`
+      - `("이엠", {jm@email.com})`
+
+
+
+
+3. 모든 이메일에 대해 위와 같은 과정을 반복하고, <br>`HashMap`의 `key`를 탐색하며 그 `key`에 대응되는 <br>`value(set)`의 `Size`가
+   2 이상일 경우 해당 `key`를 `result`에 추가
+
+
+4. `result`의 값들을 중복 제거 및 오름차순 정렬 후 반환
