@@ -20,6 +20,20 @@ class Problem1 {
         return result;
     }
 
+    // 기능 목록 2 : 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수(점수)를 구하는 함수
+    public static int findMax(List<Integer> pages) {
+        int result = Integer.MIN_VALUE;
+
+        for (Integer p : pages) {
+            int[] p_num = Stream.of(String.valueOf(p).split("")).mapToInt(Integer::parseInt)
+                .toArray();
+
+            result = Math.max(result, IntStream.of(p_num).sum());
+            result = Math.max(result, multiple(p_num));
+        }
+        return result;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
