@@ -8,6 +8,7 @@ public class Problem7 {
         getFriendsOfFriends(getFriendsOfUser(user, friends), friends);
         getVisitors(visitors);
         deleteNameFromMap(user, getFriendsOfUser(user, friends));
+
         answer = sortName(scoreMap);
 
         return answer;
@@ -79,10 +80,20 @@ public class Problem7 {
 
 
         for (String key : scoreList) {
+            if (name.size() >= 5) break;
             score.add(scores.get(key));
             name.add(key);
         }
 
+        for (int i = 0; i < name.size()-1; i++) {
+            if (score.get(i) == score.get(i + 1)) {
+                if (name.get(i).compareTo(name.get(i + 1)) > 0) {
+                    String temp = name.get(i);
+                    name.set(i, name.get(i+1));
+                    name.set(i+1, temp);
+                }
+            }
+        }
         return name;
     }
 
