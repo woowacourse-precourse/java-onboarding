@@ -21,10 +21,7 @@ public class Problem7 {
         calculateSameFriendScore(user);
         calculateVisitorScore(visitors);
 
-        ArrayList<String> userFriends = friendRelation.get(user);
-        for(String userFriend: userFriends) {
-            friendScore.remove(userFriend);
-        }
+        removeUserFriend(user);
 
         return convertMapToList();
     }
@@ -91,5 +88,12 @@ public class Problem7 {
                 .limit(5)
                 .collect(Collectors.toList());
         return scoreResult;
+    }
+
+    private static void removeUserFriend(String user) {
+        ArrayList<String> userFriends = friendRelation.get(user);
+        for(String userFriend: userFriends) {
+            friendScore.remove(userFriend);
+        }
     }
 }
