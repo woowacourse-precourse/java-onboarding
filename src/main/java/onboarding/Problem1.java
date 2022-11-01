@@ -11,4 +11,15 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    static boolean checkException(List<Integer> pages){
+        if(isPageSizeTwo(pages)) return true;
+
+        return false;
+    }
+
+    static boolean isPageSizeTwo(List<Integer> pages){
+        return pages.size() == 2;
+    }
+
 }
