@@ -50,19 +50,23 @@ public class Problem7 {
     }
 
     private static void scoreMutualFriend(String user, List<String> friend) {
-        if (!isNewFriend(user, friend.get(0))) {
+        if (isUserFriend(friend.get(0))) {
             if (isNewFriend(user, friend.get(1))) {
                 addRecommendScore(friend.get(1), MUTUAL_SCORE);
             }
-        } else if (!isNewFriend(user, friend.get(1))) {
+        } else if (isUserFriend(friend.get(1))) {
             if (isNewFriend(user, friend.get(0))) {
                 addRecommendScore(friend.get(0), MUTUAL_SCORE);
             }
         }
     }
 
+    private static boolean isUserFriend(String friend) {
+        return userFriendList.contains(friend);
+    }
+
     private static boolean isNewFriend(String user, String friend) {
-        return !(userFriendList.contains(friend) || user.equals(friend));
+        return !userFriendList.contains(friend) && !user.equals(friend);
     }
 
     private static void addRecommendScore(String friend, int x) {
