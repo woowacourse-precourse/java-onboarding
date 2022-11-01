@@ -1,9 +1,14 @@
 package onboarding;
 
+import onboarding.problem7.repository.UserRepositoryImpl;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+
+    private static final UserRepositoryImpl userRepository = new UserRepositoryImpl();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         // 입력 폼을 받아 저장하는 map <사용자, 친구목록 리스트>
         Map<String, Set<String>> map = new LinkedHashMap<>();
@@ -16,37 +21,39 @@ public class Problem7 {
         // 입력 폼을 순회 -> 사용자 인덱스의 원소를 키로 지정 하는 로직
         for (List<String> friend : friends) {
             String userKey = friend.get(userNameIndex);
-            String userFriends = friend.get(differentUserNameIndex);
+            String userFriend = friend.get(differentUserNameIndex);
 
             // map 에 사용자가 존재하는지
-            if (map.containsKey(userKey)) {
+            if (userRepository.existsUser(userKey)) {
                 // 사용자의 친구목록 리스트에 추가허여 merge 작업
-                Set<String> mapFriend = map.get(userKey);
-                mapFriend.add(userFriends);
-                map.put(userKey, mapFriend);
+                Set<String> friendList = userRepository.findFriends(userKey);
+                friendList.add(userFriend);
+
+                userRepository.save(userKey, friendList);
                 continue;
             }
 
             // 존재하지 않으면 새로 추가
-            map.put(userKey, new LinkedHashSet<>(Set.of(userFriends)));
+            userRepository.save(userKey, new LinkedHashSet<>(Set.of(userFriend)));
         }
 
         // 입력 폼을 순회 -> 다른 사용자 인덱스의 원소를 키로 지정 하는 로직
         for (List<String> friend : friends) {
             String userKey = friend.get(differentUserNameIndex);
-            String userFriends = friend.get(userNameIndex);
+            String userFriend = friend.get(userNameIndex);
 
             // map 에 사용자가 존재하는지
-            if (map.containsKey(userKey)) {
+            if (userRepository.existsUser(userKey)) {
                 // 사용자의 친구목록 리스트에 추가허여 merge 작업
-                Set<String> mapFriend = map.get(userKey);
-                mapFriend.add(userFriends);
-                map.put(userKey, mapFriend);
+                Set<String> friendList = userRepository.findFriends(userKey);
+                friendList.add(userFriend);
+
+                userRepository.save(userKey, friendList);
                 continue;
             }
 
             // 존재하지 않으면 새로 추가
-            map.put(userKey, new LinkedHashSet<>(Set.of(userFriends)));
+            userRepository.save(userKey, new LinkedHashSet<>(Set.of(userFriend)));
         }
 
         // 입력한 사용자의 친구 목록 리스트
