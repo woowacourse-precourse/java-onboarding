@@ -5,6 +5,7 @@ import java.util.*;
 public class Problem7 {
     public static final int DEFAULT_SCORE = 0;
     public static final int FRIEND_TOGETHER_SCORE = 10;
+    public static final int FRIEND_VISITED_SCORE = 1;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Map<String, Integer> scoreBoard = new HashMap<>();
@@ -16,6 +17,8 @@ public class Problem7 {
         // 친구의 친구 목록 확인하고 점수 주기
         giveFriendOfFriendScore(user, friendList, friends, scoreBoard);
 
+        // 방문자들 점수주기
+        giveVisitorsScore(visitors, scoreBoard);
 
         return answer;
     }
@@ -42,5 +45,9 @@ public class Problem7 {
                 }
             }
         }));
+    }
+
+    public static void giveVisitorsScore(List<String> visitors, Map<String, Integer> scoreBoard) {
+        visitors.forEach(visitor -> scoreBoard.put(visitor, scoreBoard.getOrDefault(visitor, DEFAULT_SCORE) + FRIEND_VISITED_SCORE));
     }
 }
