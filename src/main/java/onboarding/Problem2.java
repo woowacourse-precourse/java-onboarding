@@ -6,6 +6,16 @@ public class Problem2 {
         return answer;
     }
 
+    // 3. 중복일때 첫 인덱스 구하기
+    public static int getDuplicateIndexOfBegin(String s) {
+        int begin = 0;
+        for(int i = 0; i < s.length()-1 ; i++){
+            if (s.charAt(i) == s.charAt(i+1)) begin = i;
+        }
+
+        return begin;
+    }
+
     // 4. 중복일때 끝 인덱스 구하기
     public static int getDuplicateIndexOfEnd(String s, int begin) {
         int end;
