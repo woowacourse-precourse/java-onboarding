@@ -5,8 +5,8 @@ import java.lang.Math;
 
 class Problem1 {
     public boolean checkValid(List<Integer> test) {
-        int first = test.get(1);
-        int second = test.get(2);
+        int first = test.get(0);
+        int second = test.get(1);
 
         return ( (second-first) == 1 && 0 < first && first < 400 );
     }
@@ -32,8 +32,8 @@ class Problem1 {
         if ( !(prob.checkValid(pobi) && prob.checkValid(crong)) )
             return -1;
 
-        p = Math.max(prob.getGreatest(pobi.get(1)),prob.getGreatest(pobi.get(2)));
-        c = Math.max(prob.getGreatest(crong.get(1)),prob.getGreatest(crong.get(2)));
+        p = Math.max(prob.getGreatest(pobi.get(0)),prob.getGreatest(pobi.get(1)));
+        c = Math.max(prob.getGreatest(crong.get(0)),prob.getGreatest(crong.get(1)));
 
         if (c < p)
             answer = 1;
