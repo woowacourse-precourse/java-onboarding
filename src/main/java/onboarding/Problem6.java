@@ -16,9 +16,10 @@ import java.util.List;
 
 public class Problem6 {
     public static String[][] listToArray(List<List<String>> list){
-        String[][] array = list.stream()
-                                .map(item->item.stream().toArray())
-                                .toArray(String[][]::new);
+        String[][] array = new String[list.size()][];
+
+        for(int i = 0;i < array.length;i++)
+            array[i] = list.get(i).stream().toArray(String[]::new);
         return array;
     }
     public static List<String> makeKeyword(String nickName){
