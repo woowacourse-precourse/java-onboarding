@@ -19,3 +19,10 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능단위 개발명세
+
+- Character가 알파벳인지 아닌지 구분하는 메소드
+- 문자를 형식에 맞춰 변환하는 메소드
+- 모든 word에 대하여 변환을 하는 메소드
+- solution

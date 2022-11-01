@@ -21,3 +21,10 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능단위 개발명세
+
+- input값의 유효성을 검증하는 validation Check 
+- 중복문자를 찾고 해당하는 index들을 찾는 기능
+- 완전히 해독된 문장을 찾는 기능
+- 솔루션

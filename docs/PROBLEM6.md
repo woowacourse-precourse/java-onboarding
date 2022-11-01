@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능단위 개발명세
+
+- input값에 대한 유효성 검사하는 기능
+- 닉네임 중 같은 글자가 연속적으로 포함되었는지 확인하는 기능
+- 이메일에 해당하는 문자열을 오름차순으로 정렬하고 중복을 제거하는 기능
+- 모든 사람들의 이름을 2글자씩 나누어 중복되는 글자를 추출하는 기능
