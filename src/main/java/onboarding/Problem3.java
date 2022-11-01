@@ -9,10 +9,10 @@ public class Problem3 {
         return count369(number);
     }
 
-    private static int count369(int range){
+    private static int count369(int range) {
         int count = 0;
 
-        for (int i=0; i<=range; i++){
+        for (int i = 0; i <= range; i++) {
             String num = String.valueOf(i);
             count += charCount(num);
         }
@@ -20,10 +20,10 @@ public class Problem3 {
         return count;
     }
 
-    private static int charCount(String num){
+    private static int charCount(String num) {
         int count = 0;
-        for (Character ch : num.toCharArray()){
-            if(ch == THREE | ch == SIX | ch == NINE){
+        for (Character ch : num.toCharArray()) {
+            if (ch == THREE | ch == SIX | ch == NINE) {
                 count++;
             }
         }

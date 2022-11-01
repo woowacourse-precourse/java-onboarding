@@ -18,12 +18,12 @@ public class Problem6 {
 
     }
 
-    private static Set<String> getOverlappingName(List<String> names){
+    private static Set<String> getOverlappingName(List<String> names) {
         Map<String, List<String>> overlappingMap = new HashMap<>();
 
         for (String name : names) {
             char[] nameChars = name.toCharArray();
-            for(int i=0; i<name.length() - 1; i++) {
+            for (int i = 0; i < name.length() - 1; i++) {
                 String overlappingWord =
                         new String(new char[]{nameChars[i], nameChars[i + 1]});
                 List<String> registeredNames =
@@ -37,7 +37,7 @@ public class Problem6 {
         return getListsLongerThen1AsSet(overlappingMap);
     }
 
-    private static Set<String> getListsLongerThen1AsSet(Map<String, List<String>> map){
+    private static Set<String> getListsLongerThen1AsSet(Map<String, List<String>> map) {
         return map.values().stream()
                 .filter(i -> i.size() > 1)
                 .flatMap(Collection::stream)
@@ -45,7 +45,7 @@ public class Problem6 {
     }
 
 
-    private static List<String> getSortedValues(Map<String, String> map, Set<String> keys){
+    private static List<String> getSortedValues(Map<String, String> map, Set<String> keys) {
         return keys.stream()
                 .map(map::get)
                 .sorted()

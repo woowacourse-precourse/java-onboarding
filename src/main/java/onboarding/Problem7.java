@@ -15,12 +15,12 @@ public class Problem7 {
     }
 }
 
-class FriendRecommender{
+class FriendRecommender {
     private String user;
     private List<String> friendsOfUser;
     private Map<String, Integer> recommendationScores = new HashMap<>();
 
-    private FriendRecommender(Builder builder){
+    private FriendRecommender(Builder builder) {
         this.user = builder.user;
         this.friendsOfUser = builder.friends.get(user);
 
@@ -29,12 +29,12 @@ class FriendRecommender{
 
     }
 
-    private void addFriendScore(Map<String, List<String>> friends){
+    private void addFriendScore(Map<String, List<String>> friends) {
         List<String> friendsOfUser = friends.get(user);
         final Integer recommendedFriendScore = 10;
 
-        for (String friend : friendsOfUser){
-            for(String recommendedFriend : friends.get(friend)){
+        for (String friend : friendsOfUser) {
+            for (String recommendedFriend : friends.get(friend)) {
                 recommendationScores.put(recommendedFriend,
                         recommendationScores.getOrDefault(recommendedFriend, 0)
                                 + recommendedFriendScore);
@@ -44,9 +44,9 @@ class FriendRecommender{
         recommendationScores.remove(user);
     }
 
-    private void addVisitorScore(List<String> visitors){
+    private void addVisitorScore(List<String> visitors) {
         final Integer visitorScore = 1;
-        for (String visitor : visitors){
+        for (String visitor : visitors) {
             recommendationScores.put(visitor,
                     recommendationScores.getOrDefault(visitor, 0)
                             + visitorScore);
@@ -54,7 +54,7 @@ class FriendRecommender{
     }
 
 
-    public List<String> get5RecommendedFriend(){
+    public List<String> get5RecommendedFriend() {
         return recommendationScores.entrySet().stream()
                 .filter(entry -> !friendsOfUser.contains(entry.getKey()))
                 .sorted(Comparator.comparing(Map.Entry::getKey))
@@ -72,20 +72,20 @@ class FriendRecommender{
         private Map<String, List<String>> friends;
         private List<String> visitors;
 
-        public Builder(){
+        public Builder() {
         }
 
-        public Builder user(String user){
+        public Builder user(String user) {
             this.user = user;
             return this;
         }
 
-        public Builder friends(List<List<String>> friends){
+        public Builder friends(List<List<String>> friends) {
             this.friends = toMap(friends);
             return this;
         }
 
-        public Builder visitors(List<String> visitors){
+        public Builder visitors(List<String> visitors) {
             this.visitors = visitors;
             return this;
         }
@@ -94,14 +94,14 @@ class FriendRecommender{
             return new FriendRecommender(this);
         }
 
-        private static Map<String, List<String>>toMap(List<List<String>> linkedNodes){
+        private static Map<String, List<String>> toMap(List<List<String>> linkedNodes) {
             Map<String, List<String>> linkedMap = new HashMap<>();
 
-            for (List<String> linkedNode: linkedNodes){
-                String nodeA =  linkedNode.get(0);
-                String nodeB =  linkedNode.get(1);
+            for (List<String> linkedNode : linkedNodes) {
+                String nodeA = linkedNode.get(0);
+                String nodeB = linkedNode.get(1);
 
-                List<String> nodesLinkedToA= linkedMap.getOrDefault(
+                List<String> nodesLinkedToA = linkedMap.getOrDefault(
                         nodeA, new ArrayList<>());
                 List<String> nodesLinkedToB = linkedMap.getOrDefault(
                         nodeB, new ArrayList<>());
@@ -116,10 +116,6 @@ class FriendRecommender{
             return linkedMap;
         }
     }
-
-
-
-
 
 
 }
