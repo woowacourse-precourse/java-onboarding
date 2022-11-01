@@ -10,7 +10,10 @@ public class Problem6 {
             NickName2Combi(combi, form);
         }
 
-        return DuplicatedNickName(combi);
+        // 오름차순 정렬
+        List<String> answer = DuplicatedNickName(combi);
+        Collections.sort(answer);
+        return answer;
     }
 
     public static void NickName2Combi(Map<String, List<String>> combi, List<String> form){
