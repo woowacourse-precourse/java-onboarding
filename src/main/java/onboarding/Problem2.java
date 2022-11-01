@@ -25,6 +25,8 @@ public class Problem2 {
             }
         }
 
+        answer = String.join("", visited);
+
         return answer;
     }
 }
