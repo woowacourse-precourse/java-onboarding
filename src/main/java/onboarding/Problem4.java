@@ -10,6 +10,9 @@ public class Problem4 {
             else if(Character.isUpperCase(word.charAt(i))){
                 answer += toReverseUpper(word.charAt(i));
             }
+            else if (Character.isLowerCase(word.charAt(i))) {
+                answer += toReverseLower(word.charAt(i));
+            }
         }
         return answer;
     }
@@ -22,6 +25,11 @@ public class Problem4 {
     public static char toReverseUpper(char letter){
         int letterNumber = (int) letter - 65;
         int changeLetterNumber = 90 - letterNumber;
+        return (char) changeLetterNumber;
+    }
+    public static char toReverseLower(char letter){
+        int letterNumber = (int) letter - 97;
+        int changeLetterNumber = 122 - letterNumber;
         return (char) changeLetterNumber;
     }
 }
