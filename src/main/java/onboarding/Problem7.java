@@ -151,4 +151,17 @@ public class Problem7 {
             .filter(e -> e.getValue() > 0)
             .collect(Collectors.toMap(Entry::getKey, Entry::getValue));
     }
+
+    //추천 점수 순으로 정렬 후 같은 점수에 대해서는 사용자 아이디를 오름차순으로 정렬하는 기능
+    public static List<String> sortRecommendScore(Map<String, Integer> unknownUserScore) {
+        List<String> sortScoreList = new ArrayList<>(unknownUserScore.keySet());
+        sortScoreList.sort((o1 ,o2) -> {
+            int compare = (unknownUserScore.get(o1) - unknownUserScore.get(o2)) * -1;
+            if(compare == 0) {
+                return o1.compareTo(o2);
+            }
+            return compare;
+        });
+        return sortScoreList;
+    }
 }
