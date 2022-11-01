@@ -9,7 +9,7 @@
 ### Problem1
 - [ArrayList 개념 및 사용법](https://danmilife.tistory.com/16)
 - [List 와 ArrayList 차이점](https://yoon-dailylife.tistory.com/7)
-- [람다식에 대해](https://needneo.tistory.com/24) : *간단히 정리 둘 것
+- [람다식에 대해](https://needneo.tistory.com/24) : 무조건 람다식을 쓰는 것은 효율적인 면에서 좋지 않을 수 있다.
 - [Java 메소드 선언 순서에 대해](https://cloudstudying.kr/questions/428)
 - [ArrayList 합계 계산법](https://codechacha.com/ko/java-list-sum-average/)
 - [min,max 함수](https://jamesdreaming.tistory.com/151)
@@ -24,7 +24,7 @@
 - [암호화](https://kiffblog.tistory.com/147)
 - [문자열(String) forEach(Enhanced for) 사용법](https://dlee0129.tistory.com/94)
 - [대소문자 구분 함수](https://dongjin94.tistory.com/171)
-- [아스키코드 변환](https://blog.naver.com/PostView.nhn?blogId=jysaa5&logNo=221831226674) : *설명 추가
+- [아스키코드 변환](https://blog.naver.com/PostView.nhn?blogId=jysaa5&logNo=221831226674) : C++과 다르게 반드시 변환할 형을 명시해 ****줘야한다.
 
 ### Problem5
 - [EmptyList 개념](https://dololak.tistory.com/48)
@@ -48,4 +48,4 @@
 - [sourcetree commit message 변경 방법](https://stackoverflow.com/questions/17604232/edit-a-commit-message-in-sourcetree-windows-already-pushed-to-remote)
 - Commit message 관례 : [1](https://beomseok95.tistory.com/328) , [2](https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=skykbc&logNo=222016405016) , [3](https://hyeokjaelee.github.io/good-commit-message/)
 - [Clean Code CheckList](https://automation-slave.tistory.com/27)
-- [intellij 단축키]()
+- [intellij 유용한 단축키](https://blog.jetbrains.com/ko/2020/03/11/top-15-intellij-idea-shortcuts_ko/)
