@@ -95,7 +95,57 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void case3() {
+            String cryptogram = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            String result = "";
+            assertThatThrownBy(() -> {
+                Problem2.solution(cryptogram);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
+
+        @Test
+        void myCaseForPro2Uppercase1() {
+            String result = "";
+            String cryptogram = "ZyelleyZ";
+            assertThatThrownBy(() -> {
+                Problem2.solution(cryptogram);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
+        @Test
+        void myCaseForPro2Uppercase2() {
+            String result = "";
+            String cryptogram = "abccbaD";
+            assertThatThrownBy(() -> {
+                Problem2.solution(cryptogram);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
+
+        @Test
+        void myCaseForPro2Space() {
+            String result = "";
+            String cryptogram = "";
+            assertThatThrownBy(() -> {
+                Problem2.solution(cryptogram);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
+
+        @Test
+        void checkTmpError() {
+            String result = "brnown";
+            String cryptogram = "brooonown";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void checkEmptyError() {
+            String result = "rnown";
+            String cryptogram = "bbrooonown";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
     }
+
 
     @Nested
     class Problem3Test {
