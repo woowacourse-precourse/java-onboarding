@@ -65,6 +65,12 @@ public class Problem7 {
     public static void addAcquaintanceScore (Map<String, List<String>> allUserFriendsList,
                                              String userName,
                                              Map<String, Integer> scoreBoard) {
+        List<String> userFriends = allUserFriendsList.get(userName);
+        userFriends.stream()
+                .map(allUserFriendsList::get)
+                .forEach(userFriendOfFriend -> userFriendOfFriend.stream()
+                        .filter(f -> !f.equals(userName) && !userFriends.contains(userFriendOfFriend))
+                        .forEach(f -> scoreBoard.put(f,scoreBoard.getOrDefault(f,0)+10)));
 
     }
 
