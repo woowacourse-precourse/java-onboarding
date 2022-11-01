@@ -21,3 +21,7 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+## 📝 구현 기능 목록
+- [x] 연속되는 중복 문자 확인
+- [x] 연속되는 중복 문자 제거
