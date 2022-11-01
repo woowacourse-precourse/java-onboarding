@@ -119,6 +119,21 @@ class Problem1 {   // Problem1이라는 class 선언 (문제 1에 대한 class �
         }
 
 
+        // 포비와 크롱의 최대값 계산
+        pobi_max = Math.max(Math.max(pobi_num[0],pobi_num[1]), Math.max(pobi_num[2],pobi_num[3]));
+        crong_max = Math.max(Math.max(crong_num[0],crong_num[1]), Math.max(crong_num[2],crong_num[3]));
+
+
+        // 결과 계산
+        if (pobi_max > crong_max){
+            answer = 1;
+        } else if (pobi_max < crong_max){
+            answer = 2;
+        } else if (pobi_max == crong_max){
+            answer = 0;
+        } else {
+            answer = -1;
+        }
 
         return answer;
     }
