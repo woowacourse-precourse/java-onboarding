@@ -33,4 +33,4 @@ return 하도록 solution 메서드를 완성하라. 이때 추천 점수가 0�
 [ v ] user와 친구 관계인 목록을 myfriends에 추가한다.    
 [ v ] 방문기록에 있는 이름을 userInfo에 추가하고 map을 사용하여 방문점수도 추가한다.  
 [ v ] friends 친구 관계 목록을 순회하여 myfriend에 있는 친구의 이름이 포함되어 있을 시 해당 인덱스가 아닌 반대 인덱스에 value에 10을 더한다.    
-[ v ] result 목록에서 user와 user의 친구를 remove한 후 return 함.  
+[ v ] result 목록에서 user와 user의 친구를 remove한 후 return 함.

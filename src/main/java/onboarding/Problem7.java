@@ -5,52 +5,43 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+    private static final int FIRST_FRIEND = 0;
+    private static final int SECOND_FRIEND = 0;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Integer> userInfo = new HashMap<>();
         Set<String> myFriends = new HashSet<>();
 
-
         for (List<String> friend : friends) {
-            userInfo.put(friend.get(0), 0);
-            userInfo.put(friend.get(1), 0);
+            userInfo.put(friend.get(0), FIRST_FRIEND);
+            userInfo.put(friend.get(1), SECOND_FRIEND);
         }
-        for (List<String> strings : friends) {
-            if (strings.contains(user)) {
-                myFriends.addAll(strings);
-            }
-        }
+        friends.stream()
+                .filter(friend -> friend.contains(user))
+                .forEach(myFriends::addAll);
         List<String> myFriend = new ArrayList<>(myFriends);
 
-
         for (String visitor : visitors) {
-            if (userInfo.containsKey(visitor)) {
-                userInfo.put(visitor, userInfo.get(visitor) + 1);
-            } else {
-                userInfo.put(visitor, 1);
-            }
+            userInfo.put(visitor, userInfo.getOrDefault(visitor, 0) + 1);
         }
-        for (int i = 0; i < friends.size(); i++) {
+
+        for (List<String> strings : friends) {
             for (int j = 0; j < 2; j++) {
-                if (friends.get(i).contains(myFriend.get(0))) {
-                    userInfo.put(friends.get(i).get(1), userInfo.get(friends.get(i).get(1)) + 10);
-
+                if (strings.contains(myFriend.get(0))) {
+                    userInfo.put(strings.get(1), userInfo.get(strings.get(1)) + 10);
                 }
-                if (friends.get(i).contains(myFriend.get(1))) {
-                    userInfo.put(friends.get(i).get(0), userInfo.get(friends.get(i).get(0)) + 10);
+                if (strings.contains(myFriend.get(1))) {
+                    userInfo.put(strings.get(0), userInfo.get(strings.get(0)) + 10);
                 }
             }
         }
-
         userInfo.remove(user);
         for (String friend : myFriend) {
             userInfo.remove(friend);
         }
-        List<String> keySetList = new ArrayList<>(userInfo.keySet());
-
-        keySetList.sort(((o1, o2) -> userInfo.get(o2).compareTo(userInfo.get(o1))));
-        System.out.println(keySetList);
-        return keySetList;
+        List<String> answer = new ArrayList<>(userInfo.keySet());
+        answer.sort(((o1, o2) -> userInfo.get(o2).compareTo(userInfo.get(o1))));
+        return answer;
     }
-
 }
 
