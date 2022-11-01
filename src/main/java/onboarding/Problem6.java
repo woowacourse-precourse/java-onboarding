@@ -3,16 +3,6 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
-    public static void main(String[] args) {
-        List<List<String>> forms = List.of(
-                List.of("jm@email.com", "제이엠"),
-                List.of("jason@email.com", "제이슨"),
-                List.of("woniee@email.com", "워니"),
-                List.of("mj@email.com", "엠제이"),
-                List.of("nowm@email.com", "이제엠")
-        );
-        solution(forms);
-    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         HashSet<String> emailSet = new HashSet<>();
@@ -50,7 +40,7 @@ public class Problem6 {
             }
             if (arrayListIdx.size() >= 2) {
                 for (int j = 0; j < arrayListIdx.size(); j++) {
-                    emailSet.add(arrayEmail[j]);
+                    emailSet.add(arrayEmail[arrayListIdx.get(j)]);
                 }
             }
             arrayListIdx.clear();
@@ -59,10 +49,9 @@ public class Problem6 {
         // 중복된 닉네임의 이메일을 정렬하기 위해서 ArrayList로 이동
         Iterator it2 = emailSet.iterator();
         while (it2.hasNext()) {
-            String part = (String) it.next();
+            String part = (String) it2.next();
             answer.add(part);
         }
-
 
         return answer;
     }
