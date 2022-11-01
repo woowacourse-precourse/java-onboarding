@@ -45,5 +45,15 @@ class Problem1 {
         else
             return mul;
     }
+    public static int getWinner(int pobiScore,int crongScore){
+        int answer = 0;
+        if(pobiScore > crongScore)
+            answer = 1;
+        else if (pobiScore < crongScore)
+            answer = 2;
+        else
+            answer = 0;
+        return answer;
+    }
 }
 
