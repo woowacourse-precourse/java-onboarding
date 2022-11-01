@@ -1,24 +1,24 @@
 package onboarding;
 
+import onboarding.problem1.Page;
+
 import java.util.Comparator;
 import java.util.List;
 
 class Problem1 {
     private static final int LEFT_PAGE_INDEX = 0;
     private static final int RIGHT_PAGE_INDEX = 1;
-    private static final int START_PAGE = 1;
-    private static final int END_PAGE = 400;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try {
             validatePageNumberGap(pobi.get(LEFT_PAGE_INDEX), pobi.get(RIGHT_PAGE_INDEX));
             validateLeftPageNumberIsOdd(pobi.get(LEFT_PAGE_INDEX));
             pobi.stream()
-                    .forEach(Problem1::validatePageNumberRange);
+                    .forEach(pobiPage -> new Page(pobiPage));
             validatePageNumberGap(crong.get(LEFT_PAGE_INDEX), crong.get(RIGHT_PAGE_INDEX));
             validateLeftPageNumberIsOdd(crong.get(LEFT_PAGE_INDEX));
             crong.stream()
-                    .forEach(Problem1::validatePageNumberRange);
+                    .forEach(crongPage -> new Page(crongPage));
         } catch (IllegalArgumentException e) {
             return -1;
         }
@@ -68,12 +68,6 @@ class Problem1 {
         }
 
         return 0;
-    }
-
-    public static void validatePageNumberRange(int pageNumber) {
-        if (pageNumber <= START_PAGE || pageNumber >= END_PAGE) {
-            throw new IllegalArgumentException();
-        }
     }
 
     public static void validatePageNumberGap(int leftPage, int rightPage) {
