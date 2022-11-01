@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +14,11 @@ import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+        for (int i = 0; i < forms.size(); i++) {
+            List<String> form = forms.get(i);
+            String nickname = form.get(1);
+        }
         return answer;
     }
 }
