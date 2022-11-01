@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -29,7 +30,18 @@ public class Problem6 {
      * 주어진 닉네임에 대해, 생성될 수 있는 모든 문자열을 생성하여 반환
      */
     public static List<String> generateConsecutiveLetters(String nickName) {
-        return Collections.emptyList();
+        List<String> consecutiveLetterList = new ArrayList<>();
+
+        for (int i = 2; i <= nickName.length(); i++) {
+            for (int j = 0; j < nickName.length() - 1; j++) {
+                if ((j + i) > nickName.length()){
+                    break;
+                }
+                consecutiveLetterList.add(nickName.substring(j,
+                        j + i));
+            }
+        }
+        return consecutiveLetterList;
     }
 
 }
