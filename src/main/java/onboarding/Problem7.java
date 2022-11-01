@@ -7,6 +7,11 @@ import java.util.stream.Collectors;
 public class Problem7 {
     public static Map<String, List<String>> friendsMap;
     public static Map<String, Integer> scoreMap;
+    public static int FIRST_FRIEND_INDEX = 0;
+    public static int SECOND_FRIEND_INDEX  = 1;
+    public static int INIT_SCORE = 0;
+    public static int ACQUAINTANCE_SCORE = 10;
+    public static int VISITOR_SCORE = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         initScoreMap();
@@ -25,8 +30,8 @@ public class Problem7 {
     public static void initFriendsMap(List<List<String>> friends) {
         friendsMap = new HashMap<>();
         for (List<String> friend : friends) {
-            String firstFriend = friend.get(0);
-            String secondFriend = friend.get(1);
+            String firstFriend = friend.get(FIRST_FRIEND_INDEX);
+            String secondFriend = friend.get(SECOND_FRIEND_INDEX);
 
             putFriendsMap(firstFriend, secondFriend);
             putFriendsMap(secondFriend, firstFriend);
@@ -35,7 +40,7 @@ public class Problem7 {
 
     public static void putScoreMap(String key, int plusValue) {
         if (!scoreMap.containsKey(key)) {
-            scoreMap.put(key, 0);
+            scoreMap.put(key, INIT_SCORE);
         }
         scoreMap.put(key, scoreMap.get(key) + plusValue);
     }
@@ -57,7 +62,7 @@ public class Problem7 {
         List<String> userFriends = friendsMap.get(user);
         for (String userFriend : userFriends) {
             List<String> acquaintanceList = getAcquaintanceList(user, userFriend);
-            acquaintanceList.stream().forEach(ac -> putScoreMap(ac, 10));
+            acquaintanceList.forEach(ac -> putScoreMap(ac, ACQUAINTANCE_SCORE));
         }
     }
 
@@ -67,17 +72,14 @@ public class Problem7 {
     }
 
     public static void plusVisitorScore(List<String> visitors) {
-        visitors.stream().forEach(visitor -> putScoreMap(visitor, 1));
+        visitors.forEach(visitor -> putScoreMap(visitor, VISITOR_SCORE));
     }
 
     public static List<Entry<String, Integer>> getSortScoreMapEntryList() {
-        List<Entry<String, Integer>> entryList = new ArrayList<Entry<String, Integer>>(scoreMap.entrySet());
-        Collections.sort(entryList, new Comparator<Entry<String, Integer>>() {
-            @Override
-            public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
-                if(o1.getValue() == o2.getValue()) return o1.getKey().compareTo(o2.getKey());
-                return o2.getValue().compareTo(o1.getValue());
-            }
+        List<Entry<String, Integer>> entryList = new ArrayList<>(scoreMap.entrySet());
+        entryList.sort((o1, o2) -> {
+            if (o1.getValue().equals(o2.getValue())) return o1.getKey().compareTo(o2.getKey());
+            return o2.getValue().compareTo(o1.getValue());
         });
         return entryList;
     }
@@ -85,11 +87,13 @@ public class Problem7 {
     public static List<String> getTopThreeFriends(String user) {
         List<Entry<String, Integer>> sortScoreMapEntryList = getSortScoreMapEntryList();
         if(isUserHasFriend(user)){
-            return sortScoreMapEntryList.stream().filter(entry -> entry.getValue() > 0).filter(entry -> !friendsMap.get(user).contains(entry.getKey()))
-                    .limit(5).map(entry -> entry.getKey()).collect(Collectors.toList());
+            List<String> userFriendsList = friendsMap.get(user);
+            return sortScoreMapEntryList.stream().filter(userScoreEntry -> userScoreEntry.getValue() > 0)
+                    .filter(userScoreEntry -> !userFriendsList.contains(userScoreEntry.getKey()))
+                    .limit(5).map(Entry::getKey).collect(Collectors.toList());
         }
-        return sortScoreMapEntryList.stream().filter(entry -> entry.getValue() > 0)
-                .limit(5).map(entry -> entry.getKey()).collect(Collectors.toList());
+        return sortScoreMapEntryList.stream().filter(userScoreEntry -> userScoreEntry.getValue() > 0)
+                .limit(5).map(Entry::getKey).collect(Collectors.toList());
     }
 
     public static boolean isUserHasFriend(String user){
