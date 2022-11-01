@@ -23,7 +23,16 @@ public class Problem7 {
             currentright.add(leftfriend);
             userfriends.put(rightfriend, currentright);
         }
+        for (String name : userfriends.get(user)) {
+            for (String nextperson : userfriends.get(name)) {
+                int point = 0;
 
+                if(nextperson==user) continue;
+                if(userfriends.get(user).contains(nextperson)) continue;
+                if(pointboard.get(nextperson) != null) point = pointboard.get(nextperson);
+                pointboard.put(nextperson, point+10);
+            }
+        }
         return answer;
     }
 }
