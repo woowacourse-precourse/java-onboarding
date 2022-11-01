@@ -21,22 +21,12 @@ public class Problem7 {
             friendOfFriends.addAll(recommendedFriends);
         }
 
-        addScore10(scoreMap, friendOfFriends);
-        addScore1(scoreMap, visitors);
+        addScoreToFriendOfFriends(scoreMap, friendOfFriends);
+        addScoreToVisitors(scoreMap, visitors);
+
+        excludeFromScoreMap(scoreMap, user, userFriends);
 
         return answer;
-    }
-
-        private static void addScore1(Map<String, Integer> score, List<String> visitors) {
-        for (String visitor : visitors) {
-            score.put(visitor, score.getOrDefault(visitor, 0) + 1);
-        }
-    }
-
-    private static void addScore10(Map<String, Integer> score, List<String> friendOfFriends) {
-        for (String friendOfFriend : friendOfFriends) {
-            score.put(friendOfFriend, score.getOrDefault(friendOfFriend, 0) + 10);
-        }
     }
 
     private static Map<String, List<String>> getAllFriends(List<List<String>> friends) {
@@ -49,5 +39,24 @@ public class Problem7 {
         }
 
         return members;
+    }
+
+    private static void addScoreToVisitors(Map<String, Integer> score, List<String> visitors) {
+        for (String visitor : visitors) {
+            score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+        }
+    }
+
+    private static void addScoreToFriendOfFriends(Map<String, Integer> score, List<String> friendOfFriends) {
+        for (String friendOfFriend : friendOfFriends) {
+            score.put(friendOfFriend, score.getOrDefault(friendOfFriend, 0) + 10);
+        }
+    }
+
+    private static void excludeFromScoreMap(Map<String, Integer> scoreMap, String user, List<String> userFriends) {
+        scoreMap.remove(user);
+        for (String uf : userFriends) {
+            scoreMap.remove(uf);
+        }
     }
 }
