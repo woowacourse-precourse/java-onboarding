@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 class User{
@@ -7,6 +8,7 @@ class User{
     final int FRIEND_B=1;
     String user;
     int totalScore;
+    List<String> relationship = new ArrayList<>();
     User(String userName){
         user=userName;
         totalScore=0;
@@ -22,6 +24,17 @@ class User{
         else{
             return FRIEND_A;
         }
+    }
+    void findFriends(List<List<String>> relations){
+        List<String> myFriends = new ArrayList<>();
+        int friendIndex;
+        for(List<String> relation: relations){
+            if(isMyFriend(relation)){
+                friendIndex=findLocation(relation);
+                myFriends.add(relation.get(friendIndex));
+            }
+        }
+        relationship=myFriends;
     }
 }
 public class Problem7 {
