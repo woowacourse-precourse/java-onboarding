@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 기능 목록
@@ -8,19 +9,30 @@ import java.util.*;
  * 2. 닉네임을 중복확인. (즉 연속적인 문자가 있는 것들을 인지 할 수 있어야한다.)
  * 3. 각각의 닉네임들을 모두 잘라서 후보로 두어야한다.
  * 4. HashMap<email,name> , HashMap<email,boolean>
- * 5.
+ * 5. 후보들과 비교 하여 , 중복된다면 리스트에 넣고
+ * 6. 해당 리스트를 정렬 하여 리턴.
  */
 //닉네임은 한글만 가능하고 전체 길이는 1자 이상 20자 미만이다.
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Problem6 p6 = new Problem6();
-        List<String> answer = List.of("answer");
         HashMap<String, String> nameMap = p6.initNameMap(forms);
         HashMap<String, Boolean> answerMap = p6.initAnswerMap(forms);
         List<String> duplicateCandidate = p6.getDuplicateCandidate(nameMap);
 
+        HashMap<String, Boolean> map = p6.getAnswerMap(answerMap, nameMap, duplicateCandidate);
 
-        return answer;
+        return p6.getSortedAnswer(map);
+    }
+
+    public List<String> getSortedAnswer(HashMap<String, Boolean> map) {
+        List<String> answer = new ArrayList<>();
+        for (String key : map.keySet()) {
+            if (map.get(key)) {
+                answer.add(key);
+            }
+        }
+        return answer.stream().sorted().collect(Collectors.toList());
     }
 
     public HashMap<String, Boolean> getAnswerMap(HashMap<String, Boolean> answerMap,
