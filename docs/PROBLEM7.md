@@ -48,3 +48,19 @@ usersFreinds의 모든 아이디에 대해 존재 여부 확인이 끝나면, co
 visitors 리스트를 바탕으로 방문 1회당 1점을 부여한 결과를 반환하는 기능을 합니다.</br>
 visitors의 각 사용자들을 한 명씩 받아온 후, 해당 사용자가 scoreMap에 존재하는지 우선적으로 확인합니다.</br>
 이미 집계된 점수가 있어 scoreMap에 존재하는 방문자라면, 이전까지 계산했던 점수에 1점을 더합니다. scoreMap에 저장된 적이 없는 방문자라면 새롭게 저장하고 1점을 부여합니다.
+
+## 4. public static List<String\> calculateScoreProcess(String user, List<List<String\>> friends, List<String\> visitors) {}
+
+### input
+- **String user**
+  친구 목록을 반환받을 사용자의 아이디.
+- **List<List<String\>> friends**
+  SNS의 친구 관계 정보.
+- **List<String\> visitors**
+  user의 타임라인에 방문한 사람들의 리스트.
+
+### output
+- **(List<String\>)** : user의 추천 친구 리스트.
+
+### 기능 상세
+SNS의 사용자들에 대해 calculateScoreByFriendsList()와 calculateScoreByVisitors()를 각각 호출하면서 user의 추천 친구 연산을 진행하는 기능을 합니다.
