@@ -3,21 +3,41 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+    private static HashMap<String, List<Integer>> ordersByDividedNickname;
+
     public static List<String> solution(List<List<String>> forms) {
-        HashMap<String, List<Integer>> subNicknameMap = new HashMap<>();
+        ordersByDividedNickname = new HashMap<>();
         for (int order = 0; order < forms.size(); order++) {
             String nickname = forms.get(order).get(1);
-            List<String> subNicknames = splitNickname(nickname);
-            saveSubNicknames(subNicknameMap, order, subNicknames);
+            saveDividedNickname(order, splitNickname(nickname));
         }
-        Set<Integer> duplicateCrews = getDuplicateCrews(subNicknameMap);
-        List<String> duplicateEmails = getDuplicateEmails(forms, duplicateCrews);
-        return sortEmails(duplicateEmails);
+        return sortEmails(getDuplicateEmails(forms, getDuplicateCrews()));
     }
 
-    private static List<String> sortEmails(List<String> duplicateEmails) {
-        Collections.sort(duplicateEmails);
-        return duplicateEmails;
+    private static List<String> splitNickname(String nickname) {
+        List<String> dividedNicknames = new ArrayList<>();
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            dividedNicknames.add(nickname.substring(i, i + 2));
+        }
+        return dividedNicknames;
+    }
+
+    private static void saveDividedNickname(int order, List<String> dividedNicknames) {
+        for (String dividedNickname : dividedNicknames) {
+            ordersByDividedNickname.putIfAbsent(dividedNickname, new ArrayList<>());
+            ordersByDividedNickname.get(dividedNickname).add(order);
+        }
+    }
+
+    private static Set<Integer> getDuplicateCrews() {
+        Set<Integer> duplicateCrews = new HashSet<>();
+        for (List<Integer> orders : ordersByDividedNickname.values()) {
+            if (orders.size() < 2) {
+                continue;
+            }
+            duplicateCrews.addAll(orders);
+        }
+        return duplicateCrews;
     }
 
     private static List<String> getDuplicateEmails(List<List<String>> forms, Set<Integer> duplicateCrews) {
@@ -28,33 +48,8 @@ public class Problem6 {
         return duplicateEmails;
     }
 
-    private static Set<Integer> getDuplicateCrews(HashMap<String, List<Integer>> subNicknameMap) {
-        Set<Integer> duplicateCrews = new HashSet<>();
-        for (List<Integer> orders : subNicknameMap.values()) {
-            if (orders.size() < 2) continue;
-            duplicateCrews.addAll(orders);
-        }
-        return duplicateCrews;
-    }
-
-    private static void saveSubNicknames(HashMap<String, List<Integer>> subNicknameMap, int order, List<String> subNicknames) {
-        for (String subNickname : subNicknames) {
-            saveSubNickname(subNicknameMap, order, subNickname);
-        }
-    }
-
-    private static void saveSubNickname(HashMap<String, List<Integer>> subNicknameMap, int order, String subNickname) {
-        if (!subNicknameMap.containsKey(subNickname)) {
-            subNicknameMap.put(subNickname, new ArrayList<>());
-        }
-        subNicknameMap.get(subNickname).add(order);
-    }
-
-    private static List<String> splitNickname(String nickname) {
-        List<String> subNicknames = new ArrayList<>();
-        for (int i = 0; i < nickname.length() - 1; i++) {
-            subNicknames.add(nickname.substring(i, i + 2));
-        }
-        return subNicknames;
+    private static List<String> sortEmails(List<String> duplicateEmails) {
+        Collections.sort(duplicateEmails);
+        return duplicateEmails;
     }
 }
