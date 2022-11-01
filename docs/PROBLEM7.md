@@ -24,3 +24,19 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+- - -
+# 기능 목록
+- user의 친구 목록 리스트 담기
+- java의 HashMap을 통해 자기 자신을 제외한 friends의 이름들을 0점으로 초기화
+- java의 HashMap을 통해 자기 자신을 제외한 visitors의 이름들을 0점으로 초기화
+- friends에 대해 추천 알고리즘에 따라 점수 10점 부여
+  - friends에 대한 추천 알고리즘의 작동 원리를 다음과 같이 판단
+    - user의 친구의 친구(user - 친구 - 친구(10))의 경우는 추천 점수 10점을 부여
+    - 그 이외의 경우는 0점으로 판단
+####
+- visitors에 대해 추천 알고리즘에 따라 점수 1점 부여
+  - visitors에 대한 추천 알고리즘의 작동 원리를 다음과 같이 판단
+    - user의 직접적인 친구(user - 친구) 이외의 경우는 1점을 부여
+####
+- HashMap에서 부여된 점수 기준 내림차순 정렬
+- 내림차순 정렬 후 중복된 값들이 있는 구간에 대응하는 이름들 사전순 정렬
