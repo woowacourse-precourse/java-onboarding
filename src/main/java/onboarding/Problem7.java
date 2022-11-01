@@ -86,11 +86,7 @@ public class Problem7 {
 
     private static void scoredFriendOfFriends(List<List<String>> notUserFriends){
         for(List<String> friends : notUserFriends){
-            List<String> friendOfFriend =
-                    friends.stream()
-                            // filter를 이용해 사용자와 친구 관계인 상대를 제외한 나머지 한명을 collect한다.
-                            .filter( s -> !member.getFriends().contains(s))
-                            .collect(Collectors.toList());
+            List<String> friendOfFriend = getNotFriendList(friends);
             calculateScore(friendOfFriend.get(0), 10); //기능 요구사항에 맞게 친구의 친구에게 10점 부여.
         }
     }
@@ -120,15 +116,23 @@ public class Problem7 {
     }
 
     /**
-     * 방문자 중에 사용자와 이미 친구이것을 filter 그리고 점수 부여
+     * 방문자 중에 사용자와 이미 친구인 사람들을 제외한 사람들에게 점수 부여
      */
 
     private static void scoredVisitors(List<String> visitors){
-        List<String> filterFriend = visitors.stream()
-                .filter( s -> !member.getFriends().contains(s))
-                .collect(Collectors.toList());
-        for(String visitor : filterFriend){
+        for(String visitor : getNotFriendList(visitors)){
             calculateScore(visitor, 1);
         }
+    }
+
+    /**
+     * 인자로 들어오는 친구 목록중 사용자와 이미 친구인 사람들을 제외한 List를 반환한다.
+     */
+
+    private static List<String> getNotFriendList(List<String> friends){
+        List<String> notFriendList = friends.stream()
+                .filter( s -> !member.getFriends().contains(s))
+                .collect(Collectors.toList());
+        return notFriendList;
     }
 }
