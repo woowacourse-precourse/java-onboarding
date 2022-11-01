@@ -25,5 +25,9 @@ public class Problem7 {
             else if (userFriend.contains(friend1) && !userFriend.contains((friend1)))
                 Score.put(friend1, Score.getOrDefault(friend1, 0) + 10);
         }
+        for (String visit : visitors) { //방문자 판별 조건 - 직접친구 아니고, user 본인 아닌데 접속 시 1점
+            if (!userFriend.contains(visit) && !visit.equals(user))
+                Score.put(visit, Score.getOrDefault(visit, 0) + 1);
+        }
     }
 }
