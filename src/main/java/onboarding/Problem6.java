@@ -35,5 +35,28 @@ public class Problem6 {
         }
         return splitNickname;
     }
+    //중복검사
+    public static List<String> checkDuplicateNickname(List<List<String>> forms) {
+        List<String> nicknameList = getNicknameList(forms);
+        List<String> nicknameExcept;
+        List<String> duplicateList = new ArrayList<>();
+        List<String> split = new ArrayList<>();
+        for (int i = 0; i < nicknameList.size(); i++) {
+            nicknameExcept = exceptTargetNickname(nicknameList, i);
+            split = splitWord(nicknameList.get(i));
+            for (String word: split) {
+                for(String nickname : nicknameExcept) {
+                    if (nickname.contains(word)) {
+                        duplicateList.add(forms.get(i).get(0));
+                        break;
+                    }
+                }
+            }
+        }
+        return duplicateList;
+    }
+
+}
+
 
 }
