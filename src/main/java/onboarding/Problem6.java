@@ -8,13 +8,30 @@ public class Problem6 {
     // 3. 중복된 값 찾고 정렬해서 return 하는 메소드
 
     public static List<String> solution(List<List<String>> forms) {
+        if(!constraints(forms)){return Collections.EMPTY_LIST;}
         Map<String,String> mapFroms = new LinkedHashMap<>();
-
         for (int i =0; i<forms.size(); i++){
             mapFroms.put(forms.get(i).get(0), forms.get(i).get(1));
         }
         List<String> answer = duplicateCheck(mapFroms);
         return findduplicateWord(mapFroms, answer);
+    }
+    public static boolean constraints(List<List<String>> forms){ // 제한사항
+        if(forms.size()<1 || forms.size() >10000) {System.out.println("크루가 1미만 혹은 10000초과 입니다."); return false;}
+        for(int i =0; i<forms.size();i++) {
+            if (!forms.get(i).get(0).contains("email.com")) {
+                System.out.println("이메일 형식이 올바르지 않습니다"); return false;
+            }
+            if(forms.get(i).get(1).length() <1 || forms.get(i).get(1).length()>20){
+                System.out.println("닉네임의 형식이 올바르지 않습니다"); return false;
+            }
+            if(forms.get(i).get(1).equals(forms.get(i).get(1).toUpperCase())){
+                System.out.println("영문이 포함된 닉네임입니다.");
+            }
+
+        }
+        return true;
+
     }
     public static List<String> duplicateCheck(Map<String, String> map) { // 제이엠, 0 |제이슨, 0|.....
         int count = 1;
