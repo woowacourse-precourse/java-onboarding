@@ -66,6 +66,9 @@ public class Problem6 {
             }
         }
 
-        return emailList;
+        Set<String> emailSet = new TreeSet<>(emailList);
+        List<String> sortedEmailList = new ArrayList<>(emailSet);
+
+        return sortedEmailList;
     }
 }
