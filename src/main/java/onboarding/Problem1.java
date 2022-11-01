@@ -40,6 +40,17 @@ class Problem1 {
         maxPo = max(leftPo, rightPo);
         maxCr = max(leftCr, rightCr);
 
+        // 4. 두 사람의 최종 값 비교
+        if(maxPo < maxCr){
+            answer = 2;
+        }else if(maxCr < maxPo){
+            answer = 1;
+        }else if(maxCr == maxPo) {
+            answer = 0;
+        }else{
+            answer = -1;
+        }
+
         return answer;
     }
 
