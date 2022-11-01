@@ -60,6 +60,11 @@ public class Problem7 {
         answer.sort(String::compareTo);
         answer.sort((v1, v2) -> (friendScore.get(v2).compareTo(friendScore.get(v1))));
 
+        // 친구추천이 5명 초과한다면 5명까지만 추천해야하므로 리스트를 잘라줌
+        if(answer.size() > 5) {
+            answer.subList(0, 5);
+        }
+
         return answer;
     }
 }
