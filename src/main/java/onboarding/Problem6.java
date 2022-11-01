@@ -18,7 +18,7 @@ public class Problem6 {
 
         Collections.sort(answer);
 
-        return new ArrayList<>(answer);
+        return answer;
     }
 
     public static void checkDuplicate(List<List<String>> forms, String checkName, List<String> originForm, Set<String> duplicateList) {
