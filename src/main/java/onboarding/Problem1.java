@@ -8,17 +8,23 @@ class Problem1 {
 
         if(!check_input(pobi) || !check_input(crong)) return -1;
 
-        int pobi_sumMax = Integer.max(sum_digit(pobi.get(0)), sum_digit(pobi.get(1)));
-        int pobi_multMax = Integer.max(mult_digit(pobi.get(0)), mult_digit(pobi.get(1)));
-        int pobi_max = Integer.max(pobi_sumMax, pobi_multMax);
+        int pobi_max = Integer.max(sum_max(pobi.get(0), pobi.get(1)), mult_max(pobi.get(0), pobi.get(1)));
 
-        int crong_sumMax = Integer.max(sum_digit(crong.get(0)), sum_digit(crong.get(1)));
-        int crong_multMax = Integer.max(mult_digit(crong.get(0)), mult_digit(crong.get(1)));
-        int crong_max = Integer.max(crong_sumMax, crong_multMax);
+        int crong_max = Integer.max(sum_max(crong.get(0), crong.get(1)), mult_max(crong.get(0), crong.get(1)));
 
         answer = pobi_max == crong_max ? 0 : pobi_max > crong_max ? 1 : 2;
 
         return answer;
+    }
+
+    // 주어진 두 수의 자릿 수를 각각 더하여 큰 쪽을 반환
+    private static int sum_max(int value1, int value2){
+        return Integer.max(sum_digit(value1), sum_digit(value2));
+    }
+
+    // 주어진 두 수의 자릿 수를 각각 곱하여 큰 쪽을 반환
+    private static int mult_max(int value1, int value2){
+        return Integer.max(mult_digit(value1), mult_digit(value2));
     }
     // 주어진 입력이 올바른 지를 검사
     private static boolean check_input(List<Integer> list){
