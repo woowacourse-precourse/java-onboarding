@@ -7,26 +7,26 @@ public class Problem7 {
     static final int VISIT_FRIEND_SCORE = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        ArrayList<User> sortedUserList = getSortedUserList(user, friends, visitors);
+        ArrayList<Member> sortedUserList = getSortedMemberList(user, friends, visitors);
         List<String> answer = getResultList(user, sortedUserList);
 
         return answer;
     }
 
-    public static List<String> getResultList(String userName, ArrayList<User> userList){
-        User user = findUserByName(userName, userList);
+    public static List<String> getResultList(String userName, ArrayList<Member> memberList){
+        Member user = findMemberByName(userName, memberList);
         ArrayList<String> result = new ArrayList<>();
         int cnt = 0;
 
-        for (User otherUser : userList){
-            String otherUserName = otherUser.getUserName();
-            if(isUsersFriend(user, otherUserName)){
+        for (Member member : memberList){
+            String memberName = member.getMemberName();
+            if(isUsersFriend(user, memberName)){
                 continue;
             }
-            if(isScoreIsZero(otherUser)){
+            if(isScoreIsZero(member)){
                 continue;
             }
-            result.add(otherUserName);
+            result.add(memberName);
             cnt++;
 
             if(cnt == 5){
@@ -37,40 +37,40 @@ public class Problem7 {
         return result;
     }
 
-    public static boolean isUsersFriend(User user, String userName){
-        List<String> userFriends = user.getUserFriends();
+    public static boolean isUsersFriend(Member user, String userName){
+        List<String> userFriends = user.getMemberFriends();
         if(userFriends.contains(userName)){
             return true;
         }
         return false;
     }
 
-    public static boolean isScoreIsZero(User otherUser){
-        if(otherUser.getScore() == 0){
+    public static boolean isScoreIsZero(Member member){
+        if(member.getScore() == 0){
             return true;
         }
         return false;
     }
 
-    public static ArrayList<User> getSortedUserList(String user, List<List<String>> friends, List<String> visitors){
-        ArrayList<User> userList = getUserList(user, friends, visitors);
+    public static ArrayList<Member> getSortedMemberList(String user, List<List<String>> friends, List<String> visitors){
+        ArrayList<Member> memberList = getMemberList(user, friends, visitors);
 
-        setCommonFriendScore(user, userList, friends);
-        setVisitFriendScore(userList, visitors);
+        setCommonFriendScore(user, memberList, friends);
+        setVisitFriendScore(memberList, visitors);
 
-        sortByScore(userList);
+        sortByScore(memberList);
 
-        return userList;
+        return memberList;
     }
 
-    public static void sortByScore(ArrayList<User> userList){
-        Collections.sort(userList, new Comparator<User>() {
+    public static void sortByScore(ArrayList<Member> memberList){
+        Collections.sort(memberList, new Comparator<Member>() {
             @Override
-            public int compare(User o1, User o2) {
+            public int compare(Member o1, Member o2) {
                 int o1Score = o1.getScore();
                 int o2Score = o2.getScore();
-                String o1Name = o1.getUserName();
-                String o2Name = o2.getUserName();
+                String o1Name = o1.getMemberName();
+                String o2Name = o2.getMemberName();
 
                 if(o1Score != o2Score){
                     return o2Score - o1Score;
@@ -81,61 +81,45 @@ public class Problem7 {
         });
     }
 
-//    public static int compareByName(User o1, User o2){
-//        String o1Name = o1.getUserName();
-//        String o2Name = o2.getUserName();
-//        int i = 0;
-//
-//        while(true){
-//            if(o1Name.charAt(i) > o2Name.charAt(i)){
-//                return 1;
-//            }
-//            if(o1Name.charAt(i) < o2Name.charAt(i)){
-//                return -1;
-//            }
-//            i++;
-//        }
-//    }
-
-    public static void setVisitFriendScore(ArrayList<User> userList, List<String> visitors){
+    public static void setVisitFriendScore(ArrayList<Member> memberList, List<String> visitors){
         for (String visitor : visitors){
-            User findUser = findUserByName(visitor, userList);
-            if(findUser != null){
-                findUser.addScore(VISIT_FRIEND_SCORE);
+            Member findMember = findMemberByName(visitor, memberList);
+            if(findMember != null){
+                findMember.addScore(VISIT_FRIEND_SCORE);
             }
         }
     }
 
-    public static User findUserByName(String name, ArrayList<User> userList){
-        for (User user : userList){
-            if(name.equals(user.getUserName())){
-                return user;
+    public static Member findMemberByName(String name, ArrayList<Member> memberList){
+        for (Member member : memberList){
+            if(name.equals(member.getMemberName())){
+                return member;
             }
         }
         return null;
     }
-    public static void setCommonFriendScore(String user, ArrayList<User> userList, List<List<String>> friends){
-        User user1 = findUserByName(user, userList);
+    public static void setCommonFriendScore(String user, ArrayList<Member> memberList, List<List<String>> friends){
+        Member findMember = findMemberByName(user, memberList);
 
-        for (User otherUser : userList){
-            if(otherUser == user1){
+        for (Member member : memberList){
+            if(member == findMember){
                  continue;
             }
-            int commonFriendNum = getCommonFriendNum(user1, otherUser);
-            otherUser.addScore(commonFriendNum * COMMON_FRIEND_SCORE);
+            int commonFriendNum = getCommonFriendNum(findMember, member);
+            member.addScore(commonFriendNum * COMMON_FRIEND_SCORE);
         }
     }
 
-    public static int getCommonFriendNum(User user, User otherUser){
+    public static int getCommonFriendNum(Member user, Member member){
         int cnt = 0;
 
-        if(!user.getUserFriends().isEmpty()){
-            List<String> userFriends = user.getUserFriends();
-            List<String> otherUserFriends = otherUser.getUserFriends();
+        if(!user.getMemberFriends().isEmpty()){
+            List<String> userFriends = user.getMemberFriends();
+            List<String> memberFriends = member.getMemberFriends();
 
             for (String userFriend : userFriends){
-                for (String otherUserFriend : otherUserFriends){
-                    if(userFriend.equals(otherUserFriend)){
+                for (String memberFriend : memberFriends){
+                    if(userFriend.equals(memberFriend)){
                         cnt++;
                     }
                 }
@@ -146,60 +130,57 @@ public class Problem7 {
     }
 
 
-    // 방문자 이름 set을 User객체로 만들어 반환
-    public static ArrayList<User> getUserList(String user, List<List<String>> friends, List<String> visitors){
-        ArrayList<User> userList = new ArrayList<>();
-        Set<String> userNameSet = getUserNameSet(user, friends, visitors);
+    public static ArrayList<Member> getMemberList(String user, List<List<String>> friends, List<String> visitors){
+        ArrayList<Member> memberList = new ArrayList<>();
+        Set<String> memberNameSet = getMemberNameSet(user, friends, visitors);
 
-        for (String userName : userNameSet){
-            User addUser = new User(userName, friends);
-            userList.add(addUser);
+        for (String memberName : memberNameSet){
+            Member member = new Member(memberName, friends);
+            memberList.add(member);
         }
 
-        return userList;
+        return memberList;
     }
 
+    public static Set<String> getMemberNameSet(String user, List<List<String>> friends, List<String> visitors){
+        Set<String> memberNames = new HashSet<>();
 
-    // friends + visitors 모든 방문자 이름 set 반환
-    public static Set<String> getUserNameSet(String user, List<List<String>> friends, List<String> visitors){
-        Set<String> userNames = new HashSet<>();
-
-        userNames.add(user);
+        memberNames.add(user);
 
         for (List<String> friendList : friends){
             for (String friend : friendList){
-                userNames.add(friend);
+                memberNames.add(friend);
             }
         }
 
         for (String visitor : visitors){
-            userNames.add(visitor);
+            memberNames.add(visitor);
         }
 
-        return userNames;
+        return memberNames;
     }
 
 }
 
-class User{
-    private String userName;
-    private ArrayList<String> userFriends = new ArrayList<>();
+class Member{
+    private String memberName;
+    private ArrayList<String> memberFriends = new ArrayList<>();
     private int score = 0;
 
-    public User(String userName, List<List<String>> friends) {
-        this.userName = userName;
-        setFriends(friends);
+    public Member(String userName, List<List<String>> friends) {
+        this.memberName = userName;
+        setMemberFriends(friends);
     }
 
     public void addScore(int score){
         this.score += score;
     }
-    public void setFriends(List<List<String>> friends){
+    public void setMemberFriends(List<List<String>> friends){
         for (List<String> friendList : friends){
-            if(friendList.contains(userName)){
+            if(friendList.contains(memberName)){
                 for (String friend : friendList){
-                    if(!friend.equals(userName)){
-                        userFriends.add(friend);
+                    if(!friend.equals(memberName)){
+                        memberFriends.add(friend);
                     }
                 }
             }
@@ -210,14 +191,14 @@ class User{
         return score;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getMemberName() {
+        return memberName;
     }
 
-    public List getUserFriends() {
-        if(userFriends.size() == 0){
+    public List getMemberFriends() {
+        if(memberFriends.size() == 0){
             return Collections.emptyList();
         }
-        return userFriends;
+        return memberFriends;
     }
 }

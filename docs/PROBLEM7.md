@@ -24,3 +24,19 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 풀이 전략
+
+1. 이름, 친구목록, 점수를 필드로 가지고 있는 `Member` 클래스를 만들어 관리한다.
+   - `getMemberNameSet()` : `user`, 친구, 방문자를 모두 포함한 멤버 이름을 저장한 `Set`을 반환한다.
+   - `getMemberList()` : `getMemberNameSet()`으로 받아온 `Set`의 각 멤버 이름으로 `Member` 타입의 객체를 만들어 리스트로 반환한다.
+   - `getCommonFriendNum()` : `user`와 `member`의 함께아는 친구 수를 반환한다.
+   - `setCommonFriendScore()` : `getCommonFriendNum()` 매서드로 구한 함께아는 친구 수를 이용해 각 멤버객체마다 함께아는 친구의 점수를 저장한다.
+   - `findUserByName()` : 이름을 통해 멤버 객체를 찾아 반환한다.
+   - `setVisitFriendScore()` : 방문자 멤버 객체들의 점수를 저장한다.
+   - `sortByScore()` : 멤버리스트를 점수에 따라 내림차순, 점수가 같다면 이름에 따라 오름차순으로 정렬해 반환한다.
+   - `getSortedMemberList()` : 멤버리스트의 각 멤버마다 점수를 세팅 후 정렬해 반환한다.
+   - `isScoreIsZero()` : 멤버 객체의 점수가 0점인지의 여부를 확인한다.
+   - `isUsersFriend()` : 멤버 객체가 이미 `user`의 친구인지 여부를 확인한다.
+   - `getResultList()` : `isScoreIsZero()`와 `isUsersFriend()` 메서드로 각 객체의 유효성검사를 한 후 정렬된 순서대로 5개를 가져와 반환한다. 
+
