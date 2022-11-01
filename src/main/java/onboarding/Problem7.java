@@ -6,72 +6,89 @@ public class Problem7 {
 
     private static final int MAX_NUMBER_OF_RECOMMENDED_FRIENDS = 5;
 
+    static class UserScore {
+        String name;
+        int score;
+
+        public UserScore(String name, int score) {
+            this.name = name;
+            this.score = score;
+        }
+
+        public void addScore(int added) {
+            this.score += added;
+        }
+
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer;
+        List<String> answer = new ArrayList<>();
         Map<String, ArrayList<String>> friendsMap = new HashMap<>();    // 친구 관계 그래프
-        Map<String, Integer> scoreMap = new HashMap<>();        // 친구 점수 맵
+        List<UserScore> scoreMap = new ArrayList<>();                   // 친구 점수 맵
+
+        scoreMap.add(new UserScore(user, 0));
 
         // 친구 관계 그래프 만들기
-        for (List<String> friendRelation : friends){
-            addFriendsMap(friendsMap,friendRelation);
+        for (List<String> friendRelation : friends) {
+            addFriendsMap(friendsMap, friendRelation);
         }
 
         // 친구의 친구인 경우 점수 맵에 10점 추가하기
-        for(Object friend : friendsMap.get(user)) {
+        for (Object friend : friendsMap.get(user)) {
             ArrayList<String> friendsList = friendsMap.get(friend); // 친구의 친구 목록 가져오기
             addScoresForFriend(scoreMap, friendsList);
         }
 
         // 방문자인 경우 친구 점수 맵에 1점 추가하기
-        for(String visitor:visitors){
+        for (String visitor : visitors) {
             addScoresForVisitor(scoreMap, visitor);
         }
 
+        sortScoreMap(scoreMap); // score 기준 내림차순 정렬 (+name 기준 오름ㅊ차순 정렬)
+
         // 이미 친구 관계인 친구들, 그리고 자기 자신은 점수 맵에서 제외하기
         ArrayList<String> friendsOfUser = friendsMap.get(user);
-        for(String friend :friendsOfUser) {
-            excludeIfFriend(scoreMap, friend);
+        for (UserScore friend : scoreMap) {
+            if (!(friendsOfUser.contains(friend.name) || friend.name.equals(user))) {
+                answer.add(friend.name);
+            }
         }
-        excludeMySelf(scoreMap, user);
 
-        sortScoreMap(scoreMap); // 점수 내림차순, 이름 오름차순 정렬
-
-        answer = new ArrayList<>(scoreMap.keySet()); // scoreMap에서 key(이름) 추출
-        if (answer.size()>MAX_NUMBER_OF_RECOMMENDED_FRIENDS) // 최대 5개
-            return answer.subList(0,MAX_NUMBER_OF_RECOMMENDED_FRIENDS);
+        if (answer.size() > MAX_NUMBER_OF_RECOMMENDED_FRIENDS) // 최대 5개
+            return answer.subList(0, MAX_NUMBER_OF_RECOMMENDED_FRIENDS);
         return answer;
     }
 
-    private static void sortScoreMap(Map<String, Integer> scoreMap) {
-        LinkedHashMap<String, Integer> sortedScoreList;
-        scoreMap.entrySet()
-                .stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))  // sort by score(value) in reverse order
-                .sorted(Map.Entry.comparingByKey());                            // sort by name(key)
+    private static void sortScoreMap(List<UserScore> scoreMap) {
+        scoreMap.sort((user1, user2) -> {
+            if (user1.score == user2.score) {
+                return user1.name.compareTo(user2.name);
+            } else {
+                return user2.score - user1.score;
+            }
+        });
     }
 
-    private static void excludeMySelf(Map<String, Integer> scoreMap, String userName){
-        scoreMap.remove(userName);
-    }
-    private static void excludeIfFriend(Map<String, Integer> scoreMap, String friendName){
-        if(scoreMap.containsKey((friendName))){
-            scoreMap.remove(friendName);
+    private static void addScoresForVisitor(List<UserScore> scoreMap, String visitor){
+        Optional<UserScore> user = scoreMap.stream().filter(u -> u.name.equals(visitor)).findFirst();
+        if(user.isEmpty()) {
+            scoreMap.add(new UserScore(visitor, 1));
+        }else{
+            user.get().addScore(1);
         }
     }
 
-    private static void addScoresForVisitor(Map<String, Integer> scoreMap, String visitor){
-        if (scoreMap.containsKey(visitor))
-            scoreMap.put(visitor, scoreMap.get(visitor) + 1);
-        else scoreMap.put(visitor, 1);
+    private static void addToScoreMap(List<UserScore> scoreMap, String friend){
+        Optional<UserScore> user = scoreMap.stream().filter(u -> u.name.equals(friend)).findFirst();
+        if(user.isEmpty()) {
+            scoreMap.add(new UserScore(friend, 10));
+        }else{
+            System.out.println(user.get().name + "를 찾습니다");
+            user.get().addScore(10);
+        }
     }
 
-    private static void addToScoreMap(Map<String, Integer> scoreMap, String friend){
-        if(scoreMap.containsKey(friend)){
-            scoreMap.put(friend, scoreMap.get(friend)+10);
-        }else scoreMap.put(friend,10);
-    }
-
-    private static void addScoresForFriend(Map<String, Integer> scoreMap, List<String> friendsList) {
+    private static void addScoresForFriend(List<UserScore> scoreMap, List<String> friendsList) {
         for (String friend : friendsList) {
             addToScoreMap(scoreMap, friend);
         }
