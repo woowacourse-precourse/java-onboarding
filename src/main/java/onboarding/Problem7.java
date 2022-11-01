@@ -3,7 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static Map<String, Set<String>> makeFriendRelation(List<List<String>> friends) {
+    public static Map<String, Set<String>> makeFriendRelation(List<List<String>> friends, List<String> visitors) {
         Map<String, Set<String>> relation = new HashMap<>();
         for (List<String> elem : friends) {
             String id1 = elem.get(0);
@@ -17,7 +17,18 @@ public class Problem7 {
             relation.get(id1).add(id2);
             relation.get(id2).add(id1);
         }
+        for(String visitor: visitors){
+            if(!relation.containsKey(visitor)){
+                relation.put(visitor, Collections.emptySet());
+            }
+        }
         return relation;
+    }
+    //예외처리
+    //- user와 이미 친구인 경우 제외
+    //- user 제외
+    public static boolean isException(Map<String, Set<String>> relation, String key, String user){
+        return relation.get(key).contains(user) || key.equals(user);
     }
 
 
@@ -27,9 +38,12 @@ public class Problem7 {
         Map<String, Integer> score = new TreeMap<>(); //점수 계산용
 
         //1. 사용자와 함께 아는 친구
-        Map<String, Set<String>> relation = makeFriendRelation(friends);
+        Map<String, Set<String>> relation = makeFriendRelation(friends, visitors);
         //user와 교집합
         for (String key : relation.keySet()) {
+            if(isException(relation,key,user)){
+                continue;
+            }
             Set<String> userfriends = relation.get(user);
             Set<String> target = relation.get(key);
             userfriends.retainAll(target);
@@ -37,6 +51,9 @@ public class Problem7 {
         }
         //2. 사용자의 타임 라인에 방문한 횟수
         for(String visitor : visitors){
+            if(isException(relation,visitor,user)){
+                continue;
+            }
             if(!score.containsKey(visitor)){
                 score.put(visitor,0);
             }
@@ -45,15 +62,7 @@ public class Problem7 {
 
         //3. 점수가 가장 높은 순으로 정렬하여 최대 5명 return, 0점은 추천x
         List<String> keySet = new ArrayList<>(score.keySet());
-        //예외처리
-        // - user와 이미 친구인 경우 제외
-        // - user 제외
-        keySet.remove(user);
-        for(String key:relation.keySet()){
-            if(relation.get(key).contains(user)){
-                keySet.remove(key);
-            }
-        }
+
         // Value 값으로 내림차순 정렬
         keySet.sort((k1, k2) -> score.get(k2).compareTo(score.get(k1)));
 
