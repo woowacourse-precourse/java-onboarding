@@ -24,7 +24,7 @@ public class Problem7 {
         for (int i = 1; i < friends.size(); i++) {
             if (name.contains(friends.get(i).get(1))) {
                 a = score.get(name.indexOf(friends.get(i).get(1)));
-                score.add(name.indexOf(friends.get(i).get(1)), a + 10);
+                score.set(name.indexOf(friends.get(i).get(1)), a + 10);
             } else {
                 name.add(friends.get(i).get(1));
                 score.add(10);
@@ -33,10 +33,19 @@ public class Problem7 {
         for (int i = 1; i < visitors.size(); i++) {
             if (name.contains(visitors.get(i))) {
                 a = score.get(name.indexOf(visitors.get(i)));
-                score.add(name.indexOf(visitors.get(i)), a + 1);
+                score.set(name.indexOf(visitors.get(i)), a + 1);
             } else {
                 name.add(visitors.get(i));
                 score.add(1);
+            }
+        }
+
+        if (name.contains(user)) {
+            score.set(name.indexOf(user), 0);
+        }
+        for (int i = 0; i < friends.size(); i++) {
+            if (name.contains(friends.get(i).get(0))) {
+                score.set(name.indexOf(friends.get(i).get(0)), 0);
             }
         }
 
