@@ -23,6 +23,8 @@ class Problem1 {
                 validatePages(pages);
             }
 
+            List<Integer> scores = getParticipantsScores(participants_pages);
+
             result = 0;
         } catch (IllegalArgumentException e) {
             result = EXCEPTION;
@@ -48,6 +50,38 @@ class Problem1 {
         if (pages.get(0) < 1 || pages.get(0) > 400 || pages.get(1) < 1 || pages.get(1) > 400) {
             throw new IllegalArgumentException("1 ~ 400 사이의 페이지만 선택 가능합니다");
         }
+    }
+
+    public static List<Integer> getParticipantsScores(List<List<Integer>> participants_pages) {
+        List<Integer> scores = new ArrayList<>();
+
+        for (List<Integer> page : participants_pages) {
+            scores.add(getPageGameScore(page));
+        }
+
+        return scores;
+    }
+
+    public static int getPageGameScore(List<Integer> pages) {
+        int leftPageScore = getPageGameScore(pages.get(0));
+        int rightPageScore = getPageGameScore(pages.get(1));
+
+        return max(leftPageScore, rightPageScore);
+    }
+
+    public static int getPageGameScore(int page) {
+
+        String p = String.valueOf(page);
+
+        int sum = 0;
+        int product = 1;
+
+        for (int digit = 0; digit < p.length(); digit++) {
+            int curr = Character.getNumericValue(p.charAt(digit));
+            sum += curr;
+            product *= curr;
+        }
+        return max(sum, product);
     }
 
 }
