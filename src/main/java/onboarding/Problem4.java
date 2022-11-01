@@ -10,4 +10,10 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
+    //  입력값에 대한 유효성 검사
+    private static Boolean verifyChar(char input){
+        if(!Character.isAlphabetic(input)) return false;
+        return true;
+    }
 }
