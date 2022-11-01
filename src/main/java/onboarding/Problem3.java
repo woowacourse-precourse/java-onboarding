@@ -26,7 +26,7 @@ public class Problem3 {
         return answer;
     }
     public static void main(String[] args) {
-        int num = 33;
+        int num = 333;
         int result;
 
         result = solution(num);

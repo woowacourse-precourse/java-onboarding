@@ -21,9 +21,9 @@ class Problem1 {
                 psum = (pobi.get(i) / 10) + (pobi.get(i) % 10);
                 pmuti = (pobi.get(i) / 10) * (pobi.get(i) % 10);
             }
-            if (psum > pmuti)
+            if (psum >= pmuti && psum > pmax)
                 pmax = psum;
-            else
+            else if (pmuti >= psum && pmuti > pmax)
                 pmax = pmuti;
         }
 
@@ -31,13 +31,14 @@ class Problem1 {
             if (crong.get(i) >= 100) {
                 csum = (crong.get(i) / 100) + ((crong.get(i) % 100) / 10) + (crong.get(i) % 10);
                 cmuti = (crong.get(i) / 100) * ((crong.get(i) % 100) / 10) * (crong.get(i) % 10);
-            } else {
+            }
+            else {
                 csum = (crong.get(i) / 10) + (crong.get(i) % 10);
                 cmuti = (crong.get(i) / 10) * (crong.get(i) % 10);
             }
-            if (csum > cmuti && csum > cmax)
+            if (csum >= cmuti && csum > cmax)
                 cmax = csum;
-            else if (cmuti > csum && cmuti > cmax)
+            else if (cmuti >= csum && cmuti > cmax)
                 cmax = cmuti;
         }
         if (cmax == pmax)
@@ -48,8 +49,8 @@ class Problem1 {
             return 1;
     }
     public static void main(String[] args) {
-        List<Integer> pobi = List.of(97, 98);
-        List<Integer> crong = List.of(197,198);
+        List<Integer> pobi = List.of(131, 132);
+        List<Integer> crong = List.of(211, 212);
         int result;
 
         result = solution(pobi, crong);
