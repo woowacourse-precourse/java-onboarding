@@ -73,6 +73,20 @@ public class Problem7 {
 
         //사용자와 함께아는 친구 점수 구하기
 
+        // 3. 추천 친구들을 저장
+        for (int i = 0; i < friends.size(); i++){
+            //for (int j = 0; j < user_freinds.size(); j++){
+            int userIndex = friends.get(i).indexOf(user); // friends의 원소들 중 user가 포함 되어 있는 리스트의 인덱스, 없다면 -1 return
+            if (userIndex == -1) { // user가 없는 원소라면 (user와 user의 친구를 배제한 사람들을 친구추천 목록에 저장할 것이므로)
+                for (int j = 0; j < user_freinds.size(); j++){
+                    // 해당 원소의 사람들이 user의 친구가 아니고 친구추천 목록에 존재하지 않는다면
+                    if ((!(user_freinds.contains(friends.get(i).get(j)))) && (!score_recomends.containsKey(friends.get(i).get(j)))){
+                        score_recomends.put(friends.get(i).get(j), 0); // 해당 사람의 정보를 추가
+                    }
+                }
+            }
+        }
+
 
         return result;
     }
