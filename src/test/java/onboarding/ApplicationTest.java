@@ -33,6 +33,44 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        @Test
+        void myCaseForPro1() {
+            int result = -1;
+            List<Integer> pobi = List.of(99, 102, 10);
+            List<Integer> crong = List.of(211, 212, 100);
+
+            List<Integer> pobi1 = List.of(99, 103);
+            List<Integer> crong1 = List.of(211, 213);
+
+            List<Integer> pobi2 = List.of(92, 103);
+            List<Integer> crong2 = List.of(212, 213);
+
+            List<Integer> pobi3 = List.of(92, 102);
+            List<Integer> crong3 = List.of(212, 212);
+
+            List<Integer> pobi4 = List.of(1, 2);
+            List<Integer> crong4 = List.of(399, 400);
+
+            List<Integer> pobi5 = List.of(0, 1);
+            List<Integer> crong5 = List.of(401, 402);
+
+            List<Integer> pobi6 = List.of(-389, -390);
+            List<Integer> crong6 = List.of(-389, -390);
+
+            List<Integer> pobi7 = List.of(389);
+            List<Integer> crong7 = List.of(399);
+
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+            assertThat(Problem1.solution(pobi1, crong1)).isEqualTo(result);
+            assertThat(Problem1.solution(pobi2, crong2)).isEqualTo(result);
+            assertThat(Problem1.solution(pobi3, crong3)).isEqualTo(result);
+            assertThat(Problem1.solution(pobi4, crong4)).isEqualTo(result);
+            assertThat(Problem1.solution(pobi5, crong5)).isEqualTo(result);
+            assertThat(Problem1.solution(pobi6, crong6)).isEqualTo(result);
+            assertThat(Problem1.solution(pobi7, crong7)).isEqualTo(result);
+        }
+
     }
 
     @Nested
