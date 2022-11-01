@@ -31,16 +31,21 @@ public class Problem7 {
         entryList.sort(Map.Entry.comparingByValue(Collections.reverseOrder()));
 
         for (Map.Entry<String, Integer> entry : entryList) {
-            if (!myFriends.contains(entry.getKey())) {
-                result.add(entry.getKey());
-
-                if (result.size() >= 5) {
-                    break;
-                }
-            }
+            if (isFriendLimit(myFriends, result, entry)) break;
         }
 
         return result;
+    }
+
+    private static boolean isFriendLimit(Set<String> myFriends, List<String> result, Map.Entry<String, Integer> entry) {
+        if (!myFriends.contains(entry.getKey())) {
+            result.add(entry.getKey());
+
+            if (result.size() >= 5) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static void calcFriendScore(Map<String, Integer> scores, Map<String, List<String>> relations, String myFriend) {
