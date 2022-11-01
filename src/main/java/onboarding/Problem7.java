@@ -85,6 +85,11 @@ public class Problem7 {
             }
         }
 
+        // treemap 은 기본으로 키 기준 오름차순 정렬됨
+        // value 기준 내림차순 정렬
+        List<String> keySet = new ArrayList<>(map.keySet());
+        keySet.sort((o1, o2) -> map.get(o2).compareTo(map.get(o1)));
+
         return answer;
     }
 }
