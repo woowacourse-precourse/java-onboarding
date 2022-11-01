@@ -4,15 +4,15 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         String answer = "";
-
+        Problem2 p2 = new Problem2();
         //만약 초기 데이터가 더블이 아니면 바로 리턴
-        if(isDouble(cryptogram)){
-            answer = findAnswer(cryptogram);
+        if(p2.isDouble(cryptogram)){
+            answer = p2.findAnswer(cryptogram);
         }
         return answer;
     }
 
-    public static String findAnswer(String cryptogram) {
+    public String findAnswer(String cryptogram) {
         StringBuilder tempAnswer = new StringBuilder();
         boolean EndOfPairIsDouble = false;
         boolean pairIsDouble = false;
@@ -47,7 +47,7 @@ public class Problem2 {
         }
     }
 
-    public static boolean isDouble(String cryptogram) {
+    public boolean isDouble(String cryptogram) {
         for (int i = 0; i < cryptogram.length()-1; i++) {
             if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
                 return true;
