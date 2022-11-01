@@ -26,16 +26,23 @@
 #### 1. Cryptogram 문자열 분리
 <br><br>
 #### 2. 문자열 검사 
-    - 0번 문자부터 순차적으로 검사
-    - 현재 문자열 before변수에 담기
-    - 다음 문자열 탐색
-        - 문자열이 같은 경우
-            - 현재 문자와 다음 문자열 제거
-            - 다음 문자열 탐색 후 같으면 계속 제거
-            - 연결된 같은 문자가 모두 지워지면 문자열 다시 처음부터 탐색
-        - 문자열이 다른 경우
-            - before에 다음 문자열 삽입
-            - 순서 넘어가기
+    - 스택 생성
+    - 0번 문자 스택에 저장
+    - 이전에 삭제된 문자 저장 변수 beforeRemovedChar 선언
+
+    - 1번 문자부터 순차적으로 검사
+    - 문자 탐색
+    
+    beforeRemovedChar가 null이 아닌 경우
+        - beforeRemovedChar와 문자가 같은 경우
+            문자를 저장하지 않고 continue
+    beforeRemovedChar가 null인 경우    
+        stack.peek()과 문자 비교 
+            stack.peek()와 문자가 같은 경우
+                -stack.pop()해서 beforeRemovedChar에 저장
+            stack.peek()와 문자가 다른 경우
+                - beforeRemovedChar=null
+                - stack.push(char)
 <br><br>
 #### 3. 검사를 통해 최종적으로 얻은 문자열 리턴
     - 문자 배열 String으로 병합
