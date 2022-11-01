@@ -1,10 +1,27 @@
 package onboarding;
 
+import onboarding.problem1.infra.PageNumberAndSizeValidation;
+import onboarding.problem1.serivce.PageService;
+import onboarding.problem1.type.ResultValue;
+
 import java.util.List;
 
-class Problem1 {
+public class Problem1 {
+
+    private static final PageService pageService = new PageService();
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        try {
+            PageNumberAndSizeValidation validation = new PageNumberAndSizeValidation();
+
+            int pobiMaxValue = pageService.findMaxValue(pobi, validation);
+            int crongMaxValue = pageService.findMaxValue(crong, validation);
+
+            return pageService.getResult(pobiMaxValue, crongMaxValue);
+        } catch (IllegalArgumentException e) {
+
+            System.out.println(e.getMessage());
+            return ResultValue.EXCEPTION_VALUE.getValue();
+        }
     }
 }
