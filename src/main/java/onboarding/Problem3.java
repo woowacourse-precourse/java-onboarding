@@ -1,8 +1,12 @@
 package onboarding;
 
 public class Problem3 {
+
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER = 10000;
+
     public static int solution(int number) {
-        if (outOfRange(number)) return -1;
+        if (isOutOfRange(number)) return -1;
 
         return play369Game(number);
     }
@@ -32,7 +36,7 @@ public class Problem3 {
         return n == 3 || n == 6 || n == 9;
     }
 
-    static boolean outOfRange(int number) {
-        return number < 1 || number > 10000;
+    static boolean isOutOfRange(int number) {
+        return number < MIN_NUMBER || number > MAX_NUMBER;
     }
 }
