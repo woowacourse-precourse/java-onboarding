@@ -24,17 +24,23 @@ public class Problem6 {
         }
         return hs;
     }
-    public static List<String> solution(List<List<String>> forms) {
-        HashSet<String> ans = new HashSet<>();
-        HashMap<String,ArrayList<String>> map = createParsingList(forms);
+
+    public static HashSet<String> getDuplicatedUser(HashMap<String,ArrayList<String>> map) {
+        HashSet<String> hs = new HashSet<>();
 
         for (String key : map.keySet()) { //keySet중 길이가 2이상인 중복된 문자열을 answer에 삽입
             if (map.get(key).size()>1) {
                 for (int i = 0; i < map.get(key).size(); i++) {
-                    ans.add(map.get(key).get(i));
+                    hs.add(map.get(key).get(i));
                 }
             }
         }
+        return hs;
+    }
+    public static List<String> solution(List<List<String>> forms) {
+        HashMap<String,ArrayList<String>> map = createParsingList(forms);
+        HashSet<String> ans = getDuplicatedUser(map);
+
         List<String> answer = new ArrayList<>(ans);
         Collections.sort(answer);   //정렬 후 반환
         return answer;
