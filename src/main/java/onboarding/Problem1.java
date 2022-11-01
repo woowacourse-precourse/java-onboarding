@@ -22,4 +22,30 @@ class Problem1 {
 
         return exceptinoValue;
     }
+
+    public static int[] pobiValueSetting(List<String> pobi) {
+        int pfirst = 0;
+        int psecond = 0;
+        int pthird = 1;
+        int pforth = 1;
+
+        for (int i = 0; i < pobi.get(0).length(); i++) {
+            pfirst += pobi.get(0).charAt(i) - '0';
+        }
+
+        for (int i = 0; i < pobi.get(1).length(); i++) {
+            psecond += pobi.get(1).charAt(i) - '0';
+        }
+
+        for (int i = 0; i < pobi.get(0).length(); i++) {
+            pthird *= pobi.get(0).charAt(i) - '0';
+        }
+
+        for (int i = 0; i < pobi.get(1).length(); i++) {
+            pforth *= pobi.get(1).charAt(i) - '0';
+        }
+
+        int[] pobiValues = {pfirst, psecond, pthird, pforth};
+        return pobiValues;
+    }
 }
