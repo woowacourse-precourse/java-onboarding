@@ -33,5 +33,13 @@ public class Problem2 {
         return str.toString();
     }
 
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+
+        Problem2 pb = new Problem2();
+
+        pb.solution("browoanoommnaon");
+    }
+
 
 }
