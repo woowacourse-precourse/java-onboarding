@@ -55,4 +55,13 @@ public class Problem6 {
             }
         }
     }
+
+    private static List<String> getDividableNicknameList(String nickname) {
+        List<String> nicknameSlices = new ArrayList<>();
+
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            nicknameSlices.add(nickname.substring(i, i + 2));
+        }
+        return nicknameSlices;
+    }
 }
