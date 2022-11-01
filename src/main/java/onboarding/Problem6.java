@@ -21,7 +21,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<String>();
         List<List<String>> validForms = getValidList(forms);
-        if(forms.size() < 1 || forms.size() > 10000)
+        if (forms.size() < 1 || forms.size() > 10000)
             return answer;
         //닉네임을 2개식 분리 하면서 중복된 이메일 add
         Map<String, List<String>> listMap = new HashMap<>();
@@ -36,4 +36,16 @@ public class Problem6 {
                 }
             }
         }
+        //비슷한 닉네임을 가진 이메일이 2개 이상이면 축출
+        for (String key : listMap.keySet()) {
+            if (listMap.get(key).size() > 1) {
+                answer.addAll(listMap.get(key));
+            }
+        }
+        //중복 제거하기 위해 set으로 바꾸고 다시 list로 변경
+        List<String> sort_answer = new ArrayList<String>(new LinkedHashSet<String>(answer));
+        //정렬
+        Collections.sort(sort_answer);
+        return sort_answer;
+    }
 }
