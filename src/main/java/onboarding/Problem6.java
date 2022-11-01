@@ -8,10 +8,7 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        HashMap<String, String> profile = new HashMap<>();
-        for (int i = 0; i < forms.size(); i++) {
-            profile.put(forms.get(i).get(1), forms.get(i).get(0));
-        }
+        HashMap<String, String> profile = makeProfile(forms);
         List<String> nicknames = new ArrayList<>(profile.keySet());
         List<List<String>> duplicateNicknames = new ArrayList<>();
         for (int i = 0; i < nicknames.size(); i++) {
@@ -20,12 +17,15 @@ public class Problem6 {
                 duplicateNicknames.add(findDuplicate(nicknames, twoLetters.get(j), i));
             }
         }
-        List<String> flattenDuplicateNicknames = flattenList(duplicateNicknames).stream()
-                .distinct()
-                .collect(Collectors.toList());
-        List<String> emails = getEmail(flattenDuplicateNicknames, profile);
-
-        return emails;
+        List<String> flattenDuplicateNicknames = flattenList(duplicateNicknames);
+        return getEmail(flattenDuplicateNicknames, profile);
+    }
+    public static HashMap<String, String> makeProfile(List<List<String>> forms){
+        HashMap<String, String> profile = new HashMap<>();
+        for (int i = 0; i < forms.size(); i++) {
+            profile.put(forms.get(i).get(1), forms.get(i).get(0));
+        }
+        return profile;
     }
     public static List<String> splitToTwoLetters(String nickname){
         List<String> nicknameTwoLetters = new ArrayList<>();
@@ -49,7 +49,7 @@ public class Problem6 {
         for (List<String> list : lists){
             result.addAll(list);
         }
-        return result;
+        return result.stream().distinct().collect(Collectors.toList());
     }
     public static List<String> getEmail(List<String> flattenDuplicateNicknames, HashMap<String, String> profile){
         List<String> emails = new ArrayList<>();
