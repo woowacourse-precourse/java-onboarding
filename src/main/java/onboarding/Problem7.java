@@ -141,6 +141,9 @@ class Recommendation{
             FriendScore.add(user);
         }
     }
+    void sortFriendScore(){
+        Collections.sort(FriendScore);
+    }
 }
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
