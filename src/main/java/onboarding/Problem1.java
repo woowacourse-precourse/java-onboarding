@@ -21,7 +21,16 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int pleft = pobi.get(0);
+        int pright = pobi.get(1);
+        int cleft = crong.get(0);
+        int cright = crong.get(1);
+
+        if (check(pleft, pright) || check(cleft, cright)) return -1;
+
+        int pobiScore = Math.max(getMax(pleft), getMax(pright));
+        int crongScore = Math.max(getMax(cleft), getMax(cright));
+
+        return (pobiScore > crongScore) ? 1 : (pobiScore == crongScore) ? 0 : 2;
     }
 }
