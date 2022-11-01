@@ -18,12 +18,7 @@ public class Problem6 {
             for (int j = 0; j<forms.size(); j++) {
                 if(i == j) continue;
                 List<String> jStringList = forms.get(j);
-                for (int k = 0; k < str.length()-1; k++) {
-                    String checkStr = str.substring(k, k+2);
-                    if (jStringList.get(1).contains(checkStr)) {
-                        emailList.add(jStringList.get(0));
-                    }
-                }
+               
             }
         }
         List<String> resultList = emailList.stream().distinct().collect(Collectors.toList());
