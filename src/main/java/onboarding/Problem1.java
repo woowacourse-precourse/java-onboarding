@@ -25,4 +25,13 @@ class Problem1 {
         }
         return answer;
     }
+
+    public static int getPageSum(int page){ // 페이지의 각 자리 숫자들의 합을 구하는 함수
+        int pageSum = 0; // 페이지의 각 자리 숫자들의 합
+        while (page > 0) {
+            pageSum += page % 10;
+            page /= 10;
+        }
+        return pageSum;
+    }
 }
