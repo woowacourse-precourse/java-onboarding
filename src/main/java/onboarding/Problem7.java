@@ -13,6 +13,9 @@ public class Problem7 {
     3. 점수-이름 순 정렬
      */
 
+    static HashMap<String, List<String>> friendList;
+    static HashMap<String, Integer> scoreBoard;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
