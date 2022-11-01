@@ -46,6 +46,14 @@ public class Problem2 {
                 }
             }
 
+            //끝 글자와 이전 글자가 같지않을 경우 끝 글자 저장
+            if(!(arr[arr.length - 1].equals(arr[arr.length - 2]))) {
+                sb.append(arr[arr.length - 1]);
+                count += 1;
+            }
+
+            //StringBuilder String 저장
+            word = sb.toString();
         }
 
         return word;
