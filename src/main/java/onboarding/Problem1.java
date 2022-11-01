@@ -53,15 +53,23 @@ class Problem1 {
         return multipleResult;
     }
 
-    // TODO: max 값 구하기
     private static int getMaxPage(List<Integer> target) {
-        return -1;
+        int leftPage = target.get(0);
+        int rightPage = target.get(1);
+        int maxLeftPage = Math.max(addPage(leftPage), multiplePage(leftPage));
+        int maxRightPage = Math.max(addPage(rightPage), multiplePage(rightPage));
+        System.out.printf("max left: %d , max right: %d\n\n", maxLeftPage, maxRightPage);
+        return Math.max(maxLeftPage, maxRightPage);
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(PageException(pobi) || PageException(crong)) return -1;
         if(!isOdd(pobi.get(0)) || !isEven(pobi.get(1))) return -1;
         if(!isOdd(crong.get(0)) || !isEven(crong.get(1))) return -1;
-        return -1;
+
+        if(getMaxPage(pobi) > getMaxPage(crong))    return 1;
+        else if (getMaxPage(pobi) < getMaxPage(crong))  return 2;
+        else if (getMaxPage(pobi) == getMaxPage(crong)) return 0;
+        else return -1;
     }
 }
