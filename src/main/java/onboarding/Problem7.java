@@ -27,8 +27,19 @@ public class Problem7 {
 
         }
 
+        friend_of_friend(user);
+
         List<String> answer = List.of();
         return answer;
     }
 
+    private static void friend_of_friend(String user) {
+        for(String friend: friendList.get(user)){
+            for(String stranger:friendList.get(friend)){
+
+                scoreCard.putIfAbsent(stranger, 0);
+                scoreCard.put(stranger,scoreCard.get(stranger)+10);
+            }
+        }
+    }
 }
