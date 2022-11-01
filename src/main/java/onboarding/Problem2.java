@@ -9,12 +9,29 @@ public class Problem2 {
 	static int lengthOfString;
 
 	public static String solution(String cryptogram) {
-		Boolean isChanged = false;
+		Boolean isChanged;
 		chars = cryptogram.toCharArray();
 		lengthOfString = chars.length;
 		removeIndex = new Boolean[lengthOfString];
 		Arrays.fill(removeIndex, Boolean.FALSE);
 		int nowRemove = 0;
+
+		do {
+			isChanged = false;
+			int before = -1;
+
+			for (int i = 0; i < lengthOfString; i++) {
+				if (removeIndex[i]) {
+					continue;
+				}
+
+				if (before == -1) {
+					before = i;
+					continue;
+				}
+			}
+		} while (isChanged);
+
 		return getCurrentString();
 	}
 
