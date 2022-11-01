@@ -7,11 +7,12 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, List<String>> friendMap = getFriendMap(friends);
+        Map<String, Member> memberObjectMep = getMemberObjectMep(friends, visitors);
+        Map<Member, List<Member>> friendsMap = getFriendsMap(friends, memberObjectMep);
 
-        List<String> userFriends = getUserFriends(friendMap, user);
+        List<String> userFriends = getUserFriends(friendsMap, user);
         List<String> userAndUserFriends = getUserAndUserFriends(userFriends, user);
-        List<String> acquaintances = getAcquaintances(friendMap, userFriends, user);
+        List<String> acquaintances = getAcquaintances(friendsMap, userFriends, user);
         Map<String, Integer> acquaintancesPoint = getAcquaintancesPoint(acquaintances, userAndUserFriends);
         Map<String, Integer> visitorsPoint = getVisitorsPoint(visitors, userAndUserFriends);
 
@@ -24,6 +25,19 @@ public class Problem7 {
                 .sorted(Comparator.comparing(Member::getPoint).reversed().thenComparing(Member::getName))
                 .map(Member::getName)
                 .collect(Collectors.toList());
+    }
+
+    public static Map<Member, List<Member>> getFriendsMap(List<List<String>> friends, Map<String, Member> memberObjectMap) {
+        Map<Member, List<Member>> friendListMap = initFriendListMap(memberObjectMap);
+        for (List<String> friendPair : friends) {
+            Member member1 = memberObjectMap.get(friendPair.get(0));
+            Member member2 = memberObjectMap.get(friendPair.get(1));
+            List<Member> addedFriendList1 = getAddedFriendList(friendListMap.get(member1), member2);
+            List<Member> addedFriendList2 = getAddedFriendList(friendListMap.get(member2), member1);
+            friendListMap.put(member1, addedFriendList1);
+            friendListMap.put(member2, addedFriendList2);
+        }
+        return friendListMap;
     }
 
     public static Map<String, Member> getMemberObjectMep(List<List<String>> friends, List<String> visitors) {
@@ -43,17 +57,17 @@ public class Problem7 {
         return memberSet;
     }
 
-    public static Map<String, List<String>> getFriendMap(List<List<String>> friends) {
-        Map<String, List<String>> friendMap = new HashMap<>();
-        for (List<String> friendPair : friends) {
-            List<String> friend1 = friendMap.getOrDefault(friendPair.get(0), new ArrayList<>());
-            List<String> friend2 = friendMap.getOrDefault(friendPair.get(1), new ArrayList<>());
-            friend1.add(friendPair.get(1));
-            friend2.add(friendPair.get(0));
-            friendMap.put(friendPair.get(0), friend1);
-            friendMap.put(friendPair.get(1), friend2);
-        }
-        return friendMap;
+    private static List<Member> getAddedFriendList(List<Member> friendList, Member member) {
+        friendList.add(member);
+        return friendList;
+    }
+
+    private static Map<Member, List<Member>> initFriendListMap(Map<String, Member> memberObjectMap) {
+        return memberObjectMap.values().stream()
+                .collect(Collectors.toMap(
+                        member -> member,
+                        member -> new ArrayList<Member>()
+                ));
     }
 
     public static Map<String, Integer> getAcquaintancesPoint(List<String> acquaintances, List<String> userAndUserFriends) {
