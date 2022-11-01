@@ -23,7 +23,7 @@
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
 
 ## 🎯기능 구현 목록
-- [ ] findCases() : 닉네임에서 연속하는 두 글자 경우의 수를 찾는다
+- [x] splitNick() : 닉네임에서 연속하는 두 글자 경우의 수를 찾는다
 - [ ] checkDuplication() : 중복 여부를 확인한다.
 - [x] getEmail() : 이메일을 찾는다.
 - [x] getNick() : 닉네임을 찾는다.
