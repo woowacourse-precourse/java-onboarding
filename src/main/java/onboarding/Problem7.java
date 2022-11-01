@@ -87,7 +87,6 @@ public class Problem7 {
             System.out.println(entry.getKey());
             answer.add(entry.getKey());
         }
-
         return answer;
     }
 }
