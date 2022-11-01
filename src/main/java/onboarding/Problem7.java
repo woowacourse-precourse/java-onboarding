@@ -27,7 +27,15 @@ public class Problem7 {
             if(userFriends.contains(visitors.get(i))) continue;
             addFriendScore(visitors.get(i),1);
         }
-
+        List<Map.Entry<String, Integer>> entries;
+        entries = scoreList.entrySet().stream()
+                .sorted(Collections.reverseOrder(Map.Entry.<String,Integer>comparingByValue())
+                        .thenComparing(Map.Entry.comparingByKey()))
+                .limit(5)
+                .collect(Collectors.toList());
+        for (Map.Entry<String, Integer> entry : entries) {
+            answer.add(entry.getKey());
+        }
         return answer;
     }
     public static void addFriendScore(String name, int score) {
