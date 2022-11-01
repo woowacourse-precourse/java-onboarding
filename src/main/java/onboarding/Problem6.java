@@ -70,8 +70,8 @@ public class Problem6 {
         return nickname.contains(part);
     }
 
-    public static boolean isAlreadyAnswerIndexes(int index) {
-        return answerIndexes.contains(index);
+    public static boolean isNotInAnswerIndexes(int index) {
+        return !answerIndexes.contains(index);
     }
 
 }
