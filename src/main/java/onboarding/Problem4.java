@@ -31,8 +31,4 @@ public class Problem4 {
         // 알파벳 개수가 26개 이므로 a에서 25를 더해 z를 만든 후 현재 알파벳과 a의 차이만큼 빼서 반대로 변환한다.
         return (char) ((ascii + 25) - Math.abs(ascii - (int)alphabet));
     }
-
-    public static void main(String[] args) {
-        System.out.println(solution("a b c1d"));
-    }
 }
