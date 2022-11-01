@@ -118,6 +118,21 @@ class ValidityCheckerProb7 {
     userValidityCheck(user);
     friendsValidityCheck(friends);
     visitorsValidityCheck(visitors);
+    checkDuplicateRelations(friends);
+  }
+
+  private void checkDuplicateRelations(List<List<String>> friends) {
+    HashSet<String> duplicateCheckSet = new HashSet<>();
+    for (List<String> friend : friends) {
+      String added1 = friend.get(0) + "/" + friend.get(1);
+      String added2 = friend.get(1) + "/" + friend.get(0);
+      if (duplicateCheckSet.contains(added1) == true
+          || duplicateCheckSet.contains(added2) == true) {
+        throw new IllegalArgumentException("Duplicate friends relation is included. ");
+      }
+      duplicateCheckSet.add(added1);
+      duplicateCheckSet.add(added2);
+    }
   }
 
   private void userValidityCheck(String user) {

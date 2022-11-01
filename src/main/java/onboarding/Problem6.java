@@ -69,7 +69,6 @@ class ValidityChecker {
 
   ValidityChecker(List<List<String>> input) {
     this.forms = input;
-
   }
 
   void checkAllValidity() {
