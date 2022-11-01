@@ -18,7 +18,9 @@ public class Problem2 {
 
         // 2. 1번 반복
         //  반복문 break 조건 : 연속하는 중복문자가 없었을 때 (isRemoved==false), string length < 2
+        isRemoved = true;
         while (isRemoved) {
+            System.out.println(isRemoved);
             if (answer.length() < 2) {
                 break;
             }
