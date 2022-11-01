@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
 
@@ -13,7 +10,9 @@ public class Problem7 {
 
     private static List<String> getRecommendedFriends(String user) {
         calculateScore(user);
-
+        List<String> friends = new ArrayList<>(scoreboard.keySet());
+        Collections.sort(friends, (value1, value2) -> (scoreboard.get(value2).compareTo(scoreboard.get(value1))));
+        return friends;
     }
 
     private static void calculateScore(String user) {
@@ -47,8 +46,14 @@ public class Problem7 {
         for (int i = 0; i < friends.size(); i++) {
             String user1 = friends.get(i).get(0);
             String user2 = friends.get(i).get(1);
-            HashSet<String> user1List = friendList.get(user1);
-            HashSet<String> user2List = friendList.get(user2);
+            HashSet<String> user1List = new HashSet<>();
+            HashSet<String> user2List = new HashSet<>();
+            if(friendList.containsKey(user1)) {
+                user1List = friendList.get(user1);
+            }
+            if(friendList.containsKey(user2)) {
+                user2List = friendList.get(user2);
+            }
             user1List.add(user2);
             user2List.add(user1);
             friendList.put(user1, user1List);
@@ -59,7 +64,10 @@ public class Problem7 {
     private static void setVistorList(List<String> visitors) {
         for (int i = 0; i < visitors.size(); i++) {
             String name = visitors.get(i);
-            int count = vistorList.get(name);
+            int count = 0;
+            if(vistorList.containsKey(name)) {
+                count = vistorList.get(name);
+            }
             vistorList.put(name, ++count);
         }
     }
