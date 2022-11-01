@@ -42,6 +42,20 @@ class CompareName {
             }
         }
     }
+
+    public List<String> findDuplicated() {
+        Set<String> setCompare = new HashSet<String>();
+        Set<String> setDuplicated = new HashSet<String>();
+        for (String splittedName : this.splittedNames) {
+            if (setCompare.contains(splittedName)) {
+                setDuplicated.add(splittedName);
+            } else {
+                setCompare.add(splittedName);
+            }
+        }
+        List<String> result = new ArrayList<>(setDuplicated);
+        return result;
+    }
 }
 
 public class Problem6 {
