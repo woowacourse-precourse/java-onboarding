@@ -5,12 +5,12 @@ import java.util.Stack;
 public class Problem3 {
     public static int solution(int number) {
         final int ERROR = -1;
-        if (!validation(number)) return ERROR;
+        if (violation(number)) return ERROR;
         return count(number);
     }
 
-    static boolean validation(int number) {
-        return number >= 1 && number <= 10000;
+    static boolean violation(int number) {
+        return number < 1 || number > 10000;
     }
 
     static Stack<Digit> digits(int number) {
