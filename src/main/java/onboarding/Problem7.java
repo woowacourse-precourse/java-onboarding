@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * 기능 목록
@@ -23,13 +24,7 @@ public class Problem7 {
         final ArrayList<String> friendsOfUser = friendsOfUsers.get(user);
         scoresOfUsers = calculateScore(friendsOfUsers, friendsOfUser, visitors);
 
-        return scoresOfUsers.entrySet().stream()
-                .filter(e -> e.getValue() > 0)
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .map(Map.Entry::getKey)
-                .filter(u -> !u.equals(user) && !friendsOfUser.contains(u))
-                .limit(5)
-                .collect(Collectors.toList());
+        return getAnswerList(scoresOfUsers.entrySet().stream(), friendsOfUser, user);
     }
 
     /**
@@ -58,6 +53,10 @@ public class Problem7 {
     private static int calculateScoreByFriends(ArrayList<String> friendsOfUser, ArrayList<String> friendsOfFriendUser) {
         int score = 0;
         final int SCORE = 10;
+
+        if (friendsOfUser == null) {
+            return 0;
+        }
 
         for (String friend : friendsOfFriendUser) {
             if (friendsOfUser.contains(friend)) {
@@ -98,5 +97,31 @@ public class Problem7 {
         }
 
         return scoresOfUsers;
+    }
+
+    /**
+     * 점수들을 바탕으로 친구 추천 결과를 반환
+     *
+     * @param stream
+     * @param friendsOfUser
+     * @param user
+     * @return 추천 친구 리스트
+     */
+    private static List<String> getAnswerList(Stream<Map.Entry<String, Integer>> stream, List<String> friendsOfUser, String user) {
+        if (friendsOfUser != null) {
+            stream = stream.filter(e -> !friendsOfUser.contains(e.getKey()));
+        }
+
+        Comparator<Map.Entry<String, Integer>> compare
+                = Comparator
+                .comparing(Map.Entry<String, Integer>::getValue).reversed()
+                .thenComparing(Map.Entry::getKey);
+
+        return stream
+                .filter(e -> e.getValue() > 0 && !e.getKey().equals(user))
+                .sorted(compare)
+                .map(Map.Entry::getKey)
+                .limit(5)
+                .collect(Collectors.toList());
     }
 }
