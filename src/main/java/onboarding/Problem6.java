@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.*;
-import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -14,28 +13,28 @@ public class Problem6 {
 
     private static List<String> getDuplicateNickname(List<List<String>> forms) {
         List<String> result = new ArrayList<>();
-        Map<String, TreeSet<String>> twoNameMap = getAllTwoLengthNameMap(forms);
+        Map<String, TreeSet<String>> twoLengthWordMap = getAllTwoLengthWordMap(forms);
 
-        for(List<String> form : forms) {
+        forms.forEach(form -> {
             String email = form.get(0);
             String nickname = form.get(1);
 
             for(int i = 1; i < nickname.length(); i++) {
-                String twoLengthName = getSubString(nickname, i);
+                String twoLengthWord = getSubString(nickname, i);
 
-                if (twoNameMap.get(twoLengthName).size() > 1) {
+                if (twoLengthWordMap.get(twoLengthWord).size() > 1) {
                     result.add(email);
                     break;
                 }
             }
-        }
+        });
 
         Collections.sort(result);
 
         return result;
     }
 
-    private static Map<String, TreeSet<String>> getAllTwoLengthNameMap(List<List<String>> forms) {
+    private static Map<String, TreeSet<String>> getAllTwoLengthWordMap(List<List<String>> forms) {
         Map<String, TreeSet<String>> result = new TreeMap<>();
 
         for (List<String> form : forms) {
