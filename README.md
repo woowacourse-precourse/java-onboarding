@@ -8,7 +8,7 @@
 - [x] [문제 4](./docs/PROBLEM4.md)
 - [x] [문제 5](./docs/PROBLEM5.md)
 - [x] [문제 6](./docs/PROBLEM6.md)
-- [ ] [문제 7](./docs/PROBLEM7.md)
+- [x] [문제 7](./docs/PROBLEM7.md)
 
 ## 🔍 진행 방식
 
