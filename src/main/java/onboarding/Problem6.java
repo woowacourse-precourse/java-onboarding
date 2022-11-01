@@ -34,6 +34,25 @@ public class Problem6 {
         return duplication_email;
     }
 
+    // 기능 목록 3 : 같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 목록을 구하는 함수
+    public static List<String> findDuplicationEmail(List<List<String>> duplication_email){
+        List<String> result = new ArrayList<>();
+        for(List<String> duplication:duplication_email){
+            if(duplication.size() > 1){
+                for(String d:duplication){
+                    result.add(d);
+                }
+            }
+        }
+
+        Set<String> answer_set = new HashSet<String>(result);
+        result = new ArrayList<>(answer_set);
+
+        Collections.sort(result);
+
+        return result;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
