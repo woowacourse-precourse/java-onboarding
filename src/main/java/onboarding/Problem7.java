@@ -28,4 +28,19 @@ public class Problem7 {
         else
             graph.put(userFrom, new HashSet<>(List.of(userTo)));
     }
+    private static void scoreFriendOfFriend(HashMap<String, HashSet<String>> graph, HashMap<String, Integer> scoreMap, String user, String friend) {
+        HashSet<String> friendList = graph.get(friend);
+        HashSet<String> friendOfUser = graph.get(user);
+
+        for (String friendOfFriend: friendList) {
+            if (friendOfFriend.equals(user))
+                continue;
+
+            if (friendOfUser.contains(friendOfFriend))
+                continue;
+
+            int score = scoreMap.getOrDefault(friendOfFriend, 0);
+            scoreMap.put(friendOfFriend, score + 10);
+        }
+    }
 }
