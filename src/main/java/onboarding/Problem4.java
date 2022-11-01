@@ -12,7 +12,7 @@ public class Problem4 {
             char character=word.charAt(i);
 
             if(Character.isAlphabetic(character)){
-                answer.append(getWordByDictionary(character));
+                answer.append(convertWordByDictionary(character));
             }else{
                 answer.append(character);
             }
@@ -20,7 +20,7 @@ public class Problem4 {
         return answer.toString();
     }
 
-    private static char getWordByDictionary(char character) {
+    private static char convertWordByDictionary(char character) {
         if(Character.isLowerCase(character)){
             return Character.toLowerCase(dictionary[character-'a']);
         }
