@@ -22,5 +22,23 @@ class Problem6Test {
         assertFalse(problem6.containsWord("제이엠", "이제엠"));
     }
 
+    @Test
+    @DisplayName("유사한 닉네임이 있는지 체크")
+    void findDuplicateNickname() {
+        problem6 = new Problem6();
+        HashSet<String> testDuplicateEmail = new HashSet<>();
+        testDuplicateEmail.add("jason@email.com");
+        testDuplicateEmail.add("jm@email.com");
+        testDuplicateEmail.add("mj@email.com");
 
+        List<CrewInfo> crews = new ArrayList<>(Arrays.asList(
+                new CrewInfo("jm@email.com", "제이엠"),
+                new CrewInfo("jason@email.com", "제이슨"),
+                new CrewInfo("woniee@email.com", "워니"),
+                new CrewInfo("mj@email.com", "엠제이"),
+                new CrewInfo("nowm@email.com", "이제엠")
+        ));
+
+        assertEquals(testDuplicateEmail, problem6.findDuplicateNickname(crews));
+    }
 }
