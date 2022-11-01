@@ -20,6 +20,19 @@ class Problem1 {
 		}
 		return mult;
 	}
+	public static int get_max(List<Integer> person) { // 두 페이지중 최대값
+		int max = 0, curr;
+		for(Integer page: person) {
+			String str_page = page.toString();
+			curr = all_poss(str_page);
+			if (max < curr) {
+				max = curr;
+			}
+			
+		}
+		return max;
+		
+	}
 	
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
