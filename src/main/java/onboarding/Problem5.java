@@ -28,6 +28,10 @@ public class Problem5 {
     }
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
+
+        // 각 화폐와 동전의 개수를 확인
+        List<Integer> temp = new ArrayList<>();
+
         return answer;
     }
 }
