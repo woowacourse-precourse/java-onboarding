@@ -11,7 +11,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         Map<String, List<String>> mapForms = toHashMap(forms);
-        List<List<String>> separateNicknameList = separateNicknameList(mapForms);
+        List<List<String>> separateNicknameList = getSeparateNicknameList(mapForms);
         List<String> duplicateNicknameList = getDuplicationNicknameList(separateNicknameList);
         answer = getDuplicateEmailList(mapForms, duplicateNicknameList);
         return answer;
@@ -33,7 +33,7 @@ public class Problem6 {
         return parts;
     }
 
-    public static List<List<String>> separateNicknameList(Map<String, List<String>> mapForms) {
+    public static List<List<String>> getSeparateNicknameList(Map<String, List<String>> mapForms) {
         List<List<String>> duplicateNickname = new ArrayList<>();
         for (Map.Entry<String, List<String>> elements : mapForms.entrySet()) {
             duplicateNickname.add(elements.getValue());
