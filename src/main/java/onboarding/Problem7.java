@@ -34,7 +34,13 @@ public class Problem7 {
                 }
             }
         }
-        System.out.println(proximity_node);
+//        System.out.println(proximity_node);
+
+        Map<String, Integer> score = new HashMap<>();
+        for (String s : all_friend) {
+            score.put(s, 0);
+        }
+        System.out.println(score);
 
         return answer;
     }
