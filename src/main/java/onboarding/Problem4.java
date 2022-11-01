@@ -9,12 +9,7 @@ public class Problem4 {
         int N = word.length();
         for(int i = 0; i < N; i++){
             char ch = word.charAt(i);
-            if(ch == ' '){
-                answer += ' ';
-            }
-            else{
-                answer += changeChar(ch);
-            }
+            answer += changeChar(ch);
         }
         return answer;
     }
@@ -23,8 +18,11 @@ public class Problem4 {
         if('a' <= ch && 'z' >= ch){
             return (char) ('a' + (25 - (ch - 'a')));
         }
-        else {
+        else if('A' <= ch && 'Z' >= ch) {
             return (char) ('A' + (25 - (ch - 'A')));
+        }
+        else{
+            return ch;
         }
     }
 }
