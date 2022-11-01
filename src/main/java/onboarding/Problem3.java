@@ -27,11 +27,11 @@ public class Problem3 {
     }
 
     private static int getClapCount(int number) {
-        String intToString = String.valueOf(number);
+        String stringOfInt = String.valueOf(number);
         int count = 0;
 
-        for (int len = intToString.length(), i = 0; i < len; i++) {
-            char current = intToString.charAt(i);
+        for (int len = stringOfInt.length(), i = 0; i < len; i++) {
+            char current = stringOfInt.charAt(i);
 
             if (CLAP_NUMBERS.contains(current - '0')) {
                 count++;

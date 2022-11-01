@@ -3,11 +3,13 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
+
     public static String solution(String cryptogram) {
         Decrypter decrypter = Decrypter.getInstance();
         String answer = decrypter.decrypt(cryptogram);
         return answer;
     }
+
 }
 
 class Decrypter {

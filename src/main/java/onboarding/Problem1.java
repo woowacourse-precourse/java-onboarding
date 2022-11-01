@@ -48,7 +48,7 @@ public class Problem1 {
     }
 
     private static boolean isOutOfBound(int leftPage, int rightPage) {
-        return rightPage <= START_PAGE_NO || leftPage >= END_PAGE_NO;
+        return (rightPage <= START_PAGE_NO) || (leftPage >= END_PAGE_NO);
     }
 
     private static boolean isLeftPage(int leftPage) {

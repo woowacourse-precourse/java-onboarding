@@ -1,78 +1,74 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
-        List<List<String>> notifiedForms = findFormsWithDuplicatedName(forms);
-        List<String> emails = getEmails(notifiedForms);
-
-        return emails.stream()
+        List<String> notifiedEmails = findEmailsWithDuplicatedName(forms);
+        return notifiedEmails.stream()
                     .distinct()
                     .sorted()
                     .collect(Collectors.toList());
     }
 
-    private static List<List<String>> findFormsWithDuplicatedName(List<List<String>> forms) {
-        List<List<String>> notifiedForms = new ArrayList<>();
+    private static List<String> findEmailsWithDuplicatedName(List<List<String>> forms) {
+        List<String> notifiedEmails = new ArrayList<>();
 
         for (int size = forms.size(), i = 0; i < size; i++) {
-            notifiedForms.addAll(findFormsWithDuplicatedName(forms, i));
+            notifiedEmails.addAll(findEmailsWithTargetName(forms, i));
         }
 
-        return notifiedForms;
+        return notifiedEmails;
     }
 
-    private static List<List<String>> findFormsWithDuplicatedName(List<List<String>> forms, int currentIdx) {
-        List<List<String>> notifiedForms = new ArrayList<>();
+    private static List<String> findEmailsWithTargetName(List<List<String>> forms, int currentIdx) {
+        List<String> notifiedEmails = new ArrayList<>();
+
         List<String> currentForm = forms.get(currentIdx);
+        String currentEmail = currentForm.get(0);
         String currentName = currentForm.get(1);
+
+        if (!isValidEmail(currentEmail)) {
+            return Collections.emptyList();
+        }
 
         for (int len = currentName.length() - 1, i = 0; i < len; i++) {
             String target = currentName.substring(i, i + 2);
-            notifiedForms.addAll(findFormsWithTarget(forms, currentIdx, target));
+            notifiedEmails.addAll(findEmailsWithTargetName(forms, currentIdx, target));
         }
 
-        if (!notifiedForms.isEmpty()) {
-            notifiedForms.add(currentForm);
+        if (!notifiedEmails.isEmpty()) {
+            notifiedEmails.add(currentEmail);
         }
 
-        return notifiedForms;
+        return notifiedEmails;
     }
 
-    private static List<List<String>> findFormsWithTarget(List<List<String>> forms, int currentIdx, String target) {
-        List<List<String>> notified = new ArrayList<>();
+    private static List<String> findEmailsWithTargetName(List<List<String>> forms, int currentIdx, String target) {
+        List<String> notifiedEmails = new ArrayList<>();
 
         for (int size = forms.size(), i = currentIdx + 1; i < size; i++) {
             List<String> comparedForm = forms.get(i);
+            String comparedEmail = comparedForm.get(0);
             String comparedName = comparedForm.get(1);
 
+            if (!isValidEmail(comparedEmail)) {
+                continue;
+            }
+
             if (RabinKarp.contains(comparedName, target)) {
-                notified.add(comparedForm);
+                notifiedEmails.add(comparedEmail);
             }
         }
 
-        return notified;
+        return notifiedEmails;
     }
 
-    private static List<String> getEmails(List<List<String>> notified) {
-        List<String> emails = new ArrayList<>();
-
-        for (List<String> form : notified) {
-            String email = form.get(0);
-
-            if (isEmail(email)) {
-                emails.add(email);
-            }
-        }
-
-        return emails;
-    }
-
-    private static boolean isEmail(String email) {
+    private static boolean isValidEmail(String email) {
         int atIdx = email.indexOf("@");
         if (atIdx == -1) {
             return false;
@@ -83,7 +79,7 @@ public class Problem6 {
             return false;
         }
 
-        return 11 <= email.length() && email.length() < 20;
+        return (11 <= email.length()) && (email.length() < 20);
     }
 
 }
@@ -104,7 +100,8 @@ final class RabinKarp {
         int hashValueOfTarget = getHashValue(target, lengthOfTarget);
         int hashValueOfSrc = getHashValue(src, lengthOfTarget);
 
-        if (hashValueOfSrc == hashValueOfTarget && isSame(src, 0, target, 0, lengthOfTarget)) {
+        if ((hashValueOfSrc == hashValueOfTarget)
+                && isSame(src, 0, target, 0, lengthOfTarget)) {
             return true;
         }
 
@@ -112,7 +109,8 @@ final class RabinKarp {
             hashValueOfSrc = hashValueOfSrc * POW + src.charAt(i);
             hashValueOfSrc -= src.charAt(i - lengthOfTarget) * cachedPow;
 
-            if (hashValueOfSrc == hashValueOfTarget && isSame(src, i - lengthOfTarget + 1, target, 0, lengthOfTarget)) {
+            if ((hashValueOfSrc == hashValueOfTarget)
+                    && isSame(src, i - lengthOfTarget + 1, target, 0, lengthOfTarget)) {
                 return true;
             }
         }
