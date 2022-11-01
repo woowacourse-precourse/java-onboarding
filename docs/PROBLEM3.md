@@ -14,3 +14,32 @@
 | --- | --- |
 | 13 | 4 |
 | 33 | 14 |
+
+## 기능 구현
+
+- countClapCase()
+    -  각 자리수 별로 나눠서 총 박수를 치는 횟수를 계산
+- generalTensDigit()
+    - 0~9까지 박수를 치는 횟수
+- specificTensDiigt()
+    - 30 ~ 39까지 박수를 치는 횟수
+- generalHundreds()
+    - 0~99까지 박수를 치는 횟수
+- specificHundreds()
+    - 300~399까지 박수를 치는 횟수
+- generalThousands()
+    - 0~999까지 박수를 치는 횟수
+- specificThousands()
+    - 3000 ~ 3999까지 박수를 치는 횟수
+- tenThousand()
+    - 0 ~ 10000까지(최대 경우) 박수를 치는 횟수
+- calculateOnesClapCase()
+    - 일의자리 값으로 박수치는 횟수를 계산(ex) 7 -> 2번)
+- calculateTensClapCase()
+    - 십의 자리 밑으로 버림을 한 수 까지 박수를 치는 횟수를 계산(ex) 64 -> 60)
+- calculateHundredsClapCase()
+    - 백의 자리 밑으로 버림을 한 수까지 박수를 치는 횟수를 계산 (ex) 140 -> 100)
+- calculateThousandsClapCase()
+    - 천의 자리 밑으로 버림을 한 수 까지 박수를 치는 횟수를 계산 (ex) 1340 -> 1000)
+- numberOutOfRangeException()
+    - 숫자 크기 예외 처리
