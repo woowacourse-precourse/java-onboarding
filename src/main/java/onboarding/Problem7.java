@@ -36,6 +36,14 @@ public class Problem7 {
             }
         }
 
+        //방문 횟수당 1점씩 더하기
+        for (int i = 0; i < visitors.size(); i++) {
+            String visitor = visitors.get(i);
+            if (!myFriends.contains(visitor) && !visitor.equals(user)) {
+                recommendationScore.put(visitor, recommendationScore.getOrDefault(visitor, 0) + 1);
+            }
+        }
+
         return answer;
     }
 }
