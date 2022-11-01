@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+<br/>
+
+## 구현할 기능 목록
+1. 주어진 크루의 닉네임을 두 글자씩 분할
+2. 두 글자로 분할한 닉네임이 2개 이상인 것을 찾기
+3. 두 글자로 분할한 닉네임이 2개 이상인 닉네임을 가진 크루의 이메일 찾기
+
