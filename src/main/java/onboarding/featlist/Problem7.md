@@ -9,9 +9,11 @@
 ### Class
 1. `RecommendCalculator implements Calculator`
    - 연결 관계를 바탕으로 점수가 가장 높은 5명을 구한다.
+2. `Sns`
+   - 입력 정보를 저장한다.
 
 ### Enum
-1. `EACH`
+1. `Each`
    - 서로 연관되어 있는 인물의 위치 정보를 저장한다.
 2. `Point`
    - 점수에 관한 정보가 저장된다.
