@@ -7,22 +7,22 @@ import java.util.Map;
 
 public class Friends {
 
-	private final Map<String, List<String>> relationships;
+	private final Map<String, List<String>> friends;
 
 	public Friends(List<List<String>> relationships) {
-		Map<String, List<String>> relationshipsMap = new HashMap<>();
+		Map<String, List<String>> friends = new HashMap<>();
 		for (List<String> relationship : relationships) {
 			String friend = relationship.get(0);
 			String otherFriend = relationship.get(1);
-			relationshipsMap.putIfAbsent(friend, new ArrayList<>());
-			relationshipsMap.putIfAbsent(otherFriend, new ArrayList<>());
-			relationshipsMap.get(friend).add(otherFriend);
-			relationshipsMap.get(otherFriend).add(friend);
+			friends.putIfAbsent(friend, new ArrayList<>());
+			friends.putIfAbsent(otherFriend, new ArrayList<>());
+			friends.get(friend).add(otherFriend);
+			friends.get(otherFriend).add(friend);
 		}
-		this.relationships = relationshipsMap;
+		this.friends = friends;
 	}
 
-	public boolean isTwoFriends(String friend, String other) {
-		return relationships.get(friend).contains(other);
+	public boolean isTwoFriends(String user, String other) {
+		return friends.get(user).contains(other);
 	}
 }
