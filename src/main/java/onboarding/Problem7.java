@@ -41,5 +41,9 @@ public class Problem7 {
         public List<String> getFriends() {
             return friends;
         }
+
+        public void plusScoreTen(){
+            this.score += 10;
+        }
     }
 }
