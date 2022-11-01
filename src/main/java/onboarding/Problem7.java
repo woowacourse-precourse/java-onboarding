@@ -25,4 +25,25 @@ public class Problem7 {
 
         return answer;
     }
+
+    private static void categorizeFriends(String user, List<List<String>> friends) {
+        for (List<String> friend : friends) {
+            if (friend.get(0) == user) {
+                alreadyFriends.add(friend.get(1));
+            }
+            if (friend.get(1) == user) {
+                alreadyFriends.add(friend.get(0));
+            }
+            allFriends.add(friend.get(0));
+            allFriends.add(friend.get(1));
+        }
+        allFriends.remove(user);
+        notFriends.addAll(allFriends);
+        notFriends.removeAll(alreadyFriends);
+
+        for (String notFriend : notFriends) {
+            notFriends_Score.put(notFriend, 0);
+        }
+    }
+
 }
