@@ -10,7 +10,14 @@ class Problem1 {
         if (!validateInput(pobi) || !validateInput(crong)) {
             return -1;
         }
-        return 0;
+
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+        return pobiScore < crongScore ? 2 : 0;
     }
 
     private static boolean validateInput(List<Integer> pages) {
@@ -21,7 +28,15 @@ class Problem1 {
     }
 
     private static int getScore(List<Integer> pages) {
-        return 0;
+        int addedLeft = addEachDigit(pages.get(LEFT_PAGE));
+        int multipliedLeft = multiplyEachDigit(pages.get(LEFT_PAGE));
+        int addedRight = addEachDigit(pages.get(RIGHT_PAGE));
+        int multipliedRight = multiplyEachDigit(pages.get(RIGHT_PAGE));
+
+        int leftScore = getBiggerNumber(addedLeft, multipliedLeft);
+        int rightScore = getBiggerNumber(addedRight, multipliedRight);
+
+        return getBiggerNumber(leftScore, rightScore);
     }
 
     private static int addEachDigit(int pageNum) {
