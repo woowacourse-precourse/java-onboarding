@@ -54,69 +54,67 @@ public class Problem7 {
         List<String> scoreStringArr = new ArrayList<>();
         List<List<String>> nameScoreArr = new ArrayList<>();
 
-        List<String> nonDupliUserWithFiend = new ArrayList<>();
         for(String item : userWithFriendArr){
-            if(!nonDupliUserWithFiend.contains(item))
-                nonDupliUserWithFiend.add(item);
+            if(!nameArr.contains(item))
+                nameArr.add(item);
         }
 
-        for(int i=0; i<nonDupliUserWithFiend.size(); i++){
-            nameArr.add(nonDupliUserWithFiend.get(i));
-            int score=0;
-            for(int j=0; j<userWithFriendArr.size(); j++){
-                if(nonDupliUserWithFiend.get(i).equals(userWithFriendArr.get(j))){
-                    score += 10;
-                    friendScoreArr.add(score);
+        for(int i=0; i<nameArr.size(); i++) {
+            int friendScore = 0;
+            for (int j = 0; j < userWithFriendArr.size(); j++) {
+                if (nameArr.get(i).equals(userWithFriendArr.get(j))) {
+                    friendScore += 10;
+                    friendScoreArr.add(friendScore);
                 }
             }
         }
 
-        List<String> nonDupliVisitor = new ArrayList<>();
+
+
         for(String item: visitors){
-            if(!nonDupliVisitor.contains(item)){
-                nonDupliVisitor.add(item);
+            if(!visitorArr.contains(item)){
+                visitorArr.add(item);
             }
         }
 
-        for(int i=0; i<nonDupliVisitor.size(); i++){
-            visitorArr.add(nonDupliVisitor.get(i));
-            int score =0;
+        for(int k=0; k<visitorArr.size(); k++){
+            int visitorScore =0;
             for(int j=0; j<visitors.size(); j++){
-                if(nonDupliVisitor.get(i).equals(visitors.get(j))){
-                    score += 10;
-                    visitScoreArr.add(score);
+                if(visitorArr.get(k).equals(visitors.get(j))){
+                    visitorScore += 10;
+                    visitScoreArr.add(visitorScore);
                 }
             }
         }
         //합치기
-        for(int i=0; i<nonDupliVisitor.size(); i++){
-            nonDupliUserWithFiend.add(nonDupliVisitor.get(i));
-            friendScoreArr.add(visitScoreArr.get(i));
+        for(int l=0; l<visitorArr.size(); l++){
+            nameArr.add(visitorArr.get(l));
+            friendScoreArr.add(visitScoreArr.get(l));
         }
 
-        for(int i=0; i<nonDupliUserWithFiend.size(); i++){
-            for(int j=i+1; j<nonDupliUserWithFiend.size(); j++){
-                if(nonDupliUserWithFiend.get(i).equals(nonDupliUserWithFiend.get(j))){
-                    nonDupliUserWithFiend.remove(j);
-                    Integer sum = friendScoreArr.get(i)+friendScoreArr.get(j);
-                    friendScoreArr.set(i, sum);
+        for(int m=0; m<nameArr.size(); m++){
+            for(int j=m+1; j<nameArr.size()-m; j++){
+                if(nameArr.get(m).equals(nameArr.get(j))){
+                    nameArr.remove(j);
+                    Integer sum = friendScoreArr.get(m)+friendScoreArr.get(j);
+                    friendScoreArr.set(m, sum);
                     friendScoreArr.remove(j);
                 }
             }
         }
 
-        for(int i=0; i< friendScoreArr.size(); i++){
-            String str = Integer.toString(friendScoreArr.get(i));
+        for(int n=0; n< friendScoreArr.size(); n++){
+            String str = Integer.toString(friendScoreArr.get(n));
             scoreStringArr.add(str);
         }
 
-        nameScoreArr.add(nonDupliUserWithFiend);
+        nameScoreArr.add(nameArr);
         nameScoreArr.add(scoreStringArr);
         return nameScoreArr;
-    }
+        }
 
     public static List<String> scoreOrderName(List<List<String>> nameScoreArr){
-        List<String> nameArr = new ArrayList<>(nameScoreArr.get(0));
+        List<String> newNameArr = new ArrayList<>(nameScoreArr.get(0));
         List<Integer> scoreArr = new ArrayList<>();
         for(int i=0; i<nameScoreArr.get(1).size(); i++){
             scoreArr.add(Integer.parseInt(nameScoreArr.get(1).get(i)));
@@ -129,16 +127,16 @@ public class Problem7 {
                     scoreArr.set(i, scoreArr.get(j));
                     scoreArr.set(j, tmp);
 
-                    String strTmp = nameArr.get(i);
-                    nameArr.set(i, nameArr.get(j));
-                    nameArr.set(i, strTmp);
+                    String strTmp = newNameArr.get(i);
+                    newNameArr.set(i, newNameArr.get(j));
+                    newNameArr.set(i, strTmp);
                 }
             }
         }
 
         //nameArr 오름차순 정렬
-        Collections.sort(nameArr);
-        return nameArr;
+        Collections.sort(newNameArr);
+        return newNameArr;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -148,5 +146,24 @@ public class Problem7 {
 
         List<String> answer = scoreOrderName(nameScoreArr);
         return answer;
+    }
+
+    public static void main(String[] args){
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+        System.out.println("userFriends");
+        System.out.println(userFriends(user,friends));
+        List<String> userFriend = userFriends(user,friends);
+        System.out.println("userWithFriends");
+        System.out.println(userWithFriend(user,friends,userFriend));
+        List<String> userWithFriend = userWithFriend(user,friends,userFriend);
     }
 }
