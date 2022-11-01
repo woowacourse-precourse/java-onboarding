@@ -99,7 +99,10 @@ class Problem1 {
     }
 
     private static int getMul(List<Integer> digits) {
-
-        return 0;
+        int mul = 0;
+        for (int digit : digits) {
+            mul *= digit;
+        }
+        return mul;
     }
 }
