@@ -66,7 +66,6 @@ class Problem1 {
     }
 
     static boolean checkException(List<Integer> pages) {
-        if(pages.get(1) - pages.get(0) != 1) return true;
-        else return false;
+        return pages.get(1) - pages.get(0) != 1;
     }
 }
