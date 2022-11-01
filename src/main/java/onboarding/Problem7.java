@@ -9,9 +9,10 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Map<String, List<String>> relationMap = createRelationMap(friends);
-        Map<String, Integer> pointMap = createPointMap(user, relationMap);
+        Map<String, Integer> pointMap = createPointMap(user, relationMap, visitors);
 
         System.out.println(relationMap);
+        System.out.println(pointMap);
         System.out.println(pointMap);
         return answer;
     }
@@ -29,16 +30,34 @@ public class Problem7 {
         return relationMap;
     }
 
-    public static Map<String, Integer> createPointMap(String user, Map<String, List<String>> relationMap) {
+    public static Map<String, Integer> createPointMap(String user, Map<String, List<String>> relationMap,List<String> visitors) {
         List<String> userFriendList = relationMap.get(user);
-        return relationMap.entrySet()
-                          .stream()
-                          .filter(entry -> !entry.getKey()
-                                                 .equals(user) && !userFriendList.contains(entry.getKey()))
-                          .collect(toMap(Entry::getKey, entry -> {
-                              List<String> relationList = entry.getValue();
-                              return countMatchesFriend(userFriendList, relationList) * 10;
-                          }, Integer::sum));
+        Map<String, Integer> pointMap = relationMap.entrySet()
+                                                   .stream()
+                                                   .filter(entry -> !entry.getKey()
+                                                                          .equals(user) && !userFriendList.contains(entry.getKey()))
+                                                   .collect(toMap(Entry::getKey, entry -> {
+                                                       List<String> relationList = entry.getValue();
+                                                       return countMatchesFriend(userFriendList, relationList) * 10;
+                                                   }, Integer::sum));
+        updateVisitorsPoint(userFriendList,pointMap, visitors);
+        return pointMap;
+    }
+
+    private static void updateVisitorsPoint(List<String> userFriendList, Map<String, Integer> pointMap, List<String> visitors) {
+
+        for (String visitor : visitors) {
+            if (userFriendList.contains(visitor)) {
+                continue;
+            }
+            if (pointMap.containsKey(visitor)) {
+                Integer point = pointMap.get(visitor);
+                pointMap.put(visitor, point + 1);
+                continue;
+            }
+            pointMap.put(visitor, 1);
+        }
+
     }
 
     private static boolean hasAnyUserFriend(List<String> userFriendList, List<String> userRelationList) {
