@@ -179,16 +179,14 @@ class ExceptionClassForPro7 {
 
   private void validateSameFriend(List<List<String>> friends) {
     Set<String> sameFriendSet = new HashSet<>();
-    List<String> friendPair = friends.get(0);
-    sameFriendSet.add(friendPair.get(0) + "/" + friendPair.get(1));
-    sameFriendSet.add(friendPair.get(1) + "/" + friendPair.get(0));
-    for (int i = 1; i < friends.size(); i++) {
-      friendPair = friends.get(i);
+    for (List<String> friendPair : friends) {
       String pair1 = friendPair.get(0) + "/" + friendPair.get(1);
       String pair2 = friendPair.get(1) + "/" + friendPair.get(0);
       if (sameFriendSet.contains(pair1) || sameFriendSet.contains(pair2)) {
         throw new IllegalArgumentException();
       }
+      sameFriendSet.add(pair1);
+      sameFriendSet.add(pair2);
     }
   }
 
