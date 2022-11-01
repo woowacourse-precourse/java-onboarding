@@ -16,7 +16,8 @@ public class P7ExceptionValidation {
 
         return userNameBetween1and30(user)
                 && friendsLowerAlphabet(friends)
-                && friendsBetween1and10000(friends);
+                && friendsBetween1and10000(friends)
+                && elementIsTwo(friends);
     }
 
 
@@ -47,5 +48,12 @@ public class P7ExceptionValidation {
         return true;
     }
 
+    private static boolean elementIsTwo(List<List<String>> friends) {
+
+        for(List<String> edge : friends){
+            return edge.stream().count() == 2;
+        }
+        return false;
+    }
 }
 
