@@ -15,50 +15,59 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
+    public static List<String> emailList = new ArrayList<String>();
+    public static List<List<String>> publicForms;
     public static List<String> solution(List<List<String>> forms) {
-        List<String> emailList = new ArrayList<String>();
+        publicForms= forms;
 
-            for(int standardIndex = 0; standardIndex <forms.size(); standardIndex++){
-                String standardName= getNickname(forms, standardIndex);
-
-                for(int strIndex = 0; strIndex <standardName.length()-1; strIndex++){
-                    String standardString= makeCheckString(standardName, strIndex);
-
-                    for(int checkIndex = standardIndex+1; checkIndex <forms.size(); checkIndex++){
-                        String nameForCheck= getNickname(forms, checkIndex);
-
-                        if(Overlaped(nameForCheck,standardString)){
-                            emailList.add(getEmail(forms, standardIndex));
-                            emailList.add(getEmail(forms, checkIndex));
-                        }
-                    }
-                }
-            }
+        for(int standardIndex = 0; standardIndex <forms.size(); standardIndex++){
+            makeCompareStringAndAddEmail(standardIndex);
+        }
         return deleteOverlapAndSort(emailList);
     }
 
-    static String getNickname(List<List<String>> forms, int index){
+
+    static void makeCompareStringAndAddEmail(int standardIndex){
+        String standardName= getNickname(standardIndex);
+
+        for(int nameIndex = 0; nameIndex <standardName.length()-1; nameIndex++){
+            addOverlapedEmailList(makeCompareString(standardName, nameIndex), standardIndex);
+        }
+    }
+
+    static void addOverlapedEmailList(String compareString, int standardIndex){
+        for(int currnetIndex = standardIndex+1; currnetIndex < publicForms.size(); currnetIndex++){
+            String compareName= getNickname(currnetIndex);
+
+            if(Overlaped(compareName,compareString)){
+                emailList.add(getEmail(standardIndex));
+                emailList.add(getEmail(currnetIndex));
+            }
+        }
+    }
+
+    static String getNickname(int index){
         List<String> nickNames= new ArrayList<String>();
-        for (List<String> form : forms) {
+        for (List<String> form : publicForms) {
             nickNames.add(form.get(1));
         }
         return nickNames.get(index);
     }
 
-    static String makeCheckString(String name, int nameIndex){
-        List<String> checkStr= new ArrayList<String>();
+    static String makeCompareString(String name, int nameIndex){
+        List<String> compareStr= new ArrayList<String>();
         for(int i = 0; i <name.length()-1; i++){
-            checkStr.add(name.substring(i, i+2));
+            compareStr.add(name.substring(i, i+2));
         }
-       return checkStr.get(nameIndex);
+        return compareStr.get(nameIndex);
     }
 
     static boolean Overlaped( String name, String checkStr){
         return name.contains(checkStr);
     }
 
-    static String getEmail(List<List<String>> forms, int index){
-        return forms.get(index).get(0);
+    static String getEmail(int index){
+        return publicForms.get(index).get(0);
     }
 
 
@@ -67,7 +76,6 @@ public class Problem6 {
         list.clear();
         list.addAll(deleteOverlap);
         Collections.sort(list);
-
         return list;
     }
 
