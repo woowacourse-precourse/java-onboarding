@@ -28,6 +28,11 @@ class Problem1 {
     // 1. 연속된 페이지여야 하며
     // 2. 홀수, 짝수를 만족해야 한다.
     static boolean isValid(List<Integer> person){
+        // 1 ~ 400 사이여야 한다.
+        if (1 > person.get(0) || person.get(0) > 400) return false;
+        if (1 > person.get(1) || person.get(1) > 400) return false;
+
+        // 연속된 페이지여야 한다.
         if (person.get(1) - person.get(0) != 1) return false;
         // 왼쪽은 홀수, 오른쪽은 짝수여야 한다.
         if ((person.get(0) & 1) != 1) return false;
