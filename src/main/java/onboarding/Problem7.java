@@ -31,29 +31,14 @@ class FriendConnection{
         return map;
     }
 }
-public class Problem7 {
 
-    /*
-    기능 목록
-    1. 주어진 유저에 대해, 주어진 사람들의 포인트를 매긴다.
-        1) 아는 친구
-        2) 방문 횟수
-    2. 이것에 대해 포인트로는 내림차순, 이름으론 사전순(=오름차순)으로 정렬한다.
-    3. 이름만 return한다.
-     */
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
-
-        HashMap<String, ArrayList<String>> friend_map = FriendConnection.connect(friends);
-        //각 사람들끼리의 친구관계 설정.
-
-
-
+class FriendPoint{
+    public static HashMap<String,Integer> getFriendPoint(HashMap<String, ArrayList<String>> friend_map,
+                                                         ArrayList<String> user_friend_list,
+                                                         String user)
+    {
         HashMap<String,Integer> point_map = new HashMap<>();
 
-        ArrayList<String> user_friend_list = friend_map.get(user);
-
-        //친구의 친구 = 10점. user에 대한 ArrayList가 생성되지 않았을때에 대한 NPE처리 필요.
         if (user_friend_list != null) {
             for (Map.Entry<String, ArrayList<String>> entry : friend_map.entrySet()) {
                 String key = entry.getKey();
@@ -72,7 +57,29 @@ public class Problem7 {
                 }
             }
         }
+        return point_map;
+    }
+}
+public class Problem7 {
 
+    /*
+    기능 목록
+    1. 주어진 유저에 대해, 주어진 사람들의 포인트를 매긴다.
+        1) 아는 친구
+        2) 방문 횟수
+    2. 이것에 대해 포인트로는 내림차순, 이름으론 사전순(=오름차순)으로 정렬한다.
+    3. 이름만 return한다.
+     */
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> answer = new ArrayList<>();
+
+        HashMap<String, ArrayList<String>> friend_map = FriendConnection.connect(friends);
+        //각 사람들끼리의 친구관계 설정.
+
+        ArrayList<String> user_friend_list = friend_map.get(user);
+        HashMap<String,Integer> point_map = FriendPoint.getFriendPoint(friend_map,user_friend_list,user);
+
+        //친구의 친구 = 10점. user에 대한 ArrayList가 생성되지 않았을때에 대한 NPE처리 필요.
 
         //방문자 1점씩.
         for(String visitor:visitors){
