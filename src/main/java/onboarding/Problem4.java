@@ -1,8 +1,8 @@
 package onboarding;
 
 public class Problem4 {
-    public static String solution(String word) {
-        String answer = "";
-        return answer;
-    }
+    private static final int MIN = 1;
+    private static final int MAX = 1000;
+
+
 }
