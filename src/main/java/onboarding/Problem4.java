@@ -1,8 +1,8 @@
 package onboarding;
 
 /**
- *  reverseAlphabet 메서드 각 char문자를 a-z 반대로 반환해준다.
- *  isProperLength 메서드 문자의 길이가 올바른지 확인
+ * reverseAlphabet 메서드 각 char문자를 a-z 반대로 반환해준다.
+ * isProperLength 메서드 문자의 길이가 올바른지 확인
  */
 
 public class Problem4 {
@@ -18,8 +18,9 @@ public class Problem4 {
 
         return sb.toString();
     }
-    private static void isProperLength(String word){
-        if (word.length()<MIN_LENGTH||word.length()>MAX_LENGTH)
+
+    private static void isProperLength(String word) {
+        if (word.length() < MIN_LENGTH || word.length() > MAX_LENGTH)
             throw new IllegalArgumentException("words는 길이가 1이상 1000이하인 문자열입니다.");
     }
 
