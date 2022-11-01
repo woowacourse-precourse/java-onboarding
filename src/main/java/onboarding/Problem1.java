@@ -49,4 +49,19 @@ class Problem1 {
         return MaxNumber;
     }
 
+    /**
+     * pobi와 crong의 페이지 펼치기 게임 결과를 반환
+     * @param pobiNumber pobi가 페이지를 펼쳐서 얻을 수 있는 가장 큰 숫자
+     * @param crongNumber crong이 페이지를 펼쳐서 얻을 수 있는 가장 큰 숫자
+     */
+    public static int getWinner(int pobiNumber, int crongNumber){
+        if(pobiNumber > crongNumber){
+            return 1;
+        }
+        if(crongNumber > pobiNumber){
+            return 2;
+        }
+        return 0;
+    }
+
 }
