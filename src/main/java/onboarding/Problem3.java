@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem3 {
 
-    private static int count(int number) {
+    private static int count369(int number) {
         int cnt = 0;
         while (number != 0) {
             int temp = number % 10;
@@ -18,7 +18,7 @@ public class Problem3 {
         int answer = 0;
 
         for (int i = 3; i <= number; i++) {
-            answer += count(i);
+            answer += count369(i);
         }
         return answer;
     }
