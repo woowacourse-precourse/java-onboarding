@@ -1,6 +1,16 @@
 package onboarding;
 
 public class Problem4 {
+    public static String getWord(String word) {
+        StringBuilder result = new StringBuilder();
+
+        for (int index = 0; index < word.length(); index++) {
+            result.append(getCharacter(word.charAt(index)));
+        }
+
+        return result.toString();
+    }
+
     public static Character getCharacter(Character alphabet) {
         int gap = 25;
         for (int ascii = (int)'a'; ascii <= (int)'m'; ascii++) {
