@@ -6,6 +6,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> friendRelInfo = generateFriendRelInfo(friends);
         Map<String, Integer> userScoreInfo = calScoreOfFriendRelWithUser(user, friendRelInfo);
+        calNumOfVisitToTimeline(userScoreInfo, visitors);
 
         System.out.println(friendRelInfo);
         System.out.println(userScoreInfo);
@@ -78,10 +79,16 @@ public class Problem7 {
     /*
      * 친구 추천 규칙 중, 사용자에 타임라인에 방문한 횟수를 계산한 Map 반환
      */
-    public static Map<String, Integer> calNumOfVisitToTimeline(
+    public static void calNumOfVisitToTimeline(
             Map<String, Integer> scoreInfo, List<String> visitors) {
-
-        return Collections.emptyMap();
+        for (String visitor : visitors) {
+            if (scoreInfo.containsKey(visitor)) {
+                Integer visitorScore = scoreInfo.get(visitor);
+                scoreInfo.put(visitor, visitorScore + 1);
+            } else if (!scoreInfo.containsKey(visitor)) {
+                scoreInfo.put(visitor, 1);
+            }
+        }
     }
 
     /*
