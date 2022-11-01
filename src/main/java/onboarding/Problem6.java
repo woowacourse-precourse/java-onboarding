@@ -15,7 +15,7 @@ public class Problem6 {
 
     static class Team {
         private Set<Crew> crewSet = new HashSet<>();
-        private Map<String,List<String>> overlapSet = new HashMap<>();
+        private Map<String,List<String>> partedNicknameSet = new HashMap<>();
 
         public Team(List<List<String>> forms) {
             //forms.stream().map(i -> new Crew(i)).map(c -> crewSet.add(c));    // 왜 안 되지?
@@ -29,20 +29,20 @@ public class Problem6 {
             for(Crew crew : crewSet){
                 for(int i=0 ; i<crew.nickname.length()-1 ; i++){
                     String tmp = crew.nickname.substring(i,i+2);
-                    List<String> orDefault = overlapSet.getOrDefault(tmp, new ArrayList<>());
-                    orDefault.add(crew.email);
-                    overlapSet.put(tmp, orDefault);
+                    List<String> emailList = partedNicknameSet.getOrDefault(tmp, new ArrayList<>());
+                    emailList.add(crew.email);
+                    partedNicknameSet.put(tmp, emailList);
                 }
             }
         }
 
-        private List<String> findOverlappedNickname() {
+        private List<String> findOverlappedNicknameUser() {
             addNicknamePartition();
             Set<String> emailList = new HashSet<>();
 
-            overlapSet.keySet().stream()
-                    .map(k->overlapSet.get(k))
-                    .filter(v->v.size()>1)
+            partedNicknameSet.keySet().stream()
+                    .map(k-> partedNicknameSet.get(k))
+                    .filter(v-> isSizeOverOne(v))
                     .forEach(emailList::addAll);
 
             List<String> result = new ArrayList<>(emailList);
@@ -57,6 +57,6 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         Team team = new Team(forms);
-        return team.findOverlappedNickname();
+        return team.findOverlappedNicknameUser();
     }
 }
