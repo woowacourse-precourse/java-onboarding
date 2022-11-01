@@ -20,4 +20,14 @@ public class Problem7 {
         setListSort(answer, keyList, valueList, items);
         return answer;
     }
+
+    private static void setFriendsList(String user, List<List<String>> friends, ArrayList<String> friendsList) {
+        for(int i = 0; i< friends.size(); i++){
+            for(int j=0; j<2; j++){
+                if(friends.get(i).get(j) == user){
+                    friendsList.add(friends.get(i).get(1-j));
+                }
+            }
+        }
+    }
 }
