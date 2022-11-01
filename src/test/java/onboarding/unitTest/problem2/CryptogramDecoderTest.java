@@ -60,7 +60,6 @@ public class CryptogramDecoderTest {
         mockLetterReverser.close();
     }
 
-
     static class CryptogramDecoderTestData implements ArgumentsProvider {
 
         @Override
