@@ -45,11 +45,21 @@ public class Problem7 {
         //친구리스트에 들어있는 유저 삭제
         friendsList.remove(user);
 
+        //추천리스트 탐색
+        findRecommend(friends, visitors);
+
 
         //5개이하만 출력하기 위한 정답List
         List<String> answer = new ArrayList<>();
 
         return answer;
+    }
+
+    //추천친구를 생성하는 기능
+    public static void findRecommend(List<List<String>> friends, List<String> visitors) {
+
+
+
     }
 
 }
