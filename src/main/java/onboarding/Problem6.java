@@ -19,6 +19,16 @@ public class Problem6 {
     private static List<Set<String>> partitionsList = new ArrayList<>();
     private static Map<String, Integer> nicknameAndCount = new HashMap<>();
 
+    public static void setupData(List<List<String>> forms) {
+        for (List<String> form : forms) {
+            Set<String> partsOfNickname = getPartitionsOfNickname(form.get(FORM_NICKNAME));
+            partitionsList.add(partsOfNickname);
+            for (String part : partsOfNickname) {
+                nicknameAndCount.put(part, nicknameAndCount.getOrDefault(part, 0) + 1);
+            }
+        }
+
+    }
     public static Set<String> getPartitionsOfNickname(String nickname) {
         Set<String> partitions = new HashSet<>();
         for (int i = 0; i < nickname.length() - 1; i++) {
