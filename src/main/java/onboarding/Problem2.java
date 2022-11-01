@@ -1,10 +1,10 @@
 package onboarding;
-
 import java.util.Stack; //import
 
 public class Problem2 {
-    public static String getAnswer (Stack<Character> stack)
+    public static String stackReverse (Stack<Character> stack)
     {
+
         String  answer ="";
         while (!stack.isEmpty()){
             answer += stack.pop();
@@ -19,9 +19,7 @@ public class Problem2 {
         for (int i = 0 ; i< cryptogram.length(); i++)
         {
             if (stack.isEmpty())
-            {
                 stack.push(cryptogram.charAt(i));
-            }
             else {
                 if (stack.peek() == cryptogram.charAt(i))
                 {
@@ -32,15 +30,9 @@ public class Problem2 {
                     continue;
                 }
                 else
-                {
                     stack.push(cryptogram.charAt(i));
-                }
             }
         }
-        return getAnswer(stack);
+        return stackReverse(stack);
     }
-/*
-   public static void main(String[] args) {
-        System.out.println("hello"+solution("browoanoommnaon"));
-    }*/
 }

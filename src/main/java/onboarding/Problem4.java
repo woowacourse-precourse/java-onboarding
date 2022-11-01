@@ -6,14 +6,17 @@ public class Problem4 {
     {
         answer+=(char) ('A' + 'Z' -c);
     }
+
     public static  void convLower(char c)
     {
         answer +=(char) ('a'+'z' - c);
     }
+
     public static boolean checkUpper (char c)
     {
         return c>= 'A' && c<='Z';
     }
+
     public static boolean checkLower (char c)
     {
         return c>= 'a' && c<='z';
@@ -35,8 +38,4 @@ public class Problem4 {
         }
         return answer;
     }
-
-  /*  public static void main(String[] args) {
-        System.out.println(solution("I love you"));
-    }*/
 }
