@@ -35,6 +35,19 @@ class Inspection{
         final int MINIMUM_GROUP_SIZE=1;
         return sizeOfTokenGroup > MINIMUM_GROUP_SIZE;
     }
+    HashSet<String> getEmail(HashMap<Integer, String> crewInformation){
+        HashSet<String> emails=new HashSet<>();
+        Set<Integer> hashCodeKeys;
+        int sizeOfGroup=crewInformation.size();
+
+        if(isDuplicated(sizeOfGroup)){
+            hashCodeKeys = crewInformation.keySet();
+            for(Integer hashCodeKey: hashCodeKeys){
+                emails.add(crewInformation.get(hashCodeKey));
+            }
+        }
+        return emails;
+    }
 }
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
