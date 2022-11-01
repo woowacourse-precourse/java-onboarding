@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        String answer = getConvertedString(word);
         return answer;
     }
 
@@ -16,6 +16,18 @@ public class Problem4 {
             conversionRules.put((char) (97+i),(char) (122-i));
         }
         return conversionRules;
+    }
+
+    private static String getConvertedString(String inputString) {
+        String convertedString = "";
+        Map<Character,Character> conversionRules = getConversionRules();
+
+        for (char ch : inputString.toCharArray()) {
+            if (conversionRules.containsKey(ch)) ch = conversionRules.get(ch);
+            convertedString += ch;
+        }
+
+        return convertedString;
     }
 
 }
