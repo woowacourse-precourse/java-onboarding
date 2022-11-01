@@ -56,6 +56,21 @@ public class Problem7 {
             value[idx++] = entry.getValue();
             answer.add(entry.getKey());
         }
+        for (int i = 0; i < 4; ++i) {
+            if (value[i] != 0 && value[i] == value[i + 1]) {
+                int start = i;
+                int end = start + 1;
+                while (true) {
+                    if (end >= 5 || value[start] != value[end]) {
+                        --end;
+                        break;
+                    }
+                    ++end;
+                }
+                Collections.sort(answer.subList(start, end + 1));
+                i = end;
+            }
+        }
         return answer;
     }
 }
