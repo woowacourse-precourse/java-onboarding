@@ -57,6 +57,12 @@ public class FriendRecommendation {
         }
     }
 
+    public void updateVisitorPoints(){
+        for(String visitor: visitors){
+            addPointsToRecommendPointTable(visitor, Constants.POINT_OF_VISITOR);
+        }
+    }
+
     private void giveFriendOfFriendPoints(ArrayList<String> friendList){
         for(String name: friendList){
             addPointsToRecommendPointTable(name, Constants.POINT_OF_FRIEND_OF_FRIEND);
