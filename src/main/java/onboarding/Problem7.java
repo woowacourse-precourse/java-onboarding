@@ -4,12 +4,11 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         List<String> userFriendList = findUserFriend(user,friends);
         Map<String,Integer> recommendFriend = knowingTogetherScore(userFriendList,friends,user);
         recommendFriend = visitTimelineScore(recommendFriend,userFriendList,visitors);
         List<String> keys = sortingRecommendList(recommendFriend);
-        return answer;
+        return subString(keys);
     }
 
     //list 출력 길이 자르기
@@ -63,7 +62,6 @@ public class Problem7 {
                 }
                 if (Objects.equals(nowFriendship.get(0), nowUserFriend) && !nowFriendship.contains(user)) { //유저의 친구의 친구일때
                     String newUserName = nowFriendship.get(1);
-                    System.out.println("newUserName = " + newUserName);
                     if (recommendFriend.containsKey(newUserName)){ //key가 존재한다면
                         int userScore = recommendFriend.get(newUserName);
                         recommendFriend.put(newUserName,userScore+10);
