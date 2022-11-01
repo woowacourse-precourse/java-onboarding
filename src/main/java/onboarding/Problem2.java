@@ -5,8 +5,6 @@ import java.util.List;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = removeDuplicate(cryptogram);
-
         while (isDuplicate(cryptogram)) {
             cryptogram = removeDuplicate(cryptogram);
         }
