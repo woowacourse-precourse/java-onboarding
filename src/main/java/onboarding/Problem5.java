@@ -8,7 +8,6 @@ public class Problem5 {
 
     private static final List<Integer> LIST_OF_MONETARY_UNIT = initMonetaryUnits();
 
-
     public static List<Integer> solution(int money) {
         try {
             validateInputSize(money);
