@@ -3,12 +3,20 @@ package onboarding.problem6;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Crews {
     List<Crew> crewList;
 
     public Crews(List<Crew> crewList) {
         this.crewList = crewList;
+    }
+
+    public List<String> getDuplicatedStringList() {
+        return getDuplicatedStringCounts().entrySet().stream()
+                .filter(entry -> entry.getValue() > 1)
+                .map(entry -> entry.getKey())
+                .collect(Collectors.toList());
     }
 
     public Map<String, Integer> getDuplicatedStringCounts() {

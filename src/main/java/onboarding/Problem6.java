@@ -11,7 +11,7 @@ public class Problem6 {
         Crews crews = new Crews(forms.stream()
                 .map(form -> new Crew(form.get(0), form.get(1)))
                 .collect(Collectors.toList()));
-        return getDuplicatedCrewEmailList(forms, getDuplicatedStringList(crews.getDuplicatedStringCounts()));
+        return getDuplicatedCrewEmailList(forms, crews.getDuplicatedStringList());
     }
 
     public static List<String> getDuplicatedStringList(Map<String, Integer> stringCount) {
