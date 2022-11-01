@@ -33,6 +33,7 @@ public class Problem2 {
         }
         if (stack.peek() == c) {
             flag = true;
+            return;
         }
         stack.push(c);
     }
