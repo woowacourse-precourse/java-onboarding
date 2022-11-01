@@ -20,8 +20,22 @@ public class Problem7 {
 
         sortingListByScore(peopleList, friendPoint, listSorted);
 
-        List<String> answer = Collections.emptyList();
+        List<String> answer = getSolutionList(listSorted);
         return answer;
+    }
+
+    private static List<String> getSolutionList(List<List<String>> listSorted) {
+        List<String>  solList = new ArrayList<>();
+        if (listSorted.size()<5){
+            for (List<String> val : listSorted) {
+                solList.add(val.get(1));
+            }
+        }else{
+            for(int i=0; i<5; i++){
+                solList.add(listSorted.get(i).get(1));
+            }
+        }
+        return solList;
     }
 
     private static void sortingListByScore(Set<String> peopleList, HashMap<String, Integer> friendPoint, List<List<String>> listSorted) {
@@ -34,6 +48,7 @@ public class Problem7 {
     }
 
     private static void gradeScore(List<List<String>> friends, List<String> visitors, List<String> friendList, Set<String> peopleList, HashMap<String, Integer> friendPoint) {
+        //점수판 초기화
         for (String people : peopleList) {
             friendPoint.put(people, 0);
         }
