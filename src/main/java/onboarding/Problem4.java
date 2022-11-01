@@ -9,17 +9,23 @@ public class Problem4 {
         String answer = "";
         char[] ch = word.toCharArray();
         for(int i=0;i<ch.length;i++){
-            int a =divideCase(ch[i]);
-            if(a==1) ch[i] = (char)(209 - (int)ch[i]);
-            if(a==2) ch[i] = (char)(155 - (int)ch[i]);
+            int a = divideCase(ch[i]);
+            if(a==1) {
+                answer = answer + (char)(219 - ch[i]);
+                continue;
+            }
+            if(a==2) {
+                answer = answer + (char)(155 - ch[i]);
+                continue;
+            }
+            answer+=ch[i];
         }
-        answer=ch.toString();
         return answer;
     }
 
     public static Integer divideCase(char c){
-        if(c>=97 && c<=112) return 1; //소문자
-        if(c>=65 && c<=90) return 2;
+        if(c>=97 && c<=122) return 1; //소문자
+        if(c>=65 && c<=90) return 2; //대문자
         return 0;
     }
 
