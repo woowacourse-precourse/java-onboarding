@@ -1,3 +1,10 @@
+## 🚀 기능 목록
+1. - [x] 입력된 cryptogram을 한 문자씩 eachWords 라는 Queue에 저장
+2. - [x] 연속된 중복 문자를 제거하는 deleteDuplicatedWords 메서드
+3. - [x] 연속적으로 중복된 문자를 가지는지 판별하는 hasDuplicatedWords 메서드
+4. - [x] 연속적으로 중복된 문자가 없으면 answer에 추가하는 addToAnswer 메서드 
+
+
 ## 🚀 기능 요구 사항
 
 암호문을 좋아하는 괴짜 개발자 브라운이 이번에는 중복 문자를 이용한 새로운 암호를 만들었다. 예를 들어 "browoanoommnaon"이라는 암호문은 다음과 같은 순서로 해독할 수 있다.
