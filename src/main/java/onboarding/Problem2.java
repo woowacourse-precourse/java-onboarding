@@ -16,11 +16,22 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "";
 
+        //cryptogram을 하나씩 잘라 List로 변환하는 기능
         List<String> subCryptograms = new ArrayList<>();
         for (int i = 0; i < cryptogram.length(); i++) {
             subCryptograms.add(cryptogram.substring(i, i + 1));
         }
 
         return answer;
+    }
+
+    // 해독되었는지 확인하는 기능
+    private static boolean isDecoded(List<String> subCryptograms) {
+        for (int i = 0; i < subCryptograms.size()-1; i++) {
+            if (subCryptograms.get(i).equals(subCryptograms.get(i + 1))) {
+                return false;
+            }
+        }
+        return true;
     }
 }
