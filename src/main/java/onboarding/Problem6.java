@@ -20,17 +20,7 @@ public class Problem6 {
             for (int j = 1; j < name.length(); j++) {
                 String target = name.substring(j - 1, j + 1);
 
-                for (int k = i + 1; k < forms.size(); k++) {
-                    boolean isDuplicateName = forms.get(k).get(1).contains(target);
-
-                    if (isDuplicateName) {
-                        flag = true;
-                        String email = forms.get(k).get(0);
-                        boolean isNotRegistered = !dupEmails.contains(email);
-
-                        if (isNotRegistered) dupEmails.add(email);
-                    }
-                }
+                flag = duplicateFilter(forms, i, flag, target);
             }
 
             if (flag && !dupEmails.contains(forms.get(i).get(0))) {
@@ -41,5 +31,21 @@ public class Problem6 {
         Collections.sort(dupEmails);
 
         return dupEmails;
+    }
+
+    private static boolean duplicateFilter(List<List<String>> forms, int cur, boolean flag, String target) {
+        for (int k = cur + 1; k < forms.size(); k++) {
+            boolean isDuplicateName = forms.get(k).get(1).contains(target);
+
+            if (isDuplicateName) {
+                flag = true;
+                String email = forms.get(k).get(0);
+                boolean isNotRegistered = !dupEmails.contains(email);
+
+                if (isNotRegistered) dupEmails.add(email);
+            }
+        }
+
+        return flag;
     }
 }
