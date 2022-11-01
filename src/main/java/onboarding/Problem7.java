@@ -9,7 +9,17 @@ public class Problem7 {
         List<String> visitorExceptFriend = getVisitorExceptFriend(visitors, usersFriends);
         setVisitorScore(recommendMap, visitorExceptFriend);
         List<Map.Entry<String, Integer>> sortedList = sortByScore(recommendMap);
+        List<String> answer = getKeyList(sortedList);
+        return answer;
+    }
 
+    private static List<String> getKeyList(List<Map.Entry<String, Integer>> sortedList) {
+        List<String> answer = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> list : sortedList) {
+            answer.add(list.getKey());
+        }
+        return answer;
     }
 
     private static List<Map.Entry<String, Integer>> sortByScore(HashMap<String, Integer> recommendMap) {
