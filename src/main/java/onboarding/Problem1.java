@@ -2,46 +2,42 @@ package onboarding;
 
 import java.util.List;
 
-class UserForProblem1 {
+class User1 {
 
   private static final int LIST_LENGTH = 2;
-  private final int max;
+  private final List<Integer> UserPageList;
 
-  public UserForProblem1(List<Integer> user) {
-    int result = -1;
-    if (!validateUser(user)) {
-      PageForPro1 maxPage = new PageForPro1(user.get(0), user.get(1));
-      result = maxPage.getMax();
+  public User1(List<Integer> user) {
+    validateUser(user);
+    this.UserPageList = user;
+  }
+
+  private void validateUser(List<Integer> user) {
+    if (user.size() != LIST_LENGTH) {
+      throw new IllegalArgumentException();
     }
-    this.max = result;
   }
 
-  private boolean validateUser(List<Integer> user) {
-    return user.size() != LIST_LENGTH;
+  private boolean validatePage() {
+    Page1 pageClass = new Page1();
+    return pageClass.validatePage(UserPageList.get(0), UserPageList.get(1));
   }
 
-  public int getMax() {
-    return max;
+  public int calMax() {
+    Calculate1 calClass = new Calculate1(UserPageList.get(0), UserPageList.get(1));
+    if (validatePage()) {
+      return -1;
+    }
+    return calClass.compareTwo();
   }
 }
 
-class PageForPro1 {
+class Page1 {
 
   private static final int START_PAGE = 1;
   private static final int END_PAGE = 400;
 
-  private final int max;
-
-  public PageForPro1(int left, int right) {
-    int result = -1;
-    if (!validatePage(left, right)) {
-      CalculateForPro1 calClass = new CalculateForPro1(left, right);
-      result = calClass.compareTwo();
-    }
-    this.max = result;
-  }
-
-  private boolean validatePage(int left, int right) {
+  public boolean validatePage(int left, int right) {
     return validatePage1r400(left) || validatePage1r400(right) || validateTwoPages(left, right);
   }
 
@@ -60,18 +56,14 @@ class PageForPro1 {
   public boolean evenOdd(int left, int right) {
     return left % 2 == 0 || right % 2 == 1;
   }
-
-  public int getMax() {
-    return max;
-  }
 }
 
-class CalculateForPro1 {
+class Calculate1 {
 
   private final int leftPageMax;
   private final int rightPageMax;
 
-  public CalculateForPro1(int left, int right) {
+  public Calculate1(int left, int right) {
     this.leftPageMax = compareTwo(addNum(left), mulNum(left));
     this.rightPageMax = compareTwo(addNum(right), mulNum(right));
   }
@@ -110,9 +102,9 @@ class Problem1 {
   private static final int EXCEPTION = -1;
 
   public static int solution(List<Integer> pobi, List<Integer> crong) {
-    UserForProblem1 userPobi = new UserForProblem1(pobi);
-    UserForProblem1 userCrong = new UserForProblem1(crong);
-    return winner(userPobi.getMax(), userCrong.getMax());
+    User1 userPobi = new User1(pobi);
+    User1 userCrong = new User1(crong);
+    return winner(userPobi.calMax(), userCrong.calMax());
   }
 
   public static int winner(int a, int b) {
