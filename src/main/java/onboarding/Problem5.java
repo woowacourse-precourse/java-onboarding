@@ -5,62 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
-    /*public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        List<Integer> save = new ArrayList<>();
-        int temp;
-        while(true){
-            if(money <= 0)
-                break;
-            if(money % 50000 != 0){
-                temp = money/50000;
-                save.add(temp);
-                money %= 50000;
-            }
-            if(money % 10000 != 0){
-                temp = money/10000;
-                save.add(temp);
-                money %= 10000;
-            }
-            if(money % 5000 != 0){
-                temp = money/5000;
-                save.add(temp);
-                money %= 5000;
-            }
-            if(money % 1000 != 0){
-                temp = money/1000;
-                save.add(temp);
-                money %= 1000;
-            }
-            if(money % 500 != 0){
-                temp = money/500;
-                save.add(temp);
-                money %= 500;
-            }
-            if(money % 100 != 0){
-                temp = money/100;
-                save.add(temp);
-                money %= 100;
-            }
-            if(money % 50 != 0){
-                temp = money/50;
-                save.add(temp);
-                money %= 50;
-            }
-            if(money % 10 != 0){
-                temp = money/10;
-                save.add(temp);
-                money %= 10;
-            }
-            if(money % 1 != 0){
-                temp = money/1;
-                save.add(temp);
-                money %= 1;
-            }
-        }
-        System.out.print(save.toString());
-        return answer;
-    }*/
+
     public static List<Integer> solution(int money) {
             List<Integer> answer = Collections.emptyList();
             List<Integer> save = new ArrayList<>();
