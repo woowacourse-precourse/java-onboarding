@@ -1,38 +1,43 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        //List<String> answer = List.of("answer");
-
-        List<String> name = new ArrayList<>(forms.size());
+        List<String> answer = new ArrayList<>();
         List<String> email = new ArrayList<>(forms.size());
-        List<String> result = new ArrayList<>();
+        List<String> name = new ArrayList<>(forms.size());
 
+        // 이름과 이메일 나눠서 저장
         for (int i = 0; i < forms.size(); i++) {
-            name.add(i, forms.get(i).get(1));
             email.add(i, forms.get(i).get(0));
+            name.add(i, forms.get(i).get(1));
         }
 
-        //boolean 배열 두고 i,j 둘다 true 해서 시간 단축 시키기
+        // 중복된 닉네임인지 판별
+        boolean[] isChecked = new boolean[forms.size()];
         for (int i = 0; i < name.size(); i++) {
+            if (isChecked[i]) {
+                continue;
+            }
+
             for (int j = 0; j < name.size(); j++) {
                 if (i == j) {
                     continue;
                 }
                 if (hasOverlap(name.get(i), name.get(j))) {
-                    result.add(email.get(i));
+                    answer.add(email.get(i));
+                    answer.add(email.get(j));
+                    isChecked[j] = true;
                     break;
                 }
             }
         }
 
-        result.sort(Comparator.naturalOrder());
-        return result;
+        Set<String> answerSet = new HashSet<>(answer);
+        answer = new ArrayList<>(answerSet);
+        answer.sort(Comparator.naturalOrder());
+        return answer;
     }
 
     static boolean hasOverlap(String str, String other) {
