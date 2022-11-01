@@ -1,7 +1,7 @@
 package week01;
 
 public class Problem05 {
-    public int[] solution(int money){
+    public static int[] solution(int money){
         int[] arr = {0,0,0,0,0,0,0,0,0};
         arr[0] = money/50000;
         money%=50000;

@@ -1,7 +1,7 @@
 package week01;
 
 public class Problem01 {
-    public int solution(int[] pobi, int[] crong){
+    public static int solution(int[] pobi, int[] crong){
         int result;
         int left_high_num;
         int right_high_num;
@@ -28,7 +28,7 @@ public class Problem01 {
             result = -1;
         return result;
     }
-    public int sum (int num){
+    public static int sum (int num){
         int hap = 0;
         while(num!=0){
             hap += num%10;
@@ -37,7 +37,7 @@ public class Problem01 {
         return hap;
     }
 
-    public int multiply(int num){
+    public static int multiply(int num){
         int multiple = 1;
         while(num!=0){
             multiple *= num % 10;

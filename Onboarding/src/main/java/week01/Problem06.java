@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Problem06 {
-    public String[] solution(String[][] arr){
+    public static String[] solution(String[][] arr){
         List<String> strList = similarNameSet(arr);
         String[] s = getEmailList(arr, strList);
         return s;
@@ -24,7 +24,7 @@ public class Problem06 {
         Arrays.sort(s);
         return s;
     }
-    public List<String> similarNameSet(String[][] arr) {
+    public static List<String> similarNameSet(String[][] arr) {
         HashSet<String> set = new HashSet<>();
         for(int i = 0; i < arr.length-1; i++){
             for(int j = i+1; j < arr.length; j++){
@@ -37,7 +37,7 @@ public class Problem06 {
         List<String> strList = new ArrayList<>(set);
         return strList;
     }
-    public String[] rtString(String str_1, String str_2){
+    public static String[] rtString(String str_1, String str_2){
         String[] answer = new String[2];
         String name_1;
         String name_2;

@@ -1,7 +1,7 @@
 package week01;
 
 public class Problem02 {
-    public String solution(String cryptogram){
+    public static String solution(String cryptogram){
         String result = "";
         while (cryptogram.length()>2){
             result = deleteDuplicate(cryptogram);
@@ -15,7 +15,7 @@ public class Problem02 {
         return result;
     }
 
-    public String deleteDuplicate(String cryptogram){
+    public static String deleteDuplicate(String cryptogram){
         String answer = "";
         char prev;
         char pres;

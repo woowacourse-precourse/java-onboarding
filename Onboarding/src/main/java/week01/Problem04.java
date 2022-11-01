@@ -1,7 +1,7 @@
 package week01;
 
 public class Problem04 {
-    public String solution(String word){
+    public static String solution(String word){
         String answer = "";
         int k;
         char c;

@@ -1,7 +1,7 @@
 package week01;
 
 public class Problem03 {
-    public int solution(int number){
+    public static int solution(int number){
         int cnt = 0;
         int[] arr = {0,0,0,0,0};
         for(int i = 1; i <= number; i++){
@@ -14,7 +14,7 @@ public class Problem03 {
         }
         return cnt;
     }
-    public int getCnt(int cnt, int[] arr) {
+    public static int getCnt(int cnt, int[] arr) {
         for(int i = 0; i< arr.length; i++){
             if(arr[i] == 3 || arr[i] == 6 || arr[i] == 9){
                 cnt++;
