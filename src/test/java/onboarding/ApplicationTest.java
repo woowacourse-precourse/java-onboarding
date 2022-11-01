@@ -341,11 +341,24 @@ class ApplicationTest {
             List<List<String>> forms = new ArrayList<>();
             List<String> result = new ArrayList<>();
             for (int i = 0; i < MAX_NUM_OF_CREWS; i++) {
-                forms.add(List.of("a" + i + EMAIL_DOMAIN, "가나다라마거너더러머고노도로모구누두루"));
-                result.add("a" + i + EMAIL_DOMAIN);
+                String email = "a" + i + "@" + EMAIL_DOMAIN;
+                String nickname = "가나다라마거너더러머고노도로모구누두루";
+
+                forms.add(List.of(email, nickname));
+                result.add(email);
             }
             Collections.sort(result);
 
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이"),
+                    List.of("jj@email.com", "제이")
+            );
+            List<String> result = List.of("jj@email.com", "jm@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
     }

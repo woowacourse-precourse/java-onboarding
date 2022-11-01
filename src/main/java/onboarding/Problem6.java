@@ -10,6 +10,7 @@ public class Problem6 {
 
     public static final int INDEX_EMAIL = 0;
     public static final int INDEX_NICKNAME = 1;
+
     public static final int MIN_NUM_OF_CREWS = 1;
     public static final int MAX_NUM_OF_CREWS = 10000;
 
@@ -20,6 +21,7 @@ public class Problem6 {
         if (isNotValidateForms(forms)) {
             throw new IllegalArgumentException();
         }
+
 
         Map<String, Integer> nicknameSubstringCount = new HashMap<>();
 
@@ -81,7 +83,7 @@ public class Problem6 {
     private static boolean isNotValidateForms(List<List<String>> forms) {
 
         // 크루는 1명 이상 10,000명 이하이다.
-        if (forms.size() < MIN_NUM_OF_CREWS || forms.size() > MAX_NUM_OF_CREWS) {
+        if (!(MIN_NUM_OF_CREWS <= forms.size() && forms.size() <= MAX_NUM_OF_CREWS)) {
             return true;
         }
 
@@ -97,8 +99,7 @@ public class Problem6 {
             }
 
             // 닉네임은 한글만 가능하고 전체 길이는 1자 이상 20자 미만이다.
-            String nicknameRegex = "^[가-힣]{1,19}$";
-            if (!nickname.matches(nicknameRegex)) {
+            if (!nickname.matches("^[가-힣]{1,19}$")) {
                 return true;
             }
         }
