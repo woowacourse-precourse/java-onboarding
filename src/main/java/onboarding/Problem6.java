@@ -6,9 +6,9 @@ public class Problem6 {
     public static Map<String, String> formMap = new HashMap<>();
     public static Set<String> resultSet = new HashSet<>();
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer; //List.of("answer");
+        List<String> answer;
 
-        //1. 입력받은 모든 이름들을 리스트로 만든다.
+        /*1. 입력받은 모든 이름들을 리스트로 만든다.*/
         List<String> names = new ArrayList<>();
         for(int i = 0; i < forms.size(); i++){
             List<String> data = forms.get(i);
@@ -17,10 +17,10 @@ public class Problem6 {
         }
 
         for(int i = 0; i < names.size(); i++) {
-            //2. 어떤 이름 문자열을 선택하여, 그 문자열의 모든 2자 이상 부분문자열을 만든다.
+            /*2. 어떤 이름 문자열을 선택하여, 그 문자열의 모든 2자 이상 부분문자열을 만든다.*/
             List<String> subStrings = createSubString(names.get(i));
 
-            //3-1. 해당 부분문자열이 다른 이름들에 포함되어 있는지 확인한다.
+            /*3-1. 해당 부분문자열이 다른 이름들에 포함되어 있는지 확인한다.*/
             checkContent(names, subStrings, i);
         }
 
@@ -51,9 +51,9 @@ public class Problem6 {
     }
 
     public static void compareName(List<String> names,List<String> subStrings, int k){
+        /*3-2.포함되어 있다면 그 계정의 이메일을 정답 리스트에 담고 다음 반복으로 넘어간다.*/
         for(int j = 0; j < subStrings.size(); j++){
             String name = names.get(k);
-            //3-2.포함되어 있다면 그 계정의 이메일을 정답 리스트에 담고 다음 반복으로 넘어간다.
             if(name.contains(subStrings.get(j))){
                 resultSet.add(formMap.get(name));
             }
