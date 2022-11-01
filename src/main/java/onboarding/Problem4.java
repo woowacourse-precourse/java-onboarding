@@ -11,6 +11,13 @@ public class Problem4 {
         return answer;
     }
 
+    //  입력값이 소문자인지 확인하는 메소드
+    private static Boolean checkLowerCase(char input){
+        if(Character.toLowerCase(input) == input)
+            return true;
+        return false;
+    }
+
     //  입력값에 대한 유효성 검사
     private static Boolean verifyChar(char input){
         if(!Character.isAlphabetic(input)) return false;
