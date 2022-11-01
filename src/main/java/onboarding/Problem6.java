@@ -1,13 +1,30 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        //이메일을 저장할 공간
+        //인덱스를 알고 있다면 O(1)로 빠르게 찾기 위함
+        String[] emails = new String[forms.size()];
+        int index = 0;
+        //중복 검사를 빨리 하기 위해 Map에 닉네임을 쪼개서 저장
+        Map<String, Integer> pieceStorage = new HashMap<>();
+        //중복된 이메일 체크하는 boolean배열
+        boolean[] emailsDuplicateCheck = new boolean[forms.size()];
+        //중복된 이메일을 담는 리스트
+        List<String> duplicatedEmails = new ArrayList<>();
+
+
+        //쪼개서 저장하며, 중복 비교
+        for(List<String> user : forms) {
+            emails[index] = user.get(0);
+            checkDuplicate(user.get(1), index, pieceStorage, emailsDuplicateCheck, duplicatedEmails, emails);
+            index++;
+        }
+        //이메일 리스트 정렬
+        Collections.sort(duplicatedEmails);
+        return duplicatedEmails;
     }
 
     private static void checkDuplicate(String nickname, int emailIndex, Map<String, Integer> pieceStorage,
