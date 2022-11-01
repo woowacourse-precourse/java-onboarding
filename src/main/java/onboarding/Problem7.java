@@ -53,7 +53,7 @@ public class Problem7 {
         initFriends(friends);                           // 각 유저의 친구 리스트 초기화
 
         scoring(mainUserId, visitors);                  // 모든 유저 점수 부여
-        List<User> sortedUserList = sortScoreId();      // 점수 > 이름 순으로 유저 리스트 정렬
+        List<User> sortedUserList = sortScoreAndId();      // 점수 > 이름 순으로 유저 리스트 정렬
         makeAnswer(mainUserId, sortedUserList);         // 조건에 맞게 answer 리스트에 추가
         return answer;
     }
@@ -108,7 +108,7 @@ public class Problem7 {
         }
     }
 
-    public static List<User> sortScoreId() {
+    public static List<User> sortScoreAndId() {
         List<User> result = new ArrayList<>(userList.values());
 
         Collections.sort(result, (userA, userB) -> {
