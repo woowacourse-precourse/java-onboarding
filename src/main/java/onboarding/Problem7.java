@@ -23,6 +23,23 @@ public class Problem7 {
         return sortedRecommend;
     }
 
+
+    /**
+     * 친구가 아닌 방문자 찾기
+     * @param visitors
+     * @param userFriends
+     * @return List<String>
+     */
+    private static List<String> visitorsScore(List<String> visitors, List<String> userFriends) {
+        List<String> visitorsNotFriends = new ArrayList<>();
+        for (int i = 0; i < visitors.size(); i++) {
+            if (!userFriends.contains(visitors.get(i))) {
+                visitorsNotFriends.add(visitors.get(i));
+            }
+        }
+        return visitorsNotFriends;
+    }
+
     /**
      * 친구의 친구의 추천 점수 구하기
      * @param friendsFriends
