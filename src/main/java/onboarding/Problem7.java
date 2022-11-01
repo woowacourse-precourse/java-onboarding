@@ -17,6 +17,8 @@ public class Problem7 {
         for (int i = 0; i < allUserList.size(); i++) {
             friendGraph[i] = new ArrayList<>();
         }
+        // 계정별 추천점수 배열 생성
+        int[] score = new int[allUserList.size()];
 
         return answer;
     }
