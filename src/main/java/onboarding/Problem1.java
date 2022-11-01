@@ -18,6 +18,12 @@ class Problem1 {
         for (int k=0; k<tmp.length(); k++) _mul*=(tmp.charAt(k)-'0');
         return Math.max(_sum,_mul);    //pobi의 현재 페이지 최대값 저장
     }
+
+    public static int compareWinner(int pobi, int crong) {
+        if (pobi > crong) return 1;  //pobi 승리
+        if (pobi < crong) return 2;  //crong 승리
+        return 0;  //무승부
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pobi_result = 0, crong_result = 0;
 
@@ -28,8 +34,6 @@ class Problem1 {
             crong_result=Math.max(crong_result,getScore(crong.get(i))); //crong의 현재 페이지 최대값 저장
         }
 
-        if (pobi_result > crong_result) return 1;  //pobi 승리
-        if (pobi_result < crong_result) return 2;  //crong 승리
-        return 0;  //무승부
+        return compareWinner(pobi_result,crong_result);
     }
 }
