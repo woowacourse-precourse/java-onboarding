@@ -46,4 +46,17 @@ public class Problem7 {
         return userFriends;
     }
 
+    public static List<String> getKnowTogetherMembers(Map<String, List<String>> friendMap, List<String> userFriends, String user) {
+        return userFriends.stream()
+                .flatMap(userFriend -> friendMap.get(userFriend).stream())
+                .filter(userFriend -> isUserOrUserFriend(userFriends, user, userFriend))
+                .collect(Collectors.toList());
+    }
+
+    private static boolean isUserOrUserFriend(List<String> userFriends, String user, String userFriend) {
+        if (userFriend.equals(user) || userFriends.contains(userFriend)) {
+            return false;
+        }
+        return true;
+    }
 }
