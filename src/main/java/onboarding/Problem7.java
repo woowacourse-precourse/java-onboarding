@@ -47,6 +47,21 @@ public class Problem7 {
             }
         }
 
+        // visitor : 1점
+        // user의 친구 제외
+        for(String visitor : visitors) {
+            if(!userFriendsList.contains(visitor)) {
+                System.out.println(visitor);
+                if(!scoreMap.containsKey(visitor)) { // map에 이름이 없을 경우
+                    scoreMap.put(visitor, 1);
+                } else { // map에 이름이 존재할 경우
+                    int val = scoreMap.get(visitor);
+                    val++;
+                    scoreMap.put(visitor, val);
+                }
+            }
+        }
+
         return answer;
     }
 }
