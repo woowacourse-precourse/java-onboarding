@@ -7,7 +7,7 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>(9);
         for (int index = 0; index < 9; index++) {
-            int won;
+            final int won;
             if ((index % 2 == 0) && index != 8) {
                 won = (int)(5 * Math.pow(10,4 - index/2));
                 answer.add(money / won);

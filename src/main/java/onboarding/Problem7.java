@@ -21,13 +21,15 @@ public class Problem7 {
         for (String userFriend : userFriends) {
             for (List<String> strings : friends) {
                 if (!(strings.get(0).equals(user) || strings.get(1).equals(user))) {
+                    final String friend;
+                    final int score;
                     if (strings.get(0).equals(userFriend)) {
-                        String friend = strings.get(1);
-                        int score = friendScore.get(friend) + 10;
+                        friend = strings.get(1);
+                        score = friendScore.get(friend) + 10;
                         friendScore.put(friend, score);
                     } else if (strings.get(1).equals(userFriend)) {
-                        String friend = strings.get(0);
-                        int score = friendScore.get(friend) + 10;
+                        friend = strings.get(0);
+                        score = friendScore.get(friend) + 10;
                         friendScore.put(friend, score);
                     }
                 }
@@ -36,34 +38,33 @@ public class Problem7 {
         }
 
         for (String visitor : visitorPeople) {
-            int score = friendScore.get(visitor) + 1;
+            final int score = friendScore.get(visitor) + 1;
             friendScore.put(visitor, score);
         }
 
         friendScore.values().removeIf(num -> num == 0);
 
-        List<String> listKeySet = new ArrayList<>(friendScore.keySet());
-        listKeySet.sort((o1, o2) -> {
-            if (friendScore.get(o1) > friendScore.get(o2)) return -1;
-            else if (Objects.equals(friendScore.get(o1), friendScore.get(o2))) {
-                if (o1.charAt(0) > o2.charAt(0)) {
-                    return 1;
-                } else return 0;
-            } else return 1;
+        List<String> friendScoreKeySet = new ArrayList<>(friendScore.keySet());
+        friendScoreKeySet.sort((key1, key2) -> {
+            final Integer key1Value = friendScore.get(key1);
+            final Integer key2Value = friendScore.get(key2);
+            if (Objects.equals(key1Value, key2Value)) return key1.compareTo(key2);
+            return key2Value.compareTo(key1Value);
         });
 
         List<String> answer = new ArrayList<>(5);
 
-        if(listKeySet.size() < 5) {
-            answer.addAll(listKeySet);
+        if (friendScoreKeySet.size() < 5) {
+            answer.addAll(friendScoreKeySet);
         } else {
-            for(int index = 0; index < 5; index++) {
-                answer.add(listKeySet.get(index));
+            for (int index = 0; index < 5; index++) {
+                answer.add(friendScoreKeySet.get(index));
             }
         }
         return answer;
     }
-    private static Set<String> allPeopleMember(List<List<String>> friends, List<String> visitor , String user) {
+
+    private static Set<String> allPeopleMember(List<List<String>> friends, List<String> visitor, String user) {
         Set<String> allFriends = new HashSet<>();
 
         for (List<String> friend : friends) {
