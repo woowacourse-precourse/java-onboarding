@@ -27,19 +27,28 @@ public class Problem7 {
         return sortedMap;
     }
 
+    /* user 또는 user 친구 목록에 있는지 확인 */
+    public static boolean containsUserFriends(HashSet<String> userFriends, String user, String name) {
+        if(userFriends.contains(name) || user == name) {
+            return true;
+        }
+        return false;
+    }
+
     /* 방문자 점수 등록 메서드 */
-    public static HashMap<String, Integer> checkVisitors(List<String> visitors, HashMap<String, Integer> sharedFrineds, HashSet<String> userFriends) {
+    public static HashMap<String, Integer> checkVisitors(List<String> visitors, HashMap<String, Integer> sharedFriends, HashSet<String> userFriends, String user) {
         for(String visitor : visitors) {
-            if(userFriends.contains(visitor)) {
+            if(containsUserFriends(userFriends, user, visitor)) {
                 continue;
             }
-            if(sharedFrineds.containsKey(visitor)) {
-                sharedFrineds.replace(visitor, sharedFrineds.get(visitor), sharedFrineds.get(visitor) + 1);
+            if(sharedFriends.containsKey(visitor)) {
+                sharedFriends.replace(visitor, sharedFriends.get(visitor), sharedFriends.get(visitor) + 1);
             } else {
-                sharedFrineds.put(visitor, 1);
+                sharedFriends.put(visitor, 1);
             }
         }
-        return sharedFrineds;
+        System.out.println(sharedFriends);
+        return sharedFriends;
     }
 
     /* 함께 아는 친구 점수 등록 메서드 */
@@ -53,7 +62,9 @@ public class Problem7 {
                     continue;
                 } else if(firstName == userFriend || secondName == userFriend) {
                     String key = (firstName == userFriend) ? secondName : firstName;
-                    if(sharedFriends.containsKey(key)) {
+                    if(containsUserFriends(userFriends, user, key)) {
+                        continue;
+                    } else if(sharedFriends.containsKey(key)) {
                         sharedFriends.replace(key, sharedFriends.get(key), sharedFriends.get(key) + 10);
                     } else {
                         sharedFriends.put(key, 10);
@@ -61,7 +72,6 @@ public class Problem7 {
                 }
             }
         }
-        System.out.println(sharedFriends);
         return sharedFriends;
     }
 
@@ -82,7 +92,7 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         HashSet<String> userFriends = findUserFriends(user, friends);
         HashMap<String, Integer> sharedFriendsMap = createSharedFriendsHashmap(friends, userFriends, user);
-        checkVisitors(visitors, sharedFriendsMap, userFriends);
+        sharedFriendsMap = checkVisitors(visitors, sharedFriendsMap, userFriends, user);
         answer = sort(sharedFriendsMap);
         System.out.println(answer);
         return answer;
