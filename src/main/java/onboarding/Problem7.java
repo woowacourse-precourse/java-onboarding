@@ -25,11 +25,6 @@ public class Problem7 {
         // 최대 5명만 추천
         List<String> answer = recommendList.stream().limit(5).collect(Collectors.toList());
 
-        System.out.println(userFriends);
-        System.out.println(recommendedFriendScore);
-        System.out.println(recommendList);
-
-
         return answer;
     }
 
