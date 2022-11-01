@@ -88,7 +88,7 @@ public class Problem7 {
         for(int i = 1; i <userNumber; i++){
             for(int j = 1; j < userNumber; j++){
                 if(i != j && friendMatrix[0][j] && friendMatrix[i][j]){
-                    recommendScore.put(i,recommendScore.get(i)+5);
+                    recommendScore.put(i,recommendScore.get(i)+10);
                 }
             }
         }
