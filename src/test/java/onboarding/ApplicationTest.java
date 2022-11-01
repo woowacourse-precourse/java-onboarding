@@ -3,6 +3,7 @@ package onboarding;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -198,10 +199,13 @@ class ApplicationTest {
                     List.of("drake", "millo"),
                     List.of("shakevan", "mrko")
             );
-
-            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-            List<String> result = List.of("andole", "jun", "bedi");
-            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+            List<List<String>> friends_form = new ArrayList<>(friends);
+            List<String> friend = new ArrayList<>(List.of("shakevan", "mrko"));
+            friends_form.remove(friend);
+            System.out.println("test1");
+            System.out.println(friends);
+            System.out.println("test2");
+            System.out.println(friends_form);
         }
         @Test
         void case1() {
