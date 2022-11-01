@@ -16,12 +16,11 @@ class Problem1 {
         if(prst > crst){
             return 1;
         }
-        else if (prst < crst) {
+        if (prst < crst) {
             return 2;
         }
-        else {
-            return 0;
-        }
+
+        return 0;
     }
 
     public static int getMax(List<Integer> pageList){
