@@ -2,8 +2,8 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+		ThreeSixNineGame game = new ThreeSixNineGame();
+		return game.getTotalClap(number);
     }
 
 	private static class ThreeSixNineGame {
@@ -29,10 +29,10 @@ public class Problem3 {
 			while (number > 0) {
 				currentDigit = number % 10;
 				totalClaps += getNumberOfClap(currentDigit, previousNumberSum);
-				updatePreviousUnitMaxClap();
 				previousNumberSum += currentDigit * currentDigitUnit;
+				updatePreviousUnitMaxClap();
+				upgradeDigitUnitToNext();
 				number /= UNIT_CONVERT_CRITERIA;
-				currentDigitUnit *= UNIT_CONVERT_CRITERIA;
 			}
 
 			return totalClaps;
@@ -40,10 +40,6 @@ public class Problem3 {
 
 		private int getFilledCaseClap(int number) {
 			return (number * previousUnitMaxClap) + ((number - 1) / COMMON_CLAP_CYCLE) * currentDigitUnit;
-		}
-
-		public static int getCurrentTotal(int currentNumber,int currentUnit, int beforeUnitTotal, int preDigit) {
-			return (currentNumber) * beforeUnitTotal + ((currentNumber - 1) / 3) * currentUnit + (currentNumber % 3 == 0 ? (preDigit + 1) : 0 );
 		}
 
 		private boolean isUnfilledCaseHasClap(int number) {
@@ -61,6 +57,10 @@ public class Problem3 {
 		private void updatePreviousUnitMaxClap() {
 			int previousUnitMaxValue = currentDigitUnit - 1;
 			previousUnitMaxClap += getNumberOfClap(MAX_NUMBER, previousUnitMaxValue);
+		}
+
+		private void upgradeDigitUnitToNext() {
+			currentDigitUnit = currentDigitUnit * UNIT_CONVERT_CRITERIA;
 		}
 	}
 }
