@@ -7,9 +7,9 @@ import onboarding.problem1.Score;
 import java.util.List;
 
 class Problem1 {
-  public static int solution(List<Integer> pobi, List<Integer> crong) {
-    OpenBook pobiOpenBook = OpenBook.fromList(pobi);
-    OpenBook crongOpenBook = OpenBook.fromList(crong);
+  public static int solution(List<Integer> pobiPages, List<Integer> crongPages) {
+    OpenBook pobiOpenBook = OpenBook.fromPages(pobiPages);
+    OpenBook crongOpenBook = OpenBook.fromPages(crongPages);
 
     try {
       pobiOpenBook.validate();

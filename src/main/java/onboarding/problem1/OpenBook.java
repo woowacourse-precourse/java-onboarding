@@ -13,8 +13,8 @@ public class OpenBook {
     this.rightPage = rightPage;
   }
 
-  public static OpenBook fromList(List<Integer> page) {
-    return new OpenBook(page.get(0), page.get(1));
+  public static OpenBook fromPages(List<Integer> pages) {
+    return new OpenBook(pages.get(0), pages.get(1));
   }
 
   public int getLeftPage() {
