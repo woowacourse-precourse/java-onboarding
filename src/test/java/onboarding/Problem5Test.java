@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,6 +25,13 @@ class Problem5Test {
             assertEquals(money%moneyUnits[i], problem5.examineChange(money, moneyUnits[i]));
         }
     }
-    
 
+    @Test
+    @DisplayName("각 화폐단위로 변환할 수 있는 개수를 담은 리스트 확인")
+    void calculateMoney() {
+        problem5 = new Problem5();
+        money = 50237;
+        List<Integer> result = new ArrayList<>(Arrays.asList(1, 0, 0, 0, 0, 2, 0, 3, 7));
+        assertEquals(result, problem5.calculateMoney(new ArrayList<>(), money));
+    }
 }
