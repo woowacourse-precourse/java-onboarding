@@ -5,29 +5,34 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
-import java.util.TreeMap;
+import java.util.LinkedHashMap;
+import java.util.stream.Collectors;
 
 public class Problem7 {
+    static Map<String, List<String>> friendsMap = new HashMap<String, List<String>>();
+    static Map<String, Integer> scoreMap = new HashMap<String, Integer>();
+    static String userID = new String();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<String>();
-        Map<String, List<String>> friendsMap = getFriendsMap(friends);
-        Map<String, Integer> scoreMap = getScoreMap(friendsMap, user);
-
+        userID = user;
+        setFriendsMap(friends);
+        setScoreMap();
+        calculateVisitorScore(visitors);
+        answer = getTopFiveScore();
         return answer;
     }
 
-    static Map<String, List<String>> getFriendsMap(List<List<String>> friends) {
-        Map<String, List<String>> friendsMap = new HashMap<String, List<String>>();
+    static void setFriendsMap(List<List<String>> friends) {
         for (List<String> friend : friends) {
             String friendA = friend.get(0);
             String friendB = friend.get(1);
-            friendsMap = addFriend(friendsMap, friendA, friendB);
-            friendsMap = addFriend(friendsMap, friendB, friendA);
+            addFriend(friendA, friendB);
+            addFriend(friendB, friendA);
         }
-        return friendsMap;
     }
 
-    static Map<String, List<String>> addFriend(Map<String, List<String>> friendsMap, String A, String B) {
+    static void addFriend(String A, String B) {
         if (friendsMap.containsKey(A)) {
             friendsMap.get(A).add(B);
         } else {
@@ -35,20 +40,22 @@ public class Problem7 {
             friendList.add(B);
             friendsMap.put(A, friendList);
         }
-        return friendsMap;
     }
 
-    static Map<String, Integer> getScoreMap(Map<String, List<String>> friendsMap, String user) {
-        Map<String, Integer> scoreMap = new TreeMap<String, Integer>();
-        List<String> friends = friendsMap.get(user);
-        for (String friend : friends) {
+    static void setScoreMap() {
+        List<String> userFriends = friendsMap.get(userID);
+        for (String friend : userFriends) {
             for (String friendOfFriend : friendsMap.get(friend)) {
+                if (friendOfFriend.equals(userID)) {
+                    continue;
+                }
                 if (!scoreMap.containsKey(friendOfFriend)) {
                     scoreMap.put(friendOfFriend, 10);
                 }
             }
         }
-        return scoreMap;
+    }
+
     static void calculateVisitorScore(List<String> visitors) {
         List<String> userFriends = friendsMap.get(userID);
         for (String visitor : visitors) {
@@ -62,6 +69,7 @@ public class Problem7 {
             }
         }
     }
+
     static List<String> getTopFiveScore() {
         List<String> answer = new ArrayList<String>();
         Map<String, Integer> sortedScoreMap = scoreMap.entrySet().stream()
