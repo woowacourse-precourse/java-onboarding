@@ -44,4 +44,11 @@ public class User {
 
         return mul;
     }
+
+    private int[] calculatePageScore(int leftPage, int rightPage){
+        int leftPageScore = Math.max(calculateSumScore(leftPage), calculateMulScore(leftPage));
+        int rightPageScore = Math.max(calculateSumScore(rightPage), calculateMulScore(rightPage));
+
+        return new int[] {leftPageScore, rightPageScore};
+    }
 }
