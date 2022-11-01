@@ -11,14 +11,7 @@ public class Problem7 {
         friendList = getFriendList(friends, user);
 
         for (int i = 0; i < friends.size(); i += 1) {
-            for (int j = 0; j < friendList.size(); j += 1) {
-                if (friends.get(i).get(1) == friendList.get(j)) {
-                    updatePointByIndex0Friend(result, friends, i);
-                }
-                if (friends.get(i).get(0) == friendList.get(j)) {
-                    updatePointByIndex1Friend(result, friends, i);
-                }
-            }
+            checkFriendOfFriend(friendList, friends, result, i);
         }
 
         for (int i = 0; i < visitors.size(); i += 1) {
@@ -99,6 +92,17 @@ public class Problem7 {
             return result.put(visitors.get(index), result.get(visitors.get(index)) + 1);
         }
         return result.put(visitors.get(index), 1);
+    }
+
+    public static void checkFriendOfFriend(List<String> friendList, List<List<String>> friends, HashMap<String, Integer> result ,int index){
+        for (int j = 0; j < friendList.size(); j += 1) {
+            if (friends.get(index).get(1) == friendList.get(j)) {
+                updatePointByIndex0Friend(result, friends, index);
+            }
+            if (friends.get(index).get(0) == friendList.get(j)) {
+                updatePointByIndex1Friend(result, friends, index);
+            }
+        }
     }
 
 }
