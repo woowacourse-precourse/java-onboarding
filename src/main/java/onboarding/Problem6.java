@@ -6,7 +6,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         HashMap<String, Integer> nameMap = getNameMap(forms);
-        return null;
+        return getEmail(nameMap, forms);
     }
     public static HashMap<String, Integer> getNameMap(List<List<String>> forms){
         HashMap<String, Integer> nameMap = new HashMap<>();
