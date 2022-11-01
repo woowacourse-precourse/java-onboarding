@@ -6,7 +6,10 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -31,12 +34,9 @@ public class Problem6 {
 
     private static void makeNickNameSet(Map<String, List<String>> fragmentsMap,
         Set<String> nickNamesSet) {
-        for (List<String> emails : fragmentsMap.values()) {
-            System.out.println("emails = " + emails);
-            if (emails.size() > 1) {
-                nickNamesSet.addAll(emails);
-            }
-        }
+        fragmentsMap.values().stream()
+            .filter(emails -> emails.size()>1)
+            .forEach(nickNamesSet::addAll);
     }
 
     private static void makeFragmentsMap(List<List<String>> forms,
