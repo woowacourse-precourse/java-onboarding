@@ -12,6 +12,14 @@ public class Problem7 {
         return answer;
     }
 
+    private static void calculateRecommendedScoresWithVisitHistory(List<String> visitors){
+        for(String visitor:visitors){
+            if(!userFriendList.contains(visitor)){
+                recommendedFriendScores.put(visitor, recommendedFriendScores.getOrDefault(visitor,0)+1);
+            }
+        }
+    }
+
     private static void calculateRecommendedScoresWithFriendship(String user, List<List<String>> friends){
         for(List<String> friend: friends){
 
