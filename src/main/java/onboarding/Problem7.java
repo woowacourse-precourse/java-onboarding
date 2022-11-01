@@ -59,7 +59,11 @@ public class Problem7 {
                 String friendId = getFriendName(userFriends, friend);
                 String addId = getUserToAdd(friendId, friend);
 
-                if (!addId.isEmpty() && isNotFriend(addId, userFriends)) {
+                if (friendId.isEmpty() || addId.isEmpty()) {
+                    continue;
+                }
+
+                if (isNotFriend(addId, userFriends)) {
                     int score = 10;
 
                     if (isContainFriendsScore(addId)) {
@@ -99,6 +103,11 @@ public class Problem7 {
                                     .filter(old -> userFriends.stream()
                                     .anyMatch(Predicate.isEqual(old)))
                                     .collect(Collectors.toList());
+
+        if (result.size() == 0) {
+            return "";
+        }
+
         return result.get(0);
     }
 
