@@ -9,14 +9,20 @@ public class Problem3 {
 
     private static int getTotalClap(int num){
         int result=0;
-        for(int i=0;i<num;i++){
+        for(int i=1;i<=num;i++){
             result+=getClap(i);
         }
         return result;
     }
 
     private static int getClap(int num) {
-        
+        int result=0;
+        while(num!=0){
+            int term=num%10;
+            if(term==3||term==6||term==9) result++;
+            num/=10;
+        }
+        return result;
     }
 
     private static boolean input_exception(int input){
