@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
@@ -22,5 +23,19 @@ public class Problem6 {
         }
 
         return false;
+    }
+
+    public static List<String> sortedByWordLength(String word1, String word2) {
+        List<String> sortedWord = new ArrayList<>();
+
+        if (word1.length() >= word2.length()) {
+            sortedWord.add(word2);
+            sortedWord.add(word1);
+            return sortedWord;
+        }
+
+        sortedWord.add(word1);
+        sortedWord.add(word2);
+        return sortedWord;
     }
 }
