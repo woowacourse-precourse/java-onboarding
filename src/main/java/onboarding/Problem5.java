@@ -27,7 +27,7 @@ public class Problem5 {
     }
 }
 
-class LeftMoney {
+class LeftMoney {//거스르고 남는 돈
     public int leftMoney(int money, int won) {
         int result = money;
         result %= won;
@@ -35,7 +35,7 @@ class LeftMoney {
     }
 }
 
-class ChangeMoney {
+class ChangeMoney {//거스른 돈의 갯수
     public int changeMoney(int money, int won) {
         int result = money;
         result /= won;
