@@ -8,11 +8,16 @@ class Problem1 {
 	public static final int POBI_WON = 1;
 	public static final int CRONG_WON = 2;
 
+	public static final int FIRST_PAGE = 1;
+	public static final int LAST_PAGE = 400;
+
+	public static final int EXCEPTION = -1;
+
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		int answer = Integer.MAX_VALUE;
 
-		if (checkRestrictions(pobi) == -1 || checkRestrictions(crong) == -1) {
-			return -1;
+		if (checkRestrictions(pobi) == EXCEPTION || checkRestrictions(crong) == EXCEPTION) {
+			return EXCEPTION;
 		}
 
 		int pobiScore = calcPageNumberScore(pobi);
@@ -24,7 +29,7 @@ class Problem1 {
 	}
 
 	private static int compareScores(int pobiScore, int crongScore) {
-		int answer = -1;
+		int answer = EXCEPTION;
 		if (pobiScore == crongScore) {
 			answer = DRAW;
 		}
@@ -39,16 +44,16 @@ class Problem1 {
 
 	private static Integer checkRestrictions(List<Integer> pages) {
 		if (!isPagesSizeValid(pages)) {
-			return -1;
+			return EXCEPTION;
 		}
 		if (!isPagesRangeValid(pages)) {
-			return -1;
+			return EXCEPTION;
 		}
 		if (!isPagesContiguousValid(pages)) {
-			return -1;
+			return EXCEPTION;
 		}
 		if (!isPagesEvenOddValid(pages)) {
-			return -1;
+			return EXCEPTION;
 		}
 		return 0;
 	}
@@ -81,7 +86,7 @@ class Problem1 {
 	private static boolean isPagesRangeValid(List<Integer> pages) {
 		Integer leftPage = pages.get(0);
 		Integer rightPage = pages.get(1);
-		if (leftPage < 1 || rightPage > 400) {
+		if (leftPage < FIRST_PAGE || rightPage > LAST_PAGE) {
 			return false;
 		}
 		return true;
