@@ -23,7 +23,8 @@ public class Problem7 {
 
 		existFriend(user, friends);
 		visitPoint(visitors);
-
+		friendPoint(user, friends);
+		
 		return answer;
 	}
 
@@ -52,6 +53,24 @@ public class Problem7 {
 	public static void visitPoint(List<String> visitors) {
 		for(String user : visitors) {
 			point.put(user, point.getOrDefault(user, 0)+1);
+		}
+	}
+	/**
+	 * 사용자와 함께 아는 친구의 점수를 +10점씩 point map에 집어넣는 기능이다
+	 * 
+	 * @param user
+	 * @param friends
+	 */
+	public static void friendPoint(String user, List<List<String>> friends) {
+		for(List<String> list : friends) {
+			for(int i=0; i<userFriend.size(); i++) {
+				if(userFriend.get(i).equals(list.get(0)) && !list.get(1).equals(user)) {
+					point.put(list.get(1), point.getOrDefault(list.get(1), 0)+10);
+				}
+				if(userFriend.get(i).equals(list.get(1)) && !list.get(1).equals(user)) {
+					point.put(list.get(0), point.getOrDefault(list.get(0), 0)+10);
+				}
+			}
 		}
 	}
 }
