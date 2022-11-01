@@ -21,6 +21,7 @@ public class Problem4 {
 
         for(int i = 0; i < word.length();i++) {
             char c = word.charAt(i);
+
             if (isalpha(c))
                 answer.append(encrypt(c));
             else
