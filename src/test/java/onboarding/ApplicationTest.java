@@ -131,6 +131,18 @@ class ApplicationTest {
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+        @Test
+        void case4() {
+            List<List<String>> forms = List.of(
+                    List.of("kim@email.com", "김ㅡ이"),
+                    List.of("nam@email.com", "ㅡ이야"),
+                    List.of("choi@email.com", "최강"),
+                    List.of("lee@email.com", "강합니다"),
+                    List.of("jun@email.com", "왜ㅇㅡ이야")
+            );
+            List<String> result = List.of("jun@email.com", "kim@email.com", "nam@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -150,5 +162,23 @@ class ApplicationTest {
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
+
+//        @Test
+//        void case4() {
+//            String user = "andole";
+//            List<List<String>> friends = List.of(
+//                    List.of("andole", "jun"),
+//                    List.of("donut", "jun"),
+//                    List.of("donut", "shakevan"),
+//                    List.of("shakevan", "andole"),
+//                    List.of("shakevan", "jun"),
+//                    List.of("shakevan", "bedi"),
+//                    List.of("anne", "jun")
+//            );
+//            List<String> visitors = List.of("donut", "mrko", "peter", "sam");
+//            List<String> result = List.of("donut", "anne", "bedi", "mrko", "peter");
+//            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+//        }
+
     }
 }
