@@ -4,7 +4,8 @@ import java.util.List;
 
 class Problem1 {
     public static int exec(List<Integer> list){
-        if(list.get(0)<list.get(1) && list.get(1)-list.get(0)==1){
+        int n1 = list.get(0), n2 = list.get(1);
+        if(n1<n2 && n2-n1==1 && n1!=1 && n2!=400){
             return 0;
         }
         else{
