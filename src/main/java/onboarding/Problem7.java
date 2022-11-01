@@ -151,7 +151,7 @@ public class Problem7 {
             }
             calcScore(i);
         }
-        for (int i = 1; i < visitors.size(); i++) {
+        for (int i = 0; i < visitors.size(); i++) {
             visitor = visitors.get(i);
             if (!indexMap.containsKey(visitor)) {
                 scoreList[sequence] = 1;
