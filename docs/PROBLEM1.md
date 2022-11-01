@@ -23,3 +23,39 @@
 | [97, 98] | [197, 198] | 0 |
 | [131, 132] | [211, 212] | 1 |
 | [99, 102] | [211, 212] | -1 |
+
+### 기능 목록
+- 각 자리수를 더하는 함수
+```java
+Integer addDigits(Integer pageNum)
+```
+
+- 각 자리수를 곱하는 함수
+```java
+Integer mulDigits(Integer pageNum)
+```
+
+- 각 자리수를 더하고 곱한 값 중 가장 큰 수를 구하는 함수
+```java
+Integer maxNumber(Integer pageNum)
+```
+
+- 양 페이지 번호를 전달받아 점수를 구하는 함수
+```java
+Integer calcScore(List<Integer>)
+```
+
+- 점수를 비교해 게임의 승자가 누구인지 정하는 함수
+```java
+int findWinner(List<Integer>, List<Integer>)
+```
+
+- 올바른 페이지 번호가 들어왔는지 체크하는 함수
+```java
+boolean checkPageNum(List<Integer>)
+```
+
+- 입력 형식이 올바른지 체크하는 함수
+```java
+boolean checkInput(List<Integer> List<integer>)
+```

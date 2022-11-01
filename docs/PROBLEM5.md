@@ -14,3 +14,20 @@
 | --- | --- |
 | 50237	| [1, 0, 0, 0, 0, 2, 0, 3, 7] |
 | 15000	| [0, 1, 1, 0, 0, 0, 0, 0, 0] |
+
+### 기능 목록
+- 결과값을 저장할 배열을 초기화하는 함수
+```java
+ArrayList<Integer> initResultList()
+```
+
+- 금액 변환을 위한 배열을 초기화하는 함수
+```java
+ArrayList<Integer> initMoneyList()
+```
+
+- 주어진 금액에 대해 x원권으로 변환하고 이를 리턴하는 함수
+  - input: answer, moneyList, money, index
+```java
+List<Integer> convertMoneyByParams(ArrayList<Integer>, ArrayList<Integer>, Integer money, Integer index)
+```
