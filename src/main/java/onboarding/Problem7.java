@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -71,6 +72,8 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         vaildityChecker(user, friends, visitors);
 
+        List<String> userFriends = new ArrayList<>();
+        getUserFriends(user, friends, userFriends);
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -136,4 +139,19 @@ public class Problem7 {
             throw new IllegalArgumentException("사용자 아이디는 알파벳 소문자로만 이루어져 있어야 합니다.");
         }
     }
+    private static void getUserFriends(String user, List<List<String>> friends,
+        List<String> userFriends) {
+        for (List<String> names : friends) {
+            if (names.contains(user)) {
+                userFriends.add(setUserFriends(user, names.get(0), names.get(1)));
+            }
+        }
+    }
+    private static String setUserFriends(String user, String leftName, String rightName) {
+        if (leftName.contains(user)) {
+            return rightName;
+        }
+        return leftName;
+    }
+
 }
