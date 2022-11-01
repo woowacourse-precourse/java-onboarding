@@ -9,13 +9,13 @@ public class Problem6 {
 
         List<Crew> crewList = new ArrayList<>();
 
-        if(isNotInRangeCrew(forms.size())) {
+        if (isNotInRangeCrew(forms.size())) {
             return new ArrayList<>();
         }
 
-        for(List<String> form : forms){
+        for (List<String> form : forms) {
             Crew crew = Crew.toCrew(form);
-            if(isWrongCrewForm(crew)){
+            if (isWrongCrewForm(crew)) {
                 return new ArrayList<>();
             }
             crewList.add(crew);
@@ -63,7 +63,8 @@ public class Problem6 {
         String email = crew.getEmail();
         String nickname = crew.getNickname();
 
-        if(isNotInRangeEmail(email.length()) || isNotInRangeNickname(nickname.length()) || !isKorean(nickname)) {
+        if (isNotInRangeEmail(email.length()) || isNotInRangeNickname(nickname.length())
+                || !isKorean(nickname) || isWrongEmailForm(email)) {
             return true;
         }
         return false;
@@ -86,6 +87,13 @@ public class Problem6 {
     private static boolean isKorean(String nickname) {
         Pattern pattern = Pattern.compile("^[가-힣]*$");
         return pattern.matcher(nickname).matches();
+    }
+
+    private static boolean isWrongEmailForm(String email) {
+        if (email.contains("@email.com")) {
+            return false;
+        }
+        return true;
     }
 
 }
