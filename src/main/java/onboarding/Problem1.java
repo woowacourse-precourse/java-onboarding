@@ -31,6 +31,7 @@ class Problem1 {
         return firstNum - secondNum;
     }
 
+    /* 예외 처리 */
     public static boolean handleException(List<Integer> arr) {
         int firstPage = arr.get(0);
         int secondPage = arr.get(1);
@@ -68,13 +69,15 @@ class Problem1 {
             String seperatedNum = integerToString(score);
             tmpAdd = add(seperatedNum);
             tmpMult = multiply(seperatedNum);
-            comparison = compareInt(tmpAdd, tmpMult);
-            bigger = (comparison > 0) ? tmpAdd : tmpMult;
+            int tmpBigger = (compareInt(tmpAdd, tmpMult) > 0) ? tmpAdd : tmpMult;
+            if(tmpBigger > bigger) {
+                bigger  = tmpBigger;
+            }
         }
         return bigger;
     }
 
-    public static int solution(List<Integer> pobi, List<Integer> crong){
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         int pobiScore = getHighestScore(pobi);
         int crongScore = getHighestScore(crong);
@@ -92,5 +95,11 @@ class Problem1 {
         }
         System.out.println(answer);
         return answer;
+    }
+
+    public static void main(String[] args) {
+        List<Integer> pobi = List.of(99, 100);
+        List<Integer> crong = List.of(9, 10);
+        solution(pobi, crong);
     }
 }

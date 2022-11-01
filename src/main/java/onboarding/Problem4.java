@@ -16,7 +16,7 @@ public class Problem4 {
             } else if((int)tmp >= 97 && (int)tmp <= 122) { // 소문자
                 idx = alphabet.indexOf(word.charAt(i));
                 answer += Character.toString(reversedAlphabet.charAt(idx));
-            } else {
+            } else { // 나머지 문자
                 answer += Character.toString(tmp);
             }
         }
