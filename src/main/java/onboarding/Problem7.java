@@ -30,6 +30,8 @@ public class Problem7 {
             }
         }
 
+        changeKeyValue();
+
         return answer;
     }
 
@@ -82,5 +84,18 @@ public class Problem7 {
         }
         score++;
         sList.put(person, score);
+    }
+
+    private static void changeKeyValue() {
+        for (String key : sList.keySet()) {
+            Integer score = sList.get(key);
+
+            List<String> temp = scoreUser.get(score);
+            if (temp == null) {
+                temp = new ArrayList<>();
+            }
+            temp.add(key);
+            scoreUser.put(score, temp);
+        }
     }
 }
