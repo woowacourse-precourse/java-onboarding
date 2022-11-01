@@ -13,7 +13,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 //        List<String> answer = List.of("answer");
         List<String> answer = new ArrayList<>();
-        String str = "";
+        String cp = "";
         System.out.println(forms);
         System.out.println(forms.get(0));
         System.out.println((forms.get(0)).get(0));
@@ -24,10 +24,14 @@ public class Problem6 {
         String d = (forms.get(3)).get(1); //엠제이
         String e = (forms.get(4)).get(1); //이제엠
 
-        str = str.concat(String.valueOf(a.charAt(0)));
-        str = str.concat(String.valueOf(a.charAt(1)));
+        cp = cp.concat(String.valueOf(a.charAt(0)));
+        cp = cp.concat(String.valueOf(a.charAt(1)));
 
-        System.out.println(str);
+        if (b.contains(cp)) {
+            System.out.println(1); // "제이" 가 겹침 1 출력
+            answer.add((forms.get(1)).get(0));
+        }
+        System.out.println(answer);
 
         return answer;
     }
