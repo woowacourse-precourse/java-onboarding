@@ -1,7 +1,8 @@
 package onboarding;
 
 public class Problem2 {
-    public static String solution(String cryptogram) {StringBuilder sb=new StringBuilder();
+    public static String solution(String cryptogram) {
+        StringBuilder sb=new StringBuilder();
         sb.append(cryptogram);
         String answer =sb.toString();
         int changed=1;
@@ -13,9 +14,12 @@ public class Problem2 {
             i=0;
             while(i<answer.length()) {
                 j=1;
-                if(i<answer.length()-1){
-                    while(answer.charAt(i)==answer.charAt(i+j)&&(i+j)<answer.length())
+                if(i<answer.length()-1) {
+                    while (answer.charAt(i) == answer.charAt(i + j)) {
                         j++;
+                        if (i + j >= answer.length())
+                            break;
+                    }
                 }
                 if(j==1) {
                     sb.append(answer.charAt(i));
