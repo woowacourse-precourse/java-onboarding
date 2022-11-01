@@ -43,18 +43,18 @@ public class Problem7 {
         }
         return memberFriendList;
     }
-    private static void userFriendRecommend(String user, List<String> visitors, Map<String, List<String>> memberFriendList, Map<String, Integer> recommendScore, int i) {
-        for (int j = 0; j < memberFriendList.get(user).size(); j++) {
-            if (Objects.equals(visitors.get(i), memberFriendList.get(user).get(j))) {
-                for (int k = 0; k < memberFriendList.get(visitors.get(i)).size(); k++) {
-                    String recommendFriends = memberFriendList.get(visitors.get(i)).get(k);
-                    if (!Objects.equals(recommendFriends, user)) {
-                        int score = 0;
-                        if (recommendScore.get(recommendFriends) != null) {
-                            score = recommendScore.get(recommendFriends);
-                        }
-                        recommendScore.put(recommendFriends, score + 10);
+    private static void userFriendRecommend(String user, Map<String, List<String>> memberFriendList, Map<String, Integer> recommendScore) {
+        for(int i = 0; i < memberFriendList.get(user).size(); i++) {
+            String recommendFriend = memberFriendList.get(user).get(i);
+            for(int j = 0; j < memberFriendList.get(recommendFriend).size(); j++) {
+                String recommend = memberFriendList.get(recommendFriend).get(j);
+                if(!recommend.equals(user)) {
+                    if(memberFriendList.get(user).contains(recommend)) continue;
+                    int score = 0;
+                    if (recommendScore.get(recommend) != null) {
+                        score = recommendScore.get(recommend);
                     }
+                    recommendScore.put(recommend, score + 10);
                 }
             }
         }
@@ -72,7 +72,7 @@ public class Problem7 {
         for(int i = 0; i < visitors.size(); i++) {
             boolean checkUserFriend = memberFriendList.get(user).contains(visitors.get(i));
             if(checkUserFriend) {
-                userFriendRecommend(user, visitors, memberFriendList, recommendScore, i);
+                userFriendRecommend(user, memberFriendList, recommendScore);
             }
             else {
                 notUserFriendRecommend(visitors, recommendScore, i);
