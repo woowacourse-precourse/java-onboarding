@@ -36,7 +36,7 @@ public class Problem6 {
         }
         return false;
     }
-
+    
     private static ArrayList<String> cutNickname(String nickname) {
         ArrayList<String> cutNameList = new ArrayList<> ();
         for (int i = 0; i < nickname.length() - 1; i++) {
