@@ -80,6 +80,23 @@ class Problem7Test {
 
     static Map<String, Integer> userFriends;
 
+    private List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+
+        userFriends = new HashMap<>(); // 친밀도 배열 <다른유저, usesr와 친밀도>
+
+        // 친구관계
+        List<String> oldFriends = getOldFriends(user, friends);
+        for (String oldFriend : oldFriends) {
+            checkFriends(user, friends, oldFriend);
+        }
+
+        // 방문자 확인 함수
+        checkVisitors(visitors);
+
+        // 친구 추천 정렬
+        return recommandUser(user, oldFriends, userFriends);
+    }
+
     // 추천점수 1이상, 이미 동일한 친구 관계가 아닌 경우
     private List<String> recommandUser(String user, List<String> oldFriends, Map<String, Integer> userFriends) {
         List<String> answer = new ArrayList<>();
