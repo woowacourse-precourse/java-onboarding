@@ -79,4 +79,7 @@ public class Problem2 {
         }
         return false;
     }
+    public static boolean stringLengthException(String cyptogram) {
+        return cyptogram.length() < 1 || cyptogram.length() > 1000;
+    }
 }
