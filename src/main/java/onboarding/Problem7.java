@@ -1,5 +1,6 @@
 package onboarding;
 
+import onboarding.problem7.UserNameValidation;
 import onboarding.problem7.repository.UserRepositoryImpl;
 import onboarding.problem7.service.PointService;
 import onboarding.problem7.service.UserInfoServiceImpl;
@@ -17,11 +18,34 @@ public class Problem7 {
     private static final int DIFFERENT_USER_NAME_INDEX = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        UserNameValidation validation = new UserNameValidation();
+        valid(user, friends, visitors, validation);
+
         userInfoCreate(friends);
         Set<String> findFriends = userRepository.findFriends(user);
         pointCalcul(user, visitors, findFriends);
 
         return pointService.getFriendshipList(user);
+    }
+
+    private static void valid(String user, List<List<String>> friends, List<String> visitors, UserNameValidation validation) {
+        validation.checkValid(user);
+        friendValid(friends, validation);
+        visitorsValid(visitors, validation);
+    }
+
+    private static void visitorsValid(List<String> visitors, UserNameValidation validation) {
+        for (String userName : visitors) {
+            validation.checkValid(userName);
+        }
+    }
+
+    private static void friendValid(List<List<String>> friends, UserNameValidation validation) {
+        for (List<String> friend : friends) {
+            for (String userName : friend) {
+                validation.checkValid(userName);
+            }
+        }
     }
 
     private static void pointCalcul(String user, List<String> visitors, Set<String> findFriends) {
