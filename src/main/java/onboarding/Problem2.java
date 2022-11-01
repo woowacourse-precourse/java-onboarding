@@ -28,7 +28,9 @@ public class Problem2 {
         else { return removeDoubleString(result, result.size()); }
     }
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        List<String> word_arr = Arrays.asList(cryptogram.split(""));
+        List<String> answer = removeDoubleString(word_arr, word_arr.size());
+
+        return String.join("",answer);
     }
 }
