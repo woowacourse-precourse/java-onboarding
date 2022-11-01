@@ -12,6 +12,34 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        char[] leftPageNumberForPobi = String.valueOf(pobi.get(0)).toCharArray();
+        char[] rightPageNumberForPobi = String.valueOf(pobi.get(1)).toCharArray();
+
+        char[] leftPageNumberForCrong = String.valueOf(crong.get(0)).toCharArray();
+        char[] rightPageNumberForCrong = String.valueOf(crong.get(1)).toCharArray();
+
         return answer;
     }
+
+    public static int addEachDigits(char[] pageNumber){
+        int sumEachDigits = 0;
+
+        for(char number : pageNumber){
+            sumEachDigits += number - '0';
+        }
+
+        return sumEachDigits;
+    }
+
+    public static int multiplyEachDigits(char[] pageNumber){
+        int multiplyEachDigits = 1;
+
+        for(char number : pageNumber){
+            multiplyEachDigits *= number - '0';
+        }
+
+        return multiplyEachDigits;
+    }
+
 }
