@@ -43,7 +43,12 @@ class Problem1 {
 
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-
+        int Max_p=0,Max_c = 0;// hund_d= 백의자리, ten_d 십의자리, units 일의 자리
+        if(1!=(pobi.get(1)-pobi.get(0))) return -1; if(1!=(crong.get(1))-crong.get(0)) return -1;
+        Max_p=compare_max(pobi);
+        Max_c = compare_max(crong);
+        int answer = (Max_p > Max_c) ? 1 : 0;
         return answer;
+    }
     }
 }
