@@ -10,7 +10,8 @@ public class Problem7 {
         CountVisitors(PossibleFriends, CurrentFriends, visitors);
         List<String> answer = sortSuggestionList(PossibleFriends);
         List<String> ret = new ArrayList<>();
-        for (int i = 0; i < 5; i++)
+        int k = (answer.size() > 5)? 5 : answer.size();
+        for (int i = 0; i < k; i++)
             ret.add(answer.get(i));
         return ret;
     }
@@ -35,7 +36,8 @@ public class Problem7 {
                 list.add(friends.get(i).get(1));
             }
         }
-        list.remove(usr);
+        while (list.contains(usr))
+            list.remove(new String(usr));
         return list;
     }
 
