@@ -5,28 +5,38 @@ import java.util.*;
 public class Problem7 {
 
     private static final int MAX_NUMBER_OF_RECOMMENDED_FRIENDS = 5;
+    private static final int POINTS_FOR_VISITORS = 1;
+    private static final int POINTS_FOR_FRIEND_OF_FRIEND = 10;
 
     // 친구 추천 클래스
-    static class UserScore {
+    static class UserPoint {
         String name;
-        int score;
+        int point;
 
-        public UserScore(String name, int score) {
+        public UserPoint(String name, int point) {
             this.name = name;
-            this.score = score;
+            this.point = point;
         }
 
-        public void addScore(int added) {
-            this.score += added;
+        public void addPoint(int added) {
+            this.point += added;
+        }
+
+        public void addPointsForVisitor() {
+            this.point += POINTS_FOR_VISITORS;
+        }
+
+        public void addPointsForFriendOfFriend() {
+            this.point += POINTS_FOR_FRIEND_OF_FRIEND;
         }
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         Map<String, ArrayList<String>> friendsMap = new HashMap<>();    // 친구 관계 그래프
-        List<UserScore> scoreMap = new ArrayList<>();                   // 친구 점수 맵
+        List<UserPoint> pointMap = new ArrayList<>();                   // 친구 점수 맵
 
-        scoreMap.add(new UserScore(user, 0));
+        pointMap.add(new UserPoint(user, 0));
 
         // 친구 관계 그래프 만들기
         for (List<String> friendRelation : friends) {
@@ -36,19 +46,19 @@ public class Problem7 {
         // 친구의 친구인 경우 점수 맵에 10점 추가하기
         for (Object friend : friendsMap.get(user)) {
             ArrayList<String> friendsList = friendsMap.get(friend); // 친구의 친구 목록 가져오기
-            addScoresForFriend(scoreMap, friendsList);
+            addPointsForFriend(pointMap, friendsList);
         }
 
         // 방문자인 경우 친구 점수 맵에 1점 추가하기
         for (String visitor : visitors) {
-            addScoresForVisitor(scoreMap, visitor);
+            addPointsForVisitor(pointMap, visitor);
         }
 
-        sortScoreMap(scoreMap); // score 기준 내림차순 정렬 (+name 기준 오름차순 정렬)
+        sortPointMap(pointMap); // score 기준 내림차순 정렬 (+name 기준 오름차순 정렬)
 
         // 이미 친구 관계인 친구들, 그리고 자기 자신은 제외하여 scoreMap을 answer 리스트에 추가하기
         ArrayList<String> friendsOfUser = friendsMap.get(user);
-        for (UserScore friend : scoreMap) {
+        for (UserPoint friend : pointMap) {
             if(!(friendsOfUser.contains(friend.name) || friend.name.equals(user))) {
                 answer.add(friend.name);
             }
@@ -58,36 +68,36 @@ public class Problem7 {
         return answer;
     }
 
-    private static void sortScoreMap(List<UserScore> scoreMap) {
-        scoreMap.sort((user1, user2) -> {
-            if (user1.score == user2.score) {
+    private static void sortPointMap(List<UserPoint> pointMap) {
+        pointMap.sort((user1, user2) -> {
+            if (user1.point == user2.point) {
                 return user1.name.compareTo(user2.name);
             }
-            return user2.score - user1.score;
+            return user2.point - user1.point;
         });
     }
 
-    private static void addScoresForVisitor(List<UserScore> scoreMap, String visitor){
-        Optional<UserScore> user = scoreMap.stream().filter(u -> u.name.equals(visitor)).findFirst();
+    private static void addPointsForVisitor(List<UserPoint> scoreMap, String visitor){
+        Optional<UserPoint> user = scoreMap.stream().filter(u -> u.name.equals(visitor)).findFirst();
         if(user.isEmpty()) {
-            scoreMap.add(new UserScore(visitor, 1));
+            scoreMap.add(new UserPoint(visitor, 1));
         }else{
-            user.get().addScore(1);
+            user.get().addPointsForVisitor();
         }
     }
 
-    private static void addToScoreMap(List<UserScore> scoreMap, String friend){
-        Optional<UserScore> user = scoreMap.stream().filter(u -> u.name.equals(friend)).findFirst();
+    private static void addToPointsMap(List<UserPoint> pointMap, String friend){
+        Optional<UserPoint> user = pointMap.stream().filter(u -> u.name.equals(friend)).findFirst();
         if(user.isEmpty()) {
-            scoreMap.add(new UserScore(friend, 10));
+            pointMap.add(new UserPoint(friend, 10));
         }else{
-            user.get().addScore(10);
+            user.get().addPointsForFriendOfFriend();
         }
     }
 
-    private static void addScoresForFriend(List<UserScore> scoreMap, List<String> friendsList) {
+    private static void addPointsForFriend(List<UserPoint> pointMap, List<String> friendsList) {
         for (String friend : friendsList) {
-            addToScoreMap(scoreMap, friend);
+            addToPointsMap(pointMap, friend);
         }
     }
 
