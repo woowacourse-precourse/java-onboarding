@@ -18,7 +18,7 @@ public class Problem6 {
         Problem6 p6 = new Problem6();
         HashMap<String, String> nameMap = p6.initNameMap(forms);
         HashMap<String, Boolean> answerMap = p6.initAnswerMap(forms);
-        List<String> duplicateCandidate = p6.getDuplicateCandidate(nameMap);
+        HashMap<String, Integer> duplicateCandidate = p6.getDuplicateCandidate(nameMap);
 
         HashMap<String, Boolean> map = p6.getAnswerMap(answerMap, nameMap, duplicateCandidate);
 
@@ -54,8 +54,8 @@ public class Problem6 {
     }
 
     private Boolean compare(String value,List<String> duplicateCandidate) {
-        for (String compareWord : removeOwnCandidate(value, duplicateCandidate)) {
-            if (compareEachAlphabet(value, compareWord)) {
+        for (String compareWord : duplicateCandidate) {
+            if (compareEachAlphabet(s, compareWord)) {
                 return Boolean.TRUE;
             }
         }
@@ -71,29 +71,34 @@ public class Problem6 {
         return Boolean.FALSE;
     }
 
-    private List<String> getDivide2WordList(List<String> candidates, String value) {
-        for (int i = 0; i < value.length() - 1; i++) {
-            candidates.add(value.substring(i, i + 2));
+    private HashMap<String, Integer> getDivide2WordList(HashMap<String, Integer> candidates, String name) {
+        for (int i = 0; i < name.length() - 1; i++) {
+            String substring = name.substring(i, i + 2);
+            if (isAlreadyExist(candidates, substring)) {
+                candidates.replace(substring, candidates.get(substring), candidates.get(substring) + 1);
+                continue;
+            }
+            candidates.put(substring, 1);
         }
         return candidates;
+    }
+
+
+    // 리턴 타입을 void 로 할경우 최신화가 되는가?
+    private Boolean isAlreadyExist(HashMap<String, Integer> candidates, String key) {
+        if (candidates.containsKey(key)) {
+            return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
     }
 
     public List<String> getDuplicateCandidate(HashMap<String, String> nameMap) {
-        List<String> candidates = new ArrayList<>();
-        for (String value : nameMap.values()) {
-            candidates = getDivide2WordList(candidates, value);
+        HashMap<String, Integer> candidates = new HashMap<>();
+        for (String name : nameMap.values()) {
+            candidates = getDivide2WordList(candidates, name);
         }
         return candidates;
     }
-
-//    public Boolean checkNameNotAlreadyAdd(List<String> candidates, String candidate) {
-//        for (String s : candidates) {
-//            if (s.equals(candidate)) {
-//                return Boolean.FALSE;
-//            }
-//        }
-//        return Boolean.TRUE;
-//    }
 
     public HashMap<String, Boolean> initAnswerMap(List<List<String>> forms) {
         HashMap<String, Boolean> answerMap = new HashMap<>();
