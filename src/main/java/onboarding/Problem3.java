@@ -5,37 +5,21 @@ import java.util.HashSet;
 
 public class Problem3 {
 
-    static int answer;
-    static HashSet<Integer> set369 = new HashSet<>(Arrays.asList(3,6,9));
-
     public static int solution(int number) {
-
-        answer = 0;
-
+        
         Number input = new Number(number);
-
-        for (int i = 1; i <= number; i++) {
-            check369(i);
+        Score3 score = new Score3(0);
+        for (int i = 1; i <= input.getNumber(); i++) {
+            Clap clap = new Clap(i);
+            score.addScore(clap.getClapCount());
         }
-        return answer;
-
-    }
-
-    // 각 자리수에 3,6,9가 있는지 체크하는 메소드
-    public static void check369 (int number) {
-        int n;
-        while (number > 0) {
-            n = number % 10;
-            if (set369.contains(n)) {
-                answer++;
-            }
-            number /= 10;
-        }
+        return score.getScore();
     }
 }
 
 class Number {
-    private int number;
+
+    private final int number;
 
     public Number(int input) {
         validateSize(input);
@@ -51,6 +35,51 @@ class Number {
         }
     }
 
-
+    public int getNumber(){
+        return this.number;
+    }
 }
+
+class Clap {
+
+    private static final HashSet<Integer> set369 = new HashSet<>(Arrays.asList(3,6,9));
+
+    private final int number;
+
+    public Clap(int number){
+        this.number = number;
+    }
+
+    public int getClapCount() {
+        int n;
+        int count = 0;
+        int temp = number;
+        while (temp > 0) {
+            n = temp % 10;
+            if (set369.contains(n)) {
+                count++;
+            }
+            temp /= 10;
+        }
+        return count;
+    }
+}
+
+class Score3 {
+    private int score;
+
+    public Score3(int score) {
+        this.score = score;
+    }
+
+    public void addScore(int score ) {
+        this.score += score;
+    }
+
+    public int getScore() {
+        return this.score;
+    }
+}
+
+
 
