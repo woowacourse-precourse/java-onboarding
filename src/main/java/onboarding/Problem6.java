@@ -25,9 +25,11 @@ public class Problem6 {
         for (int i = 0; i < nickname.length() - 1; i++) {
             String findName = nickname.substring(i, i + 2);
             for (int j = 0; j < forms.size(); j++) {
-                if (j == index || !checkEmail(forms, j))
-                    continue;
                 List<String> checkMember = forms.get(j);
+                if (j == index || wrongNicknames.contains(checkMember.get(0)))
+                    continue;
+                else if (!checkEmail(forms, j))
+                    continue;
                 String checkNickname = checkMember.get(1);
                 if (checkNickname.contains(findName))
                     wrongNicknames.add(checkMember.get(0));
