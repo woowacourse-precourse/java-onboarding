@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -17,6 +18,9 @@ public class Problem2 {
 
         // 2. 정규식으로 pattern객체 생성
         Pattern pattern = Pattern.compile(regex);
+
+        // 3. cryptogram 으로 matcher 변수 생성
+        Matcher matcher = pattern.matcher(cryptogram);
 
         return answer;
     }
