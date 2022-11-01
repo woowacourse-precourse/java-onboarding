@@ -13,4 +13,16 @@ public class Problem4 {
         }
     }
 
+
+    public static String findReverseWord(String word) {
+
+        HashMap<Character, Character> map = new HashMap<>();
+        StringBuilder builder = new StringBuilder();
+        for (char ch = 'A'; ch <= 'Z'; ch++) {
+            map.put(ch, (char) (155 - ch));
+            map.put((char) (ch + 32), (char) (187 - ch));
+        }
+    }
+
+
 }
