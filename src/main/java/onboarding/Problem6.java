@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -68,5 +69,15 @@ public class Problem6 {
         }
 
         return false;
+    }
+
+
+    private static void hasDuplicateNickname(List<List<String>> forms, List<String> answer, Map.Entry<String, ArrayList<Integer>> entry) {
+        if (entry.getValue().size() > 1) {
+            for (int i = 0; i < entry.getValue().size(); i++) {
+                answer.add(forms.get(entry.getValue().get(i))
+                        .get(0));
+            }
+        }
     }
 }
