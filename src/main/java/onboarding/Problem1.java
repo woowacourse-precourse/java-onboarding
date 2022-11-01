@@ -9,7 +9,6 @@ class Problem1 {
         int til_tens = targetPage % 100;
         int tens = til_tens / 10;
         int units = til_tens % 10;
-
         return Math.max(hundreds+tens+units,(hundreds==0?1:hundreds)*tens*units);
 
     }
