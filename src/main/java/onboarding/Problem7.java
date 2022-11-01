@@ -2,7 +2,11 @@ package onboarding;
 
 import java.util.*;
 
+
 public class Problem7 {
+
+    private final static int SCORE_OF_FRIENDS_WITH_USER = 10;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> allNames = getAllNames(friends, visitors, user);
         List<Integer>[] friendship = new List[allNames.size()];
@@ -21,6 +25,7 @@ public class Problem7 {
         for (int i = 0; i < friendship[nameToIdMap.get(user)].size(); i++) {
             int numberOfUserFriend = friendship[nameToIdMap.get(user)].get(i);
             userFriends.add(idToNameMap.get(numberOfUserFriend));
+            scoreTogetherWithFriendCalculate(scores, friendship[numberOfUserFriend]);
         }
 
         List<String> answer = Collections.emptyList();
@@ -68,6 +73,13 @@ public class Problem7 {
 
             friendship[people].add(otherPeople);
             friendship[otherPeople].add(people);
+        }
+    }
+
+    private static void scoreTogetherWithFriendCalculate(int[] scores, List<Integer> friendship) {
+        for (int j = 0; j < friendship.size(); j++) {
+            int myFriendOfFriend = friendship.get(j);
+            scores[myFriendOfFriend] += SCORE_OF_FRIENDS_WITH_USER;
         }
     }
 }
