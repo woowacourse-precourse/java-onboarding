@@ -28,7 +28,6 @@ public class Problem4 {
                 continue;
             }
             int dictionaryIndex = convertAlphabetToInt(letter);
-            System.out.println((char)(dictionary[dictionaryIndex] + UPPER_CASE_ASCII_CODE));
             char alphabet = convertIntToAlphabet(dictionaryIndex, letter, dictionary);
             result += alphabet;
         }
