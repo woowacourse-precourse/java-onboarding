@@ -1,9 +1,8 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Collections;
 
 public class Problem6 {
 
@@ -32,14 +31,44 @@ public class Problem6 {
         return splitedNick;
     }
 
-    public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        HashSet<String> splited = new HashSet<>();
+    static Boolean isDuplicate(ArrayList<String> splitedNick, ArrayList<String> nick, int idx) {
+        Boolean isDup = false;
 
-        for (int i = 0; i < forms.size(); i++) {
-            String email = getEmail(forms, i);
-            String nick = getNick(forms, i);
+        for (String nicks : nick) {
+            for (String splitedNicks : splitedNick) {
+                if (nick.get(idx) == nicks) {
+                    break;
+                } else if (nicks.contains(splitedNicks)) {
+                    System.out.println("nicks: " + nicks);
+                    System.out.println("splitedNicks: " + splitedNicks);
+                    isDup = true;
+                    return isDup;
+                }
+            }
         }
+
+        return isDup;
+    }
+
+    public static List<String> solution(List<List<String>> forms) {
+        List<String> answer = new ArrayList<>();
+
+        ArrayList<String> email = new ArrayList<>();
+        ArrayList<String> nick = new ArrayList<>();
+
+        for (List<String> form : forms) {
+            email.add(getEmail(form));
+            nick.add(getNick(form));
+        }
+
+        for (int i = 0; i < nick.size(); i++) {
+            ArrayList<String> splitedNick = splitNick(nick.get(i));
+            if (isDuplicate(splitedNick, nick, i)) {
+                answer.add(email.get(i));
+            }
+        }
+
+        Collections.sort(answer);
 
         return answer;
     }
