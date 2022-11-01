@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 구현 기능
+1. 닉네임을 2글자씩 구분한다.
+2. 다른 사람의 닉네임과 비교한다.
+3. 중복이 있는 email 목록을 받는다.
+4. 오름차순으로 정렬 후 return 한다.
