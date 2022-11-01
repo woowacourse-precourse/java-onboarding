@@ -5,7 +5,6 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         /**
          * 예외 처리
          */
@@ -22,7 +21,7 @@ class Problem1 {
         /**
          * 반환
          */
-        return answer;
+        return getWinner(pobiScore, crongScore);
     }
 
     private static boolean exception(List<Integer> pages) {
@@ -60,5 +59,15 @@ class Problem1 {
         Integer right = pages.get(1);
 
         return Math.max(calScore(left), calScore(right));
+    }
+
+    private static Integer getWinner(Integer pScore, Integer cScore) {
+        if (pScore > cScore) {
+            return 1;
+        } else if (pScore < cScore) {
+            return 2;
+        } else {
+            return 0;
+        }
     }
 }
