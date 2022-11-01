@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /*
 ========================================Problem7 기능 목록========================================
@@ -60,6 +57,24 @@ public class Problem7 {
             map.put(friends[i], 0);
         }
         return map;
+    }
+    public static String[] linkFriend(String user, String[][] friends){
+        List<String> userFriend = new ArrayList<>();
+
+        int outLen = friends.length;
+        int inLen = friends[0].length;
+
+        for(int i = 0;i < outLen;i++){
+            for(int j = 0;j < inLen;j++){
+                if(friends[i][j].equals(user)){
+                    if(j == 0)
+                        userFriend.add(friends[i][1]);
+                    else
+                        userFriend.add(friends[i][0]);
+                }
+            }
+        }
+        return userFriend.toArray(new String[userFriend.size()]);
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
