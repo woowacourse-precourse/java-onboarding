@@ -7,7 +7,7 @@ public class Problem3 {
 	public static int solution(int number) {
 		int cnt = 0;
 		String numberToString = "";
-		char oneLetter = ' ';
+		char letter = ' ';
 
 		if (checkRestrictions(number) == EXCEPTION) {
 			return EXCEPTION;
@@ -16,8 +16,8 @@ public class Problem3 {
 		for (int i = 1; i <= number; i++) {
 			numberToString = String.valueOf(i);
 			for (int j = 0; j < numberToString.length(); j++) {
-				oneLetter = numberToString.charAt(j);
-				if (oneLetter == '3' || oneLetter == '6' || oneLetter == '9') {
+				letter = numberToString.charAt(j);
+				if (letter == '3' || letter == '6' || letter == '9') {
 					cnt++;
 				}
 			}
