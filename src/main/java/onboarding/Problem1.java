@@ -11,6 +11,9 @@ class Problem1 {
             return answer;
         }
 
+        answer = getBigNumberInPair(getBigNumberInPages(pobi.get(0), pobi.get(1)),
+            getBigNumberInPages(crong.get(0), crong.get(1)));
+
         return answer;
     }
 
