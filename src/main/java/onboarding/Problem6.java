@@ -43,23 +43,16 @@ public class Problem6 {
 
 
     private static void countListToMap(List<List<String>> separatedAllCrewNicknameList) {
-        for (List<String> separatedCrewNickname : separatedAllCrewNicknameList) {
-            putListToMap(separatedCrewNickname);
-        }
+        separatedAllCrewNicknameList.forEach(Problem6::putListToMap);
     }
 
     private static void putListToMap(List<String> separatedCrewNickname) {
-        for (String twoLetters : separatedCrewNickname) {
-            twoLetterCountMap.put(twoLetters, twoLetterCountMap.getOrDefault(twoLetters, 0) + 1);
-        }
+        separatedCrewNickname.forEach(str -> twoLetterCountMap.put(str, twoLetterCountMap.getOrDefault(str, 0) + 1));
     }
 
     private static List<List<String>> getSeparatedAllCrewNicknameList(List<List<String>> forms) {
         List<List<String>> separatedAllCrewNicknameList = new ArrayList<>();
-        for (List<String> crew : forms) {
-            List<String> temp = new ArrayList<>(getSeparatedCrewNicknameList(crew.get(NICKNAME)));
-            separatedAllCrewNicknameList.add(temp);
-        }
+        forms.forEach(crew -> separatedAllCrewNicknameList.add(getSeparatedCrewNicknameList(crew.get(NICKNAME))));
         return separatedAllCrewNicknameList;
     }
 
