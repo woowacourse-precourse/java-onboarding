@@ -3,15 +3,9 @@ package onboarding;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 class Problem7Test {
 
@@ -22,7 +16,7 @@ class Problem7Test {
 
 	@Test
 	@DisplayName("점수와 이름으로 정렬된 상위 다섯 명의 사용자를 추천해야 한다.")
-	void integrationTest() {
+	void integrationTest1() {
 		List<List<String>> friends = List.of(
 			List.of("a", "b"),
 			List.of("a", "c"),
@@ -56,6 +50,26 @@ class Problem7Test {
 		assertThat(Problem7.userScoreHashMap.get("e")).isEqualTo(10);
 		assertThat(Problem7.userScoreHashMap.get("h")).isEqualTo(10);
 		assertThat(Problem7.userScoreHashMap.get("j")).isEqualTo(9);
+	}
+
+	@Test
+	void integrationTest2() {
+		String user = "mrko";
+		List<List<String>> friends = List.of(
+			List.of("mrko", "jun"),
+			List.of("donut", "jun"),
+			List.of("donut", "mrko"),
+			List.of("shakevan", "andole"),
+			List.of("shakevan", "jun"),
+			List.of("shakevan", "mrko")
+		);
+		List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+
+		List<String> solution = Problem7.solution(user, friends, visitors);
+		List<String> result = List.of("andole", "bedi");
+		assertThat(solution).isEqualTo(result);
+		assertThat(Problem7.userScoreHashMap.get("andole")).isEqualTo(10);
+		assertThat(Problem7.userScoreHashMap.get("bedi")).isEqualTo(3);
 	}
 
 	@Test
