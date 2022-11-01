@@ -11,6 +11,12 @@ public class Problem7 {
     }
 
 
+    // user의 이름과 String으로 넘겨준 값이 일치하는지 확인
+    private static boolean isUser(String friendFriendName, String user) {
+        return friendFriendName.equals(user);
+    }
+
+
     // user와 친구인 사람들의 이름 List반환
     private static List<String> getUserFriends(String user, List<List<String>> friends) {
         List<String> userFriends = new ArrayList<>();
