@@ -18,8 +18,8 @@ public class Problem7 {
     private static final int KNOW_WITH_FRIEND_SCORE = 10;
     private static final int VISIT_SCORE = 1;
     private static final String LOWERCASE_ALPHABET = "^[a-z]*$";
-    private static final List<String> FRIENDS_LIST = new ArrayList<>();
-    private static final Map<String, Integer> UNKNOWN_USER_SCORE = new HashMap<>();
+    private static List<String> FRIENDS_LIST;
+    private static Map<String, Integer> UNKNOWN_USER_SCORE;
 
     public static List<String> solution(String user, List<List<String>> friends,
         List<String> visitors) {
@@ -29,6 +29,11 @@ public class Problem7 {
         calcurateTotalRecommendationScore(user, friends, visitors);
         List<String> answer = sortRecommendScore(deleteRecommendScoreZero(UNKNOWN_USER_SCORE));
         return extractRecommendUserAllOrTop5(answer);
+    }
+
+    public static void assignImplement() {
+        FRIENDS_LIST = new ArrayList<>();
+        UNKNOWN_USER_SCORE = new HashMap<>();
     }
 
     //user의 길이가 1이상 30이하인지 검증하는 기능
