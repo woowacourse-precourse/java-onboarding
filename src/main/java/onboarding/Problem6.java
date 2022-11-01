@@ -145,7 +145,7 @@ class ExceptionClassForPro6 {
   }
 
   private static void validateNickKor(String nickname) {
-    if (!nickname.matches("^[가-힣]*$")) {
+    if (!nickname.matches("^[ㄱ-힣]*$")) {
       throw new IllegalArgumentException("닉네임은 한글만 가능합니다.");
     }
   }
