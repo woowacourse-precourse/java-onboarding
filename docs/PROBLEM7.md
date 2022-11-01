@@ -24,3 +24,37 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+
+<br>
+
+## 기능 목록
+### 1. `user`의 친구 Set(`direct_friend`)을 생성하는 기능
+#### friends list에서 user를 포함하는 원소에 대해서는 user가 아닌 원소를 친구 Set에 추가한다.
+    1. 0번 index가 user와 같다면 1번 인덱스에 해당하는 이름을 추가한다.
+    2. 1번 index가 user와 같다면 0번 인덱스에 해당하는 이름을 추가한다.
+
+
+<br>
+
+### 2. 점수 Map(`map`)에 대하여 친구의 친구에게 10점을 부여하는 메소드(`Add_10_points`) 구현
+#### void 메소드를 따로 생성해둔 후 친구의 친구임을 확인시 메소드를 호출한다. 메소드의 동작은 다음과 같이 이루어진다.
+    1. 인자로 전달된 friend가 map의 keySet에 있다면 해당 value에 10을 더한다.
+    2. keySet에 없다면 새롭게 {friend:10} 데이터를 추가한다.
+
+<br>
+
+### 3. visitor 중 친구가 아닌 사용자에 대해 1점을 부여하는 메소드(`Add_point`) 구현
+#### 기능 2와 유사하다. 친구 목록에 있는지 확인 후 없다면 메소드를 실행하며, 메소드의 동작은 다음과 같이 이루어진다.
+    1. 인자로 전달된 visitor가 map의 keySet에 있다면 해당 value에 1을 더한다.
+    2. keySet에 없다면 새롭게 {visitor:1} 데이터를 추가한다.)
+
+<br>
+
+### 4. 최대 5명의 친구를 점수순, 이름순으로 정렬하는 메소드(`recommendation`) 구현
+#### map.entry의 리스트를 정렬한 후 최대 5명의 이름을 저장하여 반환한다.
+    1. `map`의 entrySet() 메소드를 활용하여 모든 enry를 linked list의 형태로 저장한다.
+    2. 점수 순, 점수가 같다면 이름 순으로 정렬하도록 설정하여 sort를 진행한다.
+    3. entrylist의 사이즈와 5 중 더 작은 값만큼의 이름을 answer 리스트에 저장하여 반환한다.
+
