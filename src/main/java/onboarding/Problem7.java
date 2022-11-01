@@ -83,28 +83,7 @@ public class Problem7 {
             }
         }
 
-        for (int start = 0; start < recomScore.size()-1; start++) {
-            int end = 0;
-            List<String> temp = new ArrayList<>();
-            for (end = start+1; end < recomScore.size(); end++) {
-                if (recomScore.get(start) != recomScore.get(end)) {
-                    end--;
-                    break;
-                }
-            }
 
-            if (end == start) answer.add(recomList.get(start));
-            if (end > start) {
-                for (int i = start; i <= end; i ++) {
-                    temp.add(recomList.get(i));
-                }
-
-                Collections.sort(temp);
-                for (int i = start; i <= end; i++) {
-                    answer.add(temp.get(i));
-                };
-            }
-        }
 
         return answer;
     }
