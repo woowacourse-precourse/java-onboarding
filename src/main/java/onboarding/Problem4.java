@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Problem4 {
+    private static final int EMPTY = 32;
+
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder();
         List<Character> wordList = word.chars()

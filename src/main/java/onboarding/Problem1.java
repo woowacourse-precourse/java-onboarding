@@ -23,8 +23,8 @@ class Problem1 {
 
     static int getBigScore(List<Integer> pages) {
         int bigScore = 0;
-        for (Object page : pages) {
-            String pageStr = page.toString();
+        for (int page : pages) {
+            String pageStr = String.valueOf(page);
             char[] pageCharArray = pageStr.toCharArray();
             int digitSum = 0;
             int digitMul = 1;
