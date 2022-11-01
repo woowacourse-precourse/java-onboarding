@@ -30,12 +30,14 @@ class Problem1 {
 	 * @return
 	 */
 	private static int compareScores(int pobiScore, int crongScore) {
-		int answer;
+		int answer = -1;
 		if (pobiScore == crongScore) {
 			answer = DRAW;
-		} else if (pobiScore > crongScore) {
+		}
+		if (pobiScore > crongScore) {
 			answer = POBI_WON;
-		} else {
+		}
+		if (pobiScore < crongScore) {
 			answer = CRONG_WON;
 		}
 		return answer;
