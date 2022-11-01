@@ -1,11 +1,8 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer;
 
         answer = removeDuplication(cryptogram);
 
@@ -13,7 +10,7 @@ public class Problem2 {
     }//public static String solution
 
     public static String removeDuplication(String cryptogram){
-        char recentChar = 0;
+        char recentChar;
 
         for(int i = 1; i < cryptogram.length(); i++){
             recentChar = cryptogram.charAt(i);
