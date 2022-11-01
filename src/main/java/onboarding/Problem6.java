@@ -12,6 +12,9 @@ public class Problem6 {
         }
         return twoLettersList;
     }
+    private static boolean includeTwoLetters(String nickname, String twoLetters) {
+        return nickname.contains(twoLetters);
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
