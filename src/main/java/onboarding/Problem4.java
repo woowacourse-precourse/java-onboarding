@@ -34,6 +34,12 @@ public class Problem4 {
         for(int w=0; w<arrayWord.length; w++) {
             //char 배열 형태로 word 문자 저장
             arrayWord[w] = (word.charAt((w)));
+
+            if(upperCase.contains(arrayWord[w])) {
+
+            } else if(lowerCase.contains(arrayWord[w])) {
+
+            }
         }
         return answer;
     }
