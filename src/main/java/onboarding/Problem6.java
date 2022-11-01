@@ -24,16 +24,23 @@ public class Problem6 {
 			return answer;
 		}
 
-		// HashMap 초기화
-		for (List<String> form : forms) {
-			map.put(form.get(EMAIL), form.get(NICKNAME));
-		}
-
+		initMapWithEmailAndNickname(forms, map);
 		initSplitNicknames(map, splitNicknames);
 		initDuplicateNicknames(splitNicknames, duplicateNicknames);
 		answer = getCrewUsingInvalidNickname(map, duplicateNicknames);
 
 		return answer;
+	}
+
+	/**
+	 * 크루들의 이메일과 닉네임으로 map 을 초기화하는 메서드
+	 * @param forms
+	 * @param map
+	 */
+	private static void initMapWithEmailAndNickname(List<List<String>> forms, Map<String, String> map) {
+		for (List<String> form : forms) {
+			map.put(form.get(EMAIL), form.get(NICKNAME));
+		}
 	}
 
 	/**
