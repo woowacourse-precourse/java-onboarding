@@ -24,3 +24,14 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+
+### 기능 명세
+
+1. 사용자와 직접 친구 집합 찾기 기능
+2. 친구의 친구인지 판단하는 기능
+3. 함께 아는 친구의 수 찾기 기능
+4. 친구별 방문 수 찾기 기능
+5. 사용자의 친구를 제외한 친구들에 대해 항목의 점수를 합산하는 기능
+6. 점수순 우선, 동일 점수일 경우 이름순 정렬 기능
