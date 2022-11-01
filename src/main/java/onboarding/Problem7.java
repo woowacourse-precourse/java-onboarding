@@ -51,8 +51,40 @@ public class Problem7 {
         friendListCheck(friendshipScore, visitors, 1);
     }
 
+    private static void alreadyCheck(Map<String, Integer> friendshipScore,
+                                          List<String> userFriend) {
+        for (String name : userFriend) {
+            friendshipScore.remove(name);
+        }
+    }
+
+    private static List<String> resultSort(Map<String, Integer> friendshipScore) {
+        List<String> answer = new LinkedList<>();
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(friendshipScore.entrySet());
+        entries.sort((tmp1, tmp2) -> {
+            if (tmp2.getValue().equals(tmp1.getValue())) {
+                return tmp1.getKey().compareTo(tmp2.getKey());
+            }
+            return tmp2.getValue().compareTo(tmp1.getValue());
+        });
+
+        for (int i = 0; i < 5 && i < entries.size(); i++) {
+            Map.Entry<String, Integer> entry = entries.get(i);
+            answer.add(entry.getKey());
+        }
+        return answer;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        Map<String, Integer> friendshipScore = new HashMap<>();
+
+        List<String> userFriendList = GetFriendShipFromName(friends, user);
+        friend(friendshipScore, userFriendList, friends);
+        visitCheck(friendshipScore, visitors);
+        alreadyCheck(friendshipScore, userFriendList);
+
+        answer =  resultSort(friendshipScore);
         return answer;
     }
 }
