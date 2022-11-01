@@ -20,7 +20,7 @@ public class Problem4 {
             if(('a'<=alpha&&alpha<='z')||'A'<=alpha&&alpha<='Z'){
                 ret+=reverse(alpha);
             }
-            if(alpha<'a'|| (alpha>'z'&&'A'<alpha) || alpha>'Z'){
+            if(alpha<'A'|| (alpha>'Z'&&alpha<'a') || alpha>'z'){
                 ret+=alpha;
             }
         }
