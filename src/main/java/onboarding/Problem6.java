@@ -3,12 +3,31 @@ package onboarding;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        return getUseLimitedNickNameUserEmails(forms);
+    }
+
+    private static List<String> getUseLimitedNickNameUserEmails(List<List<String>> forms) {
+        HashMap<String, Integer> subNickNameFrequencies = getSubNickNameFrequencies(forms);
+
+        HashSet<String> useLimitedNickNameUserEmails = new HashSet<>();
+        forms.stream()
+            .filter(form -> {
+                String nickName = form.get(Form.NICKNAME.index);
+                return isLimitedNickName(subNickNameFrequencies, nickName);
+            })
+            .forEach(form -> {
+                String email = form.get(Form.EMAIL.index);
+                useLimitedNickNameUserEmails.add(email);
+            });
+
+        return useLimitedNickNameUserEmails.stream()
+            .sorted()
+            .collect(Collectors.toList());
     }
 
     private static boolean isLimitedNickName(
