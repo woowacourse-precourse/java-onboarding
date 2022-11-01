@@ -129,6 +129,23 @@ public class Problem7 {
      * 사용자 본인 혹은, 이미 친구인 사람들은 already_friend 에 담음
      * */
 
+    private static void init_not_yet_friend(String user, List<List<String>> friends,
+                                            List<String> visitors, Set<String> not_yet_friend, Set<String> already_friend) {
+
+        // 사용자 본인 혹은 이미 친구인 사람들을 already_friend에 추가
+        for (List<String> friend : friends) {
+            not_yet_friend.addAll(friend);
+            if (friend.contains(user)) {
+                already_friend.addAll(friend);
+            }
+        }
+        not_yet_friend.addAll(visitors);
+
+        // 사용자 본인 혹은 사용자와 이미 친구인 사람들은 not_yet_friend에서 삭제
+        for (String str : already_friend) {
+            not_yet_friend.remove(str);
+        }
+    }
 
     /*
      * 기능 요구 사항
