@@ -40,6 +40,22 @@ public class Problem7 {
         return friendsOffriends;
     }
 
+    // 기능 목록 3 : 친구 추천 알고리즘의 10점인 경우를 만족하는 사용자들의 점수를 계산하는 함수
+    public static Map<String, Integer> tenScoreCalculation(List<String> myfriends, List<String> friendsOffriends){
+        Map<String, Integer> friendsRecommend = new TreeMap<>();
+
+        for(String f:friendsOffriends){
+            if(!myfriends.contains(f)){
+                if(!friendsRecommend.containsKey(f)){
+                    friendsRecommend.put(f,0);
+                }
+                friendsRecommend.replace(f,friendsRecommend.get(f)+10);
+            }
+        }
+
+        return friendsRecommend;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
