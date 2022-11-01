@@ -67,4 +67,15 @@ class Problem1 {
 
         return plusSum;
     }
+
+    private static int multiSum(Integer num) {
+        int multiSum = 1;
+
+        while (num > 0) {
+            multiSum *= num % 10;
+            num /= 10;
+        }
+
+        return multiSum;
+    }
 }
