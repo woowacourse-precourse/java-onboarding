@@ -20,8 +20,6 @@ public class DuplicatePool {
 	}
 
 	public synchronized static void fillByWord(String words, int wordLength) {
-		String[] split = words.split("");
-
 		List<String> slicedWords = sliceWord(words, wordLength);
 		for (String slicedWord : slicedWords) {
 			addDuplicativeWord(slicedWord);
@@ -46,7 +44,7 @@ public class DuplicatePool {
 
 		StringBuilder slicedWord = new StringBuilder();
 		for (int i = 0; i < split.length; i++) {
-			slicedWord.append(split);
+			slicedWord.append(split[i]);
 			addToList(size, slicedWords, slicedWord);
 		}
 
