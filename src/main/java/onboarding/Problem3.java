@@ -7,6 +7,15 @@ public class Problem3 {
         }
         return 0;
     }
+    private static int countClap(int number) {
+        String numberToString = Integer.toString(number);
+        int clapCount = 0;
+        for (int i = 0; i < numberToString.length(); i++) {
+            int digit = numberToString.charAt(i) - '0';
+            clapCount += isClap(digit);
+        }
+        return clapCount;
+    }
     public static int solution(int number) {
         int answer = 0;
         return answer;
