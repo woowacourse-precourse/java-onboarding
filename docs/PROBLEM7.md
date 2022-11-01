@@ -24,3 +24,17 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 기능 목록
+- `makeFriendsMap(HashMap<String, HashSet<String>> friendsMap, String member1, String member2)` : 친구 관계를 표현하는 friendsMap을 생성한다.
+- `userDirectFriendsSet`을 생성하여 user와 직접적으로 알고있는 친구들을 set에 넣고, 한 명씩 함께 아는 친구가 있는지 검증한다.
+- `checkMemberSet(HashSet<String> memberSet, String user, HashMap<String, HashSet<String>> friendsMap, HashMap<String, Integer> scoreMap)` : user와 직접적으로 알고있는 친구의 인맥을 한 명씩 체크한다.
+- `whetherAnotherMemberKnowsUser(HashSet<String> anotherMemberSet, String user)` : `checkMemberSet()`에서 체크한 인맥의 사람을 뽑아서 그 사람의 인맥을 체크한다. (사용자와 함께 아는 친구를 구한다. 직접적으로 아는 사이 x)
+  - 그 사람이 user와 아는 사이면 true를 리턴한다.
+  - 아는사이가 아니면 false를 리턴한다.
+- `addScoreIntoScoreMap(HashMap<String, Integer> scoreMap, String member)` : scoreMap에 member 점수를 10점 추가한다.
+- `addVisitorsScoreIntoScoreMap(HashSet<String> userDirectFriendsSet, HashMap<String, Integer> scoreMap, List<String> visitors)` : user와 직접적으로 아는 사이가 아닌 사람만 scoreMap에 1점을 추가한다.
+- `makeRecommendationList(List<Recommendation> recommendationList, HashMap<String, Integer> scoreMap)` : 최종적인 추천 목록을 만든다.
+  - `Recommendation 클래스` 를 생성하여 name과 score 속성을 넣고, 점수 내림차순, 이름 오름차순으로 추천 목록을 정렬한다. 
+- 추천 목록의 최대 상위 5개를 answer에 추가하고 리턴한다.
