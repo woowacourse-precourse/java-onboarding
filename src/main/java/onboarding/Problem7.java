@@ -35,8 +35,10 @@ public class Problem7 {
      */
     public static Map<String, Integer> initUserMap(Map<String, Integer> map, List<List<String>> friends, List<String> visitors) {
         for (List<String> friend: friends) {
-            map.put(friend.get(0), 0);
-            map.put(friend.get(1), 0);
+            String friend1 = friend.get(0);
+            String friend2 = friend.get(1);
+            map.put(friend1, 0);
+            map.put(friend2, 0);
         }
         for (String visitor: visitors) {
             map.put(visitor, 0);
@@ -55,8 +57,10 @@ public class Problem7 {
         List<String> userFriend = new ArrayList<>();
 
         for(List<String> friend: friends) {
-            if (friend.get(0).equals(user)) userFriend.add(friend.get(1));
-            if (friend.get(1).equals(user)) userFriend.add(friend.get(0));
+            String friend1 = friend.get(0);
+            String friend2 = friend.get(1);
+            if (friend1.equals(user)) userFriend.add(friend.get(1));
+            if (friend2.equals(user)) userFriend.add(friend.get(0));
         }
         return userFriend;
     }
@@ -71,10 +75,12 @@ public class Problem7 {
     public static List<String> getFriendOfFriend(List<String> userFriend, List<List<String>> friends) {
         List<String> friendOfFriend = new ArrayList<>();
 
-        for (List<String> friend: friends){
+        for (List<String> friend: friends) {
             for (String myFriend: userFriend) {
-                if (friend.get(0).equals(myFriend)) friendOfFriend.add(friend.get(1));
-                if (friend.get(1).equals(myFriend)) friendOfFriend.add(friend.get(0));
+                String friend1 = friend.get(0);
+                String friend2 = friend.get(1);
+                if (myFriend.equals(friend1)) friendOfFriend.add(friend2);
+                if (myFriend.equals(friend2)) friendOfFriend.add(friend1);
             }
         }
         return friendOfFriend;
