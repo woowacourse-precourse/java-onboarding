@@ -3,6 +3,8 @@ package onboarding;
 
 public class Problem2 {
     public static String removeDuplicate(String word){
+        if (word.length() <= 1) return word;
+
         StringBuilder res = new StringBuilder();
         int i = 0;
         while (i < word.length()-1) {
@@ -10,11 +12,10 @@ public class Problem2 {
                 i+=2;
             else res.append(word.charAt(i++));
         }
-        if (res.length() > 0) {
-            if (word.charAt(word.length() - 1) != res.charAt(res.length() - 1))
-                res.append(word.charAt(word.length() - 1));
-            else res.replace(res.length() - 1, res.length(), "");
-        }
+
+        if (word.charAt(word.length() - 1) != word.charAt(word.length() - 2))
+            res.append(word.charAt(word.length() - 1));
+
         return res.toString();
     }
 
