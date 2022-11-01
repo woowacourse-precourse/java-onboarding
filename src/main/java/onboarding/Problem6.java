@@ -35,7 +35,9 @@ public class Problem6 {
         for (List<String> crew : forms) {
             String crewEmail = crew.get(0);
             String crewNickname = crew.get(1);
-
+            if(!isValidEmail(crewEmail) || !isValidNickname(crewNickname)) {
+                continue;
+            }
             for (int j = 0; j < crewNickname.length() - 1; j++) {
                 String splitNickname = crewNickname.substring(j, j + 2);
                 putSplitNickname(splitNickname, crewEmail, duplicatedMap);
