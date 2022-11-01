@@ -45,4 +45,16 @@ public class Problem7 {
         }
     }
 
+    public static void deleteNameFromMap(String user, Set<String> getFriendsOfUser ){
+        ArrayList<String> deleteNames = new ArrayList<String>();
+        deleteNames.add(user);
+        for(String key : getFriendsOfUser){
+            deleteNames.add(key);
+        }
+
+        for(String name : deleteNames) {
+            scoreMap.remove(name);
+        }
+    }
+
 }
