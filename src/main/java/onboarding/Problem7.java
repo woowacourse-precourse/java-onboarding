@@ -71,5 +71,12 @@ public class Problem7 {
         return false;
     }
 
+    public static boolean canVisitors(List<String> visitors) {
+        for(String visitor : visitors) {
+            if(visitor.length()>=VISITOR_MIN && visitor.length()<=VISITOR_MAX) return true;
+        }
+        return false;
+    }
+
 
 }
