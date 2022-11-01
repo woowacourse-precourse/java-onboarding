@@ -22,7 +22,7 @@ public class User {
             throw new PageException();
         }
     }
-    
+
     private Integer calculateSumScore(Integer page){
         int sum = 0;
 
@@ -32,5 +32,16 @@ public class User {
         }
 
         return sum;
+    }
+
+    private int calculateMulScore(Integer page){
+        int mul = 1;
+
+        while(page != 0){
+            mul *= page % 10;
+            page /= 10;
+        }
+
+        return mul;
     }
 }
