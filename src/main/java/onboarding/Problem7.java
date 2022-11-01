@@ -80,6 +80,29 @@ class RelationShip {
         return users;
     }
 }
+class Recommendation{
+    final String THE_USER_NAME;
+    final User THE_USER;
+    final HashMap<String, User> USERS;
+    Recommendation(String userName, User user, HashMap<String, User> users){
+        THE_USER_NAME=userName;
+        THE_USER=user;
+        USERS=users;
+    }
+    void addAcquaintanceScore(String friend) {
+        User acquaintance;
+        List<String> relation;
+        List<String> theUserFriends=THE_USER.getRelationship();
+        acquaintance = USERS.get(friend);
+        relation=acquaintance.getRelationship();
+
+        for (String s : theUserFriends) {
+            if (relation.contains(s)) {
+                acquaintance.updateAcquaintanceScore();
+            }
+        }
+    }
+}
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
