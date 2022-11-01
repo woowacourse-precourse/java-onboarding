@@ -1,32 +1,43 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Objects;
+import java.util.*;
+
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String[] letters = cryptogram.split("");
-        ArrayList<String> stack = new ArrayList<>();
-        stack.add(letters[0]);
-        int cnt = 1;
-        while(cnt > 0){
+        List<String> letters = List.of(cryptogram.split(""));
+        ArrayList<String> next_letters = new ArrayList<>();
+        int cnt = -1;
+        while(cnt != 0){
             cnt = 0;
-            for(int i = 1; i < letters.length; i++){
-                if(Objects.equals(stack.get(stack.size() - 1), letters[i])){
-                    stack.remove(stack.size()-1);
+            for(int i = 0; i < letters.size() ; i++){
+                if(i==0){
+                    if(!Objects.equals(letters.get(i), letters.get(i+1))){
+                        next_letters.add(letters.get((i)));
+                        continue;
+                    }else{
+                        cnt += 1;
+                        continue;
+                    }
+                }
+                if(i == letters.size()-1){
+                    if(!Objects.equals(letters.get(i), letters.get((i-1)))){
+                        next_letters.add(letters.get(i));
+                        continue;
+                    }else{
+                        cnt += 1;
+                        continue;
+                    }
+                }
+
+                if(!Objects.equals(letters.get(i), letters.get(i-1)) && !Objects.equals(letters.get(i), letters.get(i+1))){
+                    next_letters.add(letters.get(i));
+                }else{
                     cnt += 1;
                 }
-                else{
-                    stack.add(letters[i]);
-                }
             }
-
-            if(stack.size() <= 1){
-                return String.join("", stack);
-            }
-            letters = stack.toArray(new String[0]);
-            stack = new ArrayList<>();
-            stack.add(letters[0]);
+            letters = (List<String>) next_letters.clone();
+            next_letters = new ArrayList<>();
         }
     return String.join("", letters);
 
