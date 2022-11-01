@@ -88,4 +88,38 @@ public class Problem7 {
 
         return result;
     }
+
+    public static List<List<String>> getScore(List<List<String>> friendScore, List<List<String>> visitScore) {
+        List<List<String>> list = new ArrayList<>();
+        List<List<String>> result = new ArrayList<>();
+
+        for (int i = 0; i < friendScore.size(); i++) {
+            list.add(friendScore.get(i));
+        }
+
+        for (int i = 0; i < visitScore.size(); i++) {
+            int score = 0;
+            for (int j = 0; j < list.size(); j++) {
+                if (list.get(j).get(0).equals(visitScore.get(i).get(0))) {
+                    score = Integer.parseInt(list.get(j).get(1)) + Integer.parseInt(visitScore.get(i).get(1));
+                    result.add(List.of(list.get(j).get(0), String.valueOf(score)));
+                }
+            }
+            if (score == 0)
+                result.add(visitScore.get(i));
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            int cnt = 0;
+            for (int j = 0; j < result.size(); j++) {
+                if (result.get(j).get(0).equals(list.get(i).get(0))) {
+                    cnt++;
+                }
+            }
+            if (cnt == 0)
+                result.add(list.get(i));
+        }
+
+        return result;
+    }
 }
