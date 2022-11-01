@@ -1,90 +1,42 @@
 package onboarding;
 
 public class Problem3 {
-    public static int countFourFigures(int number) {
+    //10의 n제곱 계산
+    public static int squareTen(int figures){
+        return (int)(Math.pow(10, figures-1));
+    }
+
+    //재귀적으로 계산
+    public static int countFigures(int number, int figures){
         int count = 0;
         int noCount = 0;
+        int figureSquareTen = squareTen(figures);
 
-        //세 자리 숫자 clap 계산
-        count += countThreeFigures(number % 1000);
+        //한 자리 수일 경우
+        if(figures == 0){
+            for(int i =0; i<=number; i++){
+                if(i%3 == 0 & i!=0)
+                    count++;
+            }
+            return count;
+        }
 
-        if(number/1000%3 ==0)
-            noCount = number/1000;
+        //두 자리 수 이상이면면
+       if(number/figureSquareTen%3 ==0)
+            noCount = number/figureSquareTen;
 
-        //천의 자리가 3, 6, 9 중 하나일 경우
-        for(int i =0; i<=number/1000; i++){
-            if(i%3 == 0 & i!=noCount & i!=0) {
-                count += 1000;
-                count += countThreeFigures(999);
-            }else if(i == noCount & i!=0) {
-                count += number % 1000 + 1;
-            }else if(i == number/1000) {
-                count += countThreeFigures(number % 1000);
+        for(int i = 0; i<=number/figureSquareTen; i++){
+            if(i%3 == 0 & i!=noCount & i!=0){
+                count += figureSquareTen;
+                count += countFigures(figureSquareTen-1, figures-1);
+            }else if(i == noCount& i!=0){
+                count += number %figureSquareTen + 1;
+                count+= countFigures(number%figureSquareTen, figures-1);
+            }else if(i == number/figureSquareTen){
+                count += countFigures(number%figureSquareTen, figures-1);
             }else{
-                count += countThreeFigures(999);
+                count += countFigures(figureSquareTen-1, figures-1);
             }
-        }
-        count += countThreeFigures(999);
-
-        return count;
-    }
-
-    //number가 세 자리 수일 경우
-    public static int countThreeFigures(int number){
-        int count = 0;
-        int noCount = 0;
-
-        if(number/100%3 == 0){
-            noCount = number/100;
-        }
-        for(int i =0; i<=number/100; i++) {
-            if (i % 3 == 0 & i != noCount & i!=0) {
-                count += 100;
-                count += countTwoFigures(99);
-            } else if (i == noCount & i!=0) {
-                count += number % 100 + 1;
-            }else if(i== number/100){
-                count += countTwoFigures(number%100);
-            }else {
-                count += countTwoFigures(99);
-            }
-        }
-
-        return count;
-    }
-
-    //number가 두 자리 수일 경우
-    public static int countTwoFigures(int number){
-        int count = 0;
-        int noCount = 0;
-
-
-        if(number/10%3 == 0){
-            noCount = number/10;
-        }
-        for(int i =0; i<=number/10; i++){
-            if(i%3 == 0 & i !=noCount & i!=0) {
-                count += 10;
-                count+= countOneFigures(9);
-            }else if(i == noCount & i!=0){
-                count+= number%10+1;
-                count += countOneFigures(number%10);
-            }else if(i == number/10){
-                count += countOneFigures(number%10);
-            }else{
-                count+= countOneFigures(9);
-            }
-        }
-        return count;
-    }
-
-    //number가 한 자리 수일 경우
-    public static int countOneFigures(int number){
-        int count = 0;
-
-        for(int i =0; i<=number; i++){
-            if(i%3 == 0 & i!=0)
-                count++;
         }
         return count;
 
@@ -95,13 +47,13 @@ public class Problem3 {
         int count = 0;
 
         if((number/1000)!=0){//천의 자리 수이면
-            count += countFourFigures(number);
+            count += countFigures(number, 4);
         }else if((number/100)!=0){
-            count += countThreeFigures(number);
+            count += countFigures(number, 3);
         }else if((number/10)!=0){
-            count += countTwoFigures(number);
+            count += countFigures(number, 2);
         }else{
-            count += countOneFigures(number);
+            count += countFigures(number, 1);
         }
 
         return count;
