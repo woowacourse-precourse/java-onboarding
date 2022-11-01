@@ -6,15 +6,15 @@ public class Problem3 {
 
     // 반복되는 숫자에서 369가 포함되는지 확인하는 메서드
     static int judgeNumber(String element) {
-        int answernumber = 0;
+        int answerNumber = 0;
         Pattern pattern = Pattern.compile("^([369]*)$");
         for (int j = 0; j < element.length(); j++) {
-            String elementnumber = Character.toString(element.charAt((j)));
-            if (pattern.matcher(elementnumber).matches()) {
-                answernumber += 1;
+            String elementNumber = Character.toString(element.charAt((j)));
+            if (pattern.matcher(elementNumber).matches()) {
+                answerNumber += 1;
             }
         }
-        return answernumber;
+        return answerNumber;
     }
 
     public static int solution(int number) {
