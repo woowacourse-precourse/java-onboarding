@@ -32,22 +32,23 @@ public class Problem7 {
 		nameAndScores = initNameAndScores(notYetFriendWithUser);
 
 		calcScore(friends, visitors, nameAndScores, notYetFriendWithUser, alreadyFriendWithUser);
+		excludeFriendWithZeroPoints(nameAndScores);
 
-		Set<String> zeroPoints = new HashSet<>();
-		for (Map.Entry<String, Integer> entry : nameAndScores.entrySet()) {
-			if (entry.getValue() == 0) {
-				zeroPoints.add(entry.getKey());
-			}
-		}
-		zeroPoints.forEach(k -> nameAndScores.remove(k));
-
-		List<Map.Entry<String, Integer>> sortedFriends = sortFriends(nameAndScores);
-
-		for (Map.Entry<String, Integer> stringIntegerEntry : sortedFriends) {
+		for (Map.Entry<String, Integer> stringIntegerEntry : sortFriends(nameAndScores)) {
 			answer.add(stringIntegerEntry.getKey());
 		}
 
 		return answer;
+	}
+
+	private static void excludeFriendWithZeroPoints(Map<String, Integer> nameAndScores) {
+		Set<String> friendWithZeroPoints = new HashSet<>();
+		for (Map.Entry<String, Integer> entry : nameAndScores.entrySet()) {
+			if (entry.getValue() == 0) {
+				friendWithZeroPoints.add(entry.getKey());
+			}
+		}
+		friendWithZeroPoints.forEach(k -> nameAndScores.remove(k));
 	}
 
 	private static Map<String, Integer> initNameAndScores(Set<String> notYetFriendWithUser) {
