@@ -7,11 +7,11 @@ public class Problem7 {
     public static ArrayList<Integer> graph[];
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        //1. 친구 정보가 주어진 모든 사용자명을 추출한다.
-        //2. 친구 정보를 담는 그래프(연결리스트)를 생성하여 데이터를 저장한다.
+        /*1. 친구 정보가 주어진 모든 사용자명을 추출한다.*/
+        /*2. 친구 정보를 담는 그래프(연결리스트)를 생성하여 데이터를 저장한다.*/
         List<String> users = initData(friends, visitors);
 
-        //3. 주어진 사용자 아이디와 친구인 사용자를 조사하여 점수를 부여한다.
+        /*3. 주어진 사용자 아이디와 친구인 사용자를 조사하여 점수를 부여한다.*/
         List<String> answer;
         int[] score = new int[users.size()];
         int userIdx = users.indexOf(user);
@@ -20,13 +20,13 @@ public class Problem7 {
             score = calculateScore(score, w);
         }
 
-        //4. visitor 리스트를 조사하여, 방문한 사용자에게 1점씩 부여한다.
+        /*4. visitor 리스트를 조사하여, 방문한 사용자에게 1점씩 부여한다.*/
         for(String visitor : visitors){
             int visitorIdx = users.indexOf(visitor);
             score[visitorIdx]++;
         }
 
-        //5. 모든 점수를 부여했다면 점수가 높은 5명을 추린다.
+        /*5. 모든 점수를 부여했다면 점수가 높은 5명을 추린다.*/
         answer = sortUserByScore(users, score, user);
 
         return answer;
@@ -51,11 +51,14 @@ public class Problem7 {
 
         int userIdx = users.indexOf(user);
         List<String> result = new ArrayList<>();
-        for(int i = 0; i < 5; i++){
-            Map.Entry<String, Integer> e = entry.get(i);
+        for(Map.Entry<String, Integer> e : entry){
             String name = e.getKey();
             if(!graph[userIdx].contains(users.indexOf(name))) {
                 result.add(e.getKey());
+            }
+
+            if(result.size() >= 5) {
+                break;
             }
         }
 
