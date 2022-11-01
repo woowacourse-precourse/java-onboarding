@@ -14,7 +14,6 @@ public class Problem2 {
                     flag = true;
                 }
             }
-            System.out.println(sb);
         }
         answer = sb.toString();
         return answer;
