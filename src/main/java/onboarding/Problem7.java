@@ -11,6 +11,9 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
         Map<String, List<String>> friendsInfo = setFriendsInfo(friends);
+        Map<String, Integer> score = new HashMap<>();
+
+        addVisitorScore(score, visitors);
 
         return answer;
     }
@@ -30,5 +33,11 @@ public class Problem7 {
         }
 
         return friendsInfo;
+    }
+
+    private static void addVisitorScore(Map<String, Integer> score, List<String> visitors) {
+        for (String visitor : visitors) {
+            score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+        }
     }
 }
