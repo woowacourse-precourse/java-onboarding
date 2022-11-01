@@ -1,12 +1,11 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     private static final Integer FRIEND_SCORE = 10;
+    private static final Integer VISIT_SCORE = 1;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
@@ -45,5 +44,27 @@ public class Problem7 {
         });
         return ranking;
     }
+
+    private static HashMap<String, Integer> getScoreByVisit(List<String> visitors, HashMap<String, Integer> ranking, List<String> myFriends) {
+        Set<String> ranker = ranking.keySet();
+        visitors.forEach(name -> {
+            // 친구 추천 랭킹에 이미 이름이 있으면
+            if (ranker.contains(name)) {
+                // 방문 기록 점수 추가
+                ranking.put(name, ranking.get(name) + VISIT_SCORE);
+            }
+            // 친구 추천 랭킹에 이름이 없을 때
+            else if(!ranker.contains(name)) {
+                // 나와 친구가 아니라면
+                if(!myFriends.contains(name)) {
+                    // name에 방문 기록 점수주고 친구 추천 랭킹에 등록
+                    ranking.put(name, VISIT_SCORE);
+                    ranker.add(name);
+                }
+            }
+        });
+        return ranking;
+    }
+
 
 }
