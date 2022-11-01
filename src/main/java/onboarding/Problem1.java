@@ -36,4 +36,13 @@ class Problem1 {
 
         return sum;
     }
+
+    // 큰 숫자 찾기
+    public static int compareNum(int num1, int num2) {
+        int left = Math.max(addNum(num1), multiNum(num1));
+        int right = Math.max(addNum(num2), multiNum(num2));
+        int big = Math.max(left, right);
+
+        return big;
+    }
 }
