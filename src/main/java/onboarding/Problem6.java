@@ -20,6 +20,7 @@ public class Problem6 {
                     if (forms.get(j).get(1).contains(check)) {
                         emails.add(email);
                         emails.add(email2.substring(0, email2.indexOf("@")));
+                        break;
                     }
                 }
             }
