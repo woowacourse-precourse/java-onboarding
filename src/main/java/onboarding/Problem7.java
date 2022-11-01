@@ -38,12 +38,26 @@ public class Problem7 {
 
         return numberToName;
     }
+    private static List<List<Integer>> makeUndirectedGraph(List<List<String>> friends, Map<String, Integer> nameToNumber, List<String> allUserList) {
+        List<List<Integer>> graph = new ArrayList<>();
+        for (int i = 0; i <= allUserList.size(); i++) graph.add(new ArrayList<>());
+
+        for (int i = 0; i < friends.size(); i++) {
+            String friend1 = friends.get(i).get(0);
+            String friend2 = friends.get(i).get(1);
+            graph.get(nameToNumber.get(friend1)).add(nameToNumber.get(friend2));
+            graph.get(nameToNumber.get(friend2)).add(nameToNumber.get(friend1));
+        }
+
+        return graph;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> allUserList = getUserList(user, friends, visitors);
 
         Map<String, Integer> nameToNumber = mappingNameToNumber(allUserList);
         Map<Integer, String> numberToName = mappingNumberToName(allUserList);
 
+        List<List<Integer>> adj = makeUndirectedGraph(friends, nameToNumber, allUserList);
 
         return allUserList;
     }
