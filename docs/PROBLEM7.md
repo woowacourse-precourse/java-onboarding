@@ -1,3 +1,11 @@
+# 문제 7
+
+## 기능 목록
+- [x] 모든 member를 List에 등록한다. - addMemberList()
+  - [x] 기존 member가 존재하지 않으면 memberList에 추가할 수 있다. - addList()
+- [x] 기존 friends를 인접리스트 그래프로 만든다. - friendsToFriendList()  
+- [x] 이미 친구거나 자기 자신인지 확인할 수 있다. - checkFriendOrOwn()
+
 ## 🚀 기능 요구 사항
 
 레벨 2의 팀 프로젝트 미션으로 SNS(Social Networking Service)를 만들고자 하는 팀이 있다. 팀에 속한 크루 중 평소 알고리즘에 관심이 많은 미스터코는 친구 추천 알고리즘을 구현하고자 아래와 같은 규칙을 세웠다.
