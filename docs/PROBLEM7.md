@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+
+1. 사용자와 친구인 아이디를 구하는 기능
+2. 추천 점수를 구하는 기능
+- 사용자와 함께 아는 친구의 수를 구하는 기능 
+- 사용자의 타임 라인에 방문한 횟수를 구하는 기능
+3. 점수가 가장 높은 순으로 정렬, 추천 점수가 같은 경우는 이름순으로 정렬하는 기능
