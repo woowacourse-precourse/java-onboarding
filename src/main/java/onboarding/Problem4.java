@@ -1,7 +1,5 @@
 package onboarding;
 
-import java.util.Map;
-
 public class Problem4 {
     public static String solution(String word) {
         char [] str = word.toCharArray();
