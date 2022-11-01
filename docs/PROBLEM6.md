@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 목록
+- 닉네임을 n-gram 두 글자 문자로 tokenize 하여 저장소에 저장하는 기능
+  - 토큰화된 토큰은 map의 key로 저장
+  - value 값은 해당 email을 사용 
+- map 저장소에 중복된 이름의 이메일 목록을 만드는 기능
+  - 이메일을 오름차순 정렬
+  - 중복 제거
