@@ -40,6 +40,12 @@ class Problem2Test {
 		void integrationTest5() {
 			assertThat(solution("aaa")).isEqualTo("");
 		}
+
+		@Test
+		@DisplayName("abbaa를 빈 문자열로 줄여야 한다")
+		void integrationTest6() {
+			assertThat(solution("abbaa")).isEqualTo("");
+		}
 	}
 
 	@Test
