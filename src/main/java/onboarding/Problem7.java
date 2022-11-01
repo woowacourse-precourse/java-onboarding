@@ -31,6 +31,14 @@ public class Problem7 {
 
         visitScoreCalculate(visitors, scores, nameToIdMap);
 
+        Queue<NameAndScore> recommendedAlgorithmRank = new PriorityQueue<>();
+        for (int i = 0; i < scores.length; i++) {
+            if (userFriends.add(idToNameMap.get(i))) {
+                NameAndScore nameAndScore = new NameAndScore(idToNameMap.get(i), scores[i]);
+                recommendedAlgorithmRank.add(nameAndScore);
+            }
+        }
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -90,6 +98,24 @@ public class Problem7 {
         for (int i = 0; i < visitors.size(); i++) {
             int visitorNumber = nameToIdMap.get(visitors.get(i));
             scores[visitorNumber] += SCORE_OF_TIMELINE_VISIT;
+        }
+    }
+
+    private static class NameAndScore implements Comparable<NameAndScore> {
+        private String name;
+        private int score;
+
+        public NameAndScore(String userName, int score) {
+            this.name = userName;
+            this.score = score;
+        }
+
+        @Override
+        public int compareTo(NameAndScore o) {
+            if (score == o.score) {
+                return name.compareTo(o.name);
+            }
+            return o.score - score;
         }
     }
 }
