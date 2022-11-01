@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
@@ -9,6 +11,35 @@ public class Problem7 {
         return answer;
     }
 
+    // 친구 리스트를 HashMap 형태로 변환하는 함수
+    public static HashMap<String, User> friendsToTable(List<List<String>> friends) {
+        HashMap<String, User> userTable = new HashMap<String, User>();
+
+        for(List<String> friend : friends) {
+            String user1 = friend.get(0);
+            String user2 = friend.get(1);
+
+            // 처음 등록되는 유저의 경우 새로 만든다.
+            if(userTable.get(user1) == null) {
+                List<String> friendList = new ArrayList<String>();
+                User u = new User(user1, friendList);
+                userTable.put(user1, u);
+            }
+            if(userTable.get(user2) == null) {
+                List<String> friendList = new ArrayList<String>();
+                User u = new User(user2, friendList);
+                userTable.put(user2, u);
+            }
+
+            // 친구 등록
+            User u1 = userTable.get(user1);
+            User u2 = userTable.get(user2);
+            u1.addFriend(user2);
+            u2.addFriend(user1);
+        }
+
+        return userTable;
+    }
 
     // 유저의 정보(이름 및 친구목록)를 저장하는 클래스
     public static class User {
