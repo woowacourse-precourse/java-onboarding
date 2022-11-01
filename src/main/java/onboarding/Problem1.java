@@ -22,6 +22,13 @@ class Problem1 {
         return answer;
     }
 
+    public static int maxPageNumber(char[] leftPageNumber, char[] rightPageNumber){
+        int maxLeftPageNumber = Math.max(addEachDigits(leftPageNumber), multiplyEachDigits(leftPageNumber));
+        int maxRightPageNumber = Math.max(addEachDigits(rightPageNumber), multiplyEachDigits(rightPageNumber));
+
+        return Math.max(maxLeftPageNumber, maxRightPageNumber);
+    }
+
     public static int addEachDigits(char[] pageNumber){
         int sumEachDigits = 0;
 
