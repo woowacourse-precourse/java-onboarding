@@ -9,21 +9,33 @@ public class Problem2 {
         return cryptogram.charAt(currentIndex) == cryptogram.charAt(compareIndex);
     }
 
-    public static String removeDuplicatedCharacters(String cryptogram) {
+    public static String removeDuplicatedCharacters(String cryptogram, boolean hasDuplicatedCharacter) {
         int index = 0;
+        int windowSize = 0;
         while (index < cryptogram.length() - 1) {
             if (isDuplicated(cryptogram, index, index + 1)) {
-                cryptogram = removeEachCharacter(cryptogram, index, index + 1);
-                index -= 2;
+                windowSize++;
+                hasDuplicatedCharacter = true;
+            } else if (windowSize > 0) {
+                cryptogram = removeEachCharacter(cryptogram, index - windowSize, index);
+                windowSize = 0;
             }
             index++;
         }
 
-        return cryptogram;
+        if (windowSize > 0) {
+            cryptogram = removeEachCharacter(cryptogram, index - windowSize, index);
+        }
+
+        if (cryptogram.length() == 0 || !hasDuplicatedCharacter) {
+            return cryptogram;
+        } else {
+            return removeDuplicatedCharacters(cryptogram, false);
+        }
     }
 
     public static String solution(String cryptogram) {
-        String answer = removeDuplicatedCharacters(cryptogram);
+        String answer = removeDuplicatedCharacters(cryptogram, false);
 
         return answer;
     }
