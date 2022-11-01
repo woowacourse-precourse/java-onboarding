@@ -14,6 +14,7 @@ public class Problem6 {
         for (int i = 0; i < forms.size(); i++) {
             String crewEmail = forms.get(i).get(0);
             String crewNickName = forms.get(i).get(1);
+
             if (isOverLap(crewNickName)) {
                 emails.add(crewEmail);
             }
@@ -23,7 +24,12 @@ public class Problem6 {
     }
 
     public static List<String> convertSetToList(SortedSet<String> set) {
-        return Collections.emptyList();
+        List<String> sortedEmails = new ArrayList<>();
+        while(!set.isEmpty()) {
+            sortedEmails.add(set.first());
+            set.remove(set.first());
+        }
+        return sortedEmails;
     }
 
     public static boolean isOverLap(String nickName) {
