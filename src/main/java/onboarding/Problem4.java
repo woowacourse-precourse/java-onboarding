@@ -17,9 +17,17 @@ public class Problem4 {
         String transform(){
             for(int i=0 ; i<sentence.length() ; i++){
                 char c = sentence.charAt(i);
-                result += dictionary.findWord(c);
+                c = (isAlphabet(c))? dictionary.findWord(c) : c;
+                result += c;
             }
             return result;
+        }
+
+        private boolean isAlphabet(char c) {
+            if(!(('a'<=c && c<='z') || ('A'<=c && c<='Z'))) {
+                return false;
+            }
+            return true;
         }
     }
 
@@ -27,10 +35,6 @@ public class Problem4 {
     static class AbnormalDictionary {
 
         private char findWord(char c) {
-            if(!(('a'<=c && c<='z') || ('A'<=c && c<='Z'))) {
-                return c;
-            }
-
             int index = 'a'+'z';
             if('A'<=c && c<='Z') {
                 index = 'A'+'Z';
@@ -40,6 +44,7 @@ public class Problem4 {
             return res;
         }
     }
+
     public static String solution(String word) {
         Transformer transformer = new Transformer(word);
         return transformer.transform();
