@@ -24,8 +24,9 @@ public class Problem4 {
                     continue;
                 }
 
-                reverseChars[i] = aChar;
             }
+
+            reverseChars[i] = aChar;
         }
 
         return String.valueOf(reverseChars);
