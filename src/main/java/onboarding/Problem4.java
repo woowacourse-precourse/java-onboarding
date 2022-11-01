@@ -17,18 +17,20 @@ public class Problem4 {
             c++;
             d--;
         }
+
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < word.length(); i++) {
             char current = ' ';
-            if(word.charAt(i) >= 65 && word.charAt(i) <= 90) { 		//대문자이면
-                current = (char) (word.charAt(i) + 32);
+            if(word.charAt(i) >= 65 && word.charAt(i) <= 90) {       //대문자이면
+                current = (char) (word.charAt(i));
                 current = map.get(current);
             }
-            else if(word.charAt(i) >=97 && word.charAt(i) <= 122) {	//소문자이면
-                current = (char) (word.charAt(i) - 32);
+            else if(word.charAt(i) >=97 && word.charAt(i) <= 122) {   //소문자이면
+                current = (char) (word.charAt(i));
                 current = map.get(current);
             }
-            sb.append(c);
+
+            sb.append(current);
         }
 
 
