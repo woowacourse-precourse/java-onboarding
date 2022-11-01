@@ -22,6 +22,13 @@ class Encoding {
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        try {
+            Encoding encodedWord = new Encoding();
+            answer = encodedWord.encodeWord(word).toString();
+        } catch (RestrictException e) {
+            System.out.println(e.exMsg);
+            return answer;
+        }
         return answer;
     }
 }
