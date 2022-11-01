@@ -18,7 +18,12 @@ public class Problem5 {
 
     public static List<Integer> getCountOfMoneyList(int money) {
         List<Integer> result = new ArrayList<Integer>();
-
+        int count;
+        for(int i = 0; i < exchageList.length; i++) {
+            count = money / exchageList[i];
+            result.add(count);
+            money -= count * exchageList[i];
+        }
         return result;
     }
 }
