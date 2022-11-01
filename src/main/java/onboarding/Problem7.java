@@ -13,6 +13,8 @@ public class Problem7 {
 
 		Sns sns = new Sns();
 
+		sns.registerUser(user);
+
 		for (List<String> relation : friends) {
 			validateRelation(relation);
 
