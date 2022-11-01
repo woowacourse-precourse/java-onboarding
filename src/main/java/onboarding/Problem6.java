@@ -9,6 +9,14 @@ public class Problem6 {
         return answer;
     }
 
+    /**
+     * 
+     * @param dupList 반환받을 HashSet 객체
+     * @param forms 닉네임과 이메일 정보를 담은 2차원 List
+     * @param userInfo 다른 목록과 비교할 유저 대상
+     * @param formsIndex forms에서 비교할 대상의 index
+     * @return
+     */
     private static HashSet<String> getDuplicatedNameUsersEmailList(HashSet<String> dupList,
             List<List<String>> forms,
             List<String> userInfo,
