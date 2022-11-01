@@ -14,12 +14,16 @@ public class Problem4 {
     StringBuilder result = new StringBuilder();
     for (int i = 0; i < word.length(); i++) {
       char translatedChar = word.charAt(i);
-      if (Character.isAlphabetic(word.charAt(i))) {
+      if (isAlphabetic(translatedChar)) {
         translatedChar = dictionary.get(translatedChar);
       }
       result.append(translatedChar);
     }
     return result.toString();
+  }
+
+  private static boolean isAlphabetic(char c) {
+    return (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z');
   }
 
   private static Map<Character, Character> getDictionary() {
