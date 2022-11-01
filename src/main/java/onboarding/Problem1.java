@@ -37,17 +37,10 @@ class Problem1 {
         int leftProduct = multiplyDigits(player.get(0));
         int rightProduct = multiplyDigits(player.get(1));
 
-        int leftMax = comparePageNumbers(leftSum, leftProduct);
-        int rightMax = comparePageNumbers(rightSum, rightProduct);
+        int leftMax = Math.max(leftSum, leftProduct);
+        int rightMax = Math.max(rightSum, rightProduct);
 
-        return comparePageNumbers(leftMax, rightMax);
-    }
-
-    public static int comparePageNumbers(int leftPageNumber, int rightPageNumber){
-        if(leftPageNumber > rightPageNumber){
-            return leftPageNumber;
-        }
-        return rightPageNumber;
+        return Math.max(leftMax, rightMax);
     }
 
     public static boolean checkValidity(List<Integer> player){
