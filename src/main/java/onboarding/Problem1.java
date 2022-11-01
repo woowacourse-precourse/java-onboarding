@@ -24,8 +24,14 @@ class Problem1 {
     }
     static boolean check(List<Integer> list){
         //예외1 시작 or 마지막 면이 입력으로
-        //예외2 오른쪽이 짝 or 왼쪽이 홀
+        if(list.get(0)==1 || list.get(1)==400)
+            return false;
+        //예외2 왼쪽이 짝, 오른쪽이 홀
+        if(list.get(0)%2==0 || list.get(1)%2==1)
+            return false;
         //예외3 왼쪽과 오른쪽이 연이은 숫자가 아님
+        if(list.get(1)- list.get(0)!=1)
+            return false;
         return true;
     }
 
