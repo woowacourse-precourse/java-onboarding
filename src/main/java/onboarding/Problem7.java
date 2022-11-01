@@ -28,7 +28,12 @@ public class Problem7 {
             acquaintanceScoreMap.entrySet());
         acquaintanceScoreList.sort((score1, score2) -> score2.getValue().compareTo(
             score1.getValue()));
-        return acquaintanceScoreList.stream().map(Entry::getKey).collect(Collectors.toList());
+        List<String> sortedAcquaintanceScores = acquaintanceScoreList.stream().map(Entry::getKey)
+            .collect(Collectors.toList());
+        if (sortedAcquaintanceScores.size() >= 5) {
+            return sortedAcquaintanceScores.subList(0, 5);
+        }
+        return sortedAcquaintanceScores;
     }
 
     private static void calculateAcquaintanceScore(List<String> acquaintances,
