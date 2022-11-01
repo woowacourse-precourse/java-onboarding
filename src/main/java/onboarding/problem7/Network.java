@@ -10,6 +10,9 @@ import java.util.stream.Collectors;
 
 public class Network {
 
+	private static final int SHARED_FRIEND_SCORE_MULTIPLIER = 10;
+	private static final int RECOMMENDATION_MAX_SIZE = 5;
+
 	private final Visitors visitors;
 	private final Relationships relationships;
 
@@ -33,14 +36,14 @@ public class Network {
 		return recommendedFriends
 			.stream()
 			.map(RecommendedFriend::getName)
-			.limit(5)
+			.limit(RECOMMENDATION_MAX_SIZE)
 			.collect(Collectors.toUnmodifiableList());
 	}
 
 	private int calculateScoreOf(String user, String friend) {
 		int sharedFriendsCount = relationships.countSharedFriends(user, friend);
 		int visitCount = visitors.countVisit(friend);
-		return sharedFriendsCount * 10 + visitCount;
+		return sharedFriendsCount * SHARED_FRIEND_SCORE_MULTIPLIER + visitCount;
 	}
 
 	private Set<String> getKnownUsers() {
