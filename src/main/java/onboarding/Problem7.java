@@ -39,6 +39,13 @@ public class Problem7 {
         }
     }
 
+    public static List<String> convertAndSortScoreTable(Map<String, Integer> scoreTable) {
+        List<String> sortedList = new ArrayList<>(scoreTable.keySet());
+        sortedList.sort((o1, o2) -> scoreTable.get(o2).compareTo(scoreTable.get(o1)));
+        if (sortedList.size() > 5) sortedList.subList(0, 5);
+        return sortedList;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
