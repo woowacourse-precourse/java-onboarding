@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 구현할 기능 목록
+
+- 사용자의 친구를 구하는 기능
+- 추천 점수를 계산하는 기능
+  - 사용자와 함께 아는 친구는 10점씩 갖는다.
+  - 방문자의 경우 방문한 횟수마다 1점씩 갖는다.
+- 추천 점수가 가장 높은 순으로 최대 5명을 반환하는 기능
+  - 이미 친구 관계이거나 추천 점수가 0점이면 추천하지 않는다
+  - 추천 점수가 같으면 이름 순으로 정렬한다.
