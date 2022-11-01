@@ -1,8 +1,8 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.TreeSet;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -12,10 +12,27 @@ public class Problem6 {
     }
 
     /*
-     * 한 닉네임에 대해 같은 글자가 연속적으로 포함되는 교육생을 찾아 이메일 목록에 추가
+     * 같은 글자가 연속적으로 포함되는 교육생을 찾아 이메일 목록에 추가하여 반환
      */
-    public static void detectCrewOfAll(String nickName) {
+    public static TreeSet<String> detectCrewOfAll(List<List<String>> crewAllList) {
+        TreeSet<String> filteredCrewList = new TreeSet<>();
+        for (int i = 0; i < crewAllList.size() - 1; i++) {
+            String checkerNickName = crewAllList.get(i).get(1);
+            boolean exited = false;
 
+            for (int j = 1+i; j < crewAllList.size() - 1; j++) {
+                String nickName = crewAllList.get(j).get(1);
+                if (checkConsecutiveLetter(checkerNickName, nickName)) {
+                    exited = true;
+                    filteredCrewList.add(crewAllList.get(j).get(0));
+                }
+            }
+            if (exited) {
+                filteredCrewList.add(crewAllList.get(i).get(0));
+            }
+        }
+        System.out.println(filteredCrewList);
+        return filteredCrewList;
     }
 
 
