@@ -9,7 +9,20 @@ public class Problem7 {
         Map<String,User> userRelationMap = new HashMap<>();
 
         setUserRelation(userRelationMap,friends);
+        findFriendsOfFiends(user,userRelationMap);
          return answer;
+    }
+
+    public static void findFriendsOfFiends(String user,Map<String,User> userRelationMap){
+        Map<String,User> thisUserConnectRelationMap = userRelationMap.get(user).getConnectedMap();
+        for(String userName : thisUserConnectRelationMap.keySet()){
+
+            Map<String,User> targetConnectedMap = userRelationMap.get(userName).getConnectedMap();
+
+            for (String targetsFriend : targetConnectedMap.keySet()){
+                userRelationMap.get(targetsFriend).addFriendScore();
+            }
+        }
     }
     //유저 관계 정보를 저장한다.
     public static void setUserRelation(Map<String, User> userRelationMap, List<List<String>> friends){
