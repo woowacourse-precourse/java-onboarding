@@ -1,7 +1,9 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 class Problem1 {
@@ -10,13 +12,8 @@ class Problem1 {
             return -1;
         }
 
-        int[] pobiLeftPageDigits= splitDigits(pobi.get(0));
-        int[] pobiRightPageDigits= splitDigits(pobi.get(1));
-        int pobiScore= findMaxScore(pobiLeftPageDigits,pobiRightPageDigits);
-
-        int[] crongLeftPageDigits= splitDigits(crong.get(0));
-        int[] crongRightPageDigits= splitDigits(crong.get(1));
-        int crongScore= findMaxScore(crongLeftPageDigits,crongRightPageDigits);
+        int pobiScore= calculateMaxScore(pobi);
+        int crongScore= calculateMaxScore(crong);
 
         if(pobiScore>=crongScore){
             if(pobiScore==crongScore){
@@ -25,6 +22,13 @@ class Problem1 {
             return 1;
         }
         return 2;
+    }
+
+    private static int calculateMaxScore(List<Integer> person) {
+        List<Integer> leftPageDigits= splitDigits(person.get(0));
+        List<Integer> rightPageDigits= splitDigits(person.get(1));
+
+        return findMaxScore(leftPageDigits,rightPageDigits);
     }
 
     private static boolean isException(List<Integer> pobi, List<Integer> crong){
@@ -40,23 +44,25 @@ class Problem1 {
         return false;
     }
 
-    private static int[] splitDigits(int number){
+    private static List<Integer> splitDigits(int number){
         return Arrays.stream(Integer.toString(number).split(""))
                 .mapToInt(digit->Integer.parseInt(digit))
-                .toArray();
+                .boxed()
+                .collect(Collectors.toList());
     }
 
-    private static int getDigitsSum(int[] digits) {
-        return Arrays.stream(digits)
+    private static int getDigitsSum(List<Integer> digits) {
+        return digits.stream()
+                .mapToInt(i->i)
                 .sum();
     }
 
-    private static int getDigitsMultiplication(int[] digits){
-        return Arrays.stream(digits)
+    private static int getDigitsMultiplication(List<Integer> digits){
+        return digits.stream()
                 .reduce(1, (a,b)->a*b);
     }
 
-    private static int findMaxScore(int[] leftDigits, int[] rightDigits) {
+    private static int findMaxScore(List<Integer> leftDigits, List<Integer> rightDigits) {
         int leftDigitsMax=Math.max(getDigitsSum(leftDigits),getDigitsMultiplication(leftDigits));
         int rightDigitsMax=Math.max(getDigitsSum(rightDigits),getDigitsMultiplication(rightDigits));
 
