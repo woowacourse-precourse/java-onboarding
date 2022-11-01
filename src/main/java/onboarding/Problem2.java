@@ -24,4 +24,8 @@ public class Problem2 {
             throw new IllegalArgumentException("cryptogram은 소문자로만 이루어져 있어야합니다.");
     }
 
+    private static boolean isLengthZero(String cryptogram) {
+        return cryptogram.length() == 0 ? true : false;
+    }
+
 }
