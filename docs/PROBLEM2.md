@@ -1,8 +1,14 @@
 # 🎈 민주
 
 ## ✔ 기능 정의
- - [X] 중복 문자 index 저장
- - [X] 중복 문자 index를 제외한 나머지 index로 새로운 문자열 만들기
+### Collection
+- 중복된 문자열 인덱스를 저장하는 duplicatedIndexList
+### 기능
+- [X] duplicatedIndexList 초기화 (initDuplicatedIndexList)
+  - [X] duplicatedIndexList에 문자열 내 중복문자열 인덱스 추가 (addDuplicatedIndex)
+    - [X] 새로 duplicatedIndexList 구하기 위해, duplicatedIndexList 비우기 (clearDuplicatedIndexList)
+- [X] duplicatedIndexList에 포함된 인덱스의 문자 제외한 새로운 cryptogram 만들기 (createNewCryptogram)
+  - [X] 기존 StringBuilder 비우기 (clearStringBuilder())
 
 
 
