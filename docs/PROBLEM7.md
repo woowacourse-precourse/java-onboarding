@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 구현 목록
+
+1. 친구 관계 정보로 추천 친구 점수를 계산한다.
+2. 방문 기록으로 추천 친구 점수를 계산한다.
+3. 1,2번 결과를 합산하고 추천 친구 아이디를 정렬하여 최대 5명까지 리턴한다.
