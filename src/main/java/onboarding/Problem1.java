@@ -24,17 +24,25 @@ class Problem1 {
 
      **/
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+
+        int answer = -1;
+
         int pobiResult = 0;
         int crongResult = 0;
-        int pobiSum = 0;
-        int pobiMul = 1;
-        int crongSum = 0;
-        int crongMul = 1;
+        int pobiSum;
+        int pobiMul;
+        int crongSum;
+        int crongMul;
 
         for (int i = 0; i < 2; i++) {
-            if(pobi.get(i) <= 1 || pobi.get(i) >= 400) return -1;
-            if(crong.get(i) <= 1 || crong.get(i) >= 400) return -1;
+
+            pobiSum = 0;
+            pobiMul = 1;
+            crongSum = 0;
+            crongMul = 1;
+
+            if(pobi.get(i) <= 1 || pobi.get(i) >= 400) answer =  -1;
+            if(crong.get(i) <= 1 || crong.get(i) >= 400) answer = -1;
 
             String pobiString = pobi.get(i).toString();
             String crongString = crong.get(i).toString();
@@ -75,8 +83,12 @@ class Problem1 {
         if(crongResult < pobiResult) answer = 1;
         else if(crongResult > pobiResult) answer = 2;
         else if(crongResult == pobiResult) answer = 0;
-        else return -1;
+        else answer = -1;
 
         return answer;
     }
+
+    // 16,17 | 63,72 | 17,18 | 63,72
+    // 72 | 72
+
 }

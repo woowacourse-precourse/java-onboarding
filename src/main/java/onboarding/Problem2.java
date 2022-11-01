@@ -15,21 +15,32 @@ public class Problem2 {
 
      **/
     public static String solution(String cryptogram) {
-        String answer = "answer";
-
+        String answer = "";
         Stack<Character> stack = new Stack<>();
 
         for (int i = 0; i < cryptogram.length(); i++) {
-            if(stack.isEmpty()) stack.push(cryptogram.charAt(i));
-            if (stack.peek().equals(cryptogram.charAt(i))) {
-                stack.pop();
-            } else stack.push(cryptogram.charAt(i));
+            if(stack.isEmpty()){
+                stack.push(cryptogram.charAt(i));
+            }
+            else {
+                if (stack.peek().equals(cryptogram.charAt(i))) {
+                    stack.pop();
+                }
+                else {
+                    stack.push(cryptogram.charAt(i));
+                }
+            }
         }
 
-        for (int i = 0; i < stack.size(); i++) {
+        while(!stack.isEmpty()){
             answer += stack.pop();
         }
 
-        return answer;
+        String reverse = "";
+        for (int i = answer.length() - 1; i >= 0; i--) {
+            reverse += answer.charAt(i);
+        }
+
+        return reverse;
     }
 }
