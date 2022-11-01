@@ -39,14 +39,51 @@ public class Problem7 {
                 scoreList.put(name, 1);
             }
         }
+    
+        ArrayList<String> sortKeys = new ArrayList<String>(scoreList.keySet());
+    
+        Collections.sort(sortKeys);
+        Collections.reverse(sortKeys);
         
+        HashMap<String, Integer> sortedScore = new HashMap<>();
         
+        for(String name : sortKeys){
+            sortedScore.put(name, scoreList.get(name));
+        }
+        
+        List<Map.Entry<String, Integer> > list = new LinkedList<Map.Entry<String, Integer> >(sortedScore.entrySet());
+        
+        Collections.sort(
+                list,
+                new Comparator<Map.Entry<String, Integer> >() {
+                    public int compare(
+                            Map.Entry<String, Integer> object1,
+                            Map.Entry<String, Integer> object2)
+                    {
+                        return (object1.getValue())
+                                .compareTo(object2.getValue());
+                    }
+                });
+        HashMap<String, Integer> result
+                = new LinkedHashMap<String, Integer>();
+        for (Map.Entry<String, Integer> me : list) {
+            result.put(me.getKey(), me.getValue());
+        }
         
         System.out.println(friendList);
         
         System.out.println(scoreList);
+    
+        System.out.println(result);
         
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        
+        for(Map.Entry<String, Integer> m : result.entrySet()){
+            answer.add(m.getKey());
+        }
+        
+        Collections.reverse(answer);
+        
         return answer;
     }
 }
