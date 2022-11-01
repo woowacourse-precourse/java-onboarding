@@ -12,38 +12,41 @@
 
 package onboarding;
 
-import java.util.Stack;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
+        String answer = cryptogram;
+        int strLength;
+        do{
+            strLength = answer.length();
+            // 중복된 문자 제거
+            answer = removeDuplication(answer);
+        } while(strLength != answer.length());  // 제거된 문자가 없다면 복호화 완료
 
-        Stack<Character> stack = new Stack<>();
-
-        /*
-         * 복호화 시작작
-         * 스택이 비어있으면 문자 그대 입력
-         * 스택 가장 위에있는 문자와 현재문자를 비교
-         * 같으면 중복문자삭제(pop)
-         * 다르면 현재문자입력(push)
-         */
-        for (int i = 0; i < cryptogram.length(); i++) {
-            char c = cryptogram.charAt(i);
-
-            if(stack.empty()){
-                stack.push(c);
-            } else if (stack.peek() == c) {
-                stack.pop();
-            } else {
-                stack.push(c);
-            }
-        }
-
-        // 스택이 LIFO구조이기 때문에 뒤에서부터 문자열을 채워서 만듬
-        while (!stack.isEmpty()) {
-            answer = stack.pop() + answer;
-        }
 
         return answer;
+    }
+
+    private static String removeDuplication(String cryptogram) {
+        // '1'은 알파벳과 일치하지 않는 문자로 설정
+        char pre = '1';
+        String result = "";
+        for (int i = 0; i < cryptogram.length(); i++) {
+            char curr = cryptogram.charAt(i);
+            char next;
+
+            // next 초기화
+            if (i == cryptogram.length() - 1) {
+                next = '1';
+            } else {
+                next = cryptogram.charAt(i + 1);
+            }
+
+            // 이전 문자 또는 다음 문자와 중복되지 않는다면 문자열에 추가
+            if (curr != pre && curr != next) {
+                result += curr;
+            }
+            pre=curr;
+        }
+        return result;
     }
 }
