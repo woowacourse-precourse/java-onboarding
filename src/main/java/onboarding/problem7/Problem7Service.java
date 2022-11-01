@@ -34,15 +34,16 @@ public class Problem7Service {
 
     public List<User> suggestUser(User user, List<String> visitors) {
         int[] visit=new int[repository.lastIdNumber()];
+        Arrays.fill(visit,4);
         Map<User,Integer> cnt=new HashMap<>();
-        for(int i=0;i<2;i++){
-            dls(cnt,visit,user,i,2);
+        for(int i=0;i<=2;i++){
+            dls(cnt,visit,user,i,0);
         }
         for(String visitor:visitors){
             Optional<User> visitorOptional = repository.findByUserName(visitor);
             visitorOptional.orElseThrow(()->new RuntimeException());
             User user1 = visitorOptional.get();
-            if(visit[user1.getId()]==0){
+            if(visit[user1.getId()]>1){
                 if(!cnt.containsKey(user1)){
                     cnt.put(user1,0);
                 }
@@ -64,7 +65,7 @@ public class Problem7Service {
 
     private void dls(Map<User,Integer> cnt,int[] visit, User user, int deep,int deepCount) {
         visit[user.getId()]=deepCount;
-        if(0==deepCount){
+        if(2==deepCount){
             if(!cnt.containsKey(user)){
                 cnt.put(user,0);
             }
@@ -76,8 +77,8 @@ public class Problem7Service {
         Iterator<User> iterator = user.getFriends();
         while (iterator.hasNext()){
             User next = iterator.next();
-            if(visit[next.getId()]==deepCount-1){
-                dls(cnt,visit,next,deep,deepCount--);
+            if(visit[next.getId()]>visit[user.getId()]){
+                dls(cnt,visit,next,deep,deepCount+1);
             }
         }
     }
