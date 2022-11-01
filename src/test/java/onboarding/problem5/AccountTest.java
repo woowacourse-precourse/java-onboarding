@@ -1,6 +1,7 @@
 package onboarding.problem5;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.Arrays;
 import java.util.List;
@@ -31,5 +32,22 @@ public class AccountTest {
 		//then
 		assertThat(Arrays.asList(1, 0, 0, 0, 0, 2, 0, 3, 7)).isEqualTo(result);
 		assertThat(Arrays.asList(0, 1, 1, 0, 0, 0, 0, 0, 0)).isEqualTo(result2);
+	}
+
+	@Test
+	public void 금액_유효성_테스트() {
+		int correctBudget = Account.MIN_MONEY;
+		int correctBudget2 = Account.MAX_MONEY;
+		int wrongBudget = Account.MIN_MONEY - 1;
+		int wrongBudget2 = Account.MAX_MONEY + 1;
+
+		Account account = new Account(correctBudget);
+		Account account1 = new Account(correctBudget2);
+
+		assertThatThrownBy(() -> new Account(wrongBudget))
+			.isInstanceOf(IllegalArgumentException.class);
+
+		assertThatThrownBy(() -> new Account(wrongBudget2))
+			.isInstanceOf(IllegalArgumentException.class);
 	}
 }
