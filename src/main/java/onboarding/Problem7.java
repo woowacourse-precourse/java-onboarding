@@ -7,6 +7,7 @@ public class Problem7 {
 
     private final static int SCORE_OF_FRIENDS_WITH_USER = 10;
     private final static int SCORE_OF_TIMELINE_VISIT = 1;
+    private final static int RECOMMEND_NUMBER_OF_PEOPLE = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> allNames = getAllNames(friends, visitors, user);
@@ -39,8 +40,10 @@ public class Problem7 {
             }
         }
 
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<String> ranks = new ArrayList<>();
+        removeZeroScore(recommendedAlgorithmRank, ranks);
+
+        return ranks;
     }
 
     private static Set<String> getAllNames(List<List<String>> friends, List<String> visitor, String user) {
@@ -99,6 +102,26 @@ public class Problem7 {
             int visitorNumber = nameToIdMap.get(visitors.get(i));
             scores[visitorNumber] += SCORE_OF_TIMELINE_VISIT;
         }
+    }
+
+    private static void removeZeroScore(Queue<NameAndScore> recommendedAlgorithmRank, List<String> answer) {
+        for (int i = 0; i < RECOMMEND_NUMBER_OF_PEOPLE; i++) {
+
+            if (!recommendedAlgorithmRank.isEmpty()) {
+                NameAndScore nameAndScore = recommendedAlgorithmRank.poll();
+                int score = nameAndScore.score;
+
+                if (isZero(score)) {
+                    continue;
+                }
+
+                answer.add(nameAndScore.name);
+            }
+        }
+    }
+
+    private static boolean isZero(int num) {
+        return num == 0;
     }
 
     private static class NameAndScore implements Comparable<NameAndScore> {
