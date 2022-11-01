@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Problem3 {
     public static int solution(int number) {
-
         int answer = 0;
+
         for (int i = 1; i <= number; i++) {
             List<Integer> array = getArray(i);
             answer += countClap(array);
@@ -36,7 +36,10 @@ public class Problem3 {
     }
 
     private static boolean isClap(int num) {
-        if (num == 0) return false;
+        if (num == 0) {
+            return false;
+        }
+
         return num % 3 == 0;
     }
 }
