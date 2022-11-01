@@ -1,4 +1,4 @@
-# Problem-4
+# Problem-5
 
 ## Explanation
 - 문자가 주어질 때 반대 문자로 바꿔 반환한다.
@@ -7,7 +7,7 @@
 ### Interface
 
 ### Class
-1. `MoneyCalculator`
+1. `MoneyCalculator implements Calculator`
    - 화폐 종류에 따라 그 개수를 계산해 반환한다.
 
 ### Enum

@@ -1,4 +1,4 @@
-# Problem-1
+# Problem-3
 
 ## Explanation
    - 숫자가 주어질 때 1부터 해당 숫자까지의 3, 6, 9 개수를 구해 반환한다.
@@ -7,7 +7,7 @@
 ### Interface
 
 ### Class
-1. `ThreeSixNineCalculator`
+1. `ThreeSixNineCalculator implements Calculator`
    - 1부터 숫자 까지의 3, 6, 9 개수를 구해 반환한다.
 
 ### Enum

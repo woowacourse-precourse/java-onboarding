@@ -7,7 +7,7 @@
 ### Interface
 
 ### Class
-1. `CrewCalculator`
+1. `CrewCalculator implements Calculator`
    - 중복된 이름이 있는지 확인하고 그 이메일을 반환한다.
 
 ### Enum

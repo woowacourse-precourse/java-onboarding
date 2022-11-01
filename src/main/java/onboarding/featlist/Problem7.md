@@ -7,7 +7,7 @@
 ### Interface
 
 ### Class
-1. `RecommendCalculator`
+1. `RecommendCalculator implements Calculator`
    - 연결 관계를 바탕으로 점수가 가장 높은 5명을 구한다.
 
 ### Enum
@@ -18,23 +18,25 @@
    
 
 ### Method
-1. `void makeConnection()`
+1. `calculation()`
+   - 이메일을 반환한다.
+2. `void makeConnection()`
    - 연결 관계를 Map에 저장한다.
-2. `void initDistance()`
+3. `void initDistance()`
    - 거리를 초기화 한다.
-3. `void searchFriends()`
+4. `void searchFriends()`
    - 둘 사이의 공통 친구를 찾아 점수를 부여한다.
-4. `void addCommonFriend(String, String)`
+5. `void addCommonFriend(String, String)`
    - 각 이름에서 부분 문자열을 구한다.
-5. `void makeCount(Map<String, Integer>)`
+6. `void makeCount(Map<String, Integer>)`
    - 공통 친구인 경우 점수를 더한다.
-6. `void visitorPoint()`
+7. `void visitorPoint()`
    - user와 친구가 아닌 방문객의 점수를 더한다.
-7. `void addVisitorPoint(String)`
+8. `void addVisitorPoint(String)`
    - 방문객의 점수를 더한다.
-8. `List<Map.Entry<String, Integer>> sortDescDistance()`
+9. `List<Map.Entry<String, Integer>> sortDescDistance()`
    - 내림차순으로 거리를 정렬한다.
-9. `List<String> makeAnswer()`
+10. `List<String> makeAnswer()`
    - 정렬된 거리 순으로 정답에 추가한다.
 
 ### Parameter

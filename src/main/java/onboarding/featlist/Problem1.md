@@ -10,7 +10,7 @@
 1. `BookPage`
    - 좌, 우 페이지의 값을 가져온다.
    - 예외상황인지 확인한다.
-2. `BookPageCalculator`
+2. `BookPageCalculator implements Calculator`
    - 페이지를 계산한다.
 
 ### Enum
@@ -20,15 +20,17 @@
    - 승자, 무승무, 예외 값을 저장한다.
 
 ### Method
-1. `boolean isValud()` 
+1. `Integer calculation()`
+   - 최대 수를 반환한다.
+2. `boolean isValud()` 
     - 입력 페이지가 올바른지 확인한다.
-2. `int maxSum()`
+3. `int maxSum()`
     - 최대 자릿수 덧셈을 구한다.
-3. `int maxMultiply()`
+4. `int maxMultiply()`
     - 최대 자릿수 곱셈을 구한다.
-4. `int sum()`
+5. `int sum()`
     - 자릿수 합 덧셈을 구한다.
-4. `int multiply()`
+6. `int multiply()`
    - 자릿수 합 덧셈을 구한다.
-
+   
 ### Parameter
