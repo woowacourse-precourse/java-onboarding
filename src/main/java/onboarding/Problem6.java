@@ -17,7 +17,6 @@ class Form {
   private final List<HashSet<String>> parseEachName = new ArrayList<HashSet<String>>();
 
   Form(List<List<String>> form) {
-    ValidityChecker vc = new ValidityChecker(form);
     this.forms = form;
   }
 
@@ -30,12 +29,10 @@ class Form {
     List<String> answer = new ArrayList<>(realAnswer);
     answer.sort(Comparator.naturalOrder());
     return answer;
-
   }
 
   void makeParseEachName() {
-    for (int i = 0; i < forms.size(); i++) {
-      List<String> chunk = forms.get(i);
+    for (List<String> chunk : forms) {
       HashSet<String> NameSubstring = getAllTwoWords(chunk.get(1));
       parseEachName.add(NameSubstring);
     }
@@ -68,10 +65,17 @@ class Form {
 
 class ValidityChecker {
 
+  List<List<String>> forms;
+
   ValidityChecker(List<List<String>> input) {
-    emailValidityCheck(input);
-    nicknameValidityCheck(input);
-    wordLengthValidityCheck(input);
+    this.forms = input;
+
+  }
+
+  void checkAllValidity() {
+    emailValidityCheck(forms);
+    nicknameValidityCheck(forms);
+    wordLengthValidityCheck(forms);
   }
 
   private void emailValidityCheck(List<List<String>> input) {
@@ -88,6 +92,7 @@ class ValidityChecker {
       }
     }
   }
+
   private void nicknameValidityCheck(List<List<String>> input) {
     for (List<String> strings : input) {
       String nickName = strings.get(1);
@@ -118,6 +123,8 @@ public class Problem6 {
 
   public static List<String> solution(List<List<String>> forms) {
     Form form = new Form(forms);
+    ValidityChecker vc = new ValidityChecker(forms);
+    vc.checkAllValidity();
     return form.getAnswer();
   }
 }
