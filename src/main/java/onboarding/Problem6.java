@@ -10,15 +10,22 @@ public class Problem6 {
         Map<String, List<String>> nickAndForm = new HashMap<>();
         List<String> result = null;
 
+        run(forms, alertNickName, nickAndForm);
+
+        result = new ArrayList<>(alertNickName);
+        Collections.sort(result);
+        return result;
+    }
+
+    /**
+     * 주요 기능 동작 메소드
+     */
+    private static void run(List<List<String>> forms, Set<String> alertNickName, Map<String, List<String>> nickAndForm) {
         for (List<String> form : forms) {
             String nickName = form.get(1);
 
             makeSubNick(alertNickName, nickAndForm, form, nickName);
         }
-
-        result = new ArrayList<>(alertNickName);
-        Collections.sort(result);
-        return result;
     }
 
     /**
