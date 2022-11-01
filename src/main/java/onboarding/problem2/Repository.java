@@ -16,11 +16,8 @@ public class Repository {
     public static LinkedList<String> save(String encode) {
 
         LinkedList<String> repository = new LinkedList<>();
-
         char startIndex = encode.charAt(0);
-//        int lastIndex = encode.length();
 
-// browoanoommnaon -> oo mm nn aa oo
         repository.add(valueOf(startIndex));
 
         // StringIndexOutOfBoundsException 처리
@@ -35,6 +32,7 @@ public class Repository {
             if(collect != next & collect != before){ repository.add(valueOf(collect)); }
 
         }
+        // 마지막 문자열 저장 누락 보완
         repository.add(valueOf(encode.
                 charAt(encode.length()-1)));
 
