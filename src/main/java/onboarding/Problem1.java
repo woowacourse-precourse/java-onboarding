@@ -1,5 +1,7 @@
 package onboarding;
 
+import onboarding.enums.GameStatus;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -7,64 +9,38 @@ import static java.lang.Math.max;
 
 class Problem1 {
 
+    public static final int INDEX_LEFT_PAGE = 0;
+    public static final int INDEX_RIGHT_PAGE = 1;
+
+    public static final int MIN_LEFT_PAGE = 1;
+    public static final int MAX_LEFT_PAGE = 399;
+
+    public static final int MIN_RIGHT_PAGE = 2;
+    public static final int MAX_RIGHT_PAGE = 400;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         if (isNotValidate(pobi) || isNotValidate(crong)) {
-            return GameStatus.EXCEPTION.value;
+            return GameStatus.EXCEPTION.getValue();
         }
 
         int pobiScore = calculateScore(pobi);
         int crongScore = calculateScore(crong);
 
-        if (pobiScore > crongScore) {
-            return GameStatus.WIN_POBI.value;
-        } else if (pobiScore < crongScore) {
-            return GameStatus.WIN_CRONG.value;
-        } else {
-            return GameStatus.DRAW_GAME.value;
-        }
-    }
-
-    private static boolean isNotValidate(List<Integer> player) {
-
-        // 예외 처리
-        // 1. List 길이가 2 이 아니면 예외
-        System.out.println(player.isEmpty());
-        if (player.size() != 2) {
-            return true;
-        }
-
-        // 2. null 이 있다면 예외
-        if (player.stream().anyMatch(Objects::isNull)) {
-            return true;
-        }
-
-        int left = player.get(0), right = player.get(1);
-
-        // 3. left 가 2 ~ 398 사이의 값이 아니거나, 짝수면 예외
-        if (left % 2 == 0 || !(1 < left && left < 399)) {
-            return true;
-        }
-
-        // 4. right 가 3 ~ 399 사이의 값이 아니거나, 홀수면 예외
-        if (right % 2 == 1 || !(2 < right && right < 400)) {
-            return true;
-        }
-
-        // 5. right - left != 1 이면 예외
-        return right - left != 1;
+        return GameStatus.getResultOfGame(pobiScore, crongScore)
+                .getValue();
     }
 
     private static int calculateScore(List<Integer> player) {
 
-        int left = player.get(0), right = player.get(1);
+        int leftPage = player.get(INDEX_LEFT_PAGE);
+        int rightPage = player.get(INDEX_RIGHT_PAGE);
 
-        int leftScore = max(sumDigit(left), multiplyDigit(left));
-        int rightScore = max(sumDigit(right), multiplyDigit(right));
+        int leftScore = max(sumDigit(leftPage), multiplyDigit(leftPage));
+        int rightScore = max(sumDigit(rightPage), multiplyDigit(rightPage));
 
         return max(leftScore, rightScore);
     }
-
 
     private static int sumDigit(int num) {
 
@@ -86,14 +62,34 @@ class Problem1 {
         return result;
     }
 
-    private enum GameStatus {
+    private static boolean isNotValidate(List<Integer> player) {
 
-        WIN_POBI(1), WIN_CRONG(2), DRAW_GAME(0), EXCEPTION(-1);
-
-        private final int value;
-
-        GameStatus(int value) {
-            this.value = value;
+        // 1. List 길이가 2 이 아니면 예외
+        if (player.size() != 2) {
+            return true;
         }
+
+        // 2. null 이 있다면 예외
+        if (player.stream().anyMatch(Objects::isNull)) {
+            return true;
+        }
+
+
+        int leftPage = player.get(INDEX_LEFT_PAGE);
+        int rightPage = player.get(INDEX_RIGHT_PAGE);
+
+        // 3. leftPage 가 2 ~ 398 사이의 값이 아니거나, 짝수면 예외
+        if (leftPage % 2 == 0 || !(MIN_LEFT_PAGE < leftPage && leftPage < MAX_LEFT_PAGE)) {
+            return true;
+        }
+
+        // 4. rightPage 가 3 ~ 399 사이의 값이 아니거나, 홀수면 예외
+        if (rightPage % 2 == 1 || !(MIN_RIGHT_PAGE < rightPage && rightPage < MAX_RIGHT_PAGE)) {
+            return true;
+        }
+
+
+        // 5. rightPage - leftPage != 1 이면 예외
+        return rightPage - leftPage != 1;
     }
 }
