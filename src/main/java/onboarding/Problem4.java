@@ -16,11 +16,11 @@ public class Problem4 {
             }
             if (alphabet >= 65 && alphabet <= 90) {
                 alphabet = (char) (UPPER_CASE - alphabet);
-                answer.append(String.valueOf(alphabet));
+                answer.append(alphabet);
             }
             if (alphabet >= 97 && alphabet <= 122) {
                 alphabet = (char) (LOWER_CASE - alphabet);
-                answer.append(String.valueOf(alphabet));
+                answer.append(alphabet);
             }
         }
 

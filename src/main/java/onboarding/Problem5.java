@@ -9,10 +9,11 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>(Collections.emptyList());
         List<Integer> CURRENCY = Arrays.asList(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
+
         if (money <= 1000000) {
-            for (int i = 0; i < CURRENCY.size(); i++) {
-                answer.add(money / CURRENCY.get(i));
-                money = money - (money / CURRENCY.get(i)) * CURRENCY.get(i);
+            for (Integer integer : CURRENCY) {
+                answer.add(money / integer);
+                money = money - (money / integer) * integer;
             }
         }
         return answer;
