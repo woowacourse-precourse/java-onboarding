@@ -30,9 +30,9 @@ public class Problem4 {
                 answer.append((char)('z' - (c - 'a')));
             } else if (c >= 'A' && c <= 'Z') {
                 answer.append((char)('Z' - (c - 'A')));
-            } else if (c == ' ') {
-                answer.append(' ');
-            } 
+            } else {
+                answer.append(c);
+            }
         }
         return answer.toString();
     }
