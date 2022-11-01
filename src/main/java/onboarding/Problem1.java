@@ -16,13 +16,11 @@ class Problem1 {
         /**
          * 점수 계산
          */
-        Integer pobiScore = getScore(pobi);
-        Integer crongScore = getScore(crong);
 
         /**
          * 반환
          */
-        return getWinner(pobiScore, crongScore);
+        return answer;
     }
 
     private static boolean exception(List<Integer> pages) {
@@ -41,34 +39,4 @@ class Problem1 {
         return false;
     }
 
-    private static Integer getScore(List<Integer> pages){
-        Integer left = pages.get(0);
-        Integer right = pages.get(1);
-
-        return Math.max(calScore(left), calScore(right));
-    }
-
-    private static Integer calScore(Integer page){
-        Integer sum = 0;
-        Integer multi = 1;
-
-        while (page != 0) {
-            Integer digit = page % 10;
-            sum += digit;
-            multi *= digit;
-            page /= 10;
-        }
-
-        return Math.max(sum, multi);
-    }
-
-    private static Integer getWinner(Integer pScore, Integer cScore) {
-        if (pScore > cScore) {
-            return 1;
-        } else if (pScore < cScore) {
-            return 2;
-        } else {
-            return 0;
-        }
-    }
 }
