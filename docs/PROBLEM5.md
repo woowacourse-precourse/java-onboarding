@@ -17,5 +17,11 @@
 
 ### 기능목록
 
-- 기능1. List<Integer> withdrawMoney(int money) : 지폐위주로 현금을 인출해준다.
-- 기능2. void convertMoney(int money) : 인출해줄 지폐와 동전의 개수를 파악한다.
+> **<기능 1><br>
+돈의 종류에 따라 인덱싱을 한다.<br>
+예를 들어 5만원은 인덱스 0번, 1만원은 인덱스 1번...**<br>
+*private static List<Integer> initMoneyType()* <br>
+
+> **<기능 2><br>
+규칙에 따라 하나의 글자를 반대글자로 변환시켜 출력한다.**<br>
+*private static List<Integer> drawMoney(int money, List<Integer> moneyType)*
