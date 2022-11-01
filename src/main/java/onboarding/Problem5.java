@@ -22,7 +22,9 @@ public class Problem5 {
                 count += 1; //갯수 + 1
                 money -= moneyArr[i]; //금액 차감
             }
-
+            //지폐 별 총 갯수를 저장하는 기능
+            arr.add(count); //갯수 저장
+            count = 0; //갯수 초기화
         }
 
         return arr;
