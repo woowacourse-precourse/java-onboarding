@@ -16,6 +16,18 @@ public class Problem7 {
         return answer;
     }
 
+    static void initScoresByOtherUser() {
+        for (String otherUser : friendsList.keySet()) {
+            scores.put(otherUser, 0);
+        }
+    }
+
+    static void initScoresByVisitors(List<String> visitors) {
+        for (String visitor : visitors) {
+            scores.put(visitor, 0);
+        }
+    }
+
     static void searchUsersFriends(String user) {
         for (int index = 0; index < friendsList.get(user).size(); index++) {
             searchTarget(user, index);
