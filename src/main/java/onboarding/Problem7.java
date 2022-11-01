@@ -25,7 +25,24 @@ public class Problem7 {
             }
         }
 
-        return answer;
+        // 친구 점수 update (+10)
+        for (List<String> friend : friends) {
+            if (friend.get(0).equals(user) || friend.get(1).equals(user)) {
+                break;
+            } else if (userFriends.contains(friend.get(0)) && !userFriends.contains(friend.get(1))) {
+                score(friend.get(1), 10);
+            } else if (userFriends.contains(friend.get(1)) && !userFriends.contains(friend.get(0))) {
+                score(friend.get(0), 10);
+            }
+        }
+        return answer; 구
     }
 
+    // 점수 update
+    static void score(String name, int score) {
+        if (resultScore.containsKey(name)) {
+            score += resultScore.get(name); // 기존에 있는 경우 점수 update
+        }
+        resultScore.put(name, score); // 기존에 없는 경우
+    }
 }
