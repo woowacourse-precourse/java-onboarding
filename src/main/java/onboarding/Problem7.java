@@ -4,12 +4,12 @@ import java.util.*;
 
 public class Problem7 {
     public static TreeMap<String, List<String>> graph = new TreeMap<>();
-
     //기능2
     public static List<String> getFriendsOfUser(String user){
         return graph.get(user);
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        graph.clear();
         List<String> answer = new ArrayList<>();
 
         //기능 1
@@ -34,21 +34,23 @@ public class Problem7 {
         TreeMap<String, Integer> score_table = new TreeMap<>();
         List<String> user_friends = getFriendsOfUser(user);
 
-        Set<String> users_list = graph.keySet();
-        for(String username : users_list){
-            if(username.equals(user)) continue;
-            if(user_friends.contains(username)) continue;
-            int score = 0;
-            for(String friend : graph.get(username)){
-                if(user_friends.contains(friend)) score += 10;
+        if(user_friends != null){
+            Set<String> users_list = graph.keySet();
+            for(String username : users_list){
+                if(username.equals(user)) continue;
+                if(user_friends.contains(username)) continue;
+                int score = 0;
+                for(String friend : graph.get(username)){
+                    if(user_friends.contains(friend)) score += 10;
+                }
+                score_table.put(username, score);
             }
-            score_table.put(username, score);
         }
 
         //기능 4
         for(String visitor : visitors) {
             if(visitor.equals(user)) continue;
-            if(user_friends.contains(visitor)) continue;
+            if(user_friends != null && user_friends.contains(visitor)) continue;
 
             if(score_table.containsKey(visitor)) score_table.replace(visitor, score_table.get(visitor)+1);
             else score_table.put(visitor, 1);
@@ -69,6 +71,7 @@ public class Problem7 {
                 count += 1;
                 if(count == 5) break;
             }
+            if(count == 5) break;
         }
         return answer;
     }
