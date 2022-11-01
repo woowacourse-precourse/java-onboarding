@@ -28,6 +28,18 @@ class Problem1 {
         return pages.get(0) + 1 == pages.get(1);
     }
 
+    private static int calculateScore(List<Integer> pages) {
+        int maxScore = 0;
+        for (int page : pages) {
+            maxScore = Math.max(maxScore, getMaxScore(page));
+        }
+        return maxScore;
+    }
+
+    private static int getMaxScore(int page) {
+        return Math.max(sumPageNumber(page), multiplyPageNumber(page));
+    }
+
     private static int sumPageNumber(int page) {
         int score = 0;
         while (page > 0) {
