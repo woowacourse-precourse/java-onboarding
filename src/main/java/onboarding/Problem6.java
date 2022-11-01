@@ -16,6 +16,16 @@ public class Problem6 {
         return answer;
     }
 
+    //  이메일 유효성 검사 - 길이
+    private static Boolean verifyEmailLength(String email){
+        int length = email.length();
+        if(length >= MAX_EMAIL_LENGTH)
+            return false;
+        if(length < MIN_EMAIL_LENGTH)
+            return false;
+        return true;
+    }
+
     //  이메일 유효성 검사 - 도메인
     private static Boolean verifyEmailDomain(String emailDomain){
         if(emailDomain.equals(domain))
