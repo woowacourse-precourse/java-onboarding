@@ -19,6 +19,10 @@ class Problem1 {
         if (exception(pobi) || exception(crong)) {
             return -1;
         }
+
+        int pobiMax = calculateMax(calculateAdd(pobi), calculateMultiply(pobi));
+        int crongMax = calculateMax(calculateAdd(crong), calculateMultiply(crong));
+
         return answer;
     }
 
@@ -76,5 +80,22 @@ class Problem1 {
             result *= mult;
         }
         return result;
+    }
+
+    /**
+     * 기능목록 4
+     * @param add
+     * @param multiply
+     * @return add와 multiply 중 더 큰 값
+     */
+    private static int calculateMax(int add, int multiply) {
+
+        if (add >= multiply) {
+            return add;
+        }
+        if (add < multiply) {
+            return multiply;
+        }
+        return -1;
     }
 }
