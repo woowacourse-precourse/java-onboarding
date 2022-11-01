@@ -2,6 +2,7 @@ package onboarding;
 
 
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 public class Problem4 {
     private static final int ALPHABET_LENGTH = 26;
@@ -23,12 +24,25 @@ public class Problem4 {
         }
     }
 
+    private static boolean isAlphabet(char character){
+        return Pattern.matches("^[a-zA-Z]*$", String.valueOf(character));
+    }
+
     public static String solution(String word) {
         String answer = "";
         HashMap<Character, Character> greenFrogDictionary = new HashMap<>();
 
         addUpperToDictionary(greenFrogDictionary);
         addLowerToDictionary(greenFrogDictionary);
+
+        for(int i = 0; i < word.length(); i++){
+            char character = word.charAt(i);
+//            if(!isAlphabet(character)) {
+//                answer += character;
+//                continue;
+//            }
+            answer += greenFrogDictionary.get(character);
+        }
 
         return answer;
     }
