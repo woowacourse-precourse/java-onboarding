@@ -1,6 +1,6 @@
 ## 🔗 기능 목록
 1. ✅ solution (main) : 이미 아는 친구(사용자의 현친구) 리스트와 친구 후보 리스트 제작 -> 새로운 친구 맵 제작 -> 점수 높은 5명 추천
-2. getNewFriendMap : 새로운 친구 맵 제작
+2. ✅ getNewFriendMap : 새로운 친구 맵 제작
 3. calWithAlreadyFriend : 사용자와 함께 아는 친구들 기반 점수 계산 (+10)
 4. calWithVisitors : 사용자의 타임라인에 방문한 횟수 기반 점수 계산 (+1)
 5. isAlreadyFriend : 이미 아는 친구인지 아닌지 판단

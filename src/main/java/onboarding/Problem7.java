@@ -1,11 +1,15 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem7 {
+    private static Map<String, Integer> getNewFriendMap(List<String> alreadyFriend, List<List<String>> candidate, List<String> visitors) {
+        Map<String, Integer> newFriend = new HashMap<>();
+        calWithAlreadyFriend(alreadyFriend, candidate, newFriend);
+        calWithVisitors(visitors, alreadyFriend, newFriend);
+        return newFriend;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> alreadyFriend = new ArrayList<>();
         List<List<String>> candidate = new ArrayList<>();
