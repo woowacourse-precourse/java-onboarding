@@ -1,9 +1,13 @@
 package onboarding;
 
 /**
- * 기능 1. String에 3,6,9가 들어가는지 확인 2. 3,6,9가 들어가는 숫자들의 개수 계산
+ * 기능
+ * 1. 입력 문자열 길이 검증
+ * String에 3,6,9가 들어가는지 확인 2. 3,6,9가 들어가는 숫자들의 개수 계산
  */
 public class Problem3 {
+    private static final int MIN_LENGTH = 1;
+    private static final int MAX_LENGTH = 1000;
 
     public static int solution(int number) {
         return clac(number);
