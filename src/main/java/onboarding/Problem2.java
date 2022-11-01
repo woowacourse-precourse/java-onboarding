@@ -8,13 +8,28 @@ public class Problem2 {
         int prevSize = 0;
         int reversed = -1;
         Stack<Character> stack = makeStack(cryptogram);
-//        while (prevSize != stack.size()) {
-//            prevSize = stack.size();
-//            stack = removeDuplication(stack);
-//            reversed *= -1;
-//        }
-        String answer = removeDuplication(stack).toString();
-        return answer;
+        StringBuilder sb = new StringBuilder();
+
+        while (prevSize != stack.size()) {
+            prevSize = stack.size();
+            stack = removeDuplication(stack);
+            reversed *= -1;
+        }
+        if (reversed == -1) {
+            stack = reverseAnswer(stack);
+        }
+        while (!stack.empty()) {
+            sb.append(stack.pop());
+        }
+        return sb.toString();
+    }
+
+    public static Stack<Character> reverseAnswer(Stack<Character> stack) {
+        Stack<Character> temp = new Stack<>();
+        while (!stack.empty()) {
+            temp.push((char)stack.pop());
+        }
+        return temp;
     }
 
     private static Stack<Character> makeStack(String cryptogram) {
