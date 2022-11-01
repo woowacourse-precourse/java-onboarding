@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
 
@@ -24,6 +21,7 @@ public class Problem6 {
 
     private static List<String> getDuplicateEmails() {
         List<String> emails = new ArrayList<>(duplicateEmails);
+        Collections.sort(emails);
         return emails;
     }
 
