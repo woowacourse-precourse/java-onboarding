@@ -3,7 +3,6 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -147,25 +146,6 @@ public class Problem7 {
         return top5;
     }
 
-
-
-
-
-
-
-
-    /*
-    public static void addPersonList(ArrayList<FriendInfo> friendList, ArrayList<String> addList, String user)
-    { //friendList 안에 addList 사람이 있는지 확인
-        for(int i=0; i< addList.size(); i++)
-        {
-            if(!overlapCheck(friendList, addList.get(i)) && !addList.get(i).equals(user))
-            {
-                friendList.add(new FriendInfo(addList.get(i)));
-            }
-        }
-    }
- */
     public static int overlapCheck(ArrayList<FriendInfo> PersonInfos, String name) //성능 문제 생각 //오버랩 되면 true 반환
     {
         for(int i=0; i< PersonInfos.size(); i++)
@@ -175,5 +155,4 @@ public class Problem7 {
         }
         return -1;
     }
-
 }
