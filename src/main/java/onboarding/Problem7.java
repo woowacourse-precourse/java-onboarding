@@ -35,18 +35,49 @@ public class Problem7 {
     }
 
     public static void keepScore(String user, Map<String, Integer> scoreTable, List<List<String>> friends) {
+        // user 친구 리스트 생성
+        List<String> userFriends = new ArrayList<>();
         for (int i = 0; i < friends.size(); i++) {
-            String person1 = friends.get(i).get(0);
-            String person2 = friends.get(i).get(1);
-            if (person1.equals(user)){
-                Integer nextScore = scoreTable.get(person2) + 10;
-                scoreTable.put(person2, nextScore);
+            String name1 = friends.get(i).get((0));
+            String name2 = friends.get(i).get((1));
+            if (name1.equals(user)) {
+                userFriends.add(name2);
             }
-            if (person2.equals(user)){
-                Integer nextScore = scoreTable.get(person1) + 10;
-                scoreTable.put(person1, nextScore);
+            if (name2.equals(user)) {
+                userFriends.add(name1);
             }
         }
+
+        for (int i = 0; i < userFriends.size(); i++) {
+            String name = userFriends.get(i);
+            for (int j = 0; j < friends.size(); j++) {
+                String name1 = friends.get(j).get(0);
+                String name2 = friends.get(j).get(1);
+
+                if (name1.equals(user) || name2.equals(user)) {
+                    continue;
+                }
+
+                if (name1.equals(name)) {
+                    if (scoreTable.get(name2) == null){
+                        scoreTable.put(name2, 10);
+                        continue;
+                    }
+                    Integer nextScore = scoreTable.get(name2) + 10;
+                    scoreTable.put(name2, nextScore);
+                }
+
+                if (name2.equals(name)) {
+                    if (scoreTable.get(name1) == null){
+                        scoreTable.put(name1, 10);
+                        continue;
+                    }
+                    Integer nextScore = scoreTable.get(name1) + 10;
+                    scoreTable.put(name1, nextScore);
+                }
+            }
+        }
+
     }
 
     public static Map<String, Integer> makeHashTable(String user, List<List<String>> friends) {
