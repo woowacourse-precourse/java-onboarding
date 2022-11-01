@@ -1,26 +1,24 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
     public static final int FRIEND_SCORE = 10;
     public static final int VISITOR_SCORE = 1;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer;
-
         ArrayList<String> userFriends = storeUserFriends(user, friends);
         Map<String, Integer> friendAndScore = storeFriendAndScore(user, friends, userFriends);
         visitScore(visitors, userFriends, friendAndScore);
-        answer = mapToList(friendAndScore);
 
-        return answer;
+        return mapToList(friendAndScore);
     }
 
     private static List<String> mapToList(Map<String, Integer> friendScore) {
-        List<String> answer;
-        answer = new ArrayList<>(friendScore.keySet());
-        return answer;
+        Set<String> score = friendScore.keySet();
+        List<String> scoreRanking = score.stream().limit(5).collect(Collectors.toList());
+        return scoreRanking;
     }
 
     private static void visitScore(List<String> visitors, ArrayList<String> withFriends, Map<String, Integer> friendScore) {
