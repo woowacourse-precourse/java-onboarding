@@ -7,7 +7,9 @@
 1. Num 클래스를 생성하여, 입력받은 숫자를 생성자의 인자로 하여 객체 생성.
 2. Num 클래스 생성자 내부에서 validityChecker 클래스를 생성해 입력된 수가 유효한지 확인 후 문제 발생 시 런타임 에러를 생성함
 3. 문자열로 숫자를 변경 한 후 ‘3’, ‘6’, ‘9’ 의 개수 카운트
-  - String.contain(’1’) ,String.contain(’2’), String.contain(’3’) 사용
+   - String.contain(’1’) ,String.contain(’2’), String.contain(’3’) 사용 
+   - int + "" 를 통해 숫자를 String 으로 변경하고, String의 contain을 이용해 3,6,9 탐색
+
 
 **예외 케이스 구현**
 
