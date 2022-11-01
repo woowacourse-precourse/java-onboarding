@@ -21,6 +21,6 @@
 
 ### 실행 결과 예시
 
-| user | friends | visitors | result |
 | --- | --- | --- | --- |
-| "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+| "mrko" | [ ["donut", "andole"], [
+| user | friends | visitors | result |"donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
