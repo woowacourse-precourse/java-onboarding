@@ -108,6 +108,14 @@ class Recommendation{
     Set<String> getFriends(){
         return USERS.keySet();
     }
+    void checkAcquaintance(){
+        Set<String> friends=getFriends();
+        for (String friend:friends){
+            if(isFriend(friend)){
+                addAcquaintanceScore(friend);
+            }
+        }
+    }
 }
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
