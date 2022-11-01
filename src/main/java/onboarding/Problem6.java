@@ -4,12 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
+    public static void subStrName(String name, List<String> cases, int length) {
+        for (int i = 0; i <= name.length() - length; i++) {
+            cases.add(name.substring(i, i + length));
+        }
+    }
     public static List<String> getCase(String name) {
         List<String> cases = new ArrayList<>();
-        for (int j = 2; j <= name.length(); j++) {
-            for (int i = 0; i <= name.length() - j; i++) {
-                cases.add(name.substring(i, j + i));
-            }
+        for (int length = 2; length <= name.length(); length++) {
+            subStrName(name, cases, length);
         }
         return cases;
     }
