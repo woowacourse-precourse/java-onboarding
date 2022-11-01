@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -10,7 +9,6 @@ class Problem1 {
     private static final int EXCEPTION = -1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         int maxPobi = compareLeftRightPage(pobi);
         int maxCrong = compareLeftRightPage(crong);
         if (checkException(pobi) || checkException(crong)){
