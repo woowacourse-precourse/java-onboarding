@@ -15,6 +15,7 @@ public class Problem7 {
 
         friendsList = relateFriend(friends);
         friendScore = getFriendScore(friendsList, user);
+        friendScore = getVisitScore(friendScore, visitors);
 
         return answer;
     }
@@ -56,6 +57,15 @@ public class Problem7 {
         return friendScore;
     }
 
+    static HashMap<String, Integer> getVisitScore(HashMap<String, Integer> friendScore, List<String> visitors) {
+        for (String visitor : visitors) {
+            if (friendScore.containsKey(visitor)) {
+                friendScore.put(visitor, friendScore.get(visitor) + 1);
+                continue;
+            }
+            friendScore.put(visitor, 1);
+        }
 
-
+        return friendScore;
+    }
 }
