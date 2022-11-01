@@ -16,7 +16,6 @@ public class Problem7 {
 
             }
         }
-
         return answer;
     }
 }
