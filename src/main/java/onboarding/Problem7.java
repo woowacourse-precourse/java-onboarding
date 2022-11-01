@@ -65,6 +65,22 @@ public class Problem7 {
         }
         return allScore;
     }
+
+    public static List<String> recommendFriend(List<String> allName, List<Integer> allScore, List<String> userFriends) {
+        int count = 0;
+        List<String> res = new ArrayList<>();
+
+        while(count < 5) {
+            if(allName.size() == 0) { break; }
+            int score = Collections.max(allScore);
+            String name = allName.get(allScore.indexOf(score));
+            allName.remove(name);
+            allScore.remove(Collections.max(allScore));
+            if(userFriends.contains(name) || score == 0) { continue; }
+            else { res.add(name); count++; }
+        }
+        return res;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
