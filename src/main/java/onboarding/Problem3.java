@@ -13,7 +13,6 @@ public class Problem3 {
 
         return answer;
     }
-
     private static int have369(int number) {
         int count = 0;
 
