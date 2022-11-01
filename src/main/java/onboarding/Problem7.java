@@ -188,6 +188,25 @@ class Recommendation{
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        HashMap<String, User> users;
+        User theUser;
+        List<String> recommendFriends;
+
+        RelationShip relationShip = new RelationShip();
+        relationShip.getUniqueFriends(friends);
+        users=relationShip.makeRelation(friends);
+        theUser = users.get(user);
+
+        Recommendation recommendation = new Recommendation(user, theUser, users);
+
+        recommendation.checkAcquaintance();
+        recommendation.addVisitScore(visitors);
+
+        recommendation.makeFriendScore();
+        recommendation.sortFriendScore();
+
+        recommendFriends=recommendation.recommendFriends();
+        answer=recommendation.checkBounds(recommendFriends);
         return answer;
     }
 }
