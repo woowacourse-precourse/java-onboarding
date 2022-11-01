@@ -37,7 +37,7 @@ public class Problem06 {
             }
         }
         set.remove(null);
-        List<String> strList = new ArrayList<>(set); // set의 List화
+        List<String> strList = new ArrayList<>(set);
         return strList;
     }
     private static String[] rtString(String str_1, String str_2){
