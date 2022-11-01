@@ -14,7 +14,8 @@ public class P6ExceptionValidation {
     public static boolean p6ExceptionValidation(String email, String userName){
 
         return isEmailFormat(email)
-                && isEmailLengthBetween11and20(email);
+                && isEmailLengthBetween11and20(email)
+                && isUserNameLengthBetween1and20(userName);
     }
 
 
@@ -24,6 +25,13 @@ public class P6ExceptionValidation {
 
     private static boolean isEmailLengthBetween11and20(String email) {
         if (email.length() < 11 || email.length() > 20) {
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean isUserNameLengthBetween1and20(String userName) {
+        if (userName.length() < 1 || userName.length() > 20) {
             return false;
         }
         return true;
