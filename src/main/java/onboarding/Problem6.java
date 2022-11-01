@@ -1,11 +1,37 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+
+        List<Crew> crewList = forms.stream()
+                .map(Crew::toCrew)
+                .collect(Collectors.toList());
+
+        Map<String, List<Crew>> crewMap = makeNicknameMap(crewList);
+
         return answer;
+    }
+
+    private static Map<String, List<Crew>> makeNicknameMap(List<Crew> crews) {
+
+        Map<String, List<Crew>> crewMap = new HashMap<>();
+
+        for (Crew crew : crews) {
+            String nickname = crew.getNickname();
+            for (int i = 0; i < nickname.length() - 1; i++) {
+                String twoCharacter = nickname.substring(i, i + 2);
+                crewMap.putIfAbsent(twoCharacter, new ArrayList<>());
+                crewMap.get(twoCharacter).add(crew);
+            }
+        }
+        return crewMap;
     }
 }
 
