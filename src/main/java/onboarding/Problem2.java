@@ -26,7 +26,6 @@ public class Problem2 {
         }
         if(duplicated) {
             answer = removeLastChar(answer);
-            duplicated = false;
         }
 
         return answer;
@@ -37,9 +36,7 @@ public class Problem2 {
         int answerLen = answer.length();
         char answerLastChar = answer.charAt(answerLen-1);
 
-        if (cryptoChar == answerLastChar)
-            return true;
-        return false;
+        return cryptoChar == answerLastChar;
     }
 
     public static String removeLastChar(String answer) {
