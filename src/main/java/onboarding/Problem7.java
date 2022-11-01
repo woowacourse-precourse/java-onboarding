@@ -78,6 +78,7 @@ public class Problem7 {
 
         Collections.sort(goodFriend);
 
+
         for (Friend friend : goodFriend) {
             String f = userId.get(friend.getId());
             if(friend.getScore() == 0)

@@ -8,6 +8,7 @@ import java.util.List;
 
 public class Problem6 {
 
+
     private static boolean isDoubleSame(String a, String b){
         int len = Math.min(a.length(), b.length());
 
