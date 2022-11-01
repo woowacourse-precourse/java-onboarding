@@ -8,13 +8,12 @@ import java.util.List;
 class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if((isValidInput(pobi) && isValidInput(crong)) == false){
+        if(!(isValidInput(pobi) && isValidInput(crong))){
             return -1;
         }
         int pobiScore = calculateScore(pobi);
         int crongScore = calculateScore(crong);
-        int answer = getGameResult(pobiScore,crongScore);
-        return answer;
+        return gameResult(pobiScore,crongScore);
     }
 
     public static boolean isValidInput(List<Integer> input){
@@ -36,17 +35,12 @@ class Problem1 {
                 multiplication *= digit;
                 value = value/10;
             }
-            if(sum >= multiplication){
-                values.set(i, sum);
-            }
-            else{
-                values.set(i,multiplication);
-            }
+            values.set(i, Math.max(sum, multiplication));
         }
         return Collections.max(values);
     }
 
-    public static int getGameResult(int pobi, int crong){
+    public static int gameResult(int pobi, int crong){
         if(pobi > crong){
             return 1;
         }
