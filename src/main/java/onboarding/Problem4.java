@@ -26,4 +26,16 @@ public class Problem4 {
         }
         return answer;
     }
+
+    private static int isContainAlphabetOrOtherCharacter(String str) {
+        int index = 0;
+        if (LOWER_ORDER.contains(str)) {
+            index = LOWER_ORDER.indexOf(str);
+        } else if (UPPER_ORDER.contains(str)) {
+            index = UPPER_ORDER.indexOf(str);
+        } else {
+            return -1;
+        }
+        return index;
+    }
 }
