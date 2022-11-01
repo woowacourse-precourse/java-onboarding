@@ -16,6 +16,18 @@ class Problem1 {
         int pobiFinalScore = getFinalScore(pobi);
         int crongFinalScore = getFinalScore(crong);
 
+        if (pobiFinalScore > crongFinalScore) {
+            answer = 1;
+        }
+
+        if (pobiFinalScore < crongFinalScore) {
+            answer = 2;
+        }
+
+        if (pobiFinalScore == crongFinalScore){
+            answer = 0;
+        }
+
         return answer;
     }
 
