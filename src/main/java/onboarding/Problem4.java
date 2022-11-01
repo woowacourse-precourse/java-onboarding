@@ -23,4 +23,8 @@ public class Problem4 {
     private static int upperToLower(int word) {
         return 90 - ((int) word - 65);
     }
+
+    private static int lowerToUpper(int word) {
+        return 122 - ((int) word - 97);
+    }
 }
