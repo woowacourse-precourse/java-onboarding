@@ -11,7 +11,28 @@ import java.util.stream.Collectors;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
-
+        HashSet<String> userFriends = userFriendsList(user, friends);
+        Map<String, HashSet<String>> connection = userFriendConnection(user, friends);
+        Map<String, Integer> score = userScore(user, friends, visitors);
+        for (String name : connection.keySet()) {
+            HashSet<String> setTmp = new HashSet<>();
+            setTmp.addAll(userFriends);
+            setTmp.retainAll(connection.get(name));
+            score.put(name, score.get(name)+setTmp.size()*10) ;
+        }
+        for (String visitor : visitors) {
+            score.put(visitor, score.get(visitor)+1);
+        }
+        for (String userFriend : userFriends) {
+            score.remove(userFriend);
+        }
+        List<Map.Entry<String, Integer>> entries =
+                score.entrySet().stream()
+                        .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                        .collect(Collectors.toList());
+        for (Map.Entry<String, Integer> entry : entries) {
+            answer.add(entry.getKey());
+        }
 
         return answer;
     }
@@ -47,5 +68,29 @@ public class Problem7 {
         return userConnection;
     }
 
+    private static Map<String, Integer> userScore(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String, Integer> userScore = new TreeMap<>();
+        for (List<String> friend : friends) {
+            if (!(userScore.containsKey(friend.get(0)))) {
+                userScore.put(friend.get(0), 0);
+            }
+            if (!(userScore.containsKey(friend.get(1)))) {
+
+                userScore.put(friend.get(1), 0);
+            }
+        }
+        for (String visitor : visitors) {
+            if (!(userScore.containsKey(visitor))) {
+                userScore.put(visitor, 0);
+            }
+            if (!(userScore.containsKey(visitor))) {
+
+                userScore.put(visitor, 0);
+            }
+        }
+        userScore.remove(user);
+
+        return userScore;
+    }
 }
 
