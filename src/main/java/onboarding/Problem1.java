@@ -24,9 +24,10 @@ class Problem1 {
     }
 
     public static boolean findPageException(List<Integer> user) {
+        if (user.size() != 2) return false;
         if (user.get(0) % 2 == 0) return false;
         if (user.get(1) != user.get(0) + 1) return false;
-        if (user.get(0) == 1 || user.get(1) == 400) return false;
+        if (user.get(0) <= 1 || user.get(1) >= 400) return false;
         return true;
     }
 
