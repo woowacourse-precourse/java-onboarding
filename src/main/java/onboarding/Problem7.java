@@ -65,6 +65,20 @@ class RecommandAlgorithm {
             }
         }
     }
+
+    public void findFriendOfUserFriend(List<List<String>> friends, String user) {
+        for (int i = 0; i < friends.size(); i++) {
+            for (String friend : this.userFriends) {
+                if (friends.get(i).get(0) == friend && friends.get(i).get(1) != user) {
+                    friendsOfUserFriends.add(friends.get(i).get(1));
+                    this.unknownUsers.add(friends.get(i).get(1));
+                } else if (friends.get(i).get(1) == friend && friends.get(i).get(0) != user) {
+                    friendsOfUserFriends.add(friends.get(i).get(0));
+                    this.unknownUsers.add(friends.get(i).get(0));
+                }
+            }
+        }
+    }
 }
 
 
