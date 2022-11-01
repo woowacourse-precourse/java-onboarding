@@ -8,6 +8,8 @@ public class Problem7 {
         Map<String, List<String>> friendship = Friendship(friends);
         HashMap<String, Integer> scoreTable = ScoreTable(user,friendship);
 
+        ScoreFriendOfUser(scoreTable, friendship, user,10);
+
         System.out.println("friendship.keySet() = " + scoreTable.keySet());
         System.out.println("friendship.values() = " + scoreTable.values());
         return answer;
@@ -43,4 +45,15 @@ public class Problem7 {
         }
         return scoreTable;
     }
+
+    public static void ScoreFriendOfUser(HashMap<String, Integer> scoreTable,
+                                         Map<String, List<String>> friendship, String user, int score) {
+        for(String userFriend : friendship.get(user)){
+            for(String friend : friendship.get(userFriend)){
+                if(scoreTable.containsKey(friend))
+                    scoreTable.put(friend,scoreTable.get(friend) + score);
+            }
+        }
+    }
+
 }
