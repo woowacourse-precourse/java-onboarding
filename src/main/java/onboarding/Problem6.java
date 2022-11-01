@@ -16,7 +16,16 @@ public class Problem6 {
             makeEmail(nickName, email, mapEmail);
         }
 
- 
+        //hashMap을 순회하면서 중복되는 닉네임이 있는지 확인
+        Iterator<String> keys = mapEmail.keySet().iterator();
+        while (keys.hasNext()) {
+            String key = keys.next();
+            int size = mapEmail.get(key).size();
+            if (size >= 2) {
+                tmp.addAll(mapEmail.get(key));
+            }
+        }
+
         List<String> answer = new ArrayList<>();
 
         return answer;
