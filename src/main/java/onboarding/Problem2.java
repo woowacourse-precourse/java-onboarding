@@ -60,4 +60,10 @@ public class Problem2 {
             sb.append(cryptogram.charAt(0));
         }
     }
+
+    public static void lastValue(String cryptogram) {
+        if (!checkPre) {
+            sb.append(cryptogram.charAt(cryptogram.length() - 1));
+        }
+    }
 }
