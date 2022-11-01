@@ -1,30 +1,20 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
+    private int[] currency;
+    public Problem5(){
+         currency = new int[] {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+    }
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        answer = new ArrayList<Integer>();
-        answer.add(money/50000);
-        money %= 50000;
-        answer.add(money/10000);
-        money %= 10000;
-        answer.add(money/5000);
-        money %= 5000;
-        answer.add(money/1000);
-        money %= 1000;
-        answer.add(money/500);
-        money %= 500;
-        answer.add(money/100);
-        money %= 100;
-        answer.add(money/50);
-        money %= 50;
-        answer.add(money/10);
-        money %= 10;
-        answer.add(money);
+        List<Integer> answer = new ArrayList<Integer>();
+        Problem5 p5 = new Problem5();
+        for(int i = 0; i < p5.currency.length; ++i){
+            answer.add(money/p5.currency[i]);
+            money %= p5.currency[i];
+        }
         return answer;
     }
 }
