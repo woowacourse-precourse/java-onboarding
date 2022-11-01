@@ -3,7 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-class User{
+class User implements Comparable<User>{
     final int FRIEND_A=0;
     final int FRIEND_B=1;
     final int ACQUAINTANCE_SCORE=10;
@@ -52,6 +52,13 @@ class User{
     }
     List<String> getRelationship(){
         return relationship;
+    }
+    @Override
+    public int compareTo(User u) {
+        if(totalScore != u.totalScore){
+            return Integer.compare(u.totalScore,totalScore);
+        }
+        return user.compareTo(u.user);
     }
 }
 public class Problem7 {
