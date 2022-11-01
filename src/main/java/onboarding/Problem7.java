@@ -84,13 +84,11 @@ public class Problem7 {
 				if (otherFriendsList.contains(friendName) && otherFriendsList.contains(user)) {
 					notToCountName.add(friendName);
 					break;
-
 				}
 
 				if (Objects.equals(pairName, user)) {
 					notToCountName.add(pairName);
 					break;
-
 				}
 
 				if (otherFriendsList.contains(pairName) && otherFriendsList.contains(user)) {
@@ -106,7 +104,6 @@ public class Problem7 {
 		notToCountName = removeDuplication(notToCountName);
 
 		for (String visitorsName : visitors) {
-
 			addUpPointsByVisitorsLogic(countingMap, notToCountName, visitorsName);
 		}
 
