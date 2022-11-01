@@ -19,8 +19,23 @@ public class Problem2 {
         }
         return decryption;
     }
+    private static boolean isUnchanged(String beforeDecryption, String cryptogram) {
+        return (beforeDecryption.equals(cryptogram));
+    }
     public static String solution(String cryptogram) {
         String answer = "answer";
+        String beforeDecryption = "";
+
+        while (true) {
+            beforeDecryption = cryptogram;
+            cryptogram = getDecryption(cryptogram);
+            if (isUnchanged(beforeDecryption, cryptogram)) {
+                answer = beforeDecryption;
+                break;
+            }
+            System.out.println(beforeDecryption);
+        }
+
         return answer;
     }
 }
