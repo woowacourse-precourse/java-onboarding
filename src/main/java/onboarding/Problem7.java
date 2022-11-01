@@ -49,6 +49,23 @@ public class Problem7 {
             FrFriends.addAll(getFriendSet(friends, name));
         }
 
+
+//  1. getFriendSet(List<List<String>> friends, String user)
+//     - @param String user 에 해당하는 사람의 친구들 set 을 반환
+    private static HashSet<String> getFriendSet(List<List<String>> friends, String user){
+        HashSet<String> friendSet = new HashSet<>();
+
+        for(int i=0; i<friends.size() ; i++){
+            if(friends.get(i).get(0).equals(user)){
+                friendSet.add(friends.get(i).get(1));
+            } else if (friends.get(i).get(1).equals(user)) {
+                friendSet.add(friends.get(i).get(0));
+            }
+        }
+
+        return friendSet;
+    }
+
         return answer;
     }
 }
