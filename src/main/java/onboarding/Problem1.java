@@ -29,4 +29,8 @@ class Problem1 {
 
         return sum;
     }
+
+    private  void validateIsContinuousPage(Integer leftPageNum, Integer rightPageNum) throws Exception {
+        if(rightPageNum-leftPageNum!=1) throw new Exception();
+    }
 }
