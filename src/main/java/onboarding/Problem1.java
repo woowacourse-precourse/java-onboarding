@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 class Problem1 {
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!isValid(pobi) || !isValid(crong)) {
             return -1;
@@ -37,8 +38,8 @@ class Problem1 {
 
     private static int[] toArr(int page) {
         int[] arrNum = Stream.of(String.valueOf(page).split(""))
-                .mapToInt(Integer::parseInt)
-                .toArray();
+            .mapToInt(Integer::parseInt)
+            .toArray();
         return arrNum;
     }
 

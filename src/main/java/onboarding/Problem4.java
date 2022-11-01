@@ -1,7 +1,5 @@
 package onboarding;
 
-import java.util.StringJoiner;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class Problem4 {
