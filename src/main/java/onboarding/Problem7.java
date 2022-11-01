@@ -14,6 +14,7 @@ public class Problem7 {
         List<String> answer = new ArrayList<>();
 
         findFriendsByUser(user, friends);
+        scoreByFriends(user, friends);
 
         return answer;
     }
@@ -24,6 +25,16 @@ public class Problem7 {
             if(friendId.equals(user)) {
                 userFriends.add(friend.get(0));
             }
+        }
+    }
+
+    public static void scoreByFriends(String user, List<List<String>> friends){
+        for(List<String> friend : friends){
+            String friendId = friend.get(1);
+            if(friendId.equals(user) || userFriends.contains(friendId) ) {
+                continue;
+            }
+            friendScoreMap.put(friendId,friendScoreMap.getOrDefault(friendId,0)+10);
         }
     }
 }
