@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * 변수 선언
@@ -27,7 +26,29 @@ import java.util.List;
  */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        // 변수 선언
+        List<String> answer;
+        Set<String> allUser = new HashSet<>();
+        HashSet<String> friendSet = getFriendSet(friends,user);
+        HashMap<String,Integer> recommScore = new HashMap<>();
+        Set<String> noFriend;
+        List<String> FrFriends;
+
+        //변수 초기화
+        for (List<String> friend : friends) {
+            allUser.add(friend.get(0));
+            allUser.add(friend.get(1));
+        }
+
+        noFriend =  new HashSet<>(allUser);
+        noFriend.removeAll(friendSet);
+        noFriend.remove(user);
+
+        FrFriends = new ArrayList<String>();
+        for (String name : friendSet) {
+            FrFriends.addAll(getFriendSet(friends, name));
+        }
+
         return answer;
     }
 }
