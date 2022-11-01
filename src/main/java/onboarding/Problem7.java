@@ -13,7 +13,31 @@ public class Problem7 {
 
         makePeopleMap(user, friends, visitors);
         friendGraph = makeGraph(friends);
+        countVisitors(visitors);
+        countFriends(user, friendGraph);
+
+
         return answer;
+    }
+
+    public static void countFriends(String user, Map<String, ArrayList<String>> graph){
+        ArrayList<String> firstFriends = graph.get(user);
+        ArrayList<String> connectFriend;
+        String plusFriend;
+        int value;
+        for(int index=0; index<firstFriends.size(); index++){
+            connectFriend = graph.get(firstFriends.get(index));
+
+            for (int conIndex=0; conIndex < connectFriend.size(); conIndex++){
+                plusFriend = connectFriend.get(conIndex);
+                if (!plusFriend.equals(user)){
+                    value = peopleMap.get(plusFriend);
+                    value += 10;
+                    peopleMap.put(plusFriend, value);
+                }
+            }
+
+        }
     }
 
     public static void countVisitors(List<String> visitors){
