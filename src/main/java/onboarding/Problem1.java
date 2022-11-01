@@ -60,6 +60,21 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int maxPobi;
+        int maxCrong;
+
+        // 예외사항 처리
+        if (checkError(pobi) || checkError(crong)) {
+            return -1;
+        }
+
+        // 포비와 크롱의 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수(점수)를 구하기
+        maxPobi = findMax(pobi);
+        maxCrong = findMax(crong);
+
+        // 두 사람의 점수를 비교해 게임의 결과를 도출하는 함수
+        answer = findResult(maxPobi, maxCrong);
+
         return answer;
     }
 }
