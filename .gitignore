@@ -30,6 +30,4 @@ out/
 
 ### VS Code ###
 .vscode/
-
-### Compiled class file ###
-*.class
+/bin/
