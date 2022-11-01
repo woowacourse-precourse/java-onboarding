@@ -19,3 +19,14 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+## 기능 구현
+
+- upperCaseConversion()
+    - 청개구리 사전 정보를 바탕으로 변환한 대문자를 반환
+- lowerCaseConversion()
+    - 청개구리 사전 정보를 바탕으로 변환한 소문자를 반환
+- mergeConvertedCharacters()
+    - 청개구리 사진 정보를 바탕으로 변환한 문자들을 문자열로 바꿈
+- wordLengthOutOfRangeException()
+    - 문자 길이 예외처리
