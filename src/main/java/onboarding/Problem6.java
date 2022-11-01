@@ -1,12 +1,16 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        HashMap<String, Integer> nicknameAndCountHashMap = getNicknameAndCountHashMap(forms);
+        List<String> list = getDuplicatedList(nicknameAndCountHashMap);
+        List<String> answer = getDuplicatedNicknameList(list, forms);
+        Collections.sort(answer);
         return answer;
     }
 
