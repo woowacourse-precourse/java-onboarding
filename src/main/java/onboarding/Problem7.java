@@ -5,8 +5,8 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+		SocialService service = new SocialService(user, friends, visitors);
+		return service.recommendUserListForUser();
     }
 
 	private static class RecommendedScore {
@@ -85,7 +85,7 @@ public class Problem7 {
 
 	private static class SocialService {
 		private final User receivedUser;
-		private LinkedHashMap<String, User> users = new LinkedHashMap<>();
+		private final LinkedHashMap<String, User> users = new LinkedHashMap<>();
 
 		SocialService(String user, List<List<String>> friends, List<String> visitors) {
 			receivedUser = new User(user);
