@@ -12,15 +12,21 @@ public class Problem7 {
     public static final int MUTUAL_SCORE = 10;
     public static final int VISITED_SCORE = 1;
 
-    private static final Set<String> userFriendList = new HashSet<>();
-    private static final Map<String, Integer> recommendScore = new HashMap<>();
+    private static Set<String> userFriendList;
+    private static Map<String, Integer> recommendScore;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        initSetAndMap();
         saveUserFriendList(user, friends);
         addMutualFriend(user, friends);
         addVisitedPerson(user, visitors);
         List<String> sortedRecommendList = getSortedRecommendList();
         return getNRecommendList(sortedRecommendList, 5);
+    }
+
+    private static void initSetAndMap() {
+        userFriendList = new HashSet<>();
+        recommendScore = new HashMap<>();
     }
 
     private static void saveUserFriendList(String user, List<List<String>> friends) {
