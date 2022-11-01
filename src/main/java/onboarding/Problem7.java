@@ -2,6 +2,8 @@ package onboarding;
 
 import java.util.*;
 
+import static java.lang.Math.min;
+
 /** 추천 친구 목록을 정렬하기 위한 클래스 */
 class RecommendedFriendComparator implements Comparator<String> {
     Map<String, Integer> recommendedFriend = Collections.EMPTY_MAP;
@@ -134,6 +136,17 @@ class User {
         RecommendedFriendComparator recommendedFriendComparator = new RecommendedFriendComparator(this.recommendedFriend);
         keySet.sort(recommendedFriendComparator);
         return keySet;
+    }
+
+    /** 최대 5명의 추천 친구 리스트 반환 */
+    List<String> getTopFiveRecommendedFriend(){
+        List<String> topRecommendedFriend = new ArrayList<String>();
+        List<String> SortedKeySet = getSortedKeySet();
+        int maxIndex = min(5, SortedKeySet.size());
+        for(int i =0; i<maxIndex; i++){
+            topRecommendedFriend.add(SortedKeySet.get(i));
+        }
+        return topRecommendedFriend;
     }
 
 }
