@@ -1,8 +1,9 @@
 package onboarding;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-
+/*
+ * 기능구현
+ * 1. decode 판단 함수 정의
+ * 2. decode 구현 함수 정의
+ * */
 public class Problem2 {
     public static String solution(String cryptogram) {
         return decode(cryptogram);
