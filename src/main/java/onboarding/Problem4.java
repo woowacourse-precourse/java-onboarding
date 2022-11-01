@@ -30,5 +30,10 @@ public class Problem4 {
         return dictionary;
     }
 
+    public static int checkAlphabet(char character){
+        if((64<character&&character<91)||(96<character&&character<123)) return 1;
+        return -1;
+    }
+
 
 }
