@@ -5,9 +5,38 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+    private static int MUTUAL_FRIEND_WEIGHT = 10;
+    private static int VISITOR_WEIGHT = 1;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, List<String>> friendsGraph = buildFriendsGraph(friends);
+        return calculateRecommendationScore(friendsGraph, visitors, user).entrySet()
+                .stream()
+                .filter(e -> e.getValue() > 0)
+                .sorted(Map.Entry.comparingByKey())
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(e -> e.getKey())
+                .limit(5)
+                .collect(Collectors.toList());
+    }
+    private static Map<String, Integer> calculateRecommendationScore(Map<String, List<String>> friendsGraph, List<String> visitors, String user) {
+        Map<String, Integer> scoreboard = new HashMap<>();
+        List<String> friended = getFriended(friendsGraph, user);
+        for (String unfriendedUser : getUnfriended(friendsGraph, user)) {
+            int mutualFriends = getFriended(friendsGraph, unfriendedUser)
+                    .stream()
+                    .filter(friended::contains)
+                    .collect(Collectors.toList())
+                    .size();
+            scoreboard.put(unfriendedUser, mutualFriends * MUTUAL_FRIEND_WEIGHT);
+        }
+        for (String visitor : visitors) {
+            if (!visitor.equals(user) & !friended.contains(visitor)) {
+                if (scoreboard.putIfAbsent(visitor, VISITOR_WEIGHT) != null) {
+                    scoreboard.put(visitor, scoreboard.get(visitor) + VISITOR_WEIGHT);
+                }
+            }
+        }
+        return scoreboard;
     }
     private static List<String> getUnfriended(Map<String, List<String>> friendsGraph, String user) {
         List<String> friended = getFriended(friendsGraph, user);
