@@ -23,15 +23,17 @@ public class Problem2 {
         if(len < 2)
             return str;
 
-        int deletedChar = Character.MAX_VALUE;
+        boolean isDeleted = false;
         StringBuilder resultText = new StringBuilder();
         for(int i=0; i<len-1; i++){
-            if((deletedChar == str.charAt(i)) || (str.charAt(i) == str.charAt(i+1)))
-                deletedChar = str.charAt(i);
-            else {
+            if(str.charAt(i) == str.charAt(i+1))
+                isDeleted = true;
+
+            if(!isDeleted)
                 resultText.append(str.charAt(i));
-                deletedChar = Character.MAX_VALUE;
-            }
+
+            if(str.charAt(i) != str.charAt(i+1))
+                isDeleted = false;
         }
 
         if(str.charAt(len - 2) != str.charAt(len - 1)){
