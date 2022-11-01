@@ -25,7 +25,6 @@ public class Problem7 {
         for(String friend : friends){
             scoreCountMap.put(friend, 0);
         }
-        System.out.println();
     }
 
     private static List<String> recommendFriends() {
@@ -68,8 +67,8 @@ public class Problem7 {
     }
 
     private static void findAcquaintance(String user) {
-        if(!friendMap.containsKey(user)) return;
         List<String> friends = friendMap.get(user);
+        if(friends == null) return;
         for (String friend : friends) {
             List<String> friendsOfFriends = friendMap.get(friend);
             for (String friendOfFriend : friendsOfFriends) {
