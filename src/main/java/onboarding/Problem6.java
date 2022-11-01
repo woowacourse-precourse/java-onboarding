@@ -16,5 +16,9 @@ public class Problem6 {
                         list.add(forms.get(i).get(0));
                         list.add(forms.get(k).get(0));
                     }
+        HashSet<String> hashSet = new HashSet<>(list);
+        List<String> ret = new ArrayList<String>(hashSet);
+        ret.sort(Comparator.naturalOrder());
+        return ret;
     }
 }
