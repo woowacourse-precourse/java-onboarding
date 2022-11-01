@@ -1,11 +1,22 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+    public static Map<String, Integer> getId(List<List<String>> friends){
+        Map<String, Integer> nameMap = new HashMap<>();
+        for (List<String> friend: friends){
+            String name1 = friend.get(0);
+            String name2 = friend.get(1);
+            if (!nameMap.containsKey(name1))
+                nameMap.put(name1, nameMap.size());
+            if (!nameMap.containsKey(name2))
+                nameMap.put(name2, nameMap.size());
+        }
+        return nameMap;
     }
 }
