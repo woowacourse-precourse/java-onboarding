@@ -24,3 +24,14 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+- 유저 생성
+- friends 길이 검증
+- visitors 길이 검증
+- 사용자 목록 생성
+- 방문자 통계 반환
+- 친구 목록 반환
+- 사용자와 함께 아는 친구 반환
+- 친구 추천 점수 계산
+- 친구 추천 리스트 반환
