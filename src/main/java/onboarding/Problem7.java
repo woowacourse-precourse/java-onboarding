@@ -6,6 +6,8 @@ import java.util.List;
 class User{
     final int FRIEND_A=0;
     final int FRIEND_B=1;
+    final int ACQUAINTANCE_SCORE=10;
+    final int VISIT_SCORE=1;
     String user;
     int totalScore;
     List<String> relationship = new ArrayList<>();
@@ -38,6 +40,9 @@ class User{
     }
     String getName(){
         return user;
+    }
+    void updateVisitScore(){
+        totalScore+=VISIT_SCORE;
     }
 }
 public class Problem7 {
