@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 public class Problem4 {
     public static String solution(String word) {
         List<String> wordList = stringToWordList(word);
-        List<String> resultList = new ArrayList<String>();
+        List<String> resultList = new ArrayList<>();
 
         // 글자를 변환하고 resultList에 넣는다.
         for (String e : wordList) {
@@ -58,7 +58,7 @@ public class Problem4 {
     /**
      * 청개구리 사전을 Map에 담았다.
      */
-    private static Map<String, String> frogsDictionary = Map.ofEntries(
+    private static final Map<String, String> frogsDictionary = Map.ofEntries(
             Map.entry("A", "Z"),
             Map.entry("B", "Y"),
             Map.entry("C", "X"),
