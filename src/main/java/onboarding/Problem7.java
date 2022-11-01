@@ -11,6 +11,7 @@ public class Problem7 {
         validateUserLength(user);
         validateFriendsLength(friends);
         validateFriendsElementLength(friends);
+        validateIdLength(friends);
 
         List<String> answer = new ArrayList<>();
         HashMap<String, List<String>> friendRelationshipMap = new HashMap<>();
@@ -147,6 +148,16 @@ public class Problem7 {
         for (List<String> friendsElement : friends) {
             if (friendsElement.size() != 2) {
                 throw new IllegalArgumentException("friends 각 원소의 길이는 2여야 합니다.");
+            }
+        }
+    }
+
+    private static void validateIdLength(List<List<String>> friends) {
+        for (List<String> friendsElement : friends) {
+            for (String id : friendsElement) {
+                if (id.length() == 0 || id.length() > 30) {
+                    throw new IllegalArgumentException("아이디의 길이는 1이상 30이하여야 합니다.");
+                }
             }
         }
     }
