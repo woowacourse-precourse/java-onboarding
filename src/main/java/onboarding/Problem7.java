@@ -52,4 +52,11 @@ public class Problem7 {
             if(userFriends.contains(b))Friends.put(a,Friends.getOrDefault(a,0)+10);
         }
     }
+
+    /* 기능4 : 방문 횟수 점수 count */
+    private static void VisitCount(Map<String, Integer> Friends, List<String> visitors){
+        for(int i = 0; i < visitors.size(); i++){
+            Friends.put(visitors.get(i),Friends.getOrDefault(visitors.get(i),0)+1);
+        }
+    }
 }
