@@ -17,15 +17,21 @@ public class Problem7 {
         //아는 친구 점수 계산
         for(int i=0;i<friends.size();i++){
             if(!friends.get(i).get(0).equals(user) && !friends.get(i).get(1).equals(user)){
+
                 if(friends_list.contains(friends.get(i).get(0))) {
                     if(!friends_list.contains(friends.get(i).get(1))){
-                        score_list.put( friends.get(i).get(1) , score_list.get(friends.get(i).get(1))+10 );
+                        if(score_list.containsKey(friends.get(i).get(1))) {score_list.put( friends.get(i).get(1) , score_list.get(friends.get(i).get(1))+10 );}
+                        else score_list.put( friends.get(i).get(1) , 10 );
+
+
                     }
                 }
 
                 if(friends_list.contains(friends.get(i).get(1))) {
                     if(!friends_list.contains(friends.get(i).get(0))){
-                        score_list.put( friends.get(i).get(0) , score_list.get(friends.get(i).get(0))+10 );
+                        if(score_list.containsKey(friends.get(i).get(0))) {score_list.put( friends.get(i).get(0) , score_list.get(friends.get(i).get(0))+10 );}
+                        else {score_list.put( friends.get(i).get(0) , 10 );}
+
                     }
                 }
 
@@ -34,9 +40,33 @@ public class Problem7 {
         }
 
         //방문 점수 계산
+        for(int i=0;i<visitors.size();i++){
+            if(!visitors.get(i).equals(user)){
+                if(!friends_list.contains(visitors.get(i))){
+                    if(score_list.containsKey(visitors.get(i))) {score_list.put(visitors.get(i), score_list.get(visitors.get(i))+1);}
+                    else {score_list.put(visitors.get(i),1);}
 
 
+                }
+            }
+        }
 
+        //정렬
+        List<Map.Entry<String,Integer>> sortList = new LinkedList<>(score_list.entrySet());
+        sortList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        });
+
+        int count=0;
+        for(Map.Entry<String, Integer> list : sortList){
+            if(count>5) break;
+
+            answer.add(list.getKey());
+            count++;
+        }
 
 
         return answer;
