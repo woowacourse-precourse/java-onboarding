@@ -11,6 +11,7 @@ public class Problem7 {
         caculateRelationPoints(user, relationMap, userPoints);
         caculateVisitPoints(user, visitors, userPoints);
 
+        answer = getRecommendedFriends(user, relationMap, userPoints);
         return answer;
     }
 
@@ -74,5 +75,20 @@ public class Problem7 {
         });
 
         return usersOrderByPoints;
+
+    private static List<String> getRecommendedFriends(
+            String user,
+            Map<String, List<String>> relationMap,
+            Map<String, Integer> userPoints
+    ) {
+        List<String> allRecommendedFriends = getUsersOrderByPoints(userPoints);
+        List<String> recommendedFriends = new ArrayList<>();
+
+        for (String friend : allRecommendedFriends) {
+            if (!relationMap.get(user).contains(friend) && user!=friend) recommendedFriends.add(friend);
+            if (recommendedFriends.size() >= 5) break;
+        }
+
+        return recommendedFriends;
     }
 }
