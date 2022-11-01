@@ -68,6 +68,9 @@ public class Problem6 {
 		if (!isEmailRangeValid(forms)) {
 			return EXCEPTION;
 		}
+		if (!isNicknameRangeValid(forms)) {
+			return EXCEPTION;
+		}
 		return 0;
 	}
 
@@ -83,6 +86,16 @@ public class Problem6 {
 	private static boolean isEmailRangeValid(List<List<String>> forms) {
 		for (List<String> form : forms) {
 			if (form.get(0).length() < 11 || form.get(0).length() >= 20) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	// 닉네임의 전체 길이가 1자 이상 20자 미만이 아닌 경우 예외
+	private static boolean isNicknameRangeValid(List<List<String>> forms) {
+		for (List<String> form : forms) {
+			if (form.get(1).length() < 1 || form.get(1).length() >= 20) {
 				return false;
 			}
 		}
