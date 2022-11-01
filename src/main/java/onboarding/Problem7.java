@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -10,7 +12,23 @@ import java.util.List;
  */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<String> friendOfUser = makeListOfFriendsUser(user, friends);
+
+
+        return friendOfUser;
     }
+
+    public static List<String> makeListOfFriendsUser(String user, List<List<String>> friends) {
+        List<String> friendsOfUser = new ArrayList<>();
+
+        for (List<String> relation : friends) {
+            if (relation.contains(user)) {
+                friendsOfUser.addAll(relation);
+            }
+        }
+        friendsOfUser.remove(user);
+
+        return friendsOfUser;
+    }
+
 }
