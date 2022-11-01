@@ -19,6 +19,15 @@ class Problem1 {
     */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        // pobi와 crong의 예외처리
+        if (pobi.get(0) + 1 != pobi.get(1) || crong.get(0) + 1 != crong.get(1) // 왼쪽 페이지와 오른쪽 페이지 짝이 아닌경우
+                || pobi.get(0) < 0 || pobi.get(1) > 400 || crong.get(0) < 0 || crong.get(1) > 400   // 왼쪽 페이지와 오른쪽 페이지가 정해진 범위를 넘는 경우
+                || pobi.get(0) % 2 == 0 || pobi.get(1) % 2 == 1 || crong.get(0) % 2 == 0 || crong.get(1) % 2 == 1) // 왼쪽페이지가 짝수이거나 오른쪽 페이지가 홀수일 경우
+        {
+            return -1;  // 예외발생!!
+        }
+
         return answer;
     }
 }
