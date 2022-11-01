@@ -16,4 +16,16 @@ public class Problem2 {
 
         return String.valueOf(sb);
     }
+
+    private static Stack<String> stringStack(Stack<String> stack, String[] strings) {
+        for (int i = 0; i < strings.length; i++) {
+            if (!stack.isEmpty() && stack.peek().equals(strings[i])) {
+                stack.pop();
+            } else {
+                stack.push(strings[i]);
+            }
+        }
+
+        return stack;
+    }
 }
