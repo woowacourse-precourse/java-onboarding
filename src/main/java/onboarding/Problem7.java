@@ -65,6 +65,32 @@ class UserManager{
         return friendsMap;
     }
 }
+
+/** 사용자 정보 저장 클래스 */
+class User {
+    private String userName;
+
+    /**
+     * 사용자 타임 라인 방문자 리스트
+     */
+    private List<String> visitors;
+
+    /**
+     * 사용자 친구 리스트
+     */
+    private List<String> friends;
+
+    /**
+     * 사용자 추천 친구 리스트
+     */
+    private Map<String, Integer> recommendedFriend = new HashMap<String, Integer>();
+
+    User(String userName, List<String> visitors, List<String> friends) {
+        this.userName = userName;
+        this.visitors = visitors;
+        this.friends = friends;
+    }
+}
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
