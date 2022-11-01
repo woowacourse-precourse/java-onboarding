@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 구현 목록
+1. 사용자와 함께 아는 친구의 수 
+   - Map<String, Set<String>> 구조의 자료형을 만들어서 주어진 입력을 통해 채워넣는다.
+   - 모든 입력이 채워진 후 user의 친구가 아니면서, 함께 아는 친구의 점수를 10점 추가한다.
+2. 사용자의 타임 라인에 방문한 횟수
+   - 입력으로 주어지는 visitors를 탐색하며 user의 친구가 아니면서, 타임라인에 방문한 사람의 점수를 1점 추가한다.

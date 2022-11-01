@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 구현 목록
+1. 입력으로 주어지는 forms를 완전 탐색해 모든 경우의 쌍을 확인한다.
+   - 두 닉네임 쌍을 확인하며 같은 글자가 연속적으로 포함되어 있는지를 확인한다.
+2. 닉네임이 중복되어 있는 경우 해당 유저의 이메일을 Set 자료구조에 포함시킨다.
+3. Set 자료구조를 정렬하고 List 자료구조로 변환한다.k

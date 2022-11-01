@@ -14,3 +14,8 @@
 | --- | --- |
 | 13 | 4 |
 | 33 | 14 |
+
+## 기능 구현 목록
+1. 최소 3부터 주어지는 number까지 모든 수를 탐색하며 답을 구한다.
+   1. **int getClapCount(int number)**: 해당 number에 손뼉을 몇 번 쳐야하는지 return
+   2. **boolean canGetPoint(int digit)**: number의 각 자리수에 3 또는 6 또는 9가 매칭되는지 return

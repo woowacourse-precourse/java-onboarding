@@ -19,3 +19,10 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+## 기능 구현 목록
+1. 주어진 문자열을 문자 하나 단위로 탐색해 청개구리 사전에 등재된 단어로 변환
+2. ASCII 코드를 이용해 문자를 변환
+   1. **int getBaseCharacterASCII(int original)**: 문자가 소문자일때와 대문자일때 각각 base ASCII 코드를 return
+   2. **char getDictionaryCharacter(char original)**: base ASCII 코드를 이용해서 변환된 문자를 return
+      - LAST_CHARACTER_ASCII - (original - base) + base

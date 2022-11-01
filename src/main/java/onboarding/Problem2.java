@@ -1,8 +1,10 @@
 package onboarding;
 
+import onboarding.support.problem2.DecodeUtil;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        DecodeUtil decodeUtil = new DecodeUtil(cryptogram);
+        return decodeUtil.getDecodedString();
     }
 }
