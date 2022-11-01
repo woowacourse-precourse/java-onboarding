@@ -28,18 +28,19 @@ class Money {
     private final int money;
 
     public Money(int money) {
-        validateMoneyRange(money);
+//        validateMoneyRange(money);
         this.money = money;
     }
 
-    private void validateMoneyRange(int money) {
-        if (money < MIN_RANGE) {
-            throw new IllegalStateException(NOT_ALLOWED_UNDER_MIN_RANGE);
-        }
-        if (money > MAX_RANGE) {
-            throw new IllegalStateException(NOT_ALLOWED_OVER_MAX_RANGE);
-        }
-    }
+    //TODO: validation 적용
+//    private void validateMoneyRange(int money) {
+//        if (money < MIN_RANGE) {
+//            throw new IllegalStateException(NOT_ALLOWED_UNDER_MIN_RANGE);
+//        }
+//        if (money > MAX_RANGE) {
+//            throw new IllegalStateException(NOT_ALLOWED_OVER_MAX_RANGE);
+//        }
+//    }
 
     public int changeMoney(Money moneyUnit) {
         return this.money / moneyUnit.money;
@@ -48,8 +49,8 @@ class Money {
     남은 금액도 money validation 충족하는지 확인하기
      */
 
-    public Money remainderMoney(Money moneyUnit) {
-        return new Money(this.money % moneyUnit.money);
+    public int remainderMoney(Money moneyUnit) {
+        return this.money % moneyUnit.money;
     }
 }
 
@@ -79,7 +80,7 @@ class Bill {
 
     }
 
-    public Money remainderMoney(int moneyUnitArrayIndex) {
+    public int remainderMoney(int moneyUnitArrayIndex) {
         return amountMoney.remainderMoney(moneyUnitArray.get(moneyUnitArrayIndex));
 
     }
@@ -87,9 +88,8 @@ class Bill {
     public List<Integer> addMoneyUnitByMoneyAmount() {
         for (int i = 0; i < moneyUnitArray.size(); i++) {
             moneyUnitByMoneyAmount.add(countMoneyUnit(i));
-            if (i != moneyUnitArray.size()-1) {
-                this.amountMoney = remainderMoney(i);
-            }
+            System.out.println(countMoneyUnit(i));
+            this.amountMoney = new Money(remainderMoney(i));
         }
         return moneyUnitByMoneyAmount;
     }
