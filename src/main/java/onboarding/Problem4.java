@@ -4,6 +4,7 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
+
         //65~90, 32:공백
         //97~122
 
