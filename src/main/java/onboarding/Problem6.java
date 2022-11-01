@@ -12,6 +12,7 @@ public class Problem6 {
 
         getRepeatedNicknamesInForms(forms, answer);
         List<String> idList = removeEmailDotCom(new HashSet<>(answer));
+        List<String> emailList = appendEmailDotCom(idList);
 
         return answer;
     }
@@ -59,5 +60,14 @@ public class Problem6 {
         }
         Collections.sort(idList);
         return idList;
+    }
+
+    private static List<String> appendEmailDotCom(List<String> idList) {
+        List<String> emailList = new ArrayList<>();
+        for (String id : idList) {
+            String email = id + "@email.com";
+            emailList.add(email);
+        }
+        return emailList;
     }
 }
