@@ -1,42 +1,38 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Problem4 {
+    public static int DIFFERENCE_OF_UPPER_LOWER = 32;
+    public static int CHANGE_REFERNECE_VALUE = 155;
+
     public static String solution(String word) {
         StringBuilder sb = new StringBuilder();
-        for(int index =0; index<word.length(); index++){
+        for (int index = 0; index < word.length(); index++) {
             sb.append(finalChangeCharacter(word.charAt(index)));
         }
         return sb.toString();
     }
 
-    public static char finalChangeCharacter(char c){
-        if(c>='A' && c<='Z'){
+    public static char finalChangeCharacter(char c) {
+        if (c >= 'A' && c <= 'Z') {
             return changeCharacter(c);
-        }
-        else if(c>='a' && c<='z'){
+        } else if (c >= 'a' && c <= 'z') {
             c = changeUpperCase(c);
             char tmp = changeCharacter(c);
             return changeLowerCase(tmp);
-        }
-        else{
+        } else {
             return c;
         }
     }
 
     public static char changeCharacter(char c) {
-        return (char) (155 - c);
+        return (char) (CHANGE_REFERNECE_VALUE - c);
     }
 
     public static char changeUpperCase(char c) {
-        return (char) (c - 32);
+        return (char) (c - DIFFERENCE_OF_UPPER_LOWER);
     }
 
     public static char changeLowerCase(char c) {
-        return (char) (c + 32);
+        return (char) (c + DIFFERENCE_OF_UPPER_LOWER);
     }
-
-
 }

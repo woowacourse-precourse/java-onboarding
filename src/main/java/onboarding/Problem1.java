@@ -16,7 +16,6 @@ class Problem1 {
         if (isValidInputSet(pobi, crong)) {
             return IS_NOT_VALID;
         }
-
         int pobiMaxScore = getPlayerMaxScore(pobi);
         int crongMaxScore = getPlayerMaxScore(crong);
 
