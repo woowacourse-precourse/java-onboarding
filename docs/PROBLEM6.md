@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능목록
+
+1. forms에 있는 크루들의 이름들을 하나씩 보면서 2글자 단위로 자르기
+2. 이 2글자가 다른 크루들의 이름에 포함되어 있나 확인
+3. 비교 대상이 자기 자신이 아니고 중복이 아니라면 해당 크루의 이메일을 answer List에 add
+4. 정렬 후에 리턴
