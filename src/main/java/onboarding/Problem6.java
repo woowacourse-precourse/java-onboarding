@@ -30,6 +30,10 @@ public class Problem6 {
         return email;
     }
 
+    private static List<String> removeDuplicatedEmail(List<String> answer) {
+        Set<String> set = new HashSet<>(answer);
+        return new ArrayList<>(set);
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         List<String> words;
@@ -45,6 +49,7 @@ public class Problem6 {
                 }
             }
         }
+        answer = removeDuplicatedEmail(answer);
         Collections.sort(answer);
         return answer;
     }
