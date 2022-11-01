@@ -24,5 +24,29 @@ public class Problem7 {
         return userFriends;
     }
 
-
+    private static HashMap<String, List<String>> getAssociations(List<List<String>> friends) {
+        HashMap<String, List<String>> associations = new HashMap<String, List<String>>();
+        for(List users: friends) {
+            if(!associations.containsKey(users.get(0))) {
+                List<String> associationList = new ArrayList<>();
+                associationList.add((String) users.get(1));
+                associations.put((String) users.get(0), associationList);
+            } else {
+                List<String> arr = associations.get(users.get(0));
+                arr.add((String) users.get(1));
+                associations.put((String) users.get(0), arr);
+            }
+            if(!associations.containsKey(users.get(1))) {
+                List<String> associationList = new ArrayList<>();
+                associationList.add((String) users.get(0));
+                associations.put((String) users.get(1), associationList);
+            } else {
+                List<String> arr = associations.get(users.get(1));
+                arr.add((String) users.get(0));
+                associations.put((String) users.get(1), arr);
+            }
+        }
+        System.out.println(associations);
+        return associations;
+    }
 }
