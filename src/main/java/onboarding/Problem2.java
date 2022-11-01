@@ -1,13 +1,14 @@
 package onboarding;
 
 import java.util.List;
-import java.util.Collections;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import java.util.LinkedList;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        List<String> characters = new LinkedList<>();
-        Collections.addAll(characters, cryptogram.split(""));
+        List<String> characters = Stream.of(cryptogram.split("")).parallel()
+                .collect(Collectors.toCollection(LinkedList::new));
         while (true) {
             boolean removed = false;
             for (int i = 0; i < characters.size(); ) {
