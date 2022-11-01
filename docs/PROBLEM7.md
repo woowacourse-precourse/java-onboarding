@@ -24,3 +24,29 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 🚧 기능 구현 목록
+### user 검증
+- [x] 문자열 길이가 1이상 30이하인지 확인
+- [x] 알파벳 소문자로 구성되었는지 확인
+
+### friends 검증
+- [x] friends 가 1명 이상 10,000 명 이하인지 확인
+- [x] friends 의 각 원소의 길이가 2 인지 확인
+
+### visitors 검증
+- [x] visitors 가 1명 이상 10,000명 이하인지 확인
+
+### 진짜 친구 목록
+- [x] user 와 친구 맺은 타 user를 목록에 추가
+
+### 예비 친구 목록
+- [x] 예비 친구 목록 추가, (추천 점수 기록 가능하도록 하기)
+- [x] 전체 예비 친구 목록 중 상위 5개 출력
+- [x] 같은 점수일 경우 알파벳 순으로 정렬 
+
+### 타임라인 방문 카운트
+- [x] 진짜 친구 목록에 없는 경우 1점 추가, 중복 허용
+
+### 친구의 친구 카운트
+- [x] 진짜 친구 목록에 없는 경우 10점 추가
