@@ -36,8 +36,15 @@ class Problem1 {
         return result;
     }
 
+    int checkMatch(int pobi, int crong){
+        if (pobi > crong) return 1;
+        if (pobi == crong) return 0;
+        return -1;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        Problem1 agent = new Problem1();
+        int answer = agent.checkMatch(agent.returnMax(pobi), agent.returnMax(crong));
         return answer;
     }
 }
