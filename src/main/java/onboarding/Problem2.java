@@ -6,6 +6,15 @@ public class Problem2 {
         return answer;
     }
 
+    // 2. 현재 문자열의 중복 문자 한번 제거하기
+    public static String removeFirstDuplicates(String s) {
+        int begin =getDuplicateIndexOfBegin(s);
+        int end =getDuplicateIndexOfEnd(s, begin);
+        String resultString = s.substring(0, begin) + s.substring(end);
+
+        return resultString;
+    }
+
     // 3. 중복일때 첫 인덱스 구하기
     public static int getDuplicateIndexOfBegin(String s) {
         int begin = 0;
