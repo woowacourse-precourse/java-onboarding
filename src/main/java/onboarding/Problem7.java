@@ -10,6 +10,15 @@ public class Problem7 {
         HashMap<String, Integer> scoreMap = new HashMap<>();
         recommendFriend(user, friendMap, visitors, scoreMap);
 
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(scoreMap.entrySet());
+        Collections.sort(entries, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> t1, Map.Entry<String, Integer> t2) {
+                if (t2.getValue() == t1.getValue()) {
+                    return t1.getKey().compareTo(t2.getKey());
+                } else return t2.getValue().compareTo(t1.getValue());
+            }
+        });
+
         return answer;
     }
 
