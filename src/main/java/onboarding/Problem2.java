@@ -27,6 +27,15 @@ public class Problem2 {
             throw new IllegalArgumentException("cryptogram은 소문자로만 이루어져 있어야합니다.");
     }
 
+    private static String getDecodingCryptogram(String cryptogram) {
+        while (true) {
+            if (isLengthZero(cryptogram) || isDecodingCryptogram(cryptogram)) break;
+
+            cryptogram = deleteOverlap(cryptogram);
+        }
+        return cryptogram;
+    }
+
     private static boolean isLengthZero(String cryptogram) {
         return cryptogram.length() == 0 ? true : false;
     }
