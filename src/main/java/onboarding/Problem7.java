@@ -60,7 +60,7 @@ public class Problem7 {
                 PossibleFriend.replace(visitors.get(i), value + 1);
             }
             else if (!CurrentFriend.contains(visitors.get(i))){
-                PossibleFriend.put(visitors.get(i), 0);
+                PossibleFriend.put(visitors.get(i), 1);
             }
         }
     }
@@ -77,7 +77,8 @@ public class Problem7 {
             Map.Entry<String, Integer> entry = iter.next();
             sortedMap.put(entry.getKey(), entry.getValue());
         }
-
+        while (sortedMap.containsValue(0))
+            sortedMap.values().remove(0);
         List<String> ret = new ArrayList<>();
         sortedMap.forEach((k,v)->ret.add(k));
         return ret;
