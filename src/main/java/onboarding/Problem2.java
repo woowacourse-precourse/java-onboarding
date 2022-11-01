@@ -9,6 +9,18 @@ public class Problem2 {
         return answer;
     }
 
+    private static String createConsecutiveDuplicateRegex(String cryptogram) {
+        HashSet<Alphabet> useAlphabets = getUseAlphabets(cryptogram);
+
+        StringBuilder consecutiveDuplicateRegex = new StringBuilder();
+        useAlphabets.forEach((alphabet) ->
+            consecutiveDuplicateRegex
+                .append(alphabet.getConsecutiveDuplicateRegex())
+                .append("|")
+        );
+        return consecutiveDuplicateRegex.toString();
+    }
+
     private static HashSet<Alphabet> getUseAlphabets(String cryptogram) {
         HashSet<Alphabet> useAlphabets = new HashSet<>();
         for (int i = 0; i < cryptogram.length(); i++) {
