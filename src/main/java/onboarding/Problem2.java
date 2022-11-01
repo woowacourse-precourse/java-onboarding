@@ -34,7 +34,7 @@ public class Problem2 {
         if (answer.length() < 1 || answer.length() > 1000) {
             return true;
         }
-        if (!answer.equals(answer.toLowerCase())) {
+        if (!answer.equals(answer.toLowerCase()) || !answer.matches("[a-z]+")) {
             return true;
         }
         return false;
