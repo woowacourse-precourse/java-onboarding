@@ -32,6 +32,14 @@ public class User {
         }
     }
 
+    public Map<String, Integer> getVisitStatistics(List<String> visitors) {
+        Map<String, Integer> visitStatistics = new HashMap<>();
+        for (String visit : visitors) {
+            visitStatistics.put(visit, Collections.frequency(visitors, visit));
+        }
+        return visitStatistics;
+    }
+
     public String getName() {
         return name;
     }
