@@ -24,3 +24,52 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 📗 기능 목록
+
+* 추천 친구 목록 정렬 기능
+* 모든 유저들의 친구 관계 저장 기능
+* 타임 라인을 방문한 유저의 추천 포인트 증가 기능
+* 함께 아는 친구가 있는 유저의 추천 포인트 증가 기능
+* 최대 5명의 추천 친구 리스트 반환 기능
+
+
+
+## 📑 클래스별 상세 기능 목록
+
+### 📌 class `RecommendedFriendComparator`
+
+추천 친구 목록을 정렬하기 위한 클래스
+
+* **`int compare (String leftUser, String rightUser)`**
+
+  * 추천 친구 목록 정렬 수행
+
+
+### 📌 class `UserManager`
+
+모든 유저들의 친구 관계를 관리하는 클래스
+
+* **`void addFriend(String sourceUser, String destUser)`**
+
+  * `friendsMap`에 유저의 친구 관계를 저장. `sourceUser`의 친구 리스트에 `destUser`를 추가.
+
+* **`Map<String, List<String>> getFriendsMap(List<List<String>> friends)`**
+
+  * 모든 유저들의 친구 관계를 저장하는 `friendMap` 반환
+
+
+### 📌 class `User`
+
+사용자의 이름, 타임 라인 방문자 리스트, 친구 리스트, 추천 친구 리스트를 클래스
+
+* **`void setRecommendPoint(List<String> candidates, int extraPoint)`**
+  * 추천 친구 후보인 candidate가 user 본인이 아니고, 이미 등록된 친구가 아닐경우에만 `extraPoint`만큼 추천 점수를 올림
+* **`void addVisitPoint`**
+  * 타임라인을 방문한 유저의 추천 포인트 추가
+* **`void addFriendPoint`**
+  * 함께 아는 친구가 있는 유저의 추천 포인트 추가
+* **`List<String> getSortedKeySet()`**
+  * 정렬된 추천 친구 리스트의 key 리스트 반환
+* **`List<String> getTopFiveRecommendedFriend`**
+  * 최대 5명의 추천 친구 리스트 반환
