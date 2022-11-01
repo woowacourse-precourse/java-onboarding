@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
@@ -42,4 +44,14 @@ class Problem1 {
         }
         return product;
     }
+
+    private static int getMaxPoint(List<Integer> numbers) {
+        int maxPoint = Integer.MIN_VALUE;
+        for (int number: numbers) {
+            List<Integer> points = Arrays.asList(maxPoint, getSumOfDigits(number), getProductOfDigits(number));
+            maxPoint = Collections.max(points);
+        }
+        return maxPoint;
+    }
+    
 }
