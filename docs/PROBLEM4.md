@@ -19,3 +19,7 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 목록
+
+- 각 문자에 대해 규칙대로 변환
