@@ -26,8 +26,11 @@ public class Problem7 {
             scoreResult.put(person, makeScores(person, commonFriendCount, visitCount));
         }
 
-        List<Map.Entry<String, Integer>> finalResult = new LinkedList<>(scoreResult.entrySet());
-        finalResult.sort(Map.Entry.comparingByValue());
+        // 추천 점수가 0점인 경우 추천하지 않으며
+        scoreResult = removeZeros(scoreResult);
+
+        scoreResult = sortResult(scoreResult);
+
         System.out.println("scoreResult is");
         System.out.println(scoreResult);
 
@@ -110,9 +113,32 @@ public class Problem7 {
         return scoreResult;
     }
 
+    /**
+     * 추천 점수가 0점인 경우 추천하지 않으며
+     * @param scoreResult
+     * @return scoreResult
+     * */
     private static HashMap<String, Integer> removeZeros(HashMap<String, Integer> scoreResult) {
         scoreResult.values().remove(0);
         return scoreResult;
     }
 
+    /**
+     * 점수가 가장 높은 순으로 정렬하며,
+     * 추천 점수가 같은 경우는 이름순으로 정렬한다.
+     * @param scoreResult
+     * @return finalResult
+     */
+    private static List<Map.Entry<String, Integer>> sortResult(HashMap<String, Integer> scoreResult) {
+        List<Map.Entry<String, Integer>> finalResult = new LinkedList<>(scoreResult.entrySet());
+        Collections.sort(finalResult, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                int comparison = (o1.getValue() - o2.getValue());
+                return comparison == 0 ? o1.getKey().compareTo(o2.getKey()) : comparison;
+            }
+        });
+
+        return finalResult;
+    }
 }
