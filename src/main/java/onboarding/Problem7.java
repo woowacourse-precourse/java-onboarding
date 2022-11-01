@@ -30,18 +30,17 @@ public class Problem7 {
                     score += 10;
                 }
             }
-            if (score!=0) scoreMap.put(target, score);
+            if (score!=0 && !userFriends.contains(target)) scoreMap.put(target, score);
         }
 
         for (String visitor : visitors) {
-            scoreMap.put(visitor, scoreMap.containsKey(visitor) ? scoreMap.get(visitor) + 1 : 1);
+            if(!userFriends.contains(visitor)) {
+                scoreMap.put(visitor, scoreMap.containsKey(visitor) ? scoreMap.get(visitor) + 1 : 1);
+            }
         }
-
-        System.out.println(scoreMap);
-        scoreMap.remove(user);
 
         List<String> names = new ArrayList<>(scoreMap.keySet());
         names.sort((s1, s2) -> scoreMap.get(s2).compareTo(scoreMap.get(s1)));
-        return names.subList(0, 4);
+        return names.size() > 5 ? names.subList(0, 4) : names;
     }
 }
