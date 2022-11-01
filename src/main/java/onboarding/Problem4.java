@@ -25,7 +25,8 @@ public class Problem4 {
 
 
     public static String solution(String word) {
-        String answer = "";
+        Problem4 agent4 = new Problem4();
+        String answer = agent4.getReversedString(word);
         return answer;
     }
 }
