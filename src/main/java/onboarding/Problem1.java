@@ -14,8 +14,10 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = 0;
-        int pobiLeft = pobi.get(0); int pobiRight = pobi.get(1);
-        int crongLeft = crong.get(0); int crongRight = crong.get(1);
+        int pobiLeft = pobi.get(0);
+        int pobiRight = pobi.get(1);
+        int crongLeft = crong.get(0);
+        int crongRight = crong.get(1);
 
         if(isException(pobiLeft, pobiRight) || isException(crongLeft, crongRight)) {
             return EXCEPTION_ANSWER;
@@ -23,13 +25,13 @@ class Problem1 {
 
         int pobiScore = getScore(pobiLeft, pobiRight);
         int crongScore = getScore(crongLeft, crongRight);
-        answer = getAnswer(pobiScore, crongScore);
 
+        answer = getAnswer(pobiScore, crongScore);
         return answer;
     }
 
     public static boolean isException(int leftPage, int rightPage) {
-        if(leftPage < FIRST_PAGE || rightPage > LAST_PAGE)
+        if(leftPage <= FIRST_PAGE || rightPage >= LAST_PAGE)
             return true;
         if(leftPage >= rightPage)
             return true;
