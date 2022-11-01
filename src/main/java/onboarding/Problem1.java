@@ -61,6 +61,43 @@ class Problem1 {
         crongpagelistlist.add(convertPage(crong.get(0)));
         crongpagelistlist.add(convertPage(crong.get(1)));
 
+        int pobifirstpage;
+        int pobifirstpageplus;
+        int pobifirstpagemultiply;
+
+        int pobisecondpage;
+        int pobisecondpageplus;
+        int pobisecondpagemultiply;
+
+        int realpobipage;
+
+        pobifirstpageplus = plusPage(pobipagelistlist.get(0));
+        pobifirstpagemultiply = multiplyPage(pobipagelistlist.get(0));
+        pobifirstpage = comparePlusAndMulti(pobifirstpageplus, pobifirstpagemultiply);
+
+        pobisecondpageplus = plusPage(pobipagelistlist.get(1));
+        pobisecondpagemultiply = multiplyPage(pobipagelistlist.get(1));
+        pobisecondpage = comparePlusAndMulti(pobisecondpageplus, pobisecondpagemultiply);
+
+        realpobipage = compareFirstAndSecond(pobifirstpage, pobisecondpage);
+
+        int crongfirstpage;
+        int crongfirstpageplus;
+        int crongfirstpagemultiply;
+
+        int crongsecondpage;
+        int crongsecondpageplus;
+        int crongsecondpagemultiply;
+
+        int realcrongpage;
+        crongfirstpageplus = plusPage(crongpagelistlist.get(0));
+        crongfirstpagemultiply = multiplyPage(crongpagelistlist.get(0));
+        crongfirstpage = comparePlusAndMulti(crongfirstpageplus, crongfirstpagemultiply);
+
+        crongsecondpageplus = plusPage(crongpagelistlist.get(1));
+        crongsecondpagemultiply = multiplyPage(crongpagelistlist.get(1));
+        crongsecondpage = comparePlusAndMulti(crongsecondpageplus, crongsecondpagemultiply);
+
         return answer;
 
     }
