@@ -11,7 +11,6 @@ import java.util.List;
  */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
 
         if(isException(pobi.get(0), pobi.get(1)) || isException(crong.get(0), crong.get(1))){
             int exception = -1;
@@ -24,7 +23,21 @@ class Problem1 {
         char[] leftPageNumberForCrong = String.valueOf(crong.get(0)).toCharArray();
         char[] rightPageNumberForCrong = String.valueOf(crong.get(1)).toCharArray();
 
-        return answer;
+        int maxPageNumberForPobi = maxPageNumber(leftPageNumberForPobi, rightPageNumberForPobi);
+        int maxPageNumberForCrong = maxPageNumber(leftPageNumberForCrong, rightPageNumberForCrong);
+
+        if(maxPageNumberForPobi > maxPageNumberForCrong){
+            int pobiWin = 1;
+            return pobiWin;
+        }
+
+        if(maxPageNumberForPobi < maxPageNumberForCrong){
+            int crongWin = 2;
+            return crongWin;
+        }
+
+        int draw = 0;
+        return draw;
     }
 
     public static boolean isException(int leftPageNumber, int rightPageNumber){
