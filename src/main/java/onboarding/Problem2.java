@@ -1,8 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
         /*
@@ -11,7 +8,7 @@ public class Problem2 {
         2. 연속하여 중복하는 문자 없을 때까지 반복
         */
 
-        String answer = "answer";
+        String answer;
         int count = 1;
         while (count != 0) {
             cryptogram = chackSameChar(cryptogram);
