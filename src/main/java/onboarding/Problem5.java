@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -13,6 +14,16 @@ public class Problem5 {
         Collectors.toList());
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
+        return answer;
+    }
+
+    private static List<Integer> putMonetaryUnitNumber(int money, List<Integer> monetaryUnits) {
+        List<Integer> answer = new ArrayList<>();
+        for (int monetaryUnit : monetaryUnits){
+            int number = getShare(money,monetaryUnit);
+            answer.add(number);
+            money = getRemainder(money,monetaryUnit);
+        }
         return answer;
     }
     private static int getShare(int numerator, int denominator) {
