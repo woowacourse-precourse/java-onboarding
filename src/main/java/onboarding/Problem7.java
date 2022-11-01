@@ -1,11 +1,43 @@
 package onboarding;
 
+import org.assertj.core.error.uri.ShouldHaveHost;
+
 import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        HashMap<String,Integer> recommandList = new HashMap<>();
+        List<String> userFriends = getFriends(user, friends);
+        List<String> friendsOfFriendList = getFriendsofFriends(userFriends,friends);
+        for(String fOfF : friendsOfFriendList){
+            if(isContained(fOfF,recommandList)){
+                increaseScore(fOfF,10,recommandList);
+                continue;
+            }
+            addRecommandList(fOfF,10,recommandList);
+        }
+
+        for(String visit : visitors){
+            if(isContained(visit,recommandList)){
+                increaseScore(visit,1,recommandList);
+                continue;
+            }
+            addRecommandList(visit,1,recommandList);
+        }
+
+        HashMap<String,Integer> sortedByScoreList = sortByScore(recommandList);
+        HashMap<String,Integer> sortedByUserIdList = sortByUserId(sortedByScoreList);
+        List<String> userIdList = new ArrayList<>(sortedByUserIdList.keySet());
+        List<String> result = new ArrayList<>();
+
+        if(sortedByUserIdList.size()>5){
+            for(int i=0;i<5;i++){
+                result.add(userIdList.get(i));
+            }
+            return result;
+        }
+
+        return userIdList;
     }
 
     //입력된 userId와 친구인 사람 list 반환하는 함수
@@ -22,6 +54,17 @@ public class Problem7 {
         }
 
         return userFriend;
+    }
+
+    //친구의 친구 리스트 반환하는 함수
+    public static List<String> getFriendsofFriends(List<String> userFriends,List<List<String>> friends ){
+        List<String> friendsOfFriends = new ArrayList<>();
+        for(String friend : userFriends){
+            List<String> friendOfFriend = getFriends(friend,friends);
+            friendsOfFriends.addAll(friendOfFriend);
+        }
+
+        return friendsOfFriends;
     }
 
     //추천리스트에 등록된 사람에 포함되었는지 확인하는 함수
@@ -85,4 +128,6 @@ public class Problem7 {
 
         return sortedByUserIdList;
     }
+
+
 }
