@@ -6,9 +6,10 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, Integer> scorePare = friendScorePare(user, friends);
-        Map<String, Integer> scorePare1 = visitorScorePare(scorePare, visitors);
-        List<String> answer = recommender(user, friends, visitors);
+//        Map<String, Integer> scorePare = friendScorePare(user, friends);
+//        Map<String, Integer> scorePare1 = visitorScorePare(scorePare, visitors);
+//        List<String> answer = recommender(user, friends, visitors);
+        List<String> answer = Collections.emptyList();
         return answer;
     }
 

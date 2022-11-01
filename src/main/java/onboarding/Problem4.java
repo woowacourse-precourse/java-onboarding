@@ -8,7 +8,8 @@ import java.util.Set;
 public class Problem4 {
     public static String solution(String word) {
 
-        String answer = converter(word);
+//        String answer = converter(word);
+        String answer = "";
         return answer;
     }
 

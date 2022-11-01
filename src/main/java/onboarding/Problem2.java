@@ -2,7 +2,8 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = looper(cryptogram);
+//        String answer = looper(cryptogram);
+        String answer = "answer";
         return answer;
     }
     public static String looper(String value) {
