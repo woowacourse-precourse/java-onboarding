@@ -7,8 +7,10 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashSet;
+import java.util.Comparator;
 
-/**가
+/**
  * isCompare : forms에 속한 크루들의 닉네임과 이메일을 두 개씩 짝지어 비교하기 위한 메서드
  * isContinuous : 두 개씩 짝지은 크루원들의 닉네임 중 같은 글자가 연속적으로 포함되는 지 확인하는 메서드
  **/
@@ -18,6 +20,16 @@ public class Problem6 {
 
         List<String> answer;
         answer = isCompare(forms);
+
+        /* set을 이용해 중복을 제거 */
+        HashSet<String> hashSet = new HashSet<>();
+        for(String mail : answer){
+            hashSet.add(mail);
+        }
+
+        /* naturalOrder()를 이용해 오름차순 정렬 */
+        answer = new ArrayList<>(hashSet);
+        answer.sort(Comparator.naturalOrder());
 
         return answer;
     }
