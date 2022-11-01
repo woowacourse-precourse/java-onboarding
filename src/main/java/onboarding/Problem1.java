@@ -6,30 +6,30 @@ class Problem1 {
     static int pobiMax;
     static int crongMax;
     static int answer;
-    static List<Integer> pobiNumbers = new ArrayList<>();
-    static List<Integer> crongNumbers = new ArrayList<>();
+    static List<Integer> pobiScore = new ArrayList<>();
+    static List<Integer> crongScore = new ArrayList<>();
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        max(pobi, crong);
+        maxScore(pobi, crong);
         answer = maxCompare(pobi, crong);
-        exception(pobi, crong);
+        pageException(pobi, crong);
         return answer;
     }
 
-    public static void max(List<Integer> pobi, List<Integer> crong) {
-        pobiPlus(pobi);
-        crongPlus(crong);
+    public static void maxScore(List<Integer> pobi, List<Integer> crong) {
+        pobiAddition(pobi);
         pobiMultiplication(pobi);
+        crongAddition(crong);
         crongMultiplication(crong);
 
-        pobiNumbers.sort(Comparator.reverseOrder());
-        crongNumbers.sort(Comparator.reverseOrder());
+        pobiScore.sort(Comparator.reverseOrder());
+        crongScore.sort(Comparator.reverseOrder());
 
-        pobiMax = pobiNumbers.get(0);
-        crongMax = crongNumbers.get(0);
+        pobiMax = pobiScore.get(0);
+        crongMax = crongScore.get(0);
 
-        pobiNumbers.clear();
-        crongNumbers.clear();
+        pobiScore.clear();
+        crongScore.clear();
     }
 
     public static int maxCompare(List<Integer> pobi, List<Integer> crong) {
@@ -45,67 +45,67 @@ class Problem1 {
         return -1;
     }
 
-    public static void pobiPlus(List<Integer> pobi) {
+    public static void pobiAddition(List<Integer> pobi) {
         for (int pobiPageNumber : pobi) {
-            int sum = 0;
+            int result = 0;
             for (int i = 0; i < pobiPageNumber; i++) {
-                sum += pobiPageNumber % 10;
+                result += pobiPageNumber % 10;
                 pobiPageNumber /= 10;
                 if (pobiPageNumber < 10) {
-                    sum += pobiPageNumber;
+                    result += pobiPageNumber;
                     break;
                 }
             }
-            pobiNumbers.add(sum);
+            pobiScore.add(result);
         }
     }
 
     public static void pobiMultiplication(List<Integer> pobi) {
         for (int pobiPageNumber : pobi) {
-            int sum = 1;
+            int result = 1;
             for (int i = 0; i < pobiPageNumber; i++) {
-                sum *= pobiPageNumber % 10;
+                result *= pobiPageNumber % 10;
                 pobiPageNumber /= 10;
                 if (pobiPageNumber < 10) {
-                    sum *= pobiPageNumber;
+                    result *= pobiPageNumber;
                     break;
                 }
             }
-            pobiNumbers.add(sum);
+            pobiScore.add(result);
         }
     }
 
-    public static void crongPlus(List<Integer> crong) {
+    public static void crongAddition(List<Integer> crong) {
         for (int crongPageNumber : crong) {
-            int sum = 0;
+            int result = 0;
             for (int i = 0; i < crongPageNumber; i++) {
-                sum += crongPageNumber % 10;
+                result += crongPageNumber % 10;
                 crongPageNumber /= 10;
                 if (crongPageNumber < 10) {
-                    sum += crongPageNumber;
+                    result += crongPageNumber;
                     break;
                 }
             }
-            crongNumbers.add(sum);
+            crongScore.add(result);
         }
     }
 
     public static void crongMultiplication(List<Integer> crong) {
         for (int crongPageNumber : crong) {
-            int sum = 1;
+            int result = 1;
             for (int i = 0; i < crongPageNumber; i++) {
-                sum *= crongPageNumber % 10;
+                result *= crongPageNumber % 10;
                 crongPageNumber /= 10;
                 if (crongPageNumber < 10) {
-                    sum *= crongPageNumber;
+                    result *= crongPageNumber;
                     break;
                 }
             }
-            crongNumbers.add(sum);
+            crongScore.add(result);
         }
     }
 
-    public static void exception(List<Integer> pobi, List<Integer> crong) {
+    public static void pageException(List<Integer> pobi, List<Integer> crong) {
         int pobiRightPage = pobi.get(1);
         int pobiLeftPage = pobi.get(0);
         if (pobiRightPage - pobiLeftPage != 1) {
