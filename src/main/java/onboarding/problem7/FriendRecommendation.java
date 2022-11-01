@@ -1,15 +1,14 @@
 package onboarding.problem7;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FriendRecommendation {
     private String user;
     private List<List<String>> friends;
     private List<String> visitors;
     private Map<String, List<String>> friendMap = new HashMap<>();
+    private List<String> usersFriendList;
+    private Map<String, Integer> friendScore = new HashMap<>();
 
     public FriendRecommendation(String user, List<List<String>> friends, List<String> visitors){
         this.user = user;
@@ -36,5 +35,22 @@ public class FriendRecommendation {
                 friendMap.put(friend2, new ArrayList<>(List.of(friend1)));
             }
         }
+    }
+
+    private void countBothKnowFriends(){
+        usersFriendList = friendMap.getOrDefault(user, Collections.emptyList());
+        if (!usersFriendList.isEmpty()){
+            for(String keyUser : friendMap.keySet()){
+                if (keyUser.equals(user))
+                    continue;
+                if (usersFriendList.contains(keyUser))
+                    continue;
+                for (String valFriend : friendMap.get(keyUser)){
+                    if (usersFriendList.contains(valFriend))
+                        friendScore.put(keyUser, friendScore.containsKey(keyUser) ? friendScore.get(keyUser) + 1 : 1);
+                }
+            }
+        }
+        friendScore.replaceAll((u, v) -> friendScore.get(u) * 10);
     }
 }
