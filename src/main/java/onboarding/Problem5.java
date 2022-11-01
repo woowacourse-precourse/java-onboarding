@@ -1,13 +1,22 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        ArrayList<Integer> billAndCoinList = new ArrayList<Integer> ();
         return answer;
+    }
+
+    private static void checkQuotient(int quotient) {
+        if (quetient >= 1) {
+            billAndCoinList.add(quotient);
+        } else if (quotient < 1) {
+            billAndCoinList.add(quotient);
+        }
     }
 
     private static Map<Integer, Integer> billAndCoin = Map.ofEntries(
