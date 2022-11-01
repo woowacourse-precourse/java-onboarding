@@ -4,7 +4,10 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        // user의 친구가 들어있는 변수
         List<String> answer = new ArrayList<>();
+
+        // 방목자와 이름과 점수를 저장하는 변수
         Map<String,Integer> score = new HashMap<>();
 
         for(int i = 0; i<friends.size(); i++){
@@ -38,7 +41,7 @@ public class Problem7 {
         }
 
         for(int i = 0; i<visitors.size(); i++){
-            if(!answer.contains(visitors.get(i))){
+            if(!answer.contains(visitors.get(i)) && !visitors.get(i).equals(user)){
                 if(score.containsKey(visitors.get(i))){
                     score.put(visitors.get(i), score.get(visitors.get(i))+1);
                 }else{
@@ -81,7 +84,7 @@ public class Problem7 {
                 List.of("shakevan", "jun"),
                 List.of("shakevan", "mrko")
         );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan","mrko");
 
         System.out.println(solution(user,friends,visitors));
     }
