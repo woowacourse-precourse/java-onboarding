@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Problem7 {
     private static final Map<String, Integer> numbering = new HashMap<>();
@@ -11,6 +10,8 @@ public class Problem7 {
     private static final Set<String> friends = new HashSet<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        clear();
+
         doNumbering(user, friends);
 
         initAdjList(friends);
@@ -37,6 +38,14 @@ public class Problem7 {
         return answer;
     }
 
+    private static void clear() {
+        numbering.clear();
+        numberToNickname.clear();
+        adjList.clear();
+        scores.clear();
+        friends.clear();
+    }
+
     private static void calVisitingScore(List<String> visitors) {
         for (var visitor : visitors) {
             if (friends.contains(visitor)) {
@@ -51,29 +60,37 @@ public class Problem7 {
     }
 
     private static void calFriendsScore() {
-        ArrayList<Boolean> visited = new ArrayList<>();
+        Queue<Integer> q = new ArrayDeque<>();
+        int numVertex = numbering.size();
+        boolean[] visited = new boolean[numVertex];
+        int[] dist = new int[numVertex];
+
         for (int i = 0; i < numbering.size(); i++) {
-            visited.add(false);
-        }
-        visited.set(0, true);
-        dfs(0, 2, visited);
-    }
-
-    private static void dfs(int vertex, int cntLeft, List<Boolean> visited) {
-        if (cntLeft == 0) {
-            scores.put(numberToNickname.get(vertex), 10);
-            return;
-        } else if (cntLeft == 1) {
-            friends.add(numberToNickname.get(vertex));
+            visited[i] = false;
+            dist[i] = 0;
         }
 
-        for (int adjVertex : adjList.get(vertex)) {
-            if (visited.get(adjVertex)) {
+        visited[0] = true;
+        dist[0] = 0;
+        q.add(0);
+        while (!q.isEmpty()) {
+            int curVertex = q.poll();
+
+            if (dist[curVertex] == 2) {
+                scores.put(numberToNickname.get(curVertex), 10);
                 continue;
             }
-
-            visited.set(adjVertex, true);
-            dfs(adjVertex, cntLeft - 1, visited);
+            if (dist[curVertex] == 1) {
+                friends.add(numberToNickname.get(curVertex));
+            }
+            for (int adjVertex : adjList.get(curVertex)) {
+                if (visited[adjVertex]) {
+                    continue;
+                }
+                visited[adjVertex] = true;
+                dist[adjVertex] = dist[curVertex] + 1;
+                q.add(adjVertex);
+            }
         }
     }
 
