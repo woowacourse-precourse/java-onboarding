@@ -24,3 +24,8 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+1. 주어진 정보로 친구 목록 작성
+2. 'user의 친구'의 친구들에게 10점씩 부여 (단, user 본인인 경우, 이미 친구인 경우 제외) 
+3. 방문자에게 1점씩 부여 (단, 이미 친구인 경우 제외)
+4. 점수가 같은 경우 이름을 정렬하고, 큰 점수부터 최대 5명 구하기
