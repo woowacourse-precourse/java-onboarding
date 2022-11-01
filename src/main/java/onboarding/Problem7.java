@@ -24,11 +24,9 @@ public class Problem7 {
         List<String> check = new ArrayList<>();//크루가 team에 들어있는지 확인하기 위한 list
         team.put(user, new Crew(user)); //team의 0번은 user이다.
 
-
         makeFreinds(friends, team, check);
 
         friendTogetherKnow(user, team);
-
 
         visitTimeline(visitors, team, check);
 
@@ -45,10 +43,9 @@ public class Problem7 {
                 answer.add(crew.name);
             }
         }
-
         return answer;
     }
-    
+
     // 타임라인에 방문한 경우, 1점을 부여하는 기능
     private static void visitTimeline(List<String> visitors, Map<String, Crew> team, List<String> check) {
         for (String visitor : visitors) {
@@ -76,13 +73,12 @@ public class Problem7 {
             for (String member : friend) {
                 addCrew(team, check, member);
             }
-
             team.get(friend.get(0)).getFriends().add(friend.get(1));
             team.get(friend.get(1)).getFriends().add(friend.get(0));
-
         }
     }
 
+    //크루가 team에 없을 시 객체 생성해서 team에 추가
     private static void addCrew(Map<String, Crew> team, List<String> check, String member) {
         if (!check.contains(member)) {
             check.add(member);
