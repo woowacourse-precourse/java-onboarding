@@ -1,19 +1,17 @@
 package onboarding;
 
 import java.util.*;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
 import static java.util.Map.*;
 import static java.util.stream.Collectors.toMap;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         Map<String, List<String>> relationMap = createRelationMap(friends);
         Map<String, Integer> pointMap = createPointMap(user, relationMap, visitors);
 
-        System.out.println(relationMap);
-        System.out.println(pointMap);
-        System.out.println(pointMap);
         return answer;
     }
 
@@ -34,14 +32,22 @@ public class Problem7 {
         List<String> userFriendList = relationMap.get(user);
         Map<String, Integer> pointMap = relationMap.entrySet()
                                                    .stream()
-                                                   .filter(entry -> !entry.getKey()
-                                                                          .equals(user) && !userFriendList.contains(entry.getKey()))
-                                                   .collect(toMap(Entry::getKey, entry -> {
-                                                       List<String> relationList = entry.getValue();
-                                                       return countMatchesFriend(userFriendList, relationList) * 10;
-                                                   }, Integer::sum));
+                                                   .filter(checkUserORUserFriends(user, userFriendList))
+                                                   .collect(toMap(Entry::getKey, calcPoint(userFriendList)));
         updateVisitorsPoint(userFriendList,pointMap, visitors);
         return pointMap;
+    }
+
+    private static Function<Entry<String, List<String>>, Integer> calcPoint(List<String> userFriendList) {
+        return entry -> {
+            List<String> relationList = entry.getValue();
+            return countMatchesFriend(userFriendList, relationList) * 10;
+        };
+    }
+
+    private static Predicate<Entry<String, List<String>>> checkUserORUserFriends(String user, List<String> userFriendList) {
+        return entry -> !entry.getKey()
+                              .equals(user) && !userFriendList.contains(entry.getKey());
     }
 
     private static void updateVisitorsPoint(List<String> userFriendList, Map<String, Integer> pointMap, List<String> visitors) {
