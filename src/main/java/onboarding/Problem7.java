@@ -66,13 +66,12 @@ public class Problem7 {
         return map;
     }
 
-    public static Map<String, Integer> plusTenPoints(String id, Map<String, Integer> map) {
+    public static void plusTenPoints(String id, Map<String, Integer> map) {
         if (map.containsKey(id)) {
             map.put(id, map.get(id) + 10);
         } else {
             map.put(id, 10);
         }
-        return map;
     }
 
     public static List<String> sortByValues(Map<String, Integer> map) {
