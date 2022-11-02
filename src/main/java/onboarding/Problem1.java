@@ -44,6 +44,7 @@ class Problem1 {
     }
 
     private static boolean check(List<Integer> name) {
+        if(name.size() != 2) return false;
         if (name.get(1) - name.get(0) != 1) return false;
         if(name.get(0) % 2 != 1 || name.get(1) % 2 != 0) return false;
         if(name.get(0) < 2 || name.get(1) > 399) return false;
