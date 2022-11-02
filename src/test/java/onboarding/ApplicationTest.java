@@ -57,6 +57,13 @@ class ApplicationTest {
             String result = "a";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void case4() {
+            String cryptogram = "";
+            String result = "cryptogram은 길이가 1 이상 1000 이하여야 한다.";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
     }
 
     @Nested

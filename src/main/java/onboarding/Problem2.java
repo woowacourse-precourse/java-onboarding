@@ -1,7 +1,8 @@
 package onboarding;
 
 public class Problem2 {
-    public static String solution(String cryptogram) {
+    public static String solution(String cryptogram){
+        if(!checkLen(cryptogram)) return "cryptogram은 길이가 1 이상 1000 이하여야 한다.";
 
         while (true) {
             int[] duplicateIndex = checkDuplicate(cryptogram);
@@ -10,6 +11,14 @@ public class Problem2 {
 
         }
         return cryptogram;
+    }
+
+
+    private static boolean checkLen(String cryptogram) {
+        if(cryptogram.length() < 1) return false;
+        if(cryptogram.length() > 1000) return false;
+
+        return true;
     }
 
     private static String deleteDuplicate(String cryptogram, int[] idxAndCount) {
