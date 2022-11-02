@@ -1,9 +1,9 @@
 package onboarding;
 
+import java.util.List;
+
 public class Problem3 {
-    private static final char THREE = '3';
-    private static final char SIX = '6';
-    private static final char NINE = '9';
+    private static final List<Character> numbers = List.of('3', '6', '9');
 
     public static int solution(int number) {
         return countClap(number);
@@ -32,6 +32,6 @@ public class Problem3 {
     }
 
     private static boolean include369(char num) {
-        return num == THREE || num == SIX || num == NINE;
+        return numbers.contains(num);
     }
 }
