@@ -21,3 +21,20 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 🛠 기능 설계
+
+주어진 요구사항을 어떻게 설계할지에 대한 서술.
+
+### 구현 기능 목록
+
+1. 입력을 이름:이메일 HashMap 형태로 가공하는 함수
+2. HashMap을 토대로 중복 닉네임의 이메일을 Set에 저장하는 함수
+3. Set을 List로 변경하는 함수
+4. List를 정렬해 반환하는 함수
+
+### 구현 시 고려할 점
+
+1. 하나의 함수에서 하나의 추상화 수준만 가져가기
+2. 변수와 메소드 이름만 읽어도 이해가 가능하도록 구현
+3. 하나의 함수에선 하나의 기능만

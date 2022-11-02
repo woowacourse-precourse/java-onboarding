@@ -24,3 +24,20 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 🛠 기능 설계
+
+주어진 요구사항을 어떻게 설계할지에 대한 서술.
+
+### 구현 기능 목록
+
+1. friends 를 읽으며 friendshipMap 을 생성하는 함수
+2. friendshipMap 을 읽으며 조건에 맞는 친구에게 점수를 주는 함수 (score map)
+3. visitors 를 읽으며 score map 에 점수를 더하는 함수
+4. 최종 score map 을 읽으며 조건에 맞는 사람을 최대 5명까지 반환하는 함수
+
+### 구현 시 고려할 점
+
+1. 하나의 함수에서 하나의 추상화 수준만 가져가기
+2. 변수와 메소드 이름만 읽어도 이해가 가능하도록 구현
+3. 하나의 함수에선 하나의 기능만
