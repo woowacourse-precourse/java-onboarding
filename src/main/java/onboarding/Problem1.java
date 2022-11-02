@@ -93,11 +93,7 @@ class Problem1 {
     }
 
     private static boolean isInValidPageNumber(List<Integer> pages) {
-        if (isValidPageRange(pages) && isValidPageOddEven(pages) && isValidPageSequence(pages)) {
-            return false;
-        }
-
-        return true;
+        return !isValidPageRange(pages) || !isValidPageOddEven(pages) || !isValidPageSequence(pages);
     }
 
     private static boolean isValidPageRange(List<Integer> pages) {
