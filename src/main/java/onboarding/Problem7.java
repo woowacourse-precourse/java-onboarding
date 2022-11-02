@@ -66,7 +66,6 @@ public class Problem7 {
                         int currentScore = 0;
                         if(friendsScore.containsKey(friends.get(friendsIterator).get(1))) currentScore = friendsScore.get(friends.get(friendsIterator).get(1));
                         friendsScore.put(friends.get(friendsIterator).get(1), currentScore + 10);
-                        System.out.println(friendsScore.get(friends.get(friendsIterator).get(1)));
                     }
 
                     else if(friends.get(friendsIterator).get(1) == friendsCheck.get(checkFriendsIterator) &&
@@ -74,7 +73,6 @@ public class Problem7 {
                         int currentScore = 0;
                         if(friendsScore.containsKey(friends.get(friendsIterator).get(0))) currentScore = friendsScore.get(friends.get(friendsIterator).get(0));
                         friendsScore.put(friends.get(friendsIterator).get(0), currentScore + 10);
-                        System.out.println(friendsScore.get(friends.get(friendsIterator).get(0)));
                     }
                 }
             }
