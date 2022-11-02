@@ -1,3 +1,15 @@
+# 🎈 민주
+
+## ✔ 기능 정의
+- [X] 조건에 맞게 변환한 character 값을 반환하는 메소드 __(getFinalChangeCharacter)__
+  - [X] 표에 맞게 character 변환하는 메소드 __(getChangeCharacter)__
+  - [X] 대문자 -> 소문자 변환 메소드 __(toUpperCase)__
+  - [X] 소문자 -> 대문자 변환 메소드 __(toLowerCase)__
+
+
+<br><br>
+
+# 🎈 본문
 ## 🚀 기능 요구 사항
 
 어느 연못에 엄마 말씀을 좀처럼 듣지 않는 청개구리가 살고 있었다. 청개구리는 엄마가 하는 말은 무엇이든 반대로 말하였다.
