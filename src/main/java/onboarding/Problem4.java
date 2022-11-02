@@ -1,11 +1,6 @@
 package onboarding;
 
 public class Problem4 {
-
-    private static final char FIRST_LOWER = 'a';
-    private static final char LAST_LOWER = 'z';
-    private static final char FIRST_UPPER = 'A';
-    private static final char LAST_UPPER = 'Z';
     private static final char LOWER_SUM = 'a' + 'z';
     private static final char UPPER_SUM = 'A' + 'Z';
 
@@ -38,10 +33,10 @@ public class Problem4 {
     }
 
     private static boolean isLower(char alphabet) {
-        return alphabet >= FIRST_LOWER && alphabet <= LAST_LOWER;
+        return alphabet >= 'a' && alphabet <= 'z';
     }
 
     private static boolean isUpper(char alphabet) {
-        return alphabet >= FIRST_UPPER && alphabet <= LAST_UPPER;
+        return alphabet >= 'A' && alphabet <= 'Z';
     }
 }
