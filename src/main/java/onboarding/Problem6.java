@@ -27,6 +27,11 @@ public class Problem6 {
     }
 
     private static void mapDuplication(String email, String subNickname) {
+        String mailOfSubNickname = mailMappedBySubNickname.get(subNickname);
+        if (mailOfSubNickname != null) {
+            mailSet.add(mailOfSubNickname);
+            mailSet.add(email);
+        }
         mailMappedBySubNickname.put(subNickname, email);
     }
 }
