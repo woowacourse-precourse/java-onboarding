@@ -25,11 +25,19 @@ public class Problem2 {
             if (a.size()==0){
                 break;
             }
-            //중복찾은거 차례대로 없애기 list 특성상 뒷번호부터 해야함 안그럼 망함
+            //(수정) 둘이상 중복인경우 모두 없앨 수 있도록 했다!
             for (int i=a.size()-1 ; i>-1 ; i--){
-                int b = a.get(i);
-                list.remove(b+1);
-                list.remove(b);
+                int c = a.get(i);
+                char b = list.get(a.get(i));
+                while (true){
+                    if (list.size() == 0)
+                        break;
+                    else if (b == list.get(c))
+                        list.remove(c);
+                    else
+                        break;
+                }
+
             }
         }
 
