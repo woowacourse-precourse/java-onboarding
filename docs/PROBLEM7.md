@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+# 기능 목록
+1. 사용자와 친구가 아닌 목록 만들기
+2. 친구가 아닌 목록에서 사용자와 친구인 수 만큼 점수 부여하기
+3. 친구가 아닌 목록에서 사용자의 타임 라인에 방문한 횟수 만큼 점수 부여하기
+4. 점수가 높은순으로 5명의 추천 친구를 구하기
