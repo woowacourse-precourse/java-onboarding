@@ -22,7 +22,8 @@ class Problem1 {
     private static int pageMultiply(Integer page) {
         int multiply = 1;
         while(page > 0) {
-            multiply *= page % 10;
+            int digit = page % 10;
+            multiply = Math.multiplyExact(multiply, digit);
             page /= 10;
         }
         return multiply;
@@ -31,7 +32,8 @@ class Problem1 {
     private static int pagePlus(Integer page) {
         int plus = 0;
         while(page > 0) {
-            plus += page % 10;
+            int digit = page % 10;
+            plus = Math.addExact(plus, digit);
             page /= 10;
         }
         return plus;
@@ -81,5 +83,4 @@ class Problem1 {
         }
         return false;
     }
-
 }
