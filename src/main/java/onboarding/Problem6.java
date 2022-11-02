@@ -20,9 +20,10 @@ public class Problem6 {
             String email = form.get(0);
             String nickname = form.get(1);
 
-            if (isValidForm(email, nickname)) { // email, nickname 유효성 검사
-                makeConsecutiveLettersMap(consecutiveLettersMap, form); // 닉네임의 모든 연속적인 두 글자에 대한 맵 만들기
+            if (!isValidForm(email, nickname)){ // email, nickname 유효성 검사
+                continue;
             }
+            makeConsecutiveLettersMap(consecutiveLettersMap, form); // 닉네임의 모든 연속적인 두 글자에 대한 맵 만들기
         }
 
         // 중복되는 글자 가진 지원자 이메일 목록 만들기
@@ -44,9 +45,8 @@ public class Problem6 {
             return;
         }
         for(String email: entry.getValue()){
-            if(!emailList.contains(email)){
+            if(!emailList.contains(email))
                 emailList.add(email);
-            }
         }
     }
 
@@ -57,10 +57,7 @@ public class Problem6 {
     }
 
     private static String getConsecutiveLetters(char firstLetter, char secondLetter){
-        return new StringBuilder()
-                .append(firstLetter)
-                .append(secondLetter)
-                .toString();
+        return String.valueOf(firstLetter) + secondLetter;
     }
 
     private static void makeConsecutiveLettersMap(Map<String, ArrayList<String>> lettersMap, List<String> info){
