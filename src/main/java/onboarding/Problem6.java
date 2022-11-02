@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
 
@@ -10,10 +8,14 @@ public class Problem6 {
     static HashMap<String, String> mailMappedBySubNickname = new HashMap<String, String>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
         for (List<String> form : forms) {
             checkMapped(form);
         }
+        for (String mail : mailSet) {
+            answer.add(mail);
+        }
+        Collections.sort(answer);
         return answer;
     }
 
