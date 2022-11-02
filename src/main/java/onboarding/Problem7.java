@@ -57,6 +57,7 @@ public class Problem7 {
         }
         alreadyFriends.put(user, true);
 
+
         // user의 친구의 친구 중 user와 친분 없는 사람 찾기
         for(int friendsIterator = 0; friendsIterator < friends.size(); friendsIterator++){
             if(friends.get(friendsIterator).get(0) != user && friends.get(friendsIterator).get(1) != user){
