@@ -2,18 +2,24 @@
 
 ## 🔍 진행 방식
 
-- 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
-- 세 개의 요구 사항을 만족하기 위해 노력한다. 특히 기능을 구현하기 전에 기능 목록을 만들고, 기능 단위로 커밋 하는 방식으로 진행한다.
-- 기능 요구 사항에 기재되지 않은 내용은 스스로 판단하여 구현한다.
+매주 미션은 (a)기능요구사항 (b) 프로그래밍 요구사항 (c) 과제 진행요구사항으로 이루이짐
+(a)	기능 요구사항 >> 기능을 구현하기전에 기능목록을 만들고, 기능단위로 커밋을 하는 방식으로 진행, 기재되지 않은 사항은 스스로 판단하여 구현함
+
 
 ## 📮 미션 제출 방법
+1-3. 미션제출 방법 (깃허브 저장소 > 온보딩 미션을 진행하는 장소)
 
-- 미션 구현을 완료한 후 GitHub을 통해 제출해야 한다.
-    - GitHub을 활용한 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고해
-      제출한다.
-- GitHub에 미션을 제출한 후 [우아한테크코스 지원](https://apply.techcourse.co.kr) 사이트에 접속하여 프리코스 과제를 제출한다.
-    - 자세한 방법은 [제출 가이드](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 참고
-    - **Pull Request만 보내고 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
+- Step1. 
+미션구현 후 github를 통한 제출 > 문서참고(https://github.com/woowacourse/woowacourse-docs/tree/main/precourse)
+- Step2. 
+우테코 지원 플랫폼에도 프리코스 과제 제출(https://apply.techcourse.co.kr/)
+- Step3. 
+지원 플랫폼에는 과제를 제출할때 미션을 진행하면서 얻은 소감문 작성
+
+- 반드시 엄수!!!!!!!>>> 10월 31(월, 오후 2시부터)~11월 1일(화, 23시 59분까지)
+- github push허용도 안함>> 추가조사하기
+
+- **Pull Request만 보내고 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
 
 ## 🚨 과제 제출 전 체크 리스트 - 0점 방지
 
@@ -60,3 +66,12 @@ BUILD SUCCESSFUL in 0s
 
 - 미션은 [java-onboarding](https://github.com/woowacourse-precourse/java-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+## 소감
+
+- 개발한 프로그램을 운영데이터로 테스트 하게 서버로 배포를 할 때 Git과 github, 그리고 지속적 통합이라는 차원에서 젠킨스등의 툴을 사용한다고 배운 저는 이번 프리코스 미션을 통해 개발자로서는 필수적이라고 할 수 있는 git과 github에 대해 공부해볼 수 있었습니다.
+
+- 운영체제 시간에 배운 fork란, 부모프로세스에서 fork를 발생시켜 자식프로세스를 생산할 때 쓰이던 용어이고 워낙 중요했던 부분이어서 이해가 잘 되었습니다. 또, GitHub와 나의 Local환경을 연결시키고자 할 때, Local에서는 크게 3가지로 구성이 되어있다는 것을 확인할 수 있는데, 이와 같습니다. 1. Working directory 2. Staging area 3. Localrepo 
+
+- 지속적 통합이란, 수행한 코드의 개발사항을 단일 SW 프로젝트에 지속적으로 통합하는 활동을 말한다.  일반적으로 
+Git과 github, 그리고 지속적 통합의 차원에서 자동적인 빌드를 수행해주고 자동 빌드를 한 시각,날짜까지 기록해주는 젠킨스등을 통한 Java Code Convention구현에 이르기까지 개발자로서는 반드시 알아야 할 필수적인 것들을 알 수 있어서 개발자로서는 성장한 느낌이었다. 앞으로 코드를 관리함에 있어 여러가지 이슈가 생기면 Git과 GitHub를 잘 사용해야겠다는 생각이 들었다.
