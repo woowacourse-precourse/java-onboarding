@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class Problem7 {
@@ -12,23 +13,31 @@ public class Problem7 {
     public static List<String> calculateScoreProcess(String user, List<List<String>> friends, List<String> visitors) {
 
         List<String> usersFriends = findAllFriends(user, friends);
+        Set<String> objectUsers = findAllObjectUsers(user, friends, usersFriends, visitors);
+        if(objectUsers.size() == 0) return null;
+
         Map<String, Integer> score = new HashMap<>();
 
-        Set<String> allUsers = new HashSet<>(visitors);
-        for(List<String> friendRelationship : friends) {
-            allUsers.addAll(friendRelationship);
-        }
-        allUsers.addAll(visitors);
-        allUsers.remove(user);
-        usersFriends.forEach(allUsers::remove);
-
-        for(String object : allUsers) {
+        for(String object : objectUsers) {
             List<String> objectsFriends = findAllFriends(object, friends);
             calculateScoreByFriendsList(usersFriends, objectsFriends, object, score);
-            calculateScoreByVisitors(visitors, usersFriends, score);
         }
+        calculateScoreByVisitors(visitors, usersFriends, score);
 
+        score = score.entrySet().stream().sorted((e1, e2) -> e2.getKey().compareTo(e1.getKey())).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (v1, v2) -> v1, HashMap::new));
         return new ArrayList<>(score.keySet());
+    }
+
+    public static Set<String> findAllObjectUsers(String user, List<List<String>> friends, List<String> usersFriends, List<String> visitors) {
+        Set<String> objectUsers = new HashSet<>(visitors);
+        for(List<String> friendRelationship : friends) {
+            objectUsers.addAll(friendRelationship);
+        }
+        objectUsers.addAll(visitors);
+        objectUsers.remove(user);
+        usersFriends.forEach(objectUsers::remove);
+
+        return objectUsers;
     }
 
     public static List<String> findAllFriends(String user, List<List<String>> friends) {
@@ -41,15 +50,15 @@ public class Problem7 {
                 );
             }
         }
-
         return friendsList;
     }
 
-    public static Map<String, Integer> calculateScoreByFriendsList(List<String> usersFriends, List<String> objectsFriends, String object, Map<String, Integer> score) {
+    public static void calculateScoreByFriendsList(List<String> usersFriends, List<String> objectsFriends, String object, Map<String, Integer> score) {
         int count = 0;
         for(String usersFriend : usersFriends) {
-            count = (objectsFriends.contains(usersFriend)) ? 1 : 0;
+            count += (objectsFriends.contains(usersFriend)) ? 1 : 0;
         }
+        if(count == 0)  return;
 
         if(score.containsKey(object)) {
             int temp = score.get(object);
@@ -57,22 +66,21 @@ public class Problem7 {
         } else {
             score.put(object, count * 10);
         }
-
-        return score;
     }
 
-    public static Map<String, Integer> calculateScoreByVisitors(List<String> visitors, List<String> usersFriends, Map<String, Integer> scoreMap) {
+    public static void calculateScoreByVisitors(List<String> visitors, List<String> usersFriends, Map<String, Integer> score) {
+
         for(String visitor : visitors) {
             if(usersFriends.contains(visitor))  continue;
 
-            if(scoreMap.containsKey(visitor)) {
-                int temp = scoreMap.get(visitor);
-                scoreMap.put(visitor, temp + 1);
+            if(score.containsKey(visitor)) {
+                int temp = score.get(visitor);
+                score.put(visitor, ++temp);
             } else {
-                scoreMap.put(visitor, 1);
+                score.put(visitor, 1);
             }
         }
-        return scoreMap;
     }
+
 
 }
