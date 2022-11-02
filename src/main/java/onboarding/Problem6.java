@@ -65,9 +65,23 @@ class Email {
 
 class NickName {
     private final String nickName;
+    private static final int MIN_NICKNAME_LENGTH = 11;
+    private static final int MAX_NICKNAME_LENGTH = 20;
+    private static final String NOT_ALLOWED_UNDER_MIN_LENGTH = "닉네임은 최소 11자 입니다.";
+    private static final String NOT_ALLOWED_OVER_MAX_LENGTH = "닉네임은 최대 20자 입니다.";
 
     public NickName(String nickName) {
+        validateNickNameLength(nickName);
         this.nickName = nickName;
+    }
+
+    private void validateNickNameLength(String nickName) {
+        if (nickName.length() < MIN_NICKNAME_LENGTH) {
+            throw new IllegalStateException(NOT_ALLOWED_UNDER_MIN_LENGTH);
+        }
+        if (nickName.length() > MAX_NICKNAME_LENGTH) {
+            throw new IllegalStateException(NOT_ALLOWED_OVER_MAX_LENGTH);
+        }
     }
 
     //두 글자씩 잘라서 저장함.
