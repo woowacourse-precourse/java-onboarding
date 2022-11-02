@@ -38,7 +38,7 @@ public class Friend {
         for (String friend : friends) {
             for (List<String> relation : relations) {
                 if (relation.contains(friend) && !relation.contains(user)) {
-                    int index = friend.indexOf(friend);
+                    int index = relation.indexOf(friend);
                     if (index == 0) {
                         setFriendScore(score, relation.get(1));
                     }
