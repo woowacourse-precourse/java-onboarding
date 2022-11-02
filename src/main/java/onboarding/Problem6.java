@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import static java.util.Comparator.naturalOrder;
@@ -69,9 +70,12 @@ class NickName {
     private static final int MAX_NICKNAME_LENGTH = 20;
     private static final String NOT_ALLOWED_UNDER_MIN_LENGTH = "닉네임은 최소 11자 입니다.";
     private static final String NOT_ALLOWED_OVER_MAX_LENGTH = "닉네임은 최대 20자 입니다.";
+    private static final String ONLY_ALLOWED_KOREAN = "닉네임은 한글로만 이루어져 있어야 합니다.";
+    private static final String KOREAN_PATTERN_MATCHING="^[가-힣]*$";
 
     public NickName(String nickName) {
         validateNickNameLength(nickName);
+        validateNickNameKorean(nickName);
         this.nickName = nickName;
     }
 
@@ -81,6 +85,12 @@ class NickName {
         }
         if (nickName.length() > MAX_NICKNAME_LENGTH) {
             throw new IllegalStateException(NOT_ALLOWED_OVER_MAX_LENGTH);
+        }
+    }
+
+    private void validateNickNameKorean(String nickName){
+        if(!Pattern.matches(KOREAN_PATTERN_MATCHING,nickName)){
+            throw new IllegalStateException(ONLY_ALLOWED_KOREAN);
         }
     }
 
