@@ -26,14 +26,13 @@ public class Problem6 {
             StringBuilder name = new StringBuilder(form.get(1));
             int length = name.length();
             String email = form.get(0);
-            if (length == 1){
+            if (length == 1) {
                 String temp = name.toString();
                 saveSplitNicknameAndEmail(splitName, email, temp);
-            }
-            else {
-            for (int i = 0 ; i < length-1; i++){
-                String temp = name.substring(i, i+2);
-                saveSplitNicknameAndEmail(splitName, email, temp);
+            } else {
+                for (int i = 0; i < length - 1; i++) {
+                    String temp = name.substring(i, i + 2);
+                    saveSplitNicknameAndEmail(splitName, email, temp);
                 }
             }
         }
@@ -42,7 +41,7 @@ public class Problem6 {
     private static void saveSplitNicknameAndEmail(Map<String, ArrayList<String>> splitName, String email, String temp) {
         if (splitName.containsKey(temp)) {
             splitName.get(temp).add(email);
-        }else {
+        } else {
             splitName.put(temp, new ArrayList<>(List.of(email)));
         }
     }

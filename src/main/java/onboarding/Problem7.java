@@ -31,7 +31,7 @@ public class Problem7 {
             users.put(key, 0);
         }
 
-        if (friendList.get(user) != null){
+        if (friendList.get(user) != null) {
             for (String s : friendList.get(user)) {
                 for (String s1 : friendList.get(s)) {
                     if (s1.equals(user)) continue;
@@ -40,11 +40,10 @@ public class Problem7 {
             }
         }
 
-
         for (String visitor : visitors) {
-            if (!users.containsKey(visitor)){
+            if (!users.containsKey(visitor)) {
                 users.put(visitor, 1);
-            }else {
+            } else {
                 users.put(visitor, users.get(visitor) + 1);
             }
         }

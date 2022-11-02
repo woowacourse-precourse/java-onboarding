@@ -15,14 +15,14 @@ public class Problem2 {
 
     private static boolean removeDuplicationWords(StringBuilder sb) {
         boolean isExistDuplication = false;
-        for (int i = 0; i < sb.length()-1; i++){
-            if (sb.charAt(i) == sb.charAt(i+1)){
+        for (int i = 0; i < sb.length() - 1; i++) {
+            if (sb.charAt(i) == sb.charAt(i + 1)) {
                 int duplicateCnt = 1;
-                for (int j = i+1; j < sb.length(); j++){
+                for (int j = i + 1; j < sb.length(); j++) {
                     if (sb.charAt(i) == sb.charAt(j)) duplicateCnt++;
                     else break;
                 }
-                sb.delete(i,i + duplicateCnt);
+                sb.delete(i, i + duplicateCnt);
                 isExistDuplication = true;
                 i--;
             }
