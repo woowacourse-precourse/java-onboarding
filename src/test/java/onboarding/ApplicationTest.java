@@ -129,5 +129,24 @@ class ApplicationTest {
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
+        @Test
+        void case2() {
+            String user = "Walter";
+            List<List<String>> friends = List.of(
+                    List.of("Christa", "Alyce"),
+                    List.of("Hobart", "Retha"),
+                    List.of("Elijah", "Josh"),
+                    List.of("Cecil", "Lamont"),
+                    List.of("Eliza","Lamont"),
+                    List.of("Austyn", "Retha"),
+                    List.of("Retha", "Mara"),
+                    List.of("Walter", "Lamont"),
+                    List.of("Retha","Walter"),
+                    List.of("Urban","Walter")
+            );
+            List<String> visitors = List.of("Cecil","Eliza","Adonis","Mara");
+            List<String> result = List.of("Cecil","Eliza","Mara", "Austyn", "Hobart");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
     }
 }
