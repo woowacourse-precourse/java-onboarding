@@ -32,7 +32,7 @@ public class Problem6 {
             }
         }
 
-        answer = answer.stream().sorted().collect(Collectors.toList());
+        answer = answer.stream().distinct().sorted().collect(Collectors.toList());
 
         return answer;
     }
