@@ -1,8 +1,11 @@
 package onboarding;
 
+import problem2.Decrytor;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        Decrytor decryption = new Decrytor(cryptogram);
+        String answer = decryption.decrypt();
         return answer;
     }
 }
