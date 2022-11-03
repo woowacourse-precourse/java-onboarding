@@ -3,7 +3,10 @@ package onboarding.friendrecommendationsystem;
 public class Nickname {
 
 	private static final int MIN_LENGTH = 1;
+
 	private static final int MAX_LENGTH = 19;
+
+	private static final String REGEX_MATCH_KOREAN = ".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*";
 
 	private final String nickname;
 
@@ -13,9 +16,13 @@ public class Nickname {
 	}
 
 	public void validateNickname(final String nickname) {
-		if (isOutOfBound(nickname)) {
+		if (isOutOfBound(nickname) || !isAllKoreanLetters(nickname)) {
 			throw new IllegalArgumentException();
 		}
+	}
+
+	private boolean isAllKoreanLetters(final String nickname) {
+	return nickname.matches(REGEX_MATCH_KOREAN);
 	}
 
 	private boolean isOutOfBound(final String nickname) {
