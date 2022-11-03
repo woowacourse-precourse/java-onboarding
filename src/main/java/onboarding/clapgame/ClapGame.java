@@ -4,17 +4,15 @@ import java.util.stream.IntStream;
 
 public class ClapGame {
 
-	public static int getClapCountUntil(final int number) {
-		int clapCount = 0;
-		for (int n = 3; n <= number; n++) {
-			clapCount += getClapCount(n);
-		}
-		return clapCount;
+	public static long getClapCount(final int number) {
+		return IntStream.range(3, number+1)
+			.mapToLong(ClapGame::countClapCount)
+			.sum();
 	}
 
-	static long getClapCount(final int number) {
+	static long countClapCount(final int number) {
 		return getDigitStream(number)
-			.filter(ClapGame::isMultipleOfThree)
+			.filter(ClapUnit::isClapNumber)
 			.count();
 	}
 
@@ -22,9 +20,5 @@ public class ClapGame {
 		return String.valueOf(number)
 			.chars()
 			.map(Character::getNumericValue);
-	}
-
-	static boolean isMultipleOfThree(final int number) {
-		return number != 0 && number % 3 == 0;
 	}
 }
