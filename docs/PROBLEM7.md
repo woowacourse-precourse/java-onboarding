@@ -24,3 +24,49 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+## 기능 목록
+
+#### 1. 전체 사용자 목록 구하기 ```getUsers```
+```List<List<String>> friends``` => ```List<String>```
+
+- 친구 관계 정보와 방문 기록에 존재하는 모든 사용자 id를 반환한다
+
+<br/>
+
+#### 2. 사용자의 친구 목록 구하기 ```getFriends```
+```String user, List<List<String>> friends``` => ```List<String>```
+
+<br/>
+
+#### 3. 사용자와 함께 아는 친구 수 구하기  ```getSameFriendsCnt```
+```String user, String anotherUser, List<List<String>> friends``` => ```int```
+
+<br/>
+
+#### 4. 방문자가 사용자의 타임 라인에 방문한 횟수 구하기 ```getVisitCnt```
+```String user, List<String> visitors, String visitor``` => ```int```
+
+<br/>
+
+#### 5. 추천 점수 구하기 ```getScore```
+```String user, String anotherUser, List<List<String>> friends, List<String> visitors``` => ```int```
+
+<br/>
+
+#### 6. 친구 추천 후보 목록 구하기 ```getCandidateList```
+```String user, List<List<String>> friends, List<String> visitors``` => ```List<Candidate>```
+1. ```user```와 친구가 아닌 id 목록을 구한다
+2. 1번 목록에서 추천 점수가 0 보다 큰 사용자를 ```candidateList```에 포함한다
+
+<br/>
+
+#### 7. 친구 추천 후보 목록 정렬하기 ```sortCandidateList```
+```List<Candidate> candidateList``` => ```void```
+
+<br/>
+
+#### 8. 추천 점수가 높은 아이디 최대 5개 구하기 ```solution```
+
+

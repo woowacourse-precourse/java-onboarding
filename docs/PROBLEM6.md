@@ -21,3 +21,43 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+## 기능 목록
+
+#### 1. ```List<List<String>>```을 ```HashMap<String, String>```으로 변환하기
+- email을 key, name을 value로 설정한다
+
+<br/>
+
+#### 2. 닉네임에서 두 글자의 연속 문자열 구하기 ```getTokens```
+```String name``` => ```List<String>```
+- ```name```의 길이가 1인 경우 빈 리스트를 반환한다
+
+<br/>
+
+#### 3. 두 크루의 닉네임 비교 후 제한 여부 확인하기 ```isSimilar```
+```List<String> names```(```[name1, name2]```) => ```boolean```
+
+1. ```getTokens```를 이용해 ```name1```의 token 배열을 구한다
+2. 각 token에 대해 ```name2```의 token 포함 여부를 확인한다
+3. ```name2```에 포함된 token이 존재할 경우 ```true```를 반환한다
+
+
+<br/>
+
+#### 4. 둘로 짝지을 수 있는 모든 크루 조합 구하기 ```combination```
+```List<String> emails``` => ```List<List<String>>``` (```[[email1, email2], ...]```)
+
+<br/>
+
+#### 5. 제한된 닉네임의 이메일 추가하기 ```addEmailList```
+```List<String> emailPair, Map<String, String> formsMap, List<String> prevList``` => ```List<String>```
+- ```isSimilar```가 ```true```인 경우 result에 이메일을 추가한다
+
+<br/>
+
+#### 6. 닉네임 사용 제한된 이메일 목록 구하기 ```solution```
+
+
+
