@@ -1,6 +1,13 @@
 package onboarding;
 
-import java.util.*;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+import java.util.Queue;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Problem7 {
@@ -9,7 +16,8 @@ public class Problem7 {
     public static final int VISITOR_SCORE = 1;
     public static final int MINIMUM_RECOMMEND_SCORE = 1;
 
-    public static final Comparator<Map.Entry<String, Integer>> byValDesc = Map.Entry.comparingByValue(Comparator.reverseOrder());
+    public static final Comparator<Map.Entry<String, Integer>> byValDesc = Map.Entry.comparingByValue
+            (Comparator.reverseOrder());
     public static final Comparator<Map.Entry<String, Integer>> byKeyAsc = Map.Entry.comparingByKey();
     public static final Comparator<Map.Entry<String, Integer>> sortConditions = byValDesc.thenComparing(byKeyAsc);
 
@@ -30,7 +38,6 @@ public class Problem7 {
         for (List<String> relation : friends) {
             addFriend(userToFriends, relation.get(0), relation.get(1));
         }
-
 
         return userToFriends;
     }
@@ -75,7 +82,6 @@ public class Problem7 {
                 continue;
             }
 
-
             for (String friend : userToFriends.getOrDefault(id, Set.of())) {
                 queue.add(List.of(friend, String.valueOf(depth + 1)));
             }
@@ -83,7 +89,8 @@ public class Problem7 {
         return friendsInCommon;
     }
 
-    public static Map<String, Integer> getIdToRecommendScore(String user, Map<String, Set<String>> userToFriends, List<String> visitors) {
+    public static Map<String, Integer> getIdToRecommendScore(String user, Map<String, Set<String>> userToFriends,
+                                                             List<String> visitors) {
         Map<String, Integer> idToRecommendScore = new HashMap<>();
 
         updateFriendsInCommonScore(idToRecommendScore, user, userToFriends);
@@ -93,7 +100,8 @@ public class Problem7 {
         return idToRecommendScore;
     }
 
-    public static void updateFriendsInCommonScore(Map<String, Integer> recommendScores, String user, Map<String, Set<String>> userToFriends) {
+    public static void updateFriendsInCommonScore
+            (Map<String, Integer> recommendScores, String user, Map<String, Set<String>> userToFriends) {
         Map<String, Integer> friendsInCommon = getFriendsInCommon(userToFriends, user);
 
         for (String other : friendsInCommon.keySet()) {
@@ -108,7 +116,8 @@ public class Problem7 {
         }
     }
 
-    private static Map<String, Integer> filterOnlyRecommendable(String user, Set<String> userFriends, Map<String, Integer> idToRecommendScore) {
+    private static Map<String, Integer> filterOnlyRecommendable
+            (String user, Set<String> userFriends, Map<String, Integer> idToRecommendScore) {
         return idToRecommendScore
                 .entrySet()
                 .stream()
@@ -119,7 +128,6 @@ public class Problem7 {
     }
 
     public static List<String> getSortedRecommendList(Map<String, Integer> recommendScores) {
-
 
         return recommendScores.entrySet()
                 .stream()

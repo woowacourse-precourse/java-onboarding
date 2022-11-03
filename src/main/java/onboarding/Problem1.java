@@ -1,9 +1,9 @@
 package onboarding;
 
+import static java.lang.Math.max;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.lang.Math.max;
 
 
 class Problem1 {
@@ -24,7 +24,6 @@ class Problem1 {
             }
 
             List<Integer> scores = getParticipantsScores(participants_pages);
-
 
             result = getPageGameWinner(scores);
 
