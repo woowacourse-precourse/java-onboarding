@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+1. 각 크루의 친구 리스트를 맵으로 정리하여 보여준다.
+2. 사용자와 함께 아는 친구목록을 체크한다.
+3. 사용자와 함께 아는 친구들에게 10점씩 부여한다.
+4. 방문자에게 1점씩 부여한다.
+5. 점수가 1이상인 크루들만 남긴다.
+6. (점수 순 -> 이름 순)으로 정렬하여 상위 5명을 보여준다. 

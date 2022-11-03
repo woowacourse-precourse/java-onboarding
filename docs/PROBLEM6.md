@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+1. 두 글자 이상 문자열의 등장 횟수를 체크한다.
+2. 2번 이상 등장한 문자열 중, 이름에 해당 문자열이 포함되어 있는지 확인한다.
+3. 확인된 크루 중 중복이 있으면 제거한다.
+4. 확인된 크루를 이메일의 오름차순으로 정렬한다.
