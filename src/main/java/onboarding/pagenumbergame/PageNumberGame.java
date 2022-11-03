@@ -15,11 +15,17 @@ public class PageNumberGame {
 	public PageNumberGame(final List<Integer> player1,
 		final List<Integer> player2) {
 
+		validatePages(player1, player2);
+		pobi = new Pages(player1);
+		crong = new Pages(player2);
+	}
+
+	private void validatePages(final List<Integer> player1, final List<Integer> player2) {
+		gameResult = NOT_DECIDED;
+
 		if (isInvalidPage(player1) || isInvalidPage(player2)) {
 			gameResult = EXCEPTION;
 		}
-		pobi = new Pages(player1);
-		crong = new Pages(player2);
 	}
 
 	private boolean isInvalidPage(final List<Integer> playerPages) {
