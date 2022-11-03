@@ -11,7 +11,7 @@ public class BillCounter {
 		this.money = money;
 	}
 
-	public List<Integer> getBills() {
+	public List<Integer> withdraw() {
 		List<Integer> bills = new ArrayList<>();
 
 		for (BillUnit billUnit : BillUnit.values()) {

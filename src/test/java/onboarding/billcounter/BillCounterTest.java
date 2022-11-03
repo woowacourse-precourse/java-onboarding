@@ -25,15 +25,15 @@ public class BillCounterTest {
 	@Test
 	void 단위별_전체_돈_개수_반환() {
 		BillCounter counter = new BillCounter(50_237);
-		List<Integer> bills = counter.getBills();
+		List<Integer> bills = counter.withdraw();
 		assertThat(bills).isEqualTo(List.of(1, 0, 0, 0, 0, 2, 0, 3, 7));
 
 		counter = new BillCounter(15_000);
-		bills = counter.getBills();
+		bills = counter.withdraw();
 		assertThat(bills).isEqualTo(List.of(0, 1, 1, 0, 0, 0, 0, 0, 0));
 
 		counter = new BillCounter(95_459);
-		bills = counter.getBills();
+		bills = counter.withdraw();
 		assertThat(bills).isEqualTo(List.of(1, 4, 1, 0, 0, 4, 1, 0, 9));
 	}
 }
