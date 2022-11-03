@@ -8,16 +8,16 @@ public class TreeFrog {
 		if (isNotAlphabetic(ch)) {
 			return String.valueOf(ch);
 		}
-		CodeType codeType = Character.isLowerCase(ch)
-			? CodeType.LOWER_CASE
-			: CodeType.UPPER_CASE;
+		AlphabetTranslator alphabetTranslator = Character.isLowerCase(ch)
+			? AlphabetTranslator.LOWER_CASE
+			: AlphabetTranslator.UPPER_CASE;
 
-		return codeType.translate(ch);
+		return alphabetTranslator.translate(ch);
 	}
 
 	private static boolean isNotAlphabetic(char ch) {
-		return Character.isWhitespace(ch)
-			|| !Character.isAlphabetic(ch);
+		int letterType = Character.getType(ch);
+		return !AlphabetTranslator.isValidType(letterType);
 	}
 
 	public static String translate(final String word) {
