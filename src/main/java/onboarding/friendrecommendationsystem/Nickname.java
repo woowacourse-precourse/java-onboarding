@@ -1,5 +1,10 @@
 package onboarding.friendrecommendationsystem;
 
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+
 public class Nickname {
 
 	private static final int MIN_LENGTH = 1;
@@ -22,11 +27,17 @@ public class Nickname {
 	}
 
 	private boolean isAllKoreanLetters(final String nickname) {
-	return nickname.matches(REGEX_MATCH_KOREAN);
+		return nickname.matches(REGEX_MATCH_KOREAN);
 	}
 
 	private boolean isOutOfBound(final String nickname) {
 		int length = nickname.length();
 		return MIN_LENGTH > length || length > MAX_LENGTH;
+	}
+
+	public Set<String> getPartsOfName(final int length) {
+		return IntStream.range(0, nickname.length()-1)
+			.mapToObj(i -> nickname.substring(i, i + length))
+			.collect(Collectors.toCollection(HashSet::new));
 	}
 }
