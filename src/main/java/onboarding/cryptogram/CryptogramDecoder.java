@@ -10,24 +10,25 @@ public class CryptogramDecoder {
 
 	static boolean isValidFormat(final String cryptogram) {
 		return cryptogram != null
-			&& !isOutOfBound(cryptogram)
+			&& validateLength(cryptogram)
 			&& cryptogram.matches(FORMAT_MATCH_REGEX);
 	}
 
-	static boolean isOutOfBound(final String cryptogram) {
+	static boolean validateLength(final String cryptogram) {
 		int length = cryptogram.length();
-		return MIN_LENGTH > length || length > MAX_LENGTH;
+		return MIN_LENGTH <= length && length <= MAX_LENGTH;
 	}
 
 	public static String decrypt(final String cryptogram) {
 		String clearText = cryptogram;
-		String tmp = removeRepetitions(cryptogram);
-
-		while (tmp.length() != clearText.length()) {
-			clearText = tmp;
-			tmp = removeRepetitions(clearText);
+		while (containsRepetitions(clearText)) {
+			clearText = removeRepetitions(clearText);
 		}
 		return clearText;
+	}
+
+	static boolean containsRepetitions(final String cryptogram) {
+		return cryptogram.matches(REPEATED_MATCH_REGEX);
 	}
 
 	static String removeRepetitions(final String cryptogram) {
