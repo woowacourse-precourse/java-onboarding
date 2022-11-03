@@ -40,4 +40,8 @@ public class Nickname {
 			.mapToObj(i -> nickname.substring(i, i + length))
 			.collect(Collectors.toCollection(HashSet::new));
 	}
+
+	public String getNickname() {
+		return nickname;
+	}
 }

@@ -30,4 +30,8 @@ public class Email {
 		return MIN_EMAIL_LENGTH > length
 			|| length > MAX_EMAIL_LENGTH;
 	}
+
+	public String getEmail() {
+		return email;
+	}
 }
