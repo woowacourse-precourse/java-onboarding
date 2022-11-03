@@ -23,7 +23,7 @@ public class PageNumberGame {
 	}
 
 	private boolean isInvalidPage(final List<Integer> playerPages) {
-		return !ValidationUtils.validatePage(playerPages);
+		return !PageValidationUtils.validatePage(playerPages);
 	}
 
 	public int play() {
