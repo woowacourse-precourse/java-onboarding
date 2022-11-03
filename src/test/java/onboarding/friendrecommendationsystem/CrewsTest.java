@@ -49,4 +49,15 @@ public class CrewsTest {
 			crewsOfDuplicateNickname.get("제엠").size()
 		).isEqualTo(1);
 	}
+
+	@DisplayName("중복된 단어들을 포함하는 크루원들의 이메일들을 구할 수 있다.")
+	@Test
+	void 중복단어_포함_크루원_닉네임_반환() {
+		Crews crews = new Crews(forms);
+		List<String> emails = crews.getInvalidEmails();
+		assertThat(emails).containsAll(
+			List.of("jason@email.com", "jm@email.com", "mj@email.com")
+		);
+	}
+
 }
