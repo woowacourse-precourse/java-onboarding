@@ -3,6 +3,8 @@ package onboarding.friendrecommendationsystem;
 import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.DisplayNameGeneration;
@@ -30,5 +32,21 @@ public class CrewsTest {
 		).isInstanceOf(IllegalArgumentException.class);
 
 		assertThat(new Crews(forms)).isNotNull();
+	}
+
+	@DisplayName("중복된 단어들을 포함하는 각 크루원의 목록을 구할 수 있다.")
+	@Test
+	void 중복단어_포함_크루원_목록_반환() {
+		Crews crews = new Crews(forms);
+		Map<String, Set<Crew>> crewsOfDuplicateNickname
+			= crews.getCrewsOfDuplicateNickname();
+
+		assertThat(
+			crewsOfDuplicateNickname.get("제이").size()
+		).isEqualTo(3);
+
+		assertThat(
+			crewsOfDuplicateNickname.get("제엠").size()
+		).isEqualTo(1);
 	}
 }

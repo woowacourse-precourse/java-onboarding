@@ -1,8 +1,12 @@
 package onboarding.friendrecommendationsystem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 public class Crews {
 
@@ -12,9 +16,12 @@ public class Crews {
 
 	private final List<Crew> crews;
 
+	private final Map<String, Set<Crew>> duplicateNicknameMap;
+
 	public Crews(final List<List<String>> forms) {
 		validateForms(forms);
 		this.crews = new ArrayList<>();
+		this.duplicateNicknameMap = new HashMap<>();
 		initCrewsWith(forms);
 	}
 
@@ -38,5 +45,21 @@ public class Crews {
 	private boolean isOutOfBound(final int numberOfCrews) {
 		return MIN_CREW_NUMBER > numberOfCrews
 			|| numberOfCrews > MAX_CREW_NUMBER;
+	}
+
+	public Map<String, Set<Crew>> getCrewsOfDuplicateNickname() {
+		for (Crew crew : crews) {
+			getDuplicatePartsOfNickname(crew);
+		}
+		return duplicateNicknameMap;
+	}
+
+	private void getDuplicatePartsOfNickname(final Crew crew) {
+		for (String partOfNickname : crew.getPartsOfName()) {
+			duplicateNicknameMap.computeIfAbsent(
+				partOfNickname,
+				k -> new HashSet<>()
+			).add(crew);
+		}
 	}
 }
