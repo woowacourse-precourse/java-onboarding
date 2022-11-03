@@ -11,16 +11,16 @@ public class CryptogramDecoderTest {
 	@Test
 	void 암호문_길이_검증() {
 		assertThat(
-			CryptogramDecoder.validateLength("")
-		).isFalse();
-
-		assertThat(
-			CryptogramDecoder.validateLength("0".repeat(1000))
+			CryptogramDecoder.isOutOfBound("")
 		).isTrue();
 
 		assertThat(
-			CryptogramDecoder.validateLength("0".repeat(1001))
+			CryptogramDecoder.isOutOfBound("0".repeat(1000))
 		).isFalse();
+
+		assertThat(
+			CryptogramDecoder.isOutOfBound("0".repeat(1001))
+		).isTrue();
 	}
 
 	@DisplayName("암호문 형식 검증")
@@ -37,38 +37,6 @@ public class CryptogramDecoderTest {
 		}
 		assertThat(
 			CryptogramDecoder.isValidFormat("brown")
-		).isTrue();
-	}
-
-	@DisplayName("연속하는 중복 문자 판별 테스트")
-	@Test
-	void 연속_중복_문자_테스트() {
-		assertThat(CryptogramDecoder
-			.containsRepetitions("browoanoommnaon")
-		).isTrue();
-		assertThat(CryptogramDecoder
-			.containsRepetitions("browoannaon")
-		).isTrue();
-		assertThat(CryptogramDecoder
-			.containsRepetitions("browoaaon")
-		).isTrue();
-		assertThat(CryptogramDecoder
-			.containsRepetitions("browoon")
-		).isTrue();
-		assertThat(CryptogramDecoder
-			.containsRepetitions("brown")
-		).isFalse();
-		assertThat(CryptogramDecoder
-			.containsRepetitions("z")
-		).isFalse();
-		assertThat(CryptogramDecoder
-			.containsRepetitions("zwz")
-		).isFalse();
-		assertThat(CryptogramDecoder
-			.containsRepetitions("zezz")
-		).isTrue();
-		assertThat(CryptogramDecoder
-			.containsRepetitions("zzze")
 		).isTrue();
 	}
 
