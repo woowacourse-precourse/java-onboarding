@@ -7,7 +7,7 @@ public class UserRepository implements SnsRepository {
     private static final SnsRepository repo=new UserRepository(new HashMap<>());
     protected Map<Integer, Domain> dataBase;
 
-    public UserRepository(Map<Integer, Domain> dataBase) {
+    protected UserRepository(Map<Integer, Domain> dataBase) {
         this.dataBase = dataBase;
     }
 
