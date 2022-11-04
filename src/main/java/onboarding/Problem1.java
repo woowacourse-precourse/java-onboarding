@@ -17,10 +17,7 @@ class Problem1 {
     }
 
     public static boolean isValidInput(List<Integer> input){
-        if((input.get(1) - input.get(0)) == 1){
-            return true;
-        }
-        return false;
+        return (input.get(1) - input.get(0)) == 1;
     }
 
     public static int calculateScore(List<Integer> input){

@@ -5,7 +5,7 @@ import java.util.*;
 public class Problem7 {
 
     static Map<String, Integer> userIndexMappingMap = new HashMap<String, Integer>();
-    static int index = 0;
+    static int userIndex = 0;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
@@ -26,7 +26,7 @@ public class Problem7 {
 
         Map<Integer, Integer> recommendScore = makeRecommendScore(visitorArray,friendMatrix,userNumber);
 
-        List<String> answer = new ArrayList<String>();
+        List<String> answer = new ArrayList<>();
 
         List<Integer> keySet = new ArrayList<>(recommendScore.keySet());
         keySet.sort((o1, o2) -> recommendScore.get(o2).compareTo(recommendScore.get(o1)));
@@ -42,12 +42,10 @@ public class Problem7 {
         return answer;
     }
 
-
-
     public static void addMap(String userName){
         if(!userIndexMappingMap.containsKey(userName)){
-            userIndexMappingMap.put(userName,index);
-            index++;
+            userIndexMappingMap.put(userName,userIndex);
+            userIndex++;
         }
     }
     public static String getKey(int value) {
