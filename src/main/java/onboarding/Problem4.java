@@ -11,10 +11,10 @@ public class Problem4 {
         char appendChar;
         StringBuilder sb = new StringBuilder();
         for(char c : word.toCharArray()) {
-            if(c >= 65 && c <= 90) {
-                appendChar = (char) (90 - c + 65);
-            } else if (c >= 97 && c < 122) {
-                appendChar = (char) (122 - c + 97);
+            if(c >= 'A' && c <= 'Z') {
+                appendChar = (char) ('Z' - c + 'A');
+            } else if (c >= 'a' && c < 'z') {
+                appendChar = (char) ('z' - c + 'a');
             } else {
                 appendChar = c;
             }
