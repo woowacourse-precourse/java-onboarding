@@ -43,4 +43,21 @@ public class User {
 	public boolean isFriendWith(final String id) {
 		return friends.stream().anyMatch(friends -> friends.id.equals(id));
 	}
+
+	public Set<User> getFriends() {
+		return friends;
+	}
+
+	@Override
+	public boolean equals(Object other) {
+		if (this == other) {
+			return true;
+		}
+
+		if (other == null || other.getClass() != this.getClass()) {
+			return false;
+		}
+		User otherUser = (User)other;
+		return otherUser.id.equals(this.id);
+	}
 }
