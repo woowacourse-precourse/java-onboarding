@@ -1,4 +1,4 @@
-package onboarding.friendrecommendationsystem;
+package onboarding.nicknamevalidator.review;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -21,6 +21,4 @@ public class EmailTest {
 
 		assertThat(new Email("test@email.com")).isNotNull();
 	}
-
-
 }

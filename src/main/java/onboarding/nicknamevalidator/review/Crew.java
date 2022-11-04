@@ -1,4 +1,4 @@
-package onboarding.friendrecommendationsystem;
+package onboarding.nicknamevalidator.review;
 
 import java.util.Set;
 
