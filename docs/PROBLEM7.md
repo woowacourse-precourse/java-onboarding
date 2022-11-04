@@ -27,50 +27,16 @@
 
 ## 기능 목록
 
--[ ] 특정 인물이 사용자의 친구인지 판별한다.
--[ ] 친구 추천 규칙을 적용한다.
-  -[ ] 사용자의 친구의 친구들에 대해 사용자와 함께 아는 친구의 수를 반영하여 점수를 부여한다.
-  -[ ] 사용자의 타임 라인에 방문한 횟수에 따른 점수를 반영한다.
--[ ] 특정 인물에 대한 친구 추천 점수를 알 수 있다.
--[ ] 친구 목록에서 점수가 가장 높은 순으로 5명을 조회한다.
-
-### 예시
-
-#### 전제 조건
-
-- 시스템은 사용자 뿐만 아니라 다른 SNS 이용자들의 친구 목록을 가지고 있어야 한다.
-- 시스템은 사용자의 타입 라인에 방문 기록을 가지고 있어야 한다.
-- 시스템은 사용자가 누구인지 식별해야 한다.
-
-#### 아이디어
-
-특정 유저가 유저의 친구인지 판별한다.
-
-```java
-// "mkro" is user, and friends: "donut", ...
-FriendRecommandationSystem system
-        = new FriendRecommandationSystem(user, friends, visitors); 
-boolean isFriend = system.isFriend("donut");
-// true
-```
-
-유저의 친구의 친구들에 대해 사용자와 함꼐 아는 친구의 수를 반영하여 점수를 부여한다.
-
-```java
-// user's friends -> "donut": ["andole", "jun", "mrko"]
-List<String> donutFriends = friends.get("donut");
-system.updateScore(donutFriends, RULES.KNOW_WITH_USER); // RULES.KNOW_WITH_USER = 10
-// { "andole": 10, "jun": 10 }
-```
-
-사용자의 타임 라인에 방문한 횟수에 따른 점수를 반영한다.
-
-```java
-// before: { }, "andi" visits "mrko" twice.
-system.updateScore(visitors, RULES.VISITOR); // RULES.VISITOR = 1
-// after: { "andi": 2 }
-```
-
+-[ ] 입력을 검증할 수 있다.
+  -[ ] 사용자 아이디의 길이가 유효한지
+  -[ ] 사용자 아이디의 형식이 유효한지
+  -[ ] 친구 관계 정보의 형식이 유효한지
+-[ ] 특정 유저에 대한 추천 친구 목록을 구할 수 있다.
+  -[ ] 특정 유저에 대한 친구 목록을 구할 수 있다.
+  -[ ] 다른 유저의 아이디를 통해 특정 유저의 친구인지 판별할 수 있다.
+  -[ ] 특정 유저에 대해 함께 아는 친구의 수에 따른 추천 점수를 구할 수 있다.
+  -[ ] 특정 유저에 대해 타임 라인에 방문한 횟수에 따른 추천 점수를 구할 수 있다.
+  -[ ] 합산된 추천 점수에 따라 점수가 높은 순으로 최대 5명의 추천 친구 목록을 구할 수 있다.
 
 
 
