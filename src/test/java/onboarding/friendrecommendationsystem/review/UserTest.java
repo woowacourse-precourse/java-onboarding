@@ -40,13 +40,16 @@ public class UserTest {
 	@Test
 	void 특정_유저_친구_판단() {
 		User user = new User("mrko");
-		user.add("shakevan");
-		user.add("donut");
+		user.add(new User("shakevan"));
+		user.add(new User("donut"));
 
-		List<String> userIds = List.of("shakevan", "donut");
+		List<User> others = List.of(
+			new User("shakevan"),
+			new User("donut")
+		);
 
-		for (String userId : userIds) {
-			assertThat(user.isFriendWith(userId)).isTrue();
+		for (User other : others) {
+			assertThat(user.isFriendWith(other)).isTrue();
 		}
 	}
 
@@ -54,8 +57,8 @@ public class UserTest {
 	@Test
 	void 특정_유저_친구_목록() {
 		User user = new User("mrko");
-		user.add("shakevan");
-		user.add("donut");
+		user.add(new User("shakevan"));
+		user.add(new User("donut"));
 
 		Set<User> friends = user.getFriends();
 		List<User> expected = List.of(

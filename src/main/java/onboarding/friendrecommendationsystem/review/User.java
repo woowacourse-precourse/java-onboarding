@@ -35,13 +35,12 @@ public class User {
 		return MIN_ID_LENGTH > length || length > MAX_ID_LENGTH;
 	}
 
-	public boolean add(final String id) {
-		User friend = new User(id);
-		return friends.add(friend);
+	public boolean add(final User user) {
+		return friends.add(user);
 	}
 
-	public boolean isFriendWith(final String id) {
-		return friends.stream().anyMatch(friends -> friends.id.equals(id));
+	public boolean isFriendWith(final User user) {
+		return friends.stream().anyMatch(friends -> friends.equals(user));
 	}
 
 	public Set<User> getFriends() {
