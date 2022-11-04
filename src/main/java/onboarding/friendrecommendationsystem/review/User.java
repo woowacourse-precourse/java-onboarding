@@ -1,5 +1,8 @@
 package onboarding.friendrecommendationsystem.review;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class User {
 
 	private static final int MIN_ID_LENGTH = 1;
@@ -8,9 +11,12 @@ public class User {
 
 	private final String id;
 
+	private final Set<User> friends;
+
 	public User(final String id) {
 		validateId(id);
 		this.id = id;
+		this.friends = new HashSet<>();
 	}
 
 	private void validateId(final String id) {
@@ -27,5 +33,14 @@ public class User {
 	private boolean isOutOfBound(final String id) {
 		int length = id.length();
 		return MIN_ID_LENGTH > length || length > MAX_ID_LENGTH;
+	}
+
+	public boolean add(final String id) {
+		User friend = new User(id);
+		return friends.add(friend);
+	}
+
+	public boolean isFriendWith(final String id) {
+		return friends.stream().anyMatch(friends -> friends.id.equals(id));
 	}
 }

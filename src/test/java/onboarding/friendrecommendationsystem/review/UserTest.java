@@ -34,4 +34,18 @@ public class UserTest {
 		}
 		assertThat(new User("mrko")).isNotNull();
 	}
+
+	@DisplayName("다른 유저의 아이디를 통해 특정 유저의 친구인지 판단할 수 있다.")
+	@Test
+	void 특정_유저_친구_판단() {
+		User user = new User("mrko");
+		user.add("shakevan");
+		user.add("donut");
+
+		List<String> userIds = List.of("shakevan", "donut");
+
+		for (String userId : userIds) {
+			assertThat(user.isFriendWith(userId)).isTrue();
+		}
+	}
 }
