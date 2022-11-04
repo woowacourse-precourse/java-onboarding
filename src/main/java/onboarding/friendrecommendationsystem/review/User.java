@@ -40,7 +40,7 @@ public class User {
 	}
 
 	public boolean isFriendWith(final User user) {
-		return friends.stream().anyMatch(friends -> friends.equals(user));
+		return friends.contains(user);
 	}
 
 	public Set<User> getFriends() {
