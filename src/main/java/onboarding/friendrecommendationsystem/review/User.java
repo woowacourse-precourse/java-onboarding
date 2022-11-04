@@ -14,9 +14,14 @@ public class User {
 	}
 
 	private void validateId(final String id) {
-		if (isOutOfBound(id)) {
+		if (isOutOfBound(id) || !isAllLowercase(id)) {
 			throw new IllegalArgumentException();
 		}
+	}
+
+	private boolean isAllLowercase(final String id) {
+		return id.chars()
+			.allMatch(Character::isLowerCase);
 	}
 
 	private boolean isOutOfBound(final String id) {
