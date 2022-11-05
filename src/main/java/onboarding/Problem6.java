@@ -8,23 +8,23 @@ public class Problem6 {
         Set<String> emailSet = new HashSet<>();
         List<String> answer = null;
 
-        int i = 0;
-        while (i < (forms.size() - 1)) {
+        int formIndex = 0;
+        while (formIndex < (forms.size() - 1)) {
             // i번째 리스트와 i에서 j만큼 떨어진 리스트를 비교
-            int j = i + 1;
+            int nextFormIndex = formIndex + 1;
 
-            while (j < (forms.size() - i)) {
-                String nickname1 = forms.get(i).get(1);
-                String nickname2 = forms.get(i + j).get(1);
+            while (nextFormIndex < (forms.size() - formIndex)) {
+                String nickname1 = forms.get(formIndex).get(1);
+                String nickname2 = forms.get(formIndex + nextFormIndex).get(1);
 
                 // 중복 단어가 존재한다면, emailSet에 두 이메일 추가
                 if (isDupWordExist(nickname1, nickname2)) {
-                    emailSet.add(forms.get(i).get(0));
-                    emailSet.add(forms.get(i + j).get(0));
+                    emailSet.add(forms.get(formIndex).get(0));
+                    emailSet.add(forms.get(formIndex + nextFormIndex).get(0));
                 }
-                j++;
+                nextFormIndex++;
             }
-            i++;
+            formIndex++;
         }
 
         answer = SetToAscList(emailSet);
@@ -39,11 +39,12 @@ public class Problem6 {
         int wordLength = 2;
 
         while (wordLength <= Math.min(word1.length(), word2.length())) {
-            for (int i = 0; i <= (word1.length() - wordLength); i++) {
-                String subWord = word1.substring(i, i + wordLength);
+            for (int charIndex = 0; charIndex <= (word1.length() - wordLength); charIndex++) {
+                String subWord = word1.substring(charIndex, charIndex + wordLength);
 
-                if (hasSubWord(word2, subWord))
+                if (hasSubWord(word2, subWord)) {
                     return true;
+                }
             }
             wordLength++;
         }
@@ -55,9 +56,11 @@ public class Problem6 {
      * 단어 word에 subword가 존재하는지 판별
      */
     public static boolean hasSubWord(String word, String subWord) {
-        for (int i = 0; i <= (word.length() - subWord.length()); i++)
-            if (word.substring(i, i + subWord.length()).equals(subWord))
+        for (int wordIndex = 0; wordIndex <= (word.length() - subWord.length()); wordIndex++) {
+            if (word.substring(wordIndex, wordIndex + subWord.length()).equals(subWord)) {
                 return true;
+            }
+        }
 
         return false;
     }
