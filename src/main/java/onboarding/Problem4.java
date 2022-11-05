@@ -27,7 +27,7 @@ public class Problem4 {
     }
 
     private static void validateWordLength(String word) {
-        if(word.length() < 1 || word.length() > 1000) {
+        if (word.length() < 1 || word.length() > 1000) {
             throw new IllegalArgumentException("word의 길이는 1이상 1000이하여야 합니다.");
         }
     }

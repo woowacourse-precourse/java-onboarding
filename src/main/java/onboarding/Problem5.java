@@ -20,7 +20,7 @@ public class Problem5 {
         List<Integer> currencyList = Arrays.asList(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
         int balance = money;
 
-        for (int i = 0; i <= NUM_OF_CURRENCY - 1; i ++){
+        for (int i = 0; i <= NUM_OF_CURRENCY - 1; i++){
             if (balance <= 0) break;
 
             int cnt = 0;

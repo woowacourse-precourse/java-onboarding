@@ -36,7 +36,7 @@ public class Problem3 {
     }
 
     private static void validateNumberRange(int number) {
-        if(number < 1 || number > 10000) {
+        if (number < 1 || number > 10000) {
             throw new IllegalArgumentException("number는 1이상 10000이하여야 합니다.");
         }
     }
