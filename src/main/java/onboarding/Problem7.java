@@ -7,6 +7,9 @@ public class Problem7 {
     public static final int ACQUAINTANCE_SCORE = 10;
     public static final int VISITOR_SCORE = 1;
 
+    public static HashMap<String, List<String>> friendRelationshipMap = new HashMap<>();
+    public static HashMap<String, Integer> scoreMap = new HashMap<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         validateUserLength(user);
         validateFriendsLength(friends);
@@ -16,15 +19,13 @@ public class Problem7 {
         validateVisitorsLength(visitors);
 
         List<String> answer = new ArrayList<>();
-        HashMap<String, List<String>> friendRelationshipMap = new HashMap<>();
-        HashMap<String, Integer> scoreMap = new HashMap<>();
 
-        getFriendRelationshipMap(user, friends, friendRelationshipMap, scoreMap);
-        increaseAcquaintanceScore(user, friendRelationshipMap, scoreMap);
-        increaseVisitorScore(user, friendRelationshipMap, scoreMap, visitors);
+        getFriendRelationshipMap(user, friends);
+        increaseAcquaintanceScore(user);
+        increaseVisitorScore(user, visitors);
 
-        getRecommendedFriends(scoreMap, answer);
-        sortRecommendedFriends(scoreMap, answer);
+        getRecommendedFriends(answer);
+        sortRecommendedFriends(answer);
 
         if (answer.size() > 5) {
             answer = answer.subList(0, 5);
@@ -33,12 +34,12 @@ public class Problem7 {
         return answer;
     }
 
-    private static void getFriendRelationshipMap(String user, List<List<String>> friends, HashMap<String, List<String>> friendRelationshipMap, HashMap<String, Integer> scoreMap) {
+    private static void getFriendRelationshipMap(String user, List<List<String>> friends) {
         for (List<String> friend : friends) {
             String userA = friend.get(0);
             String userB = friend.get(1);
 
-            initializeScoreMap(user, scoreMap, userA, userB);
+            initializeScoreMap(user, userA, userB);
 
             if (friendRelationshipMap.containsKey(userA)) {
                 friendRelationshipMap.get(userA).add(userB);
@@ -54,7 +55,7 @@ public class Problem7 {
         }
     }
 
-    private static void initializeScoreMap(String user, HashMap<String, Integer> scoreMap, String userA, String userB) {
+    private static void initializeScoreMap(String user, String userA, String userB) {
         if (userA.equals(user) == false) {
             scoreMap.put(userA, INITIAL_SCORE);
         }
@@ -64,7 +65,7 @@ public class Problem7 {
         }
     }
 
-    private static void increaseAcquaintanceScore(String user, HashMap<String, List<String>> friendRelationshipMap, HashMap<String, Integer> scoreMap) {
+    private static void increaseAcquaintanceScore(String user) {
         List<String> userFriends = friendRelationshipMap.get(user);
 
         for (String userFriend : userFriends) {
@@ -83,7 +84,7 @@ public class Problem7 {
         }
     }
 
-    private static void increaseVisitorScore(String user, HashMap<String, List<String>> friendRelationshipMap, HashMap<String, Integer> scoreMap, List<String> visitors) {
+    private static void increaseVisitorScore(String user, List<String> visitors) {
         List<String> userFriends = friendRelationshipMap.get(user);
 
         for (String visitor : visitors) {
@@ -100,7 +101,7 @@ public class Problem7 {
         }
     }
 
-    private static void getRecommendedFriends(HashMap<String, Integer> scoreMap, List<String> answer) {
+    private static void getRecommendedFriends(List<String> answer) {
         Iterator iterator = scoreMap.keySet().iterator();
 
         while (iterator.hasNext()) {
@@ -112,7 +113,7 @@ public class Problem7 {
         }
     }
 
-    private static void sortRecommendedFriends(HashMap<String, Integer> scoreMap, List<String> answer) {
+    private static void sortRecommendedFriends(List<String> answer) {
         for (int leftIdx = 0; leftIdx <= answer.size() - 2; leftIdx++) {
             for (int rightIdx = leftIdx + 1; rightIdx <= answer.size() - 1; rightIdx++) {
                 String left = answer.get(leftIdx);
