@@ -29,9 +29,12 @@ public class MrKoRecommender extends FriendRecommender{
         recommendScores = calculateScores(userName, memberNames, recommendScores);
 
         // 추천 점수가 존재하는 멤버들을 관리하는 scoreMap 초기화
-        for (int i = 0; i < recommendScores.length; i++)
-            if (recommendScores[i] > 0)
-                scoreMap.put(memberNames[i], recommendScores[i]);
+        for (int scoreIndex = 0; scoreIndex < recommendScores.length; scoreIndex++) {
+            if (recommendScores[scoreIndex] > 0) {
+                scoreMap.put(memberNames[scoreIndex], recommendScores[scoreIndex]);
+            }
+        }
+
 
         // 추천 멤버가 담긴 scoreMap을 통해 추천 멤버 리스트 저장 후 반환
         memberMap.get(userName).setRecommendedFriends(getRecommendFriends(scoreMap));
@@ -44,18 +47,18 @@ public class MrKoRecommender extends FriendRecommender{
      * 가중치를 이용해 추천 점수 계산
      */
     public int[] calculateScores(String userName, String[] memberNames, int[] recommendScores) {
-        int i = 0;
-        while (i < memberMap.size()) {
+        int memberIndex = 0;
+        while (memberIndex < memberMap.size()) {
 
             // 본인이 아니고, memberNames[i]와 친구가 아닌 경우
-            if (!userName.equals(memberNames[i]) && !isFriend(userName, memberNames[i])) {
-                recommendScores[i] += VISITOR_WEIGHT * countVisits(userName, memberNames[i]);
+            if (!userName.equals(memberNames[memberIndex]) && !isFriend(userName, memberNames[memberIndex])) {
+                recommendScores[memberIndex] += VISITOR_WEIGHT * countVisits(userName, memberNames[memberIndex]);
 
                 // 두 멤버가 같은 친구를 맺고 있다면 가중치 + 10
-                if (hasCoFriend(userName,memberNames[i]))
-                    recommendScores[i] += COFRIEND_WEIGHT;
+                if (hasCoFriend(userName,memberNames[memberIndex]))
+                    recommendScores[memberIndex] += COFRIEND_WEIGHT;
             }
-            i++;
+            memberIndex++;
         }
 
         return recommendScores;
@@ -68,9 +71,11 @@ public class MrKoRecommender extends FriendRecommender{
         Member user = memberMap.get(userName);
         Member member = memberMap.get(memberName);
 
-        for (Member visitor : user.getVisitors())
-            if (visitor.getName().equals(memberName))
+        for (Member visitor : user.getVisitors()) {
+            if (visitor.getName().equals(memberName)) {
                 visits++;
+            }
+        }
 
         return visits;
     }
@@ -90,8 +95,9 @@ public class MrKoRecommender extends FriendRecommender{
         // 정렬된 멤버 형태의 리스트에서 멤버 이름 리스트로, 최대 5개의 요소만 반환
         List<Member> recommendedFriends = new ArrayList<>();
         while (recommendedFriends.size() < 5) {
-            for (String memberName : scoredMemberNames)
+            for (String memberName : scoredMemberNames) {
                 recommendedFriends.add(memberMap.get(memberName));
+            }
 
             break;
         }
@@ -106,12 +112,18 @@ public class MrKoRecommender extends FriendRecommender{
             @Override
             public int compare(String member1, String member2) {
                 // 1. 추천 점수 내림차순
-                if (scoreMap.get(member1) < scoreMap.get(member2)) return 1;
-                else if (scoreMap.get(member1) > scoreMap.get(member2)) return -1;
-                else {
+                if (scoreMap.get(member1) < scoreMap.get(member2)) {
+                    return 1;
+                } else if (scoreMap.get(member1) > scoreMap.get(member2)) {
+                    return -1;
+                } else {
                     // 2. 추천 점수가 같을 시에, 이름으로 오름차순
-                    if (member1.compareTo(member2) > 0) return 1;
-                    else return -1;
+                    if (member1.compareTo(member2) > 0) {
+                        return 1;
+                    } else {
+                        return -1;
+                    }
+
                 }
             }
         };
