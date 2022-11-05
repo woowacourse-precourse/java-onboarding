@@ -50,6 +50,19 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        public void case3() throws Exception {
+            //given
+            String cryptogram = "zyellllllleyz";
+            String result = "";
+
+            //when
+            String processed = Problem2.solution(cryptogram);
+
+            //then
+            assertThat(processed).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -75,6 +88,18 @@ class ApplicationTest {
         void case1() {
             String word = "I love you";
             String result = "R olev blf";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        public void case2() throws Exception {
+            //given
+            String word = "ABCdef123456";
+            String result = "ZYXwvu123456";
+
+            //when
+
+            //then
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
