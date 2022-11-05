@@ -10,22 +10,25 @@ public abstract class AlphabetConverter {
     final int ASCII_z = 122;
 
     public boolean isAlphabet(char character) {
-        if ((int) character >= ASCII_A && (int) character <= ASCII_Z)
+        if ((int) character >= ASCII_A && (int) character <= ASCII_Z) {
             return true;
+        }
 
-
-        if ((int) character >= ASCII_a && (int) character <= ASCII_z)
+        if ((int) character >= ASCII_a && (int) character <= ASCII_z) {
             return true;
+        }
 
         return false;
     }
 
     public String listToString(List<Character> characters) {
-        StringBuilder sb = new StringBuilder();
-        for (char c : characters)
-            sb.append(c);
+        StringBuilder wantToMakeStr = new StringBuilder();
+        for (char character : characters) {
+            wantToMakeStr.append(character);
 
-        return sb.toString();
+        }
+
+        return wantToMakeStr.toString();
     }
 
     public abstract char convert(char alphabet);
