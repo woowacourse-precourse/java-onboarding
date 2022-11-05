@@ -36,8 +36,9 @@ public class Problem2 {
         while (index > 0) {
             if (characters.get(index-1) == characters.get(index)) {
 
-                while (index > 0 && characters.get(index-1) == characters.get(index))
+                while (index > 0 && characters.get(index - 1) == characters.get(index)) {
                     characters.remove(index--);
+                }
 
                 characters.remove(index);
                 index = characters.size() - 1;
@@ -48,10 +49,11 @@ public class Problem2 {
     }
 
     public static String listToString(List<Character> characters) {
-        StringBuilder sb = new StringBuilder();
-        for (Character character : characters)
-            sb.append(character);
+        StringBuilder wantToMakeStr = new StringBuilder();
+        for (Character character : characters) {
+            wantToMakeStr.append(character);
+        }
 
-        return sb.toString();
+        return wantToMakeStr.toString();
     }
 }
