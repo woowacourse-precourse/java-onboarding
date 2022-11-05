@@ -30,18 +30,23 @@ public abstract class FriendRecommender {
         List<Member> userFriends = memberMap.get(userName).getFriends();
         List<Member> memberFriends = memberMap.get(memberName).getFriends();
 
-        if (hasDuplicate(userFriends,memberFriends))
+        if (hasDuplicate(userFriends, memberFriends)) {
             return true;
+        }
 
         return false;
     }
 
     // 두 리스트에 공통되는 레퍼런스가 있는지 판별
     public boolean hasDuplicate(List<Member> userFriends, List<Member> memberFriends) {
-        for (Member userFriend : userFriends)
-            for (Member memberFriend : memberFriends)
-                if (userFriend.equals(memberFriend))
+        for (Member userFriend : userFriends) {
+            for (Member memberFriend : memberFriends) {
+                if (userFriend.equals(memberFriend)) {
                     return true;
+                }
+            }
+
+        }
 
         return false;
     }
