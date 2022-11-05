@@ -6,11 +6,19 @@ import java.util.List;
 class Problem1 {
     private static final int MAX_PAGE = 400;
     private static final int MIN_PAGE = 1;
+    private static final int LEFT_PAGE = 0;
+    private static final int RIGHT_PAGE = 1;
+    private static final int EXCEPTION_NUM = -1;
+    private static final int POBI_WIN_NUM = 1;
+    private static final int CRONG_WIN_NUM = 2;
+    private static final int TIE_NUM = 0;
+
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if (checkException(pobi, crong)) {
-            return -1;
+            return EXCEPTION_NUM;
         }
         int pobiPoint = getMyPoint(pobi);
         int crongPoint = getMyPoint(crong);
@@ -44,8 +52,8 @@ class Problem1 {
     }
 
     private static int getMyPoint(List<Integer> gamer) {
-        List<Integer> leftPageDigit = getEachDigit(gamer.get(0));
-        List<Integer> rightPageDigit = getEachDigit(gamer.get(1));
+        List<Integer> leftPageDigit = getEachDigit(gamer.get(LEFT_PAGE));
+        List<Integer> rightPageDigit = getEachDigit(gamer.get(RIGHT_PAGE));
         int leftMax = Math.max(sumValue(leftPageDigit), mulValue(leftPageDigit));
         int rightMax = Math.max(sumValue(rightPageDigit), mulValue(rightPageDigit));
         int point = Math.max(leftMax, rightMax);
@@ -54,11 +62,11 @@ class Problem1 {
 
     private static int whoIsWinner(int gamer1, int gamer2) {
         if (gamer1 > gamer2) {
-            return 1;
+            return POBI_WIN_NUM;
         } else if (gamer1 < gamer2) {
-            return 2;
+            return CRONG_WIN_NUM;
         } else if (gamer1 == gamer2) {
-            return 0;
+            return TIE_NUM;
         }
 
         return -1;
