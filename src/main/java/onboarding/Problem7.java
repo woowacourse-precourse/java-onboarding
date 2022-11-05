@@ -79,8 +79,9 @@ public class Problem7 {
     public static void setUserVisitors(String user, List<String> visitors) {
         List<Member> userVisitors = memberMap.get(user).getVisitors();
 
-        for (String visitor : visitors)
+        for (String visitor : visitors) {
             userVisitors.add(memberMap.get(visitor));
+        }
     }
 
 }
