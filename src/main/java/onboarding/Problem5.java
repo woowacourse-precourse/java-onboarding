@@ -4,14 +4,15 @@ import java.util.*;
 
 public class Problem5 {
 
-    private static final List<Integer> keySet = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
+    private static final List<Integer> KEY_SET = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
 
     public static List<Integer> solution(int money) {
         Map<Integer, Integer> moneyStore = setMoneyStore();
 
-        int i = 0;
-        while (i < keySet.size())
-            money = extractUnits(money, keySet.get(i++), moneyStore);
+        int keySetIndex = 0;
+        while (keySetIndex < KEY_SET.size()) {
+            money = extractUnits(money, KEY_SET.get(keySetIndex++), moneyStore);
+        }
 
         return valuesToList(moneyStore);
     }
@@ -52,9 +53,9 @@ public class Problem5 {
     public static List<Integer> valuesToList(Map<Integer, Integer> store) {
         List<Integer> unitList = new ArrayList<>();
 
-        int i = 0;
-        while(i < keySet.size())
-            unitList.add(store.get(keySet.get(i++)));
+        int keySetIndex = 0;
+        while(keySetIndex < KEY_SET.size())
+            unitList.add(store.get(KEY_SET.get(keySetIndex++)));
 
         return unitList;
     }
