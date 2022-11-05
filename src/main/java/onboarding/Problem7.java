@@ -18,8 +18,6 @@ public class Problem7 {
         for(int i=0; i<friends.size(); i++) {
 
             for(int j=0; j<inputFriend(friends, makeFriendLst(friendsLst(friends), friends), friendsLst(friends))[i].size(); j++) {
-
-
                 if(getPointFriend(inputFriend(friends, makeFriendLst(friendsLst(friends), friends), friendsLst(friends)), user, makeFriendLst(friendsLst(friends), friends), friends).contains(inputFriend(friends, makeFriendLst(friendsLst(friends), friends), friendsLst(friends))[i].get(j))){
                     int tmp = pointLst.get(i);
                     tmp += 10;
