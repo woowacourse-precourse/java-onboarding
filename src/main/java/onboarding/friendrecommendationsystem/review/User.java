@@ -71,4 +71,12 @@ public class User {
 			.filter(other::isFriendWith)
 			.count();
 	}
+
+	public String getId() {
+		return id;
+	}
+
+	public int compareTo(User other) {
+		return this.id.compareTo(other.id);
+	}
 }
