@@ -40,8 +40,8 @@ public class UserTest {
 	@Test
 	void 특정_유저_친구_판단() {
 		User user = new User("mrko");
-		user.add(new User("shakevan"));
-		user.add(new User("donut"));
+		user.addFriend(new User("shakevan"));
+		user.addFriend(new User("donut"));
 
 		List<User> others = List.of(
 			new User("shakevan"),
@@ -57,8 +57,8 @@ public class UserTest {
 	@Test
 	void 특정_유저_친구_목록() {
 		User user = new User("mrko");
-		user.add(new User("shakevan"));
-		user.add(new User("donut"));
+		user.addFriend(new User("shakevan"));
+		user.addFriend(new User("donut"));
 
 		Set<User> friends = user.getFriends();
 		List<User> expected = List.of(

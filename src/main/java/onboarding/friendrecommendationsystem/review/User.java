@@ -35,7 +35,7 @@ public class User {
 		return MIN_ID_LENGTH > length || length > MAX_ID_LENGTH;
 	}
 
-	public boolean add(final User user) {
+	public boolean addFriend(final User user) {
 		return friends.add(user);
 	}
 
@@ -48,15 +48,21 @@ public class User {
 	}
 
 	@Override
-	public boolean equals(Object other) {
-		if (this == other) {
+	public boolean equals(Object o) {
+		if (this == o) {
 			return true;
 		}
 
-		if (other == null || other.getClass() != this.getClass()) {
+		if (o == null || this.getClass() != o.getClass()) {
 			return false;
 		}
-		User otherUser = (User)other;
-		return otherUser.id.equals(this.id);
+		User other = (User)o;
+		return this.id.equals(other.id);
+	}
+
+	@Override
+	public int hashCode() {
+		int prime = 31;
+		return prime + (id == null ? 0 : id.hashCode());
 	}
 }
