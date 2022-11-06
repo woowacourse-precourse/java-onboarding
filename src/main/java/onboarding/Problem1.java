@@ -1,74 +1,69 @@
 package onboarding;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
+
+    // 점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
+
+    public static void main(String[] args) {
+        List<Integer> pobi = List.of(97, 98);
+        List<Integer> crong = List.of(197, 198);
+        System.out.println();solution(pobi, crong);
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        int[] p = {pobi.get(0),pobi.get(1)};
-        int[] c = {crong.get(0),crong.get(1)};
 
-        String[] pobiLeft = Integer.toString(p[0]).split("");
-        String[] pobiRight= Integer.toString(p[1]).split("");
-        String[] crongLeft = Integer.toString(c[0]).split("");
-        String[] crongRight = Integer.toString(c[1]).split("");
-
-        int[] temp1 = {0,0,1,1};
-        int[] temp2 = {0,0,1,1};
-        int max = 0;
-
-        //포비-페이지 계산 기능
-        for(int i=0;i<pobiLeft.length;i++) {
-            //int[] temp = new int[4];
-            temp1[0] += Integer.parseInt(pobiLeft[i]); //왼쪽페이지 합
-            temp1[1] += Integer.parseInt(pobiRight[i]); //오른쪽페이지 합
-            temp1[2] *= Integer.parseInt(pobiLeft[i]); //왼쪽 곱
-            temp1[3] *= Integer.parseInt(pobiRight[i]); //오른쪽 곱
+        if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1) {
+            return -1;
         }
 
-        //포비-최댓값 저장 기능
-        System.out.println(temp1[0]+","+temp1[1]+","+temp1[2]+","+temp1[3]);
-        System.out.println(max);
-        for(int i=0;i<4;i++) {
-            if (max < temp1[i]) {
-                max = temp1[i];
-                System.out.println(max);
-            }
+        int pobiMax = max(plus(pobi.get(0)), plus(pobi.get(1)), multiply(pobi.get(0)), multiply(pobi.get(1)));
+        int crongMax = max(plus(crong.get(0)), plus(crong.get(1)), multiply(crong.get(0)), multiply(crong.get(1)));
+
+        if (pobiMax == crongMax) {
+            return 0;
+        } else if (pobiMax > crongMax) {
+            return 1;
+        } else if (pobiMax < crongMax) {
+            return 2;
+        } else {
+            return -1;
         }
-        int pobiMax = max;
+    }
 
-        //크롱-페이지 계산 기능
-        for(int i=0;i<crongLeft.length;i++) {
+    // 페이지 번호의 각 자리 숫자를 모두 더하는 함수
+    public static int plus(int page) {
+        String str = Integer.toString(page);
+        String[] arr = str.split("");
 
-            temp2[0] += Integer.parseInt(crongLeft[i]);
-            temp2[1] += Integer.parseInt(crongRight[i]);
-            temp2[2] *= Integer.parseInt(crongLeft[i]);
-            temp2[3] *= Integer.parseInt(crongRight[i]);
+        int result = 0;
+        for (int i = 0; i < arr.length; i++) {
+            result += Integer.parseInt(arr[i]);
         }
 
-        //크롱-최댓값 저장 기능
-        System.out.println(temp2[0]+","+temp2[1]+","+temp2[2]+","+temp2[3]);
-        System.out.println(max);
+        return result;
+    }
 
-        max = 0;
-        for(int i=0;i<4;i++) {
-            if (max < temp2[i]) {
-                max = temp2[i];
-                System.out.println(max);
-            }
+    // 페이지 번호의 각 자리 숫자를 모두 곱하는 함수
+    public static int multiply(int page) {
+        String str = Integer.toString(page);
+        String[] arr = str.split("");
+
+        int result = 1;
+        for (int i = 0; i < arr.length; i++) {
+            result *= Integer.parseInt(arr[i]);
         }
-        int crongMax = max;
+        return result;
+    }
 
-        //승자 출력 기능
-        if(pobiMax > crongMax)
-            answer= 1;
-        else if(pobiMax < crongMax)
-            answer= 2;
-        else if(pobiMax == crongMax)
-            answer= 0;
-        else
-            answer = -1;
+    // 숫자를 비교해 큰 수를 구하는 함수
+    public static int max(int one, int two, int three, int four) {
+        int[] arr = {one, two, three, four};
+        Arrays.sort(arr);
 
-        return answer;
+        int result = arr[3];
+        return result;
     }
 }
