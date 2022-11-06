@@ -7,14 +7,9 @@ import java.util.List;
 class Problem1 {
 
     // 점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
-
-    public static void main(String[] args) {
-        List<Integer> pobi = List.of(97, 98);
-        List<Integer> crong = List.of(197, 198);
-        System.out.println();solution(pobi, crong);
-    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
+        // 페이지가 연속되지 않은 경우 예외처리
         if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1) {
             return -1;
         }
