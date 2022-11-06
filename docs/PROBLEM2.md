@@ -21,3 +21,33 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+
+---
+## 📄 기능 목록
+
+### 전체 동작 과정
+1. **decryption()** : 암호문 해독
+2. **boolean isRemoved** : decryption이 한 번 작동하는 동안 중복 문자를 지웠는지 확인
+3. **isRemoved==false** 가 될 때까지 decryption 반복
+
+### 함수별 입출력 및 동작 과정
+1. **decryption()**
+    - 입력 : 암호문 (String cipher)
+    - 동작과정 :
+      - cipher(n) == cipher(n+1)일 때까지 탐색
+      - cipher(n) != cipher(n+m)일 때까지 탐색
+      - cipher(n) ~ cipher(n+m-1)을 제거한 문장으로 cipher 초기화
+      - cipher(n+1)부터 다시 탐색 시작 -> 문장이 끝날때까지
+    - 출력 : boolean result
+
+---
+## 💡 기타 내용 정리
+
+### 문자열 자르기
+1. substr(int start,int length)
+    - 시작위치, 길이
+    - 시작위치
+2. substring(int indexStart,int indexEnd)
+    - 시작위치, 종료위치
+    - 시작위치

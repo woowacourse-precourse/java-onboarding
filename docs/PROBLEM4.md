@@ -19,3 +19,23 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+
+---
+## 📄 기능 목록
+
+### 전체 동작 과정
+1. **conversionWord()** : 글자 변환
+
+### 함수별 입출력 및 동작 과정
+1. **conversionWord()**
+    - 입력 : 문장 (String word)
+    - 동작과정 :
+      - String uppercase : 변환될 대문자 표 
+      - String lowercase : 변환될 소문자 표
+      - String을 CharArray형으로 바꿔줌
+      - 대문자와 소문자를 구분해서 변환
+    - 제한사항
+      - 알파벳 외의 문자는 변환하지 않음
+      - 대문자와 소문자 구분
+    - 출력 : 변환된 문장 (String word)
