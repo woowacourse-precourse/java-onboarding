@@ -15,6 +15,7 @@ class Problem1 {
 
         return answer;
     }
+
     static int getBig(int x) {
         int add = 0;
         int mul = 1;
@@ -27,20 +28,22 @@ class Problem1 {
         }
         return add > mul ? add : mul;
     }
+
     static int getWinner(int pobiScore, int crongScore) {
         int diff = pobiScore - crongScore;
         if (diff > 0) {
             return 1;
         } else if (diff < 0) {
             return 2;
-        }
-        else {
+        } else {
             return 0;
         }
     }
+
     static int max(int a, int b) {
         return a > b ? a : b;
     }
+
     static boolean errorHandle(int left, int right) {
         if (left < 1 || left > 400 || right < 1 || right > 400 || right - left != 1) {
             return false;
