@@ -67,4 +67,21 @@ public class UserTest {
 		);
 		assertThat(friends).containsAll(expected);
 	}
+
+	@DisplayName("함께 아는 친구의 수를 구할 수 있다.")
+	@Test
+	void 함께_아는_친구_수() {
+		User userA = new User("mrko");
+		userA.addFriend(new User("shakevan"));
+		userA.addFriend(new User("donut"));
+
+		User userB = new User("jun");
+		userB.addFriend(new User("shakevan"));
+		userB.addFriend(new User("donut"));
+
+		int numberOfFriends
+			= userA.getNumberOfFriendsKnowWith(userB);
+
+		assertThat(numberOfFriends).isEqualTo(2);
+	}
 }

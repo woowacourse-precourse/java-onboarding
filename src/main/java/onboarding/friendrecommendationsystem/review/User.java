@@ -65,4 +65,10 @@ public class User {
 		int prime = 31;
 		return prime + (id == null ? 0 : id.hashCode());
 	}
+
+	public int getNumberOfFriendsKnowWith(final User other) {
+		return (int)friends.stream()
+			.filter(other::isFriendWith)
+			.count();
+	}
 }
