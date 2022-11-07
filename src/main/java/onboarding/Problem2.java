@@ -1,6 +1,6 @@
 package onboarding;
 
-import static onboarding.problem2.Delete.executeDelete;
+import static onboarding.problem2.Deletion.executeDeletion;
 import static onboarding.problem2.Validation.isOutOfRange;
 import static onboarding.problem2.Validation.checkValidForm;
 
@@ -22,7 +22,7 @@ public class Problem2 {
             return INPUT_FORM_ERROR;
         }
 
-        answer = executeDelete(cryptogram);
+        answer = executeDeletion(cryptogram);
 
         return answer;
     }

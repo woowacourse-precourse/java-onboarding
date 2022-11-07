@@ -1,10 +1,10 @@
 package onboarding.problem2;
 
-public class Delete {
-    public static String executeDelete(String cryptogram) {
+public class Deletion {
+    public static String executeDeletion(String cryptogram) {
         int index = 0;
 
-        while (isAbleCompare(cryptogram, index) && isExistDuplication(cryptogram)) {
+        while (isAbleComparison(cryptogram, index) && isExistDuplication(cryptogram)) {
             index %= (cryptogram.length() - 1);
 
             DeleteResult deleteResult = deleteDuplication(cryptogram, index);
@@ -20,7 +20,7 @@ public class Delete {
         return cryptogram;
     }
 
-    private static boolean isAbleCompare(String cryptogram, int index) {
+    private static boolean isAbleComparison(String cryptogram, int index) {
         return cryptogram.length() > 2 && index >= 0;
     }
 
