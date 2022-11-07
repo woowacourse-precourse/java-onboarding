@@ -5,8 +5,10 @@ import java.util.List;
 class Problem1 {
 
     public static class Pages{
+        private static final int MIN_PAGE=1;
+        private static final int MAX_PAGE=400;
         private static boolean isRangeValid(int page){
-            if(page>=1 && page<=400){
+            if(page>= MIN_PAGE && page<= MAX_PAGE){
                 return true;
             }
             return false;
@@ -29,9 +31,8 @@ class Problem1 {
              // 1. 1<=페이지번호<=400
              // 2. 왼쪽 페이지 번호, 오른쪽 페이지 번호는 연속된 수
              // 3. 왼쪽: 홀수, 오른쪽: 짝수
-             if(isRangeValid(leftPage) && isRangeValid(rightPage)
-                     &&isLeftValid(leftPage) && isPairValid(leftPage,rightPage)){
-             }else{
+             if(!(isRangeValid(leftPage) && isRangeValid(rightPage)
+                     &&isLeftValid(leftPage) && isPairValid(leftPage,rightPage))){
                  throw new InvalidInputException();
              }
          }
