@@ -25,6 +25,7 @@ class Problem1 {
         return answer;
     }
 
+    // 페이지를 입력 받아 각 자리 숫자를 더하는 기능
     private static int plusPerSite(int input){
         String strInput = Integer.toString(input);
         int result = 0;
@@ -35,6 +36,7 @@ class Problem1 {
         return result;
     }
 
+    // 페이지를 입력 받아 각 자리 숫자를 곱하는 기능
     private static int multiplePerSite(int input){
         String strInput = Integer.toString(input);
         int result = 1;

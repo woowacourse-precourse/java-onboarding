@@ -14,7 +14,7 @@ public class Problem3 {
     public static int getClapInNumber(String value){
         int clapCount = 0;
 
-        for(int i=0; i<value.length(); i++){
+        for(int i=0; i<value.length(); i++){ // n이 value의 길이인, O(n) 시간복잡도
             if(value.charAt(i) == '3') clapCount++;
             if(value.charAt(i) == '6') clapCount++;
             if(value.charAt(i) == '9') clapCount++;

@@ -5,14 +5,15 @@ public class Problem4 {
         String answer = "";
 
         StringBuilder stringBuilder = new StringBuilder();
-        for(int i=0; i<word.length(); i++){
+        for(int i=0; i<word.length(); i++){ // 문자 하나씩 도는 for문
             char chr = word.charAt(i);
 
-            if(Character.isLowerCase(chr))
+            // 스스로하는 피드백 : 중괄호 없애지 말기
+            if(Character.isLowerCase(chr))  // 소문자일 경우
                 stringBuilder.append(reverseSmall(chr));
-            else if(Character.isUpperCase(chr))
+            else if(Character.isUpperCase(chr)) // 대문자일 경우
                 stringBuilder.append(reverseBig(chr));
-            else
+            else                                // 그 외
                 stringBuilder.append(chr);
         }
         answer = stringBuilder.toString();
@@ -21,7 +22,7 @@ public class Problem4 {
     }
 
     public static char reverseBig(char chr){
-        int offset = 'Z' - chr;
+        int offset = 'Z' - chr; // Z와의 offset 값을 구해서 A에다가 더해줌
 
         return (char)('A'+offset);
     }
