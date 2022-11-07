@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+-------------
+## 기능 목록
+1. 사용자 친구 찾아서 저장
+2. 함께 아는 친구와 점수를 함께 저장
+3. 방문자 점수 계산
+4. 높은 점수 기준 최대 5명 반환
+

@@ -21,3 +21,7 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+-------------
+## 기능 목록
+1. 중복 체크를 위해 이름 2글자씩 저장 ex) 제이엠 -> 제이, 이엠 저장
+2. 자른 이름들로 크루들의 이름과 비교 중복이면 이메일 저장 후 반환
