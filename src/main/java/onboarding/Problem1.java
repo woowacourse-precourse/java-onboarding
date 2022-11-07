@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static java.lang.Math.max;
 import static onboarding.problem1.Calculation.*;
 import static onboarding.problem1.Validation.isValidPage;
 
