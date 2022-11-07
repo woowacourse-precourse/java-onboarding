@@ -1,5 +1,190 @@
 # 미션 - 온보딩
 
+## 문제 별 부연 설명
+
+<br>
+
+## Problem 1
+- 사용된 클래스 리스트
+  - bigNumber
+  - numCalculation
+  - solution
+
+**핵심기능** 
+> 입력된 수에 대해 구할 수 있는 큰 수 반환
+
+### numCalculation
+
+숫자계산
+
+bigNumber 클래스를 통해 구할 수 있는 가장 큰 수를 반환합니다.
+
+### bigNumber
+
+입력된 숫자들에 대해 각 숫자들을 더하거나 곱한 수 중 가장 큰 수를 반환합니다.
+
+### solution
+
+pobi 와 crong 의 승부 여부를 가립니다.
+pobi가 이기게 되면 1 반환, crong이 이기게 되면 2 무승부는 0을 예외사항은 -1을 반환합니다.
+
+연속되지 않는 숫자들에 대해 if문을 통해 예외처리를 합니다.
+
+<br>
+
+## Problem 2
+
+- 사용된 클래스 리스트
+  - solutoin
+  - overlap
+
+**핵심기능** 
+> stack 구현
+
+### solution
+입력된 스트링 값을 overlap 클래스를 통해 스트링 값 반환합니다.
+
+
+### overlap
+입력된 스트링에 대해 charAt 함수를 통해 각 캐릭터에 접근하여 리스트에 추가합니다.
+
+리스트 원소들을 스택에 push를 통해 추가하며 이전 값과 동일 시 pop을 통해 제거합니다.
+
+<br>
+
+## Problem 3
+
+- 사용된 클래스 리스트
+  - solution
+  - clap
+  - judgment
+
+**핵심기능**
+> 숫자 입력시 캐릭터 변환 후 charAt를 통해 3, 6, 9 숫자에 대해 카운트 
+
+### solution
+
+clap 클래스를 통해 총 카운트 된 int 숫자를 반환합니다.
+
+### clap
+
+judgment 클래스를 통해 입력된 숫자의 3, 6, 9 개수를 모두 더하여 numResult변수로 반환합니다.
+
+
+### judgment
+
+입력된 숫자에 대해서 3, 6, 9 숫자의 개수를 카운트 하여 count변수로 반환합니다.
+
+<br>
+
+## Problem 4
+
+- 사용된 클래스 리스트
+  - solution
+  - cToitran
+  - iToCtran
+  - join
+  - characterArr
+
+**핵심기능**
+
+> 스트링 -> 아스키코드 -> 스트링 변환시 변환 방정식을 구현하여 사용
+
+### solution
+
+입력된 스트링에 대해 join 클래스를 통해 변환된 스트링을 반환합니다.
+
+
+### cToitran
+
+스트링을 입력받아 아스키코드로 변환합니다.
+
+for문을 통해 각 캐릭터들에 접근하여 아스키코드로 변환하여 다시 배열에 넣어줍니다.
+
+변환한 배열을 반환합니다.
+
+### iToCtran
+
+cToitran에서 반환된 배열을 통해 아스키코드를 캐릭터로 변환하여 배열에 넣어줍니다.
+
+### join
+
+캐릭터배열을 스트링으로 변환하여 반환합니다.
+
+### characterArr
+
+입력된 스트링을 캐릭터배열로 반환합니다.
+
+
+<br>
+
+## Problem 5
+
+- 사용된 클래스 리스트
+  - solution
+  - calculation
+
+**핵심기능**
+> 각 지폐단위로 나눈 후 나머지 값에 대해서 특정 클래스 사용 없이 계산되도록 구현
+
+### solution
+
+answer List 를 ArrayList 로 변경하였습니다.
+answer List 를 반환합니다.
+
+### calculation
+
+int[] 리스트 타입으로 지폐단위 리스트를 선언하였습니다.
+
+각 지폐 단위로 나눈 몫과 나머지를 배열에 저장, 다음 지폐단위 계산을 위해 나머지 값을 다음 배열원소로 나누어 몫 배열저장 합니다.
+
+위 과정을 지폐단위 개수만큼 반복합니다.
+
+<br>
+
+
+## Problem 6
+
+- 사용된 클래스 리스트
+  - solution
+  - makeNameLst
+  - mainloop
+  - finalCompare
+  - finalAnswer
+
+**핵심기능**
+> mainloop를 통해 중복 문자가 있을 경우 해당 문자 리턴
+> 중복문자 발견 후 contain 함수를 통해 true를 반환하는 문자열 출력
+
+<br>
+
+### solution
+finalAnswer 을 통해 중복 이메일을 반환합니다.
+
+### makeNameLst
+문제에서 입력된 forms의 이름만 추출하여 NameLst에 저장하여 반환합니다.
+
+### mainloop
+중복 문자열을 찾으면 반환합니다.
+
+### finalCompare
+중복문자열에 대해 NameLst(이름 요소들의 리스트)중 중복문자열을 가진 인덱스를 반환합니다.
+
+### finalAnswer
+finalCompare에서 반환된 인덱스를 기준으로 email 리스트를 만들며 Collections 함수를 통해 리스트요소를 정렬하였습니다.
+
+
+## Problem 7
+
+- 사용된 클래스 리스트
+
+
+
+
+
+
+
+
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
