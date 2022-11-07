@@ -56,6 +56,13 @@ class Problem1 {
     }
     public static class InvalidInputException extends Throwable {
     }
+    private static int computeScore(List<Integer> pages){
+        String leftPage=Integer.toString(pages.get(0));
+        String rightPage=Integer.toString(pages.get(1));
+        int leftScore=Math.max(Digit.addAll(leftPage),Digit.multiplyAll(leftPage));
+        int rightScore=Math.max(Digit.addAll(rightPage),Digit.multiplyAll(rightPage));
+        return Math.max(leftScore,rightScore);
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         //TODO : input 예외 처리
@@ -68,15 +75,8 @@ class Problem1 {
         }
 
         //TODO : pobi, crong 점수 계산하기
-        int pobiScore=Integer.MIN_VALUE;
-        int crongScore=Integer.MIN_VALUE;
-        for(int i=0;i<2;i++){
-            String pobiPage=Integer.toString(pobi.get(i));
-            pobiScore=Math.max(Math.max(Digit.addAll(pobiPage),Digit.multiplyAll(pobiPage)),pobiScore);
-
-            String crongPage=Integer.toString(crong.get(i));
-            crongScore=Math.max(Math.max(Digit.addAll(crongPage),Digit.multiplyAll(crongPage)),crongScore);
-        }
+        int pobiScore=computeScore(pobi);
+        int crongScore=computeScore(crong);
 
         //TODO : 승부 결과 판단 및 리턴(answer)
         if(pobiScore>crongScore){
