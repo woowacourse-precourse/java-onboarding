@@ -54,8 +54,8 @@ public class Deletion {
     }
 
     private static class DeleteResult {
-        private String cryptogram;
-        private int index;
+        private final String cryptogram;
+        private final int index;
 
         public DeleteResult(String cryptogram, int index) {
             this.cryptogram = cryptogram;
