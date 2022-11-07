@@ -1,6 +1,9 @@
 package onboarding;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static java.lang.Math.max;
 import static onboarding.problem1.Calculation.*;
@@ -8,30 +11,25 @@ import static onboarding.problem1.Validation.isValidPage;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = 0;
-
         if (!isValidPage(pobi) || !isValidPage(crong)) {
             return -1;
         }
 
-        List<Integer> pobiLeftPageDigits = splitDigits(pobi.get(0));
-        List<Integer> pobiRightPageDigits = splitDigits(pobi.get(1));
+        Map<String, Integer> pobiPage = new HashMap<>();
+        Map<String, Integer> crongPage = new HashMap<>();
 
-        List<Integer> crongLeftPageDigits = splitDigits(crong.get(0));
-        List<Integer> crongRightPageDigits = splitDigits(crong.get(1));
+        putData(pobi, pobiPage);
+        putData(crong, crongPage);
 
-        int pobiLeftResult = max(add(pobiLeftPageDigits), multiplication(pobiLeftPageDigits));
-        int pobiRightResult = max(add(pobiRightPageDigits), multiplication(pobiRightPageDigits));
+        return getAnswer(
+                Collections.max(pobiPage.values()),
+                Collections.max(crongPage.values())
+        );
+    }
 
-        int crongLeftResult = max(add(crongLeftPageDigits), multiplication(crongLeftPageDigits));
-        int crongRightResult = max(add(crongRightPageDigits), multiplication(crongRightPageDigits));
-
-        int pobiResult = max(pobiLeftResult, pobiRightResult);
-        int crongResult = max(crongLeftResult, crongRightResult);
-
-        answer = getAnswer(pobiResult, crongResult);
-
-        return answer;
+    private static void putData(List<Integer> pageList, Map<String, Integer> pageMap) {
+        pageMap.put("left", calculate(pageList.get(0)));
+        pageMap.put("right", calculate(pageList.get(1)));
     }
 
     private static Integer getAnswer(int pobiResult, int crongResult) {
