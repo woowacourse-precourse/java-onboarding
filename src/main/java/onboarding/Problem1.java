@@ -4,6 +4,12 @@ import java.util.List;
 import java.util.stream.Stream;
 
 class Problem1 {
+
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+    private static final int DRAW = 0;
+    private static final int EXCEPTION = -1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         int answer = Integer.MAX_VALUE;
@@ -16,12 +22,12 @@ class Problem1 {
             int crongScore = Math.max(maxScore(crong.get(0)),maxScore(crong.get(1)));
 
             if (pobiScore==crongScore){
-                answer = 0;
+                answer = DRAW;
             }else {
-                answer = (pobiScore>crongScore) ? 1:2;
+                answer = (pobiScore>crongScore) ? POBI_WIN:CRONG_WIN;
             }
         }catch (Exception e){
-            answer = -1;
+            answer = EXCEPTION;
         }finally {
             return answer;
         }
