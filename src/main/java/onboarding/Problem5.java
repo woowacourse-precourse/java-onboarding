@@ -8,11 +8,11 @@ public class Problem5 {
         List<Integer> answer = new ArrayList<>();
 
         int [] won = {50000,10000,5000,1000,500,100,50,10,1};
-        int count=0;
-        for (int i = 0; i < 9; i++) {
-            count= money/won[i];
+        int count;
+        for (int amount : won) {
+            count = money / amount;
             answer.add(count);
-            money -= (count*won[i]);
+            money -= (count * amount);
         }
 
         return answer;
