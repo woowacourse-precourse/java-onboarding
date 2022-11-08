@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -37,7 +38,13 @@ class Problem1 {
     }
 
     private static boolean isContinuousPages(List<Integer> numbers) {
-        return (numbers.get(0) % 2 == 1) && (numbers.get(1) - numbers.get(0) == 1);
+        if (numbers.get(0) % 2 != 1) {
+            return false;
+        }
+        if (numbers.get(1) - numbers.get(0) != 1) {
+            return false;
+        }
+        return true;
     }
 
     private static int getPageMaxScore(List<Integer> pages) {
@@ -67,10 +74,7 @@ class Problem1 {
 
     private static int[] toIntArray(int number) {
         String str = String.valueOf(number);
-        int[] numbers = new int[str.length()];
-        for(int i = 0; i < numbers.length; i++) {
-            numbers[i] = str.charAt(i) -'0';
-        }
+        int[] numbers = Arrays.stream(str.split("")).mapToInt(Integer::parseInt).toArray();
         return numbers;
     }
 }

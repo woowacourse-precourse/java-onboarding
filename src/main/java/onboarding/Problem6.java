@@ -9,27 +9,6 @@ import java.util.Map;
 import java.util.Set;
 
 public class Problem6 {
-    static class StringIterator {
-        private StringBuilder sb;
-        private int i;
-        private int max;
-        StringIterator (String init) {
-            sb = new StringBuilder(init);
-            i = 1;
-            max = init.length();
-        }
-
-        public String next(){
-            if (hasNext()) {
-                return sb.substring(i-1, ++i);
-            }
-            return null;
-        }
-
-        public boolean hasNext() {
-            return max > i;
-        }
-    }
     private static Map<String,Set<String>> nicknameMap = new HashMap<>();
     private static Set<String> emailSet = new HashSet<>();
     public static List<String> solution(List<List<String>> forms) {
@@ -43,9 +22,8 @@ public class Problem6 {
         String email = form.get(0);
         String nickname = form.get(1);
 
-        StringIterator iter = new StringIterator(nickname);
-        while(iter.hasNext()) {
-            checkPartOfNickname(iter.next(), email);
+        for (int i = 1; i < nickname.length(); i++) {
+            checkPartOfNickname(nickname.substring(i-1, i+1), email);
         }
     }
 
@@ -53,7 +31,7 @@ public class Problem6 {
         if(hasDuplicatedNicknameInKeySet(part)) {
             Set<String> duplicatedEmailSet = nicknameMap.get(part);
             duplicatedEmailSet.add(email);
-            addEmailSet(duplicatedEmailSet);
+            emailSet.addAll(duplicatedEmailSet);
             return;
         }
         addPartOfNickToMap(part, email);
@@ -72,10 +50,6 @@ public class Problem6 {
         Set<String> newEmailSet= new HashSet<>();
         newEmailSet.add(email);
         nicknameMap.put(partOfNickname, newEmailSet);
-    }
-
-    private static void addEmailSet(Set<String> newEmailSet) {
-        emailSet.addAll(newEmailSet);
     }
 
     private static List<String> toSortedList(Set<String> set) {

@@ -9,15 +9,10 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
         for(int i = 0; i < UNIT.length; i++) {
-            answer.add(getNumOfBillsOrCoins(i, money));
-            money = change(i, answer.get(i), money);
+            int number = money / UNIT[i];
+            answer.add(number);
+            money = money - UNIT[i] * number;
         }
         return answer;
-    }
-    private static int getNumOfBillsOrCoins(int i, int money) {
-        return money / UNIT[i];
-    }
-    private static int change(int i, int number, int money) {
-        return money - UNIT[i] * number;
     }
 }

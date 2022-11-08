@@ -20,7 +20,7 @@ public class Problem2 {
                 i++;
                 continue;
             }
-            removeConsecutiveSameCharacter(sb, i, maxSameLength);
+            sb.delete(i, i+maxSameLength);
         }
         String answer = sb.toString();
         return answer;
@@ -29,17 +29,11 @@ public class Problem2 {
     private static int maxSameCharacter(StringBuilder sb, int start) {
         int n = 1;
         for(int i = start; i < sb.length()-1; i++) {
-            if(!isConsecutiveSameCharacter(sb, i)) {
+            if(sb.charAt(i) != sb.charAt(i+1)) {
                 return n;
             }
             n++;
         }
         return n;
-    }
-    private static StringBuilder removeConsecutiveSameCharacter(StringBuilder sb, int i, int n) {
-        return sb.delete(i, i+n);
-    }
-    private static boolean isConsecutiveSameCharacter(StringBuilder str, int i) {
-        return str.charAt(i) == str.charAt(i+1);
     }
 }

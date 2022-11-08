@@ -9,6 +9,35 @@ import java.util.Map;
 import java.util.Set;
 
 public class Problem7 {
+
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        Persons persons = new Persons(user);
+        persons.countVisit(visitors);
+        persons.addFriends(friends);
+        List<Person> list = persons.getRecommendedFriendsList();
+        sortByName(list);
+        sortByScore(list, persons);
+        List<String> answer = topFive(list, persons);
+
+        return answer;
+    }
+    static void sortByName(List<Person> list) {
+        Collections.sort(list, (a, b) -> a.name.compareTo(b.name));
+    }
+
+    static void sortByScore(List<Person> list, Persons persons) {
+        Collections.sort(list, (a, b) -> Integer.compare(persons.getScore(b), persons.getScore(a)));
+    }
+
+    static List<String> topFive(List<Person> list, Persons persons) {
+        List<String> topFive = new ArrayList<>();
+        for(Person p : list) {
+            if(persons.getScore(p) == 0) break;
+            topFive.add(p.name);
+            if(topFive.size() >= 5) break;
+        }
+        return topFive;
+    }
     static class Person {
         String name;
         int visit;
@@ -102,33 +131,5 @@ public class Problem7 {
             }
             return list;
         }
-    }
-    static void sortByName(List<Person> list) {
-        Collections.sort(list, (a, b) -> a.name.compareTo(b.name));
-    }
-
-    static void sortByScore(List<Person> list, Persons persons) {
-        Collections.sort(list, (a, b) -> Integer.compare(persons.getScore(b), persons.getScore(a)));
-    }
-
-    static List<String> topFive(List<Person> list, Persons persons) {
-        List<String> topFive = new ArrayList<>();
-        for(Person p : list) {
-            if(persons.getScore(p) == 0) break;
-            topFive.add(p.name);
-            if(topFive.size() >= 5) break;
-        }
-        return topFive;
-    }
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Persons persons = new Persons(user);
-        persons.countVisit(visitors);
-        persons.addFriends(friends);
-        List<Person> list = persons.getRecommendedFriendsList();
-        sortByName(list);
-        sortByScore(list, persons);
-        List<String> answer = topFive(list, persons);
-
-        return answer;
     }
 }

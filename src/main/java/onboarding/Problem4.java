@@ -11,27 +11,16 @@ public class Problem4 {
     }
 
     private static char convertInReverse(char c) {
-        if(isAlpha(c)) {
+        if(Character.isAlphabetic(c)) {
             return convertAlphaInReverse(c);
         }
         return c;
     }
 
     private static char convertAlphaInReverse(char c) {
-        if(isUpperCase(c)) {
+        if(Character.isUpperCase(c)) {
             return (char)('A' + ('Z' - c));
         }
         return (char)('a' + ('z'- c));
-    }
-
-    private static boolean isAlpha(char c) {
-        return isUpperCase(c) || isLowerCase(c);
-    }
-    private static boolean isUpperCase(char c) {
-        return c >= 'A' && c <= 'Z';
-    }
-
-    private static boolean isLowerCase(char c) {
-        return c >= 'a' && c <= 'z';
     }
 }
