@@ -1,5 +1,15 @@
 # 미션 - 온보딩
 
+## 기능 목록
+
+- [x] [문제 1](./docs/PROBLEM1.md)
+- [x] [문제 2](./docs/PROBLEM2.md)
+- [x] [문제 3](./docs/PROBLEM3.md)
+- [x] [문제 4](./docs/PROBLEM4.md)
+- [x] [문제 5](./docs/PROBLEM5.md)
+- [x] [문제 6](./docs/PROBLEM6.md)
+- [x] [문제 7](./docs/PROBLEM7.md)
+
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
