@@ -83,6 +83,7 @@ public class Problem7 {
             if (friendScoreMap.get(o1) == friendScoreMap.get(o2)) return o1.compareTo(o2);
             else return friendScoreMap.get(o2) - friendScoreMap.get(o1);
         });
-        return answer;
+        if (answer.size() < 5) return answer;
+        return new ArrayList<>(answer.subList(0, 5));
     }
 }
