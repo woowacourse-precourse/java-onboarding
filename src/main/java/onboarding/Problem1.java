@@ -37,7 +37,7 @@ class Problem1 {
     private static int maxScore(int pageNum){
 
         int [] arrayNumber = intToArray(pageNum);
-        return Math.max(add(arrayNumber), product(arrayNumber));
+        return Math.max(add(arrayNumber), multiply(arrayNumber));
     }
 
     // 페이지 번호(int)를 받아 배열(int[])로 반환
@@ -60,7 +60,7 @@ class Problem1 {
     }
 
     // 번호 배열을 받아 곱 점수를 반환
-    private static int product(int [] arrNum){
+    private static int multiply(int [] arrNum){
 
         int result = 1;
         for(int i = 0; i < arrNum.length; i++){
