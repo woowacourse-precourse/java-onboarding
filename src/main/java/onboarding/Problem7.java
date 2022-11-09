@@ -6,7 +6,6 @@ public class Problem7 {
 
     public static List<String> getFriends(List<List<String>> friends, String user) {
         List<String> userFriend = new ArrayList<>();
-
         for (int i = 0; i < friends.size(); i++) {
             if (friends.get(i).get(0).equals(user)) {
                 userFriend.add(friends.get(i).get(1));
@@ -72,7 +71,7 @@ public class Problem7 {
         for (int i = 0; i < scoreArray.size(); i++) {
             for (String target:scoreBoard.keySet()
             ) {
-                if (scoreBoard.get(target) == scoreArray.get(i) && !recommendedFriends.contains(target)) {
+                if (scoreBoard.get(target) == scoreArray.get(i) && !recommendedFriends.contains(target) && recommendedFriends.size()<5) {
                     recommendedFriends.add(target);
                 }
             }

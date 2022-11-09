@@ -93,6 +93,8 @@ public class test {
             }
         }
 
+        System.out.println(recommendedFriends.size());
+
         for (String eachScore:recommendedFriends
              ) {
             System.out.println(eachScore);
