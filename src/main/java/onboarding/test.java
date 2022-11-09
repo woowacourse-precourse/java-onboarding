@@ -1,11 +1,14 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public class Problem7 {
+public class test {
 
     public static List<String> getFriends(List<List<String>> friends, String user) {
         List<String> userFriend = new ArrayList<>();
+
         for (int i = 0; i < friends.size(); i++) {
             if (friends.get(i).get(0).equals(user)) {
                 userFriend.add(friends.get(i).get(1));
@@ -54,14 +57,27 @@ public class Problem7 {
     }
 
 
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
+
+    public static void main(String[] args) {
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "jun"),
+                List.of("donut", "andole"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
         List<String> myfriends = getFriends(friends, user);
         List<String> sharedFriends = getSharedFriends(friends, myfriends, user);
         Map<String, Integer> scoreBoard = getScoreBoard(sharedFriends, myfriends, visitors);
 
+
         List<Integer> scoreArray = new ArrayList<>();
-        for (Integer score: scoreBoard.values()) {
+        for (Integer score: scoreBoard.values()
+             ) {
             scoreArray.add(score);
         }
         Collections.sort(scoreArray);
@@ -69,13 +85,20 @@ public class Problem7 {
 
         List<String> recommendedFriends = new ArrayList<>();
         for (int i = 0; i < scoreArray.size(); i++) {
-            for (String target:scoreBoard.keySet()
-            ) {
-                if (scoreBoard.get(target) == scoreArray.get(i) && !recommendedFriends.contains(target) && recommendedFriends.size()<5) {
-                    recommendedFriends.add(target);
+            for (String dd:scoreBoard.keySet()
+                 ) {
+                if (scoreBoard.get(dd) == scoreArray.get(i) && !recommendedFriends.contains(dd)) {
+                    recommendedFriends.add(dd);
                 }
             }
         }
-        return recommendedFriends;
+
+        System.out.println(recommendedFriends.size());
+
+        for (String eachScore:recommendedFriends
+             ) {
+            System.out.println(eachScore);
+        }
+
     }
 }
