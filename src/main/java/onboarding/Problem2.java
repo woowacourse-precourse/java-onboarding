@@ -10,7 +10,7 @@ public class Problem2 {
         boolean flag = true;
         String beforeCryptogram = cryptogram;
 
-        while(flag) {
+        while (flag) {
             cryptogram = decrypt(cryptogram);
 
             if (isRemoveDuplication(beforeCryptogram, cryptogram)) {

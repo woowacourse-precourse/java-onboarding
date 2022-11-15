@@ -17,7 +17,7 @@ class Problem1 {
         int crongLeft = crong.get(0);
         int crongRight = crong.get(1);
 
-        if(isException(pobiLeft, pobiRight) || isException(crongLeft, crongRight)) {
+        if (isException(pobiLeft, pobiRight) || isException(crongLeft, crongRight)) {
             return EXCEPTION_ANSWER;
         }
 
@@ -28,13 +28,13 @@ class Problem1 {
     }
 
     public static boolean isException(int leftPage, int rightPage) {
-        if(leftPage < FIRST_PAGE || rightPage > LAST_PAGE) {
+        if (leftPage < FIRST_PAGE || rightPage > LAST_PAGE) {
             return true;
         }
-        if(leftPage >= rightPage) {
+        if (leftPage >= rightPage) {
             return true;
         }
-        if((rightPage - leftPage) != 1) {
+        if ((rightPage - leftPage) != 1) {
             return true;
         }
         return false;
@@ -51,7 +51,7 @@ class Problem1 {
         int sum = 0, mul = 1;
 
         char[] numArr = String.valueOf(num).toCharArray();
-        for(int i = 0; i < numArr.length; i++) {
+        for (int i = 0; i < numArr.length; i++) {
             sum += numArr[i];
             mul *= numArr[i];
         }
@@ -60,10 +60,10 @@ class Problem1 {
     }
 
     public static int getAnswer(int pobiScore, int crongScore) {
-        if(pobiScore > crongScore) {
+        if (pobiScore > crongScore) {
             return POBI_WIN;
         }
-        if(crongScore < pobiScore) {
+        if (crongScore < pobiScore) {
             return CRONG_WIN;
         }
         return DRAW;
