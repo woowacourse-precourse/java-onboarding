@@ -8,7 +8,6 @@ class Problem1 {
     static private final int POBI_WIN = 1;
     static private final int CRONG_WIN = 2;
     static private final int DRAW = 0;
-
     static private final int FIRST_PAGE = 1;
     static private final int LAST_PAGE = 400;
 
@@ -29,13 +28,15 @@ class Problem1 {
     }
 
     public static boolean isException(int leftPage, int rightPage) {
-        if(leftPage < FIRST_PAGE || rightPage > LAST_PAGE)
+        if(leftPage < FIRST_PAGE || rightPage > LAST_PAGE) {
             return true;
-        if(leftPage >= rightPage)
+        }
+        if(leftPage >= rightPage) {
             return true;
-        if((rightPage - leftPage) != 1)
+        }
+        if((rightPage - leftPage) != 1) {
             return true;
-
+        }
         return false;
     }
 
@@ -59,11 +60,12 @@ class Problem1 {
     }
 
     public static int getAnswer(int pobiScore, int crongScore) {
-        if(pobiScore > crongScore)
+        if(pobiScore > crongScore) {
             return POBI_WIN;
-        else if(crongScore < pobiScore)
+        }
+        if(crongScore < pobiScore) {
             return CRONG_WIN;
-        else
-            return DRAW;
+        }
+        return DRAW;
     }
 }
