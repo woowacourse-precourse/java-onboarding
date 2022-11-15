@@ -13,20 +13,25 @@ public class Problem2 {
         while(flag) {
             cryptogram = decrypt(cryptogram);
 
-            if (beforeCryptogram != cryptogram) {   // 중복을 삭제한 경우
+            if (isRemoveDuplication(beforeCryptogram, cryptogram)) {
                 beforeCryptogram = cryptogram;
-            } else {                                // 중복이 없는 경우
-                answer = cryptogram;
-                flag = false;
+                continue;
             }
+
+            answer = cryptogram;
+            flag = false;
         }
 
         return answer;
     }
 
+    public static boolean isRemoveDuplication(String beforeCryptogram, String cryptogram) {
+        return beforeCryptogram != cryptogram;
+    }
+
     public static String decrypt(String cryptogram) {
-        for (int i = 'a'; i <= 'z'; i++) {
-            String regex = (char)i + SAMPLE_REGEX;
+        for (int alphabet = 'a'; alphabet <= 'z'; alphabet++) {
+            String regex = (char)alphabet + SAMPLE_REGEX;
             cryptogram = cryptogram.replaceAll(regex, BLANK);
         }
 
