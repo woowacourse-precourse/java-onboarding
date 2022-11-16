@@ -41,29 +41,34 @@ class Problem1 {
     }
 
     public static int getScore(int leftPage, int rightPage) {
-        int leftScore = makeBiggerNum(leftPage);
-        int rightScore = makeBiggerNum(rightPage);
+        int leftScore = getBiggerNum(leftPage);
+        int rightScore = getBiggerNum(rightPage);
 
         return Math.max(leftScore, rightScore);
     }
 
-    public static int makeBiggerNum(int num) {
+    public static int getBiggerNum(int num) {
         int sum = 0, mul = 1;
 
-        char[] numArr = String.valueOf(num).toCharArray();
-        for (int i = 0; i < numArr.length; i++) {
-            sum += numArr[i];
-            mul *= numArr[i];
+        String number = String.valueOf(num);
+        char[] words = number.toCharArray();
+        for (char word : words) {
+            sum += charToInt(word);
+            mul *= charToInt(word);
         }
 
         return Math.max(sum, mul);
+    }
+
+    public static int charToInt(char word) {
+        return word - '0';
     }
 
     public static int getAnswer(int pobiScore, int crongScore) {
         if (pobiScore > crongScore) {
             return POBI_WIN;
         }
-        if (crongScore < pobiScore) {
+        if (crongScore > pobiScore) {
             return CRONG_WIN;
         }
         return DRAW;
