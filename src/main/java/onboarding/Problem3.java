@@ -20,8 +20,8 @@ public class Problem3 {
 
         for (char word : data.toCharArray()) {
             String tmpData = String.valueOf(word);
-            int checkNum = Integer.parseInt(tmpData);
-            if(is369(checkNum)) {
+            int checkNumber = Integer.parseInt(tmpData);
+            if(is369(checkNumber)) {
                 result++;
             }
         }
