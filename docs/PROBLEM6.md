@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 목록
+
+- forms의 닉네임을 key 이메일을 value로 가지는 map으로 저장하는 기능
+- 닉네임의 두 글자 이상의 문자가 연속적으로 포함되는 닉네임을 찾는 기능
+- 중복된 닉네임의 이메일의 리스트를 중복을 제거하여 오름차순 정렬
