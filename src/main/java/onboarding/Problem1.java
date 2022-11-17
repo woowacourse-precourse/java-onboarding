@@ -57,4 +57,8 @@ class Problem1 {
         }
         return ret;
     }
+
+    public int test() {
+        return 0;
+    }
 }
