@@ -8,10 +8,8 @@ class Problem1 {
         if (!validate(pobi) || !validate(crong)) {
             return -1;
         }
-
         int pobiScore = calculateScore(pobi);
         int crongScore = calculateScore(crong);
-
         if (pobiScore == crongScore) return 0;
         if (pobiScore > crongScore) return 1;
         return 2;
@@ -19,7 +17,7 @@ class Problem1 {
 
 
     private static boolean validate(List<Integer> openedPages) {
-        return validatePage(openedPages) && (openedPages.get(0) + 1 == openedPages.get(1));
+        return validatePage(openedPages) && (openedPages.get(0)+1 == openedPages.get(1));
     }
     private static boolean validatePage(List<Integer> openedPages) {
         Integer leftPage = openedPages.get(0);
