@@ -1,34 +1,28 @@
 package onboarding;
 
-import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.IntStream;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
         String preProcessed = cryptogram;
-        String postProcessed = process(preProcessed);
+        String postProcessed = remover(cryptogram);
         while (!preProcessed.equals(postProcessed)) {
             preProcessed = postProcessed;
-            postProcessed = process(preProcessed);
+            postProcessed = remover(preProcessed);
         }
-
         return postProcessed;
     }
 
-    static String process(String str){
-        Stack<Character> stack = new Stack<>();
-        StringBuilder stringBuilder = new StringBuilder();
+    static String remover(String str){
+        List<String> regexFormats = new ArrayList<>();
+        IntStream.range(97, 123).forEach(x -> regexFormats.add("[" + (char)x + "]{2}"));
 
-        for(char x : str.toCharArray()) {
-            if(stack.isEmpty()) {stack.push(x); continue;}
-            if(stack.peek() == x) {stack.push(x); continue;}
-            if(stack.peek() != x) {
-                if(stack.size()==1) stringBuilder.append(stack.pop());
-                else stack.clear();
-                stack.push(x);
-            }
+        String temp = str;
+        for (String regex : regexFormats) {
+            temp = temp.replaceAll(regex, "");
         }
-        if (stack.size()==1) stringBuilder.append(stack.pop());
-
-        return stringBuilder.toString();
+        return temp;
     }
 }
