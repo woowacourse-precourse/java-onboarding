@@ -6,22 +6,26 @@ import java.util.stream.Collectors;
 public class Problem7 {
 
     private static final Map<String, Set<String>> friendsRelationRepository = new HashMap<>();
-    private static final Map<String, Integer> friendsScoreRepository = new HashMap<>();
+    private static Map<String, Integer> friendsScoreRepository = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         friends.forEach(x-> saveFriendRelation(x.get(0), x.get(1)));
         assignScore(user, visitors);
+        sortingMap(friendsScoreRepository);
 
-        Map<String, Integer> sortedFriendsScoreRepository = sortedMapByScore();
-        List<String> recommendedFriends = new ArrayList<>(sortedFriendsScoreRepository.keySet());
-        if (sortedFriendsScoreRepository.size() <= 5) {
-            return recommendedFriends;
-        }
-        return recommendedFriends.subList(0,5);
+        List<String> recommendedFriends = new ArrayList<>(friendsScoreRepository.keySet());
+        return restrictedList(recommendedFriends);
     }
 
-    private static Map<String, Integer> sortedMapByScore() {
-        List<Map.Entry<String, Integer>> entries = new ArrayList<>(friendsScoreRepository.entrySet());
+    private static List<String> restrictedList(List<String> list) {
+        if (list.size() <= 5) {
+            return list;
+        }
+        return list.subList(0,5);
+    }
+
+    private static void sortingMap(Map map) {
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(map.entrySet());
         Collections.sort(entries, (Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) -> {
             if (o1.getValue() == o2.getValue()) {
                 return o1.getKey().compareTo(o2.getKey());
@@ -31,7 +35,7 @@ public class Problem7 {
 
         Map<String, Integer> sortedMap = new LinkedHashMap<>();
         entries.stream().forEach(x -> sortedMap.put(x.getKey(), x.getValue()));
-        return sortedMap;
+        friendsScoreRepository = sortedMap;
     }
 
     private static void saveFriendRelation(String friends1, String friends2) {
