@@ -10,8 +10,8 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         friends.forEach(x-> saveFriendRelation(x.get(0), x.get(1)));
-        assign_10score(user);
-        assign_1score(user, visitors);
+        assignScore(user, visitors);
+
         Map<String, Integer> sortedFriendsScoreRepository = sortedMapByScore();
         List<String> recommendedFriends = new ArrayList<>(sortedFriendsScoreRepository.keySet());
         if (sortedFriendsScoreRepository.size() <= 5) {
@@ -45,6 +45,10 @@ public class Problem7 {
         friendsRelationRepository.get(friends2).add(friends1);
     }
 
+    private static void assignScore(String user, List<String> visitor) {
+        assign_10score(user);
+        assign_1score(user, visitor);
+    }
     private static void assign_10score(String user){
         Set<String> friendsOfUser = friendsRelationRepository.get(user);
         List<String> friendsOfFriends = friendsOfUser.stream().
@@ -52,15 +56,14 @@ public class Problem7 {
                 flatMap(Collection::stream).
                 filter(x-> !x.equals(user)).
                 collect(Collectors.toList());
+
         friendsOfFriends.stream().
                 filter(x -> !friendsOfUser.contains(x)).
                 forEach(x -> friendsScoreRepository.put(x, friendsScoreRepository.getOrDefault(x, 0) + 10));
     }
-
     static void assign_1score(String user, List<String> visitor) {
         visitor.stream().
-                filter(x -> !x.equals(user)).
-                filter(x -> !friendsRelationRepository.get(user).contains(x)).
+                filter(x -> !x.equals(user) && !friendsRelationRepository.get(user).contains(x)).
                 forEach(x -> friendsScoreRepository.put(x, friendsScoreRepository.getOrDefault(x, 0)+1));
     }
 }
