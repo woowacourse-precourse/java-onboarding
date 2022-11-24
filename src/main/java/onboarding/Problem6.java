@@ -23,7 +23,6 @@ public class Problem6 {
     /**
      * forms 의 올바른 도메인에 해당하는 모든 닉네임의 2글자를 추출,
      * Map에 해당 부분닉네임을 Key로, 부분닉네임이 사용된 횟수를 Value로 저장한다.
-     * @param forms
      */
     private static void setSubNickNames(List<List<String>> forms) {
         forms.stream().filter(x -> isValidateDomain(x.get(0))).
@@ -35,8 +34,6 @@ public class Problem6 {
 
     /**
      * 도메인 형식이 @eamil.com을 갖는지에 대한 여부를 Boolean 타입 반환
-     * @param userEmail
-     * @return
      */
     private static boolean isValidateDomain(String userEmail) {
         return userEmail.matches(domainFormat);
@@ -44,8 +41,6 @@ public class Problem6 {
 
     /**
      * 닉네임의 두글자씩 추출하여 Set으로 반환
-     * @param nickName
-     * @return
      */
     private static Set<String> createSubNickNameSpace(String nickName) {
         Set<String> set = new HashSet<>();
@@ -59,8 +54,6 @@ public class Problem6 {
 
     /**
      * Set에 포함된 모든 Elements를 Map의 키로, 중복 수를 값으로 저장
-     * @param set
-     * @param map
      */
     private static void addFromSetToMap (Set<String> set, Map<String, Integer> map) {
         set.forEach(x -> map.put(x, map.getOrDefault(x, 0)+1));
@@ -68,8 +61,6 @@ public class Problem6 {
 
     /**
      * Map에 저장된 부분닉네임 중, 중복수가 2이상인 key값들을 set으로 반환
-     * @param map
-     * @return
      */
     private static Set<String> extractDuplicatedSubNickNames(Map<String, Integer> map) {
         Set<String> set = new HashSet<>();
