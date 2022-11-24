@@ -12,7 +12,7 @@ public class Problem3 {
     }
 
 
-    static int clapCounter(int n){
+    private static int clapCounter(int n){
         return (int)Arrays.stream(String.valueOf(n).split("")).
                 filter(x -> x.equals("3") || x.equals("6") || x.equals("9")).
                 count();

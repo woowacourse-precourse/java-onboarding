@@ -15,7 +15,7 @@ public class Problem2 {
         return postProcessed;
     }
 
-    static String remover(String str){
+    private static String remover(String str){
         List<String> regexFormats = new ArrayList<>();
         IntStream.range(97, 123).forEach(x -> regexFormats.add("[" + (char)x + "]{2}"));
 
