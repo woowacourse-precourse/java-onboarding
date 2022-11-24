@@ -26,30 +26,15 @@
 ---
 ## 📮 기능 구현
 
-### 문제 분석
-- 닉네임 에서 두글자 이상 반복되는 닉네임을 찾아야 한다. 
-- 모든 닉네임을 두글자씩 끊어서 저장하며, 각각 저장된 횟수를 구할 경우, 닉네임 부분중복여부를 확인 가능할 것이다.
-- `Map` 자료구조가 유용할 것으로 판단된다.
-- 닉네임이 중복된 사람들의 이메일을 저장하여야 하며, 이때 이메일의 도메인은 email.com으로 제한되어야 한다.
-- 중복된 닉네임을 가지는 크루들의 email을 담아 반환해야 한다
+### 이메일 도메인 검사
+ - [x] @email.com 의 도메인을 갖는지 검사 (Regex 이용)
 
-###  Field: 
-- [x] `Map<String, Integer> repositoryOfPair` :각 사람들의 닉네임을 두글자씩 떼어, 사용된 횟수를 모두 저장하기위한 구조체
+### 닉네임 중복 검사
+- [x] 개별 닉네임에서 두글자씩 추출하여, Map에 글자와 개수를 저장하는 기능
+- [x] Map에 저장된 두 글자의 부분닉네임에서, 2 이상 카운트 된 부분닉네임을 Set으로 변환
+- [x] 닉네임을 순서대로 읽으며, 해당 닉네임의 부분 두글자 닉네임이 Set에 포함되는지 여부 검사
 
-### Method
- - [x] `Set<String> pairCreator(String name)`: 닉네임을 구성하는 연속된 두글자 쌍을 Set에 담아 반환시키기 위한 메서드
- - [x] `void addPairToRepository(String name)` : `pariCreator(String name)` 을 호출. 생성된  두글자 이름쌍의 set을   `repositoryOfPair`에 이름쌍을 key값으로, 저장횟수를 value로 저장하는 메서드
- - [x] `Set<String> TransformDuplicatedPairSet()` : `repositoryOfPair`에 저장된 중복된 이름쌍을 검색하는 과정에서, 검색 속도를 개선하기 위해 중복된(이름쌍 횟수가 2이상) 이름쌍만 Set에 담아 반환하도록 하는 메서드
- - [x] `boolean isCorrectedDomain(String email)` : 이메일 도메인이 @email.com인 것을 판별하는 메서드
- - [x] `boolean hasDuplicatedPair(String name, Set<String> set)` : `name`에 대하여, `pairCreator(String name)`를 호출, 반환된 이름쌍으로 구성된 Set 중에, `Set<String> TransformDuplicatedPairSet()`에 포함된게 있는지 판별하는 메서드
+### 중복된 닉네임을 작성한 지원자의 이메일을 추출
+- [x] 중복된 닉네임을 작성한 지원자의 이메일을 Set에 담는 기능(Set은 정렬기능이 있는 TreeSet으로)
+- [x] 위 Set을 리스트로 반환
 
-### Logic
- 1. `repositoryOfPair = new HashMap<>()` : 이름쌍 저장소 생성
- 2. `form`의 닉네임들에 대하여, 각 닉네임마다 `void addPairToRepository(String name)`를 통해 저장소에 저장
- 3. `Set<String> duplicatedPairs = TransformDuplicatedPairSet()` : 중복되지 않은 이름쌍들은 불필요 하므로(검색효율을 위하여) 차원 축소
- 4. `Set<String> answer = new TreeSet<>()` 생성 : `answer` 에 담은 이메일은 오름차순 정렬되어야 하므로
- 5. for each 문을 통해, `form` 자료들(이메일, 닉네임)을 읽어들임
-    - `boolean hasDuplicatedPair(String name, Set<String> set)` 을 통하여 중복된 이름을 가지는지 판별
-    - `boolean isCorrectedDomain(String email)` 을 통하여 올바른 도메인을 가지는지 판별
-    - 중복된 닉네임을 가지며, 동시에 올바른 이메일 도메인을 가질 경우, 해당 이메일을 `answer`에 저장
- 6. `answer` 반환
