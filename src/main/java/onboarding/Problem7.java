@@ -17,6 +17,7 @@ public class Problem7 {
         return restrictedList(recommendedFriends);
     }
 
+
     private static List<String> restrictedList(List<String> list) {
         if (list.size() <= 5) {
             return list;
@@ -24,7 +25,8 @@ public class Problem7 {
         return list.subList(0,5);
     }
 
-    private static void sortingMap(Map map) {
+
+    private static void sortingMap(Map<String, Integer> map) {
         List<Map.Entry<String, Integer>> entries = new ArrayList<>(map.entrySet());
         Collections.sort(entries, (Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) -> {
             if (o1.getValue() == o2.getValue()) {
@@ -33,10 +35,11 @@ public class Problem7 {
             return o2.getValue() - o1.getValue();
         });
 
-        Map<String, Integer> sortedMap = new LinkedHashMap<>();
-        entries.stream().forEach(x -> sortedMap.put(x.getKey(), x.getValue()));
-        friendsScoreRepository = sortedMap;
+        Map<String, Integer> tempMap = new LinkedHashMap<>();
+        entries.forEach(x -> tempMap.put(x.getKey(), x.getValue()));
+        map = tempMap;
     }
+
 
     private static void saveFriendRelation(String friends1, String friends2) {
         if (!friendsRelationRepository.containsKey(friends1)) {
