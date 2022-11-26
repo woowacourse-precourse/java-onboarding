@@ -19,7 +19,7 @@ public class ExceptionHandler {
     }
 
     private static boolean Not1To400(List<Integer> input) {
-        return input.get(0) >= 1 && input.get(1) <= 400;
+        return input.get(0) < 1 && input.get(1) > 400;
     }
 
     private static boolean rightMinusLeftNotOne(List<Integer> input) {

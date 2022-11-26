@@ -6,14 +6,22 @@ import java.util.List;
 public class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MIN_VALUE;
         if (!ExceptionHandler.validateInput(pobi) || !ExceptionHandler.validateInput(crong)) {
             return Constants.EXCEPTION;
         }
         Integer pobiScore = getScore(pobi);
         Integer crongScore = getScore(crong);
+        return getWinner(pobiScore,crongScore);
+    }
 
-        return answer;
+    private static int getWinner(Integer pobiScore, Integer crongScore) {
+        if (pobiScore > crongScore) {
+            return Constants.POBI_WIN;
+        }
+        if (crongScore > pobiScore) {
+            return Constants.CRONG_WIN;
+        }
+        return Constants.TIE;
     }
 
     private static Integer getScore(List<Integer> pobi) {
