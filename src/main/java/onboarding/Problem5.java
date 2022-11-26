@@ -17,6 +17,6 @@ public class Problem5 {
             classifier.put(i, temp / i);
             temp %= i;
         }
-        return new ArrayList(classifier.values());
+        return new ArrayList<>(classifier.values());
     }
 }

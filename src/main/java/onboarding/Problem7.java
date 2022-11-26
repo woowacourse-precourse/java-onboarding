@@ -6,14 +6,20 @@ import java.util.stream.Collectors;
 public class Problem7 {
 
     private static final Map<String, Set<String>> friendsRelationRepository = new HashMap<>();
-    private static Map<String, Integer> friendsScoreRepository = new HashMap<>();
+    private static final Map<String, Integer> friendsScoreRepository = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        //친구 관계에 대한 Map 을 형성
         friends.forEach(x-> saveFriendRelation(x.get(0), x.get(1)));
-        assignScore(user, visitors);
-        sortingMap(friendsScoreRepository);
 
-        List<String> recommendedFriends = new ArrayList<>(friendsScoreRepository.keySet());
+        //user 에 대한 정보와 visitor 에 대한 정보를 바탕 으로 점수를 할당
+        assignScore(user, visitors);
+
+        //정렬을 수행
+        Map<String, Integer> sortedFriendsScoreRepository = sortMap(friendsScoreRepository);
+
+        //결과 반환
+        List<String> recommendedFriends = new ArrayList<>(sortedFriendsScoreRepository.keySet());
         return restrictedList(recommendedFriends);
     }
 
@@ -25,21 +31,20 @@ public class Problem7 {
         return list.subList(0,5);
     }
 
-
-    private static void sortingMap(Map<String, Integer> map) {
+    private static Map<String, Integer> sortMap(Map<String, Integer> map) {
         List<Map.Entry<String, Integer>> entries = new ArrayList<>(map.entrySet());
-        Collections.sort(entries, (Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) -> {
-            if (o1.getValue() == o2.getValue()) {
-                return o1.getKey().compareTo(o2.getKey());
-            }
-            return o2.getValue() - o1.getValue();
-        });
+        entries.sort((o1, o2) -> myCompare(o1, o2));
 
-        Map<String, Integer> tempMap = new LinkedHashMap<>();
-        entries.forEach(x -> tempMap.put(x.getKey(), x.getValue()));
-        map = tempMap;
+        Map<String, Integer> sortedMap = new LinkedHashMap<>();
+        entries.forEach(x -> sortedMap.put(x.getKey(), x.getValue()));
+        return sortedMap;
     }
-
+    private static int myCompare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+        if (o1.getValue() == o2.getValue()) {
+            return o1.getKey().compareTo(o2.getKey());
+        }
+        return o2.getValue() - o1.getValue();
+    }
 
     private static void saveFriendRelation(String friends1, String friends2) {
         if (!friendsRelationRepository.containsKey(friends1)) {
