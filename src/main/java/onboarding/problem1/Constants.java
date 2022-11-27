@@ -20,6 +20,9 @@ public final class Constants {
     public static final String ERROR_PAGE_ODD_AND_EVEN = "왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수 번호이다.";
     public static final String ERROR_LENGTH = "pobi와 crong의 길이는 2이다.";
     public static final String REGEX_NO_SPACE = "";
+    public static final int MIN_PAGE_NUMBER = 1;
+    public static final int MAX_PAGE_NUMBER = 400;
+    public static final String ERROR_PAGE_RANGE = "1부터 시작되는 400 페이지의 책입니다.";
 
     private Constants() {
     }

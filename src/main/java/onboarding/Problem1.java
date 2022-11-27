@@ -1,13 +1,16 @@
-package onboarding.problem1;
+package onboarding;
 
 import static onboarding.problem1.Constants.ADDITION_INITIAL_VALUE;
 import static onboarding.problem1.Constants.ERROR_LENGTH;
 import static onboarding.problem1.Constants.ERROR_MESSAGE;
 import static onboarding.problem1.Constants.ERROR_PAGE_GAP;
 import static onboarding.problem1.Constants.ERROR_PAGE_ODD_AND_EVEN;
+import static onboarding.problem1.Constants.ERROR_PAGE_RANGE;
 import static onboarding.problem1.Constants.LEFT_PAGE_INDEX;
 import static onboarding.problem1.Constants.LEFT_REMAINDER;
 import static onboarding.problem1.Constants.LINE_BREAK;
+import static onboarding.problem1.Constants.MAX_PAGE_NUMBER;
+import static onboarding.problem1.Constants.MIN_PAGE_NUMBER;
 import static onboarding.problem1.Constants.MULTIPLICATION_INITIAL_VALUE;
 import static onboarding.problem1.Constants.PAGE_GAP;
 import static onboarding.problem1.Constants.PLAYER_LENGTH;
@@ -38,7 +41,8 @@ public class Problem1 {
         }
     }
 
-    private static void validatePages(List<Integer> player) {
+    private static void validatePages(List<Integer> player) throws IllegalArgumentException {
+        validatePageRange(player);
         validatePageLength(player);
         validatePageOddEven(player);
         validatePageOrder(player);
@@ -79,19 +83,27 @@ public class Problem1 {
         return additionResults;
     }
 
-    private static void validatePageOrder(List<Integer> player) {
+    private static void validatePageRange(List<Integer> player) throws IllegalArgumentException {
+        for (int pageNumber : player) {
+            if (pageNumber < MIN_PAGE_NUMBER || pageNumber > MAX_PAGE_NUMBER) {
+                throw new IllegalArgumentException(ERROR_PAGE_RANGE);
+            }
+        }
+    }
+
+    private static void validatePageOrder(List<Integer> player) throws IllegalArgumentException {
         if (player.get(LEFT_PAGE_INDEX) + PAGE_GAP != player.get(RIGHT_PAGE_INDEX)) {
             throw new IllegalArgumentException(ERROR_PAGE_GAP);
         }
     }
 
-    private static void validatePageOddEven(List<Integer> player) {
+    private static void validatePageOddEven(List<Integer> player) throws IllegalArgumentException {
         if (isLeftPageOddNumber(player) || isrightPageEvenNumber(player)) {
             throw new IllegalArgumentException(ERROR_PAGE_ODD_AND_EVEN);
         }
     }
 
-    private static boolean isrightPageEvenNumber(List<Integer> player) {
+    private static boolean isrightPageEvenNumber(List<Integer> player) throws IllegalArgumentException {
         return player.get(RIGHT_PAGE_INDEX) % QUOTIENT != RIGHT_REMAINDER;
     }
 

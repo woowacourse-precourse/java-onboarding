@@ -3,7 +3,6 @@ package onboarding;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
-import onboarding.problem1.Problem1;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
