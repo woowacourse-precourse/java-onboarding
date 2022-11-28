@@ -24,3 +24,22 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+---
+## 📮 기능 구현
+
+### 주어진 닉네임의 두 글자를 Sub Nick-name으로, 모든 닉네임의 Sub Nick-name과 해당 개수를 생성
+- [x] 주어진 닉네임을 분해하여, Set으로 변환하여 반환하는 기능
+- [x] 변환된 Set을 Map에 키는 Sub Nick-name으로, 값은 count로 저장하는 기능
+
+### 점수를 할당하는 기능
+- [x] 10점이 할당될 친구에게 점수를 부여하는 기능
+- [x] 1점이 할당될 친구에게 점수를 부여하는 기능
+- [x] 점수가 있는 추천친구들만 추출하는 기능(Set으로)
+
+### 정렬기능
+- [x] 점수가 다를 경우 점수 내림차순, 점수가 동일할 경우 이름순으로 정렬하는 기능
+
+### 최종 결과값 List의 길이를 제한하는 기능
+- [x] 생성된 추천 친구의 수는 최대 5명만 담아서 반환하는 기능 

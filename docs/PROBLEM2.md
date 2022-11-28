@@ -21,3 +21,15 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+---
+## 📮 기능 구현
+
+### 단계별 연속된 중복문자 제거
+ - [x] regex 이용
+ - [x] String replace regex : `String.replaceAll("[a]{2}", """)` - a가 2개 이상 연속 중복될 경우, 제거
+ - [x] 위 기능을 이용하여, a부터 z까지 regex를 담은 리스트를 반환
+ - [x] regex list를 순서대로 읽어내어, a-z까지 한 단계의 중복 제거 수행.
+
+### 단계 별 로직 수행을 통한 최종 결과 반환
+ - [x] while문 이용. 중복 제거 로직 수행 전후를 비교, 동일할 경우 중단 및 최종 결과 반환
