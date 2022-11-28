@@ -1,11 +1,6 @@
 package onboarding;
 
 import static onboarding.problem1.Constants.ADDITION_INITIAL_VALUE;
-import static onboarding.problem1.Constants.ERROR_LENGTH;
-import static onboarding.problem1.Constants.ERROR_MESSAGE;
-import static onboarding.problem1.Constants.ERROR_PAGE_GAP;
-import static onboarding.problem1.Constants.ERROR_PAGE_ODD_AND_EVEN;
-import static onboarding.problem1.Constants.ERROR_PAGE_RANGE;
 import static onboarding.problem1.Constants.LEFT_PAGE_INDEX;
 import static onboarding.problem1.Constants.LEFT_REMAINDER;
 import static onboarding.problem1.Constants.LINE_BREAK;
@@ -26,6 +21,7 @@ import static onboarding.problem1.Constants.RIGHT_REMAINDER;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import onboarding.problem1.ErrorMessage;
 
 public class Problem1 {
 
@@ -35,7 +31,7 @@ public class Problem1 {
             validatePages(crong);
             return getSolution(getScore(pobi), getScore(crong));
         } catch (IllegalArgumentException exception) {
-            System.out.printf(ERROR_MESSAGE, exception.getMessage());
+            System.out.printf(ErrorMessage.MESSAGE.getMessage(), exception.getMessage());
             System.out.printf(LINE_BREAK);
             return RESULT_EXCEPTION;
         }
@@ -45,7 +41,7 @@ public class Problem1 {
         validatePageRange(player);
         validatePageLength(player);
         validatePageOddEven(player);
-        validatePageOrder(player);
+        validatePageGap(player);
     }
 
 
@@ -86,20 +82,20 @@ public class Problem1 {
     private static void validatePageRange(List<Integer> player) throws IllegalArgumentException {
         for (int pageNumber : player) {
             if (pageNumber < MIN_PAGE_NUMBER || pageNumber > MAX_PAGE_NUMBER) {
-                throw new IllegalArgumentException(ERROR_PAGE_RANGE);
+                throw new IllegalArgumentException(ErrorMessage.PAGE_RANGE.getMessage());
             }
         }
     }
 
-    private static void validatePageOrder(List<Integer> player) throws IllegalArgumentException {
+    private static void validatePageGap(List<Integer> player) throws IllegalArgumentException {
         if (player.get(LEFT_PAGE_INDEX) + PAGE_GAP != player.get(RIGHT_PAGE_INDEX)) {
-            throw new IllegalArgumentException(ERROR_PAGE_GAP);
+            throw new IllegalArgumentException(ErrorMessage.PAGE_GAP.getMessage());
         }
     }
 
     private static void validatePageOddEven(List<Integer> player) throws IllegalArgumentException {
         if (isLeftPageOddNumber(player) || isrightPageEvenNumber(player)) {
-            throw new IllegalArgumentException(ERROR_PAGE_ODD_AND_EVEN);
+            throw new IllegalArgumentException(ErrorMessage.PAGE_ODD_AND_EVEN.getMessage());
         }
     }
 
@@ -113,7 +109,7 @@ public class Problem1 {
 
     private static void validatePageLength(List<Integer> player) {
         if (player.size() != PLAYER_LENGTH) {
-            throw new IllegalArgumentException(ERROR_LENGTH);
+            throw new IllegalArgumentException(ErrorMessage.LENGTH.getMessage());
         }
     }
 
