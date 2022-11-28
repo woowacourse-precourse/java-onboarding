@@ -1,41 +1,51 @@
 package onboarding.problem1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Page {
 
-    private static final Integer MAX_PAGE = 400;
-    private static final Integer MIN_PAGE = 1;
+    private static final int MAX_PAGE = 400;
+    private static final int MIN_PAGE = 1;
 
-    private Integer left;
-    private Integer right;
+    private final int left;
+    private final int right;
 
     public Page(List<Integer> page) {
-        if (verifyPage(page)) {
-            this.left = page.get(0);
-            this.right = page.get(1);
-        } else {
-            throw new RuntimeException("Page 생성에 실패했습니다.");
-        }
+        validatePage(page);
+        left = page.get(0);
+        right = page.get(1);
     }
 
-    private boolean verifyPage(List<Integer> page) {
+    private void validatePage(List<Integer> page) {
         Integer left = page.get(0);
         Integer right = page.get(1);
 
-        if ((left >= MIN_PAGE && right <= MAX_PAGE)
-            && (left % 2 == 1 && right == left + 1)) {
-            return true;
-        } else {
-            return false;
+        if (!validatePage(left, right)) {
+            throw new IllegalArgumentException("Page 생성에 실패했습니다.");
         }
     }
 
-    public Integer getLeft() {
-        return left;
+    private boolean validatePage(Integer left, Integer right) {
+        return (left >= MIN_PAGE && right <= MAX_PAGE)
+            && (left % 2 == 1 && right == left + 1);
     }
 
-    public Integer getRight() {
-        return right;
+    public int getMaxPageValue() {
+        return Math.max(getMaxValue(left), getMaxValue(right));
+    }
+
+    private int getMaxValue(int page) {
+        List<Integer> numberList = new ArrayList<>();
+
+        while (page > 0) {
+            numberList.add(page % 10);
+            page = page / 10;
+        }
+
+        Integer sumValue = numberList.stream().reduce(0, Integer::sum);
+        Integer multipleValue = numberList.stream().reduce(1, (sum, value) -> sum * value);
+
+        return Math.max(sumValue, multipleValue);
     }
 }
