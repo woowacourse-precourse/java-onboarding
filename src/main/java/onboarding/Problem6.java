@@ -14,7 +14,7 @@ public class Problem6 {
         int[] duplicatedNickIdx = new int[forms.size()];
         
         for (int i=0; i < forms.size(); i++){
-            //0으로 배열 초기화
+            //1로 배열 초기화
             duplicatedNickIdx[i] = 1;
         }
 
