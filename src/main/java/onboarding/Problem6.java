@@ -9,56 +9,60 @@ public class Problem6 {
     public static final int EMAIL_INDEX = 0;
     public static final int NICKNAME_INDEX = 1;
     public static final int DUPLICATE_COUNT = 2;
+    private static List<String> answer = new ArrayList<>();
 
     public static List<String> solution(List<List<String>> forms) {
+        setEmailListOfDuplicatedNickNames(forms);
+        return sortAnswer(answer);
+    }
 
-        List<String> answer = new ArrayList<>();
-
+    private static void setEmailListOfDuplicatedNickNames(List<List<String>> forms) {
         for (List<String> userForm : forms) {
-
             String userNickName = userForm.get(NICKNAME_INDEX);
             String userEmail = userForm.get(EMAIL_INDEX);
-
-            HashSet<String> truncatedNickNamesExceptUser = getTruncatedNickNamesWithoutUser(
-                    getNickNamesWithoutUser(forms, userForm));
-            HashSet<String> truncatedNickNamesContainingUser = getTruncatedNickNamesContainingUser(
-                    getNickNamesContainingUser(forms));
-
-            int sizeBefore = truncatedNickNamesExceptUser.size();
-            int sizeAfter = truncatedNickNamesContainingUser.size();
-            int gapInCaseOfNoDuplication = userNickName.length() - 1;
-            boolean isDuplicatedNickName = sizeBefore + gapInCaseOfNoDuplication > sizeAfter;
-
-            if (isDuplicatedNickName) {
-                answer.add(userEmail);
-            }
+            int gapInCaseOfNoDuplication = calculateNormalGap(userNickName);
+            boolean isDuplicatedNickName =
+                    getSizeBefore(forms, userForm) + gapInCaseOfNoDuplication > getSizeAfter(forms);
+            addEmailOfDuplicatedNickNames(userEmail, isDuplicatedNickName);
         }
+    }
 
-        return sortAnswer(answer);
+    private static int calculateNormalGap(String userNickName) {
+        return userNickName.length() - 1;
+    }
+
+    private static void addEmailOfDuplicatedNickNames(String userEmail, boolean isDuplicatedNickName) {
+        if (isDuplicatedNickName) {
+            answer.add(userEmail);
+        }
+    }
+
+    private static int getSizeAfter(List<List<String>> forms) {
+        HashSet<String> truncatedNickNamesContainingUser = getTruncatedNickNames(
+                getNickNamesContainingUser(forms));
+        int sizeAfter = truncatedNickNamesContainingUser.size();
+        return sizeAfter;
+    }
+
+    private static int getSizeBefore(List<List<String>> forms, List<String> userForm) {
+        HashSet<String> truncatedNickNamesExceptUser = getTruncatedNickNames(
+                getNickNamesWithoutUser(forms, userForm));
+        int sizeBefore = truncatedNickNamesExceptUser.size();
+        return sizeBefore;
     }
 
     private static List<String> sortAnswer(List<String> answer) {
         return answer.stream().sorted().collect(Collectors.toList());
     }
 
-    private static HashSet<String> getTruncatedNickNamesContainingUser(List<String> nickNamesContianingUser) {
-        HashSet<String> truncatedNickNamesContainingUser = new HashSet<>();
-        for (String nickName : nickNamesContianingUser) {
+    private static HashSet<String> getTruncatedNickNames(List<String> nickNames) {
+        HashSet<String> truncatedNickNames = new HashSet<>();
+        for (String nickName : nickNames) {
             for (int index = 0; index < nickName.length() - 1; index++) {
-                truncatedNickNamesContainingUser.add(getTruncatedNickName(nickName, index));
+                truncatedNickNames.add(getTruncatedNickName(nickName, index));
             }
         }
-        return truncatedNickNamesContainingUser;
-    }
-
-    private static HashSet<String> getTruncatedNickNamesWithoutUser(List<String> nickNamesWithoutUser) {
-        HashSet<String> truncatedNickNamesWithoutUser = new HashSet<>();
-        for (String nickName : nickNamesWithoutUser) {
-            for (int index = 0; index < nickName.length() - 1; index++) {
-                truncatedNickNamesWithoutUser.add(getTruncatedNickName(nickName, index));
-            }
-        }
-        return truncatedNickNamesWithoutUser;
+        return truncatedNickNames;
     }
 
     private static String getTruncatedNickName(String nickName, int index) {
