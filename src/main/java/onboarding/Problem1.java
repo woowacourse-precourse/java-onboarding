@@ -21,7 +21,7 @@ import static onboarding.problem1.Constants.RIGHT_REMAINDER;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import onboarding.problem1.ErrorMessage;
+import onboarding.problem1.ExceptionMessage;
 
 public class Problem1 {
 
@@ -31,7 +31,7 @@ public class Problem1 {
             validatePages(crong);
             return getSolution(getScore(pobi), getScore(crong));
         } catch (IllegalArgumentException exception) {
-            System.out.printf(ErrorMessage.MESSAGE.getMessage(), exception.getMessage());
+            System.out.printf(ExceptionMessage.MESSAGE.getMessage(), exception.getMessage());
             System.out.printf(LINE_BREAK);
             return RESULT_EXCEPTION;
         }
@@ -82,20 +82,20 @@ public class Problem1 {
     private static void validatePageRange(List<Integer> player) throws IllegalArgumentException {
         for (int pageNumber : player) {
             if (pageNumber < MIN_PAGE_NUMBER || pageNumber > MAX_PAGE_NUMBER) {
-                throw new IllegalArgumentException(ErrorMessage.PAGE_RANGE.getMessage());
+                throw new IllegalArgumentException(ExceptionMessage.PAGE_RANGE.getMessage());
             }
         }
     }
 
     private static void validatePageGap(List<Integer> player) throws IllegalArgumentException {
         if (player.get(LEFT_PAGE_INDEX) + PAGE_GAP != player.get(RIGHT_PAGE_INDEX)) {
-            throw new IllegalArgumentException(ErrorMessage.PAGE_GAP.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.PAGE_GAP.getMessage());
         }
     }
 
     private static void validatePageOddEven(List<Integer> player) throws IllegalArgumentException {
         if (isLeftPageOddNumber(player) || isrightPageEvenNumber(player)) {
-            throw new IllegalArgumentException(ErrorMessage.PAGE_ODD_AND_EVEN.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.PAGE_ODD_AND_EVEN.getMessage());
         }
     }
 
@@ -109,7 +109,7 @@ public class Problem1 {
 
     private static void validatePageLength(List<Integer> player) {
         if (player.size() != PLAYER_LENGTH) {
-            throw new IllegalArgumentException(ErrorMessage.LENGTH.getMessage());
+            throw new IllegalArgumentException(ExceptionMessage.LENGTH.getMessage());
         }
     }
 
