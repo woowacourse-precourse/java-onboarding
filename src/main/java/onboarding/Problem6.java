@@ -22,7 +22,7 @@ public class Problem6 {
             String userEmail = userForm.get(EMAIL_INDEX);
             int gapInCaseOfNoDuplication = calculateNormalGap(userNickName);
             boolean isDuplicatedNickName =
-                    getSizeBefore(forms, userForm) + gapInCaseOfNoDuplication > getSizeAfter(forms);
+                    getSizeWithoutUser(forms, userForm) + gapInCaseOfNoDuplication > getSizeContainingUser(forms);
             addEmailOfDuplicatedNickNames(userEmail, isDuplicatedNickName);
         }
     }
@@ -37,18 +37,12 @@ public class Problem6 {
         }
     }
 
-    private static int getSizeAfter(List<List<String>> forms) {
-        HashSet<String> truncatedNickNamesContainingUser = getTruncatedNickNames(
-                getNickNamesContainingUser(forms));
-        int sizeAfter = truncatedNickNamesContainingUser.size();
-        return sizeAfter;
+    private static int getSizeContainingUser(List<List<String>> forms) {
+        return getTruncatedNickNames(getNickNamesContainingUser(forms)).size();
     }
 
-    private static int getSizeBefore(List<List<String>> forms, List<String> userForm) {
-        HashSet<String> truncatedNickNamesExceptUser = getTruncatedNickNames(
-                getNickNamesWithoutUser(forms, userForm));
-        int sizeBefore = truncatedNickNamesExceptUser.size();
-        return sizeBefore;
+    private static int getSizeWithoutUser(List<List<String>> forms, List<String> userForm) {
+        return getTruncatedNickNames(getNickNamesWithoutUser(forms, userForm)).size();
     }
 
     private static List<String> sortAnswer(List<String> answer) {
