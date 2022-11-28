@@ -27,23 +27,19 @@ class Problem1 {
     }
     public static List<Integer> get_digitList(int num){
         List<Integer> digitList=new ArrayList<>();
-        int hund_d=0;
-        int ten_d=0;
-        int one_d=0;
-        hund_d=num/100;
-        ten_d=(num%100)/10;
-        one_d=num%10;
+
+        int hund_d=num/100;
+        int ten_d=(num%100)/10;
+        int one_d=num%10;
 
 
-        digitList=Arrays.asList(hund_d,ten_d,one_d);
-
-        return digitList;
+        return Arrays.asList(hund_d,ten_d,one_d);
 
 
 
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int Max_p=0,Max_c = 0;// hund_d= 백의자리, ten_d 십의자리, units 일의 자리
+        int Max_p=0,Max_c = 0;
         if(1!=(pobi.get(1)-pobi.get(0))) return -1; if(1!=(crong.get(1))-crong.get(0)) return -1;
         Max_p=compare_max(pobi);
         Max_c = compare_max(crong);
