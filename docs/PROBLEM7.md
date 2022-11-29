@@ -26,11 +26,11 @@
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 
 ### 기능 구현
-1. friends리스트에서 user의 이름을 찾아 함께 들어있는 사람의 이름을 myFriend리스트와 listName리스트에 넣어준다. (이때, user의 친구인 경우 점수는 없으므로 listScore에는 0을 동시에 넣어준다.)
-2. friends리스트에서 user의 이름이 포함되지 않은 요소들은 theirFriend리스트에 넣어준다.
-3. theirFriend리스트에서 myFriend리스트의 이름을 찾아 함께 들어있는 사람의 이름을 listName에 넣어준다.
-   3-1. listName에 이름이 아직 없는 경우, 해당 요소와 함께 들어있는 사람의 이름을 listName리스트에 넣어준다. (이때, user친구의 친구인 경우 점수는 10점이므로 listScore에는 10을 동시에 넣어준다.)
-   3-2. listName에 이름이 이미 있는 경우, 해당 요소의 인덱스를 찾고, listScore의 해당 요소 인덱스 값에 10을 더해준다.
-4. visitors리스트에 있는 사람들을 listName에 넣어주고, 동시에 listScore에는 3을 넣어준다. (단, listName에 이름이 이미 있는 경우, 해당 요소의 인덱스를 찾고, listScore의 해당 요소 인덱스 값에 3을 더해준다.)
-5. listName에서 내 친구들의 이름을 제거해준다. 이 때 listName에 들어있는 친구들의 인덱스를 찾고, 해당 인덱스를 통해 listScore에서도 친구의 점수를 제거해준다.
-6. listScore를 크기순으로 변경해주고, 변경되는 score의 인덱스를 찾아 listName도 score에 맞춰 함께 변경해준다. (만약 score가 같다면 이름을 오름차순으로 변경해준다.)
+1. 리스트 friends에서 user의 이름을 찾아 함께 들어있는 사람의 이름을 리스트 myFriends와 리스트 names에 넣어준다. (이때, user의 친구인 경우 점수는 없으므로 리스트 score에는 0을 동시에 넣어준다.)
+2. 리스트 friends에서 user의 이름이 포함되지 않은 요소들은 리스트 theirFriends에 넣어준다.
+3. 리스트 theirFriends에서 리스트 myFriends의 이름을 찾아 함께 들어있는 사람의 이름을 리스트 names에 넣어준다.
+   3-1. 리스트 names에 이름이 아직 없는 경우, 해당 요소와 함께 들어있는 사람의 이름을 리스트 names에 넣어준다. (이때, user친구의 친구인 경우 점수는 10점이므로 리스트 score에는 10을 동시에 넣어준다.)
+   3-2. 리스트 names에 이름이 이미 있는 경우, 해당 요소의 인덱스를 찾고, 리스트 scores의 해당 요소 인덱스 값에 10을 더해준다.
+4. 리스트 visitors에 있는 사람들을 리스트 names에 넣어주고, 동시에 리스트 scores에는 3을 넣어준다. (단, 리스트 name에 이름이 이미 있는 경우, 해당 요소의 인덱스를 찾고, 리스트 scores의 해당 요소 인덱스 값에 3을 더해준다.)
+5. 리스트 names에서 내 친구들의 이름을 제거해준다. 이 때 리스트 name에 들어있는 친구들의 인덱스를 찾고, 해당 인덱스를 통해 리스트 scores에서도 친구의 점수를 제거해준다.
+6. 리스트 scores를 크기순으로 변경해주고, 변경되는 score의 인덱스를 찾아 리스트 names도 score에 맞춰 함께 변경해준다. (만약 score가 같다면 이름을 오름차순으로 변경해준다.)
