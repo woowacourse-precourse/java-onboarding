@@ -7,6 +7,9 @@ import java.util.stream.Collectors;
 
 public class CrewFilter {
 
+    private static final int MIN_FORMS_SIZE = 1;
+    private static final int MAX_FORMS_SIZE = 10000;
+
     private static CrewFilter INSTANCE;
 
     private final Set<Crew> crews = new HashSet<>();
@@ -22,7 +25,21 @@ public class CrewFilter {
         return INSTANCE;
     }
 
-    public void inputForm(List<String> form) {
+    public void inputForms(List<List<String>> forms) {
+        validateFormsSize(forms);
+
+        for (List<String> form : forms) {
+            inputForm(form);
+        }
+    }
+
+    private void validateFormsSize(List<List<String>> forms) {
+        if (forms.size() < MIN_FORMS_SIZE || forms.size() > MAX_FORMS_SIZE) {
+            throw new IllegalArgumentException("입력 가능한 폼 범위를 벗어났습니다.");
+        }
+    }
+
+    private void inputForm(List<String> form) {
         validateForm(form);
 
         String email = form.get(0);

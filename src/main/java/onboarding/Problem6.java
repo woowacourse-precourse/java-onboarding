@@ -8,9 +8,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         CrewFilter crewFilter = CrewFilter.getInstance();
 
-        for (List<String> form : forms) {
-            crewFilter.inputForm(form);
-        }
+        crewFilter.inputForms(forms);
 
         List<String> filteredEmails = crewFilter.filtering();
         crewFilter.clear();
