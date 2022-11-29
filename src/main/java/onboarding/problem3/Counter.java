@@ -5,7 +5,10 @@ import java.util.List;
 
 public class Counter {
 
-    public int countTotal369(int number) {
+    private Counter() {
+    }
+
+    public static int countTotal369(int number) {
         validateInputNumber(number);
 
         int result = 0;
@@ -15,7 +18,7 @@ public class Counter {
         return result;
     }
 
-    private int count369(int number) {
+    private static int count369(int number) {
         List<Integer> numberList = new ArrayList<>();
         int result = 0;
 
@@ -32,7 +35,7 @@ public class Counter {
         return result;
     }
 
-    private void validateInputNumber(int number) {
+    private static void validateInputNumber(int number) {
         if (number < 1 || number > 10000) {
             throw new RuntimeException("1 이상 10000 이하의 크기만 입력 가능합니다.");
         }
