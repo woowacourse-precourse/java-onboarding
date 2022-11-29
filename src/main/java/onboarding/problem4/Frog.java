@@ -1,30 +1,35 @@
 package onboarding.problem4;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Frog {
 
-    private static final Integer MAX_LENGTH = 1000;
-    private static final Integer MIN_LENGTH = 1;
+    private static final int MAX_LENGTH = 1000;
+    private static final int MIN_LENGTH = 1;
 
-    private final char[] reversedLowerAlphabetArray;
-    private final char[] reversedHigherAlphabetArray;
+    private static Frog INSTANCE;
 
-    public Frog() {
-        char[] reversedLowerAlphabetArray = new char[26];
-        char[] reversedHigherAlphabetArray = new char[26];
+    private final List<String> reversedLowerAlphabetArray = new ArrayList<>();
+    private final List<String> reversedHigherAlphabetArray = new ArrayList<>();
 
+    private Frog() {
         for (int i = 0; i < 26; i++) {
-            reversedLowerAlphabetArray[i] = (char) (122 - i);
-            reversedHigherAlphabetArray[i] = (char) (90 - i);
+            reversedLowerAlphabetArray.add(String.valueOf((char) (122 - i)));
+            reversedHigherAlphabetArray.add(String.valueOf((char) (90 - i)));
         }
-        this.reversedLowerAlphabetArray = reversedLowerAlphabetArray;
-        this.reversedHigherAlphabetArray = reversedHigherAlphabetArray;
+    }
+
+    public static Frog getInstance() {
+        if (INSTANCE == null) {
+            INSTANCE = new Frog();
+        }
+        return INSTANCE;
     }
 
     public String translate(String word) {
 
-        if (word.length() < MIN_LENGTH || word.length() > MAX_LENGTH) {
-            throw new RuntimeException("1 이상 1000 이하의 값만 입력 가능합니다.");
-        }
+        validateWord(word);
 
         StringBuilder stringBuilder = new StringBuilder();
         for (char c : word.toCharArray()) {
@@ -33,15 +38,22 @@ public class Frog {
         return stringBuilder.toString();
     }
 
-    private char reverse(char c) {
+    private void validateWord(String word) {
+        if (word.length() < MIN_LENGTH || word.length() > MAX_LENGTH) {
+            throw new RuntimeException("1 이상 1000 이하의 값만 입력 가능합니다.");
+        }
+    }
+
+    private String reverse(char c) {
         if (isLowerAlphabet(c)) {
             int index = c - 97;
-            return reversedLowerAlphabetArray[index];
-        } else if (isHigherAlphabet(c)) {
-            int index = c - 65;
-            return reversedHigherAlphabetArray[index];
+            return reversedLowerAlphabetArray.get(index);
         }
-        return c;
+        if (isHigherAlphabet(c)) {
+            int index = c - 65;
+            return reversedHigherAlphabetArray.get(index);
+        }
+        return String.valueOf(c);
     }
 
     private boolean isLowerAlphabet(char c) {
