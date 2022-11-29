@@ -18,17 +18,23 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
         initializeScore(friends, visitors);
-
-        for (String visitor : visitors) {
-            score.put(visitor, score.get(visitor) + SCORE_VISITOR);
-        }
+        handleVisitors(visitors);
 
         List<String> directFriendsOfUser = getDirectFriends(user, friends);
         handleMutualFriends(friends, directFriendsOfUser);
 
+        score.keySet().removeAll(directFriendsOfUser);
+        score.keySet().remove(user);
+
         System.out.println(score);
 
         return answer;
+    }
+
+    private static void handleVisitors(List<String> visitors) {
+        for (String visitor : visitors) {
+            score.put(visitor, score.get(visitor) + SCORE_VISITOR);
+        }
     }
 
     private static void initializeScore(List<List<String>> friends, List<String> visitors) {
@@ -45,6 +51,7 @@ public class Problem7 {
     private static void handleMutualFriends(List<List<String>> friends, List<String> directFriends) {
         for (String directFriend : directFriends) {
             List<String> mutualFriends = getDirectFriends(directFriend, friends);
+            mutualFriends.remove(directFriends);
             for (String mutualFriend : mutualFriends) {
                 score.put(mutualFriend, score.get(mutualFriend) + SCORE_MUTUAL_FRIEND);
             }
