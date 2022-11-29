@@ -12,21 +12,29 @@ public class Page {
     private final int right;
 
     public Page(List<Integer> page) {
+        validatePageSize(page);
         validatePage(page);
+
         left = page.get(0);
         right = page.get(1);
     }
 
     private void validatePage(List<Integer> page) {
-        Integer left = page.get(0);
-        Integer right = page.get(1);
+        int left = page.get(0);
+        int right = page.get(1);
 
         if (!validatePage(left, right)) {
             throw new IllegalArgumentException("Page 생성에 실패했습니다.");
         }
     }
 
-    private boolean validatePage(Integer left, Integer right) {
+    private void validatePageSize(List<Integer> page) {
+        if (page.size() != 2) {
+            throw new IllegalArgumentException("Page 의 크기는 2만 가능합니다.");
+        }
+    }
+
+    private boolean validatePage(int left, int right) {
         return (left >= MIN_PAGE && right <= MAX_PAGE)
             && (left % 2 == 1 && right == left + 1);
     }
@@ -43,8 +51,8 @@ public class Page {
             page = page / 10;
         }
 
-        Integer sumValue = numberList.stream().reduce(0, Integer::sum);
-        Integer multipleValue = numberList.stream().reduce(1, (sum, value) -> sum * value);
+        int sumValue = numberList.stream().reduce(0, Integer::sum);
+        int multipleValue = numberList.stream().reduce(1, (sum, value) -> sum * value);
 
         return Math.max(sumValue, multipleValue);
     }
