@@ -1,13 +1,34 @@
 package onboarding;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest {
+
+    private PrintStream standardOut;
+    private OutputStream captor;
+    @BeforeEach
+    protected final void init() {
+        standardOut = System.out;
+        captor = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(captor));
+    }
+
+    @AfterEach
+    protected final void printOutput() {
+        System.setOut(standardOut);
+        System.out.println(captor.toString().trim());
+    }
+
     @Nested
     class Problem1Test {
         @Test
@@ -15,7 +36,7 @@ class ApplicationTest {
             List<Integer> pobi = List.of(97, 98);
             List<Integer> crong = List.of(197, 198);
             int result = 0;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+            assertThat(Problem1_re.solution(pobi, crong)).isEqualTo(result);
         }
 
         @Test
@@ -23,7 +44,7 @@ class ApplicationTest {
             List<Integer> pobi = List.of(131, 132);
             List<Integer> crong = List.of(211, 212);
             int result = 1;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+            assertThat(Problem1_re.solution(pobi, crong)).isEqualTo(result);
         }
 
         @Test
@@ -31,7 +52,7 @@ class ApplicationTest {
             List<Integer> pobi = List.of(99, 102);
             List<Integer> crong = List.of(211, 212);
             int result = -1;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+            assertThat(Problem1_re.solution(pobi, crong)).isEqualTo(result);
         }
     }
 

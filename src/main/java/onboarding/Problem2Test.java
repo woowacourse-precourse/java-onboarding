@@ -1,19 +1,17 @@
 package onboarding;
 
-public class Problem2 {
+public class Problem2Test {
     public static String solution(String cryptogram) {
 
         String answer = "answer";
 
 
-
         answer = recursivefunc(cryptogram,0);
+
 
         return answer;
     }
 
-
-    //인덱스를 찾고 삭제하는 과정을 재귀적으로 수행하는 함수
     public static String recursivefunc(String cryptogram, int startIdx){
 
         if (startIdx < 0) {startIdx = 0;}
@@ -38,7 +36,6 @@ public class Problem2 {
     }
 
 
-    //찾은 인덱스로 삭제하는 함수
     public static String deleteStr(int startIdx, int lastIdx, String cryptogram){
 
         StringBuffer str = new StringBuffer(cryptogram);
@@ -51,7 +48,7 @@ public class Problem2 {
     }
 
 
-    //중복되는 문자열의 마지막 인덱스 찾기
+    //중복되는 문자열의 인덱스 찾기
     public static int findLastIdx(String cryptogram, int startIdx) {
 
 
@@ -75,4 +72,12 @@ public class Problem2 {
     }
 
 
+    public static void main (String[] args) {
+
+        String cryptogram = "browoanoommnaon";
+//        String cryptogram = "zyelleyz";
+//        String cryptogram = "ddogga";
+
+        System.out.println("answer=" + solution(cryptogram));
+    }
 }
