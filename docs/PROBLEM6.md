@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 구현
+1. 닉네임에서 중복 될 수 있는 value를 모은 리스트 same를 만들어준다.(이때, 각 value의 길이는 2 이상이며 닉네임 자체는 포함되지 않는다.)
+2. 리스트 name의 value에 리스트 same의 value가 포함되면 카운팅을 해주고, 리스트 isOverlap에 리스트 name의 value를 추가해준다.
+   2-1. 만약 2번을 수행하고 나서 카운팅 된 숫자가 1이라면 리스트 isOverlap에 추가했던 value를 지워준다.(cnt==1은 리스트 same의 value가 닉네임 자기 자신하고만 겹친다는 의미이기 때문이다.)
+3. 2번을 수행하고 난 후, 리스트 isOverlap에서 중복된 value들을 제거해준다.
+4. 3번에서 구한 value(닉네임)의 이메일을 result에 추가해준다.
+5. result에 추가된 이메일을 오름차순으로 정렬해 출력해준다.
