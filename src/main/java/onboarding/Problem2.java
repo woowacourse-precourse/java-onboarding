@@ -1,32 +1,33 @@
 package onboarding;
 
+import static onboarding.enums.problem2.Init.*;
+
 import java.util.LinkedList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 public class Problem2 {
-    public static final String ALPHABET_DELIMITER = "abcdefghijklmnopqrstuvwxyz";
     public static final int START_INDEX = 0;
-    public static final int INIT_SAME_LETTER_COUNT = 1;
-    public static final int INIT_INDEX = -1;
-    public static final String INIT_STRING ="";
+    public static List<String> letterList;
+    public static StringBuilder answer;
 
     public static String solution(String cryptogram) {
-        List<String> letterList = new LinkedList<>();
+        init();
+        separateLetters(cryptogram);
+        decryption(START_INDEX);
 
-        separateLetters(letterList, cryptogram);
-        decryption(letterList, START_INDEX);
-        String answer = listToString(letterList);
-
-        return answer;
+        return listToString();
     }
 
-    public static String listToString(List<String> list) {
-        String answer = INIT_STRING;
-        for (String alphabet : list) {
-            answer += alphabet;
+    private static void init() {
+        letterList = new LinkedList<>();
+        answer = new StringBuilder();
+    }
+
+    public static String listToString() {
+        for (String alphabet : letterList) {
+            answer.append(alphabet);
         }
-        return answer;
+        return answer.toString();
     }
 
     public static boolean isSameLetter(List<String> letterList, int index, int compareIndex) {
@@ -42,7 +43,7 @@ public class Problem2 {
         }
     }
 
-    public static void decryption(List<String> letterList, int targetIndex) {
+    public static void decryption(int targetIndex) {
         while (targetIndex < letterList.size()) {
             targetIndex = checkSameLetter(letterList, targetIndex, false);
             targetIndex++;
@@ -51,20 +52,20 @@ public class Problem2 {
 
     public static int checkSameLetter(List<String> letterList, int targetIndex, boolean isSameLetterExist) {
         for (int letterIndex = START_INDEX; letterIndex < letterList.size(); letterIndex++) {
-            int sameLetterCount = countSameLetter(letterList, INIT_SAME_LETTER_COUNT, targetIndex);
+            int sameLetterCount = countSameLetter(letterList, INIT_SAME_LETTER_COUNT.getInitialValueNumber(), targetIndex);
 
             if (isSameLetterExist(sameLetterCount)) {
                 removeSameLetter(letterList, targetIndex, sameLetterCount);
                 //계속 검사를 진행 하기 위해 변수 초기화
-                letterIndex -= INIT_INDEX;
+                letterIndex -= INIT_INDEX.getInitialValueNumber();
                 isSameLetterExist = true;
             }
         }
-        return isSameLetterExist ? INIT_INDEX : targetIndex;
+        return isSameLetterExist ? INIT_INDEX.getInitialValueNumber() : targetIndex;
     }
 
     public static boolean isSameLetterExist(int sameLetterCount) {
-        if (sameLetterCount != INIT_SAME_LETTER_COUNT) {
+        if (sameLetterCount != INIT_SAME_LETTER_COUNT.getInitialValueNumber()) {
             return true;
         }
         return false;
@@ -80,14 +81,11 @@ public class Problem2 {
         return sameLetterCount;
     }
 
-    public static void separateLetters(List<String> letterList, String cryptogram) {
-        StringTokenizer st = new StringTokenizer(cryptogram, ALPHABET_DELIMITER, true);
-        addLettersInList(letterList, st);
-    }
+    public static void separateLetters(String cryptogram) {
+        String[] alphabets = cryptogram.split("");
 
-    public static void addLettersInList(List<String> letterList, StringTokenizer st) {
-        while (st.hasMoreTokens()) {
-            letterList.add(st.nextToken());
+        for(String alphabet : alphabets){
+            letterList.add(alphabet);
         }
     }
 }
