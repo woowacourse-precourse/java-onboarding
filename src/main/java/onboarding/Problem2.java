@@ -55,6 +55,7 @@ public class Problem2 {
 
             if (isSameLetterExist(sameLetterCount)) {
                 removeSameLetter(letterList, targetIndex, sameLetterCount);
+                //계속 검사를 진행 하기 위해 변수 초기화
                 letterIndex -= INIT_INDEX;
                 isSameLetterExist = true;
             }

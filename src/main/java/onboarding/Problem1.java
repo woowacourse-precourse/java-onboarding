@@ -2,99 +2,90 @@ package onboarding;
 
 import java.util.List;
 
+import onboarding.enums.problem1.InitNumber;
+import onboarding.enums.problem1.Output;
+import onboarding.enums.problem1.Page;
+
 class Problem1 {
-    public static final int EXCEPTION = -1;
-    public static final int POBI_WIN = 1;
-    public static final int CRONG_WIN = 2;
-    public static final int DRAW = 0;
-    public static final int LEFT_PAGE_INDEX = 0;
-    public static final int RIGHT_PAGE_INDEX = 1;
-    public static final int MIN_PAGE = 1;
-    public static final int MAX_PAGE = 400;
-    public static final int INIT_ZERO = 0;
-    public static final int INIT_ONE = 1;
-    public static final int PAGE_INTERVAL = 1;
-    public static final int DIVIDE_NUMBER = 10;
 
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int pobiMax = maxScore(pobi);
-        int crongMax = maxScore(crong);
-        int answer = (isException(pobi) || isException(crong))? EXCEPTION : makeWinner(pobiMax, crongMax);
+	public static int solution(List<Integer> pobi, List<Integer> crong) {
+		if (isException(pobi) || isException(crong)) {
+			return Output.EXCEPTION.getResult();
+		}
 
-        return answer;
-    }
+		return makeWinner(maxScore(pobi), maxScore(crong));
+	}
 
-    public static boolean isException(List<Integer> pageList) {
-        if (isPageIntervalException(pageList)) {
-            return true;
-        }
+	public static boolean isException(List<Integer> pageList) {
+		if (isPageIntervalException(pageList) || isPagePositionException(pageList) || isPageRangeException(pageList)) {
+			return true;
+		}
 
-        if (isPagePositionException(pageList)) {
-            return true;
-        }
+		return false;
+	}
 
-        for (Integer pageNumber : pageList) {
-            if (isNotValidException(pageNumber)) {
-                return true;
-            }
-        }
-        return false;
-    }
+	private static boolean isPageRangeException(List<Integer> pageList) {
+		for (Integer pageNumber : pageList) {
+			if (pageNumber > Page.MAX_PAGE.getPage() || pageNumber < Page.MIN_PAGE.getPage()) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-    private static boolean isNotValidException(Integer pageNumber) {
-        return (pageNumber > MAX_PAGE || pageNumber < MIN_PAGE);
-    }
+	private static boolean isPagePositionException(List<Integer> pageList) {
+		return (pageList.get(Page.RIGHT_PAGE.getPage()) < pageList.get(Page.LEFT_PAGE.getPage()));
+	}
 
-    private static boolean isPagePositionException(List<Integer> pageList) {
-        return (pageList.get(RIGHT_PAGE_INDEX) < pageList.get(LEFT_PAGE_INDEX));
-    }
+	private static boolean isPageIntervalException(List<Integer> pageList) {
+		return (pageList.get(Page.RIGHT_PAGE.getPage()) - pageList.get(Page.LEFT_PAGE.getPage())
+			> Page.PAGE_INTERVAL.getPage());
+	}
 
-    private static boolean isPageIntervalException(List<Integer> pageList) {
-        return (pageList.get(RIGHT_PAGE_INDEX) - pageList.get(LEFT_PAGE_INDEX) > PAGE_INTERVAL);
-    }
+	public static int maxScore(List<Integer> pageList) {
+		int max = InitNumber.INIT_ZERO.getNumber();
 
-    public static int maxScore(List<Integer> pageList) {
-        int max = INIT_ZERO;
+		for (Integer pageNumber : pageList) {
+			if (max < compareSum(pageNumber)) {
+				max = compareSum(pageNumber);
+			}
+		}
+		return max;
+	}
 
-        for (Integer pageNumber : pageList) {
-            if (max < compareSum(pageNumber)) {
-                max = compareSum(pageNumber);
-            }
-        }
-        return max;
-    }
+	public static int compareSum(int pageNumber) {
+		String[] pageNumberSplit = String.valueOf(pageNumber).split("");
 
-    public static int compareSum(int pageNumber) {
-        return (maxPlusSum(pageNumber) >= maxMultiplySum(pageNumber)) ? maxPlusSum(pageNumber) : maxMultiplySum(pageNumber);
-    }
+		return Math.max(maxPlusSum(pageNumberSplit), maxMultiplySum(pageNumberSplit));
+	}
 
-    private static int maxMultiplySum(int pageNumber) {
-        int multiplySum = INIT_ONE;
+	public static int maxMultiplySum(String[] pageNumberSplit) {
+		int multiplySum = InitNumber.INIT_ONE.getNumber();
 
-        while (pageNumber != 0) {
-            multiplySum *= pageNumber % DIVIDE_NUMBER;
-            pageNumber /= DIVIDE_NUMBER;
-        }
-        return multiplySum;
-    }
+		for (String number : pageNumberSplit) {
+			multiplySum *= Integer.parseInt(number);
+		}
 
-    private static int maxPlusSum(int pageNumber) {
-        int plusSum = INIT_ZERO;
+		return multiplySum;
+	}
 
-        while (pageNumber != 0) {
-            plusSum += pageNumber % DIVIDE_NUMBER;
-            pageNumber /= DIVIDE_NUMBER;
-        }
-        return plusSum;
-    }
+	public static int maxPlusSum(String[] pageNumberSplit) {
+		int plusSum = InitNumber.INIT_ZERO.getNumber();
 
-    public static int makeWinner(int pobiMax, int crongMax) {
-        if (pobiMax < crongMax) {
-            return CRONG_WIN;
-        }
-        if (pobiMax > crongMax) {
-            return POBI_WIN;
-        }
-        return DRAW;
-    }
+		for (String number : pageNumberSplit) {
+			plusSum += Integer.parseInt(number);
+		}
+
+		return plusSum;
+	}
+
+	public static int makeWinner(int pobiMax, int crongMax) {
+		if (pobiMax < crongMax) {
+			return Output.CRONG_WIN.getResult();
+		}
+		if (pobiMax > crongMax) {
+			return Output.POBI_WIN.getResult();
+		}
+		return Output.DRAW.getResult();
+	}
 }
