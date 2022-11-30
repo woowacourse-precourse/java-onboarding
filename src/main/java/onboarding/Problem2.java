@@ -2,90 +2,89 @@ package onboarding;
 
 import static onboarding.enums.problem2.Init.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Problem2 {
-    public static final int START_INDEX = 0;
-    public static List<String> letterList;
-    public static StringBuilder answer;
+	private static final int START_INDEX = 0;
+	private static final String REGEX = "";
+	private static List<String> letterList;
+	private static StringBuilder answer;
 
-    public static String solution(String cryptogram) {
-        init();
-        separateLetters(cryptogram);
-        decryption(START_INDEX);
+	public static String solution(String cryptogram) {
+		init();
+		separateLetters(cryptogram);
+		decryptPassword();
 
-        return listToString();
-    }
+		return listToString();
+	}
 
-    private static void init() {
-        letterList = new LinkedList<>();
-        answer = new StringBuilder();
-    }
+	public static void init() {
+		letterList = new ArrayList<>();
+		answer = new StringBuilder();
+	}
 
-    public static String listToString() {
-        for (String alphabet : letterList) {
-            answer.append(alphabet);
-        }
-        return answer.toString();
-    }
+	public static String listToString() {
+		for (String alphabet : letterList) {
+			answer.append(alphabet);
+		}
+		return answer.toString();
+	}
 
-    public static boolean isSameLetter(List<String> letterList, int index, int compareIndex) {
-        if (letterList.get(index).equals(letterList.get(compareIndex))) {
-            return true;
-        }
-        return false;
-    }
+	public static void removeSameLetter(int targetIndex, int sameLetterCount) {
+		for (int removeIndex = START_INDEX; removeIndex < sameLetterCount; removeIndex++) {
+			letterList.remove(targetIndex);
+		}
+	}
 
-    public static void removeSameLetter(List<String> letterList, int targetIndex, int sameLetterCount) {
-        for (int removeIndex = START_INDEX; removeIndex < sameLetterCount; removeIndex++) {
-            letterList.remove(targetIndex);
-        }
-    }
+	public static void decryptPassword() {
+		for (int targetIndex = START_INDEX; targetIndex < letterList.size(); targetIndex++) {
+			int sameLetterCount = countSameLetter(INIT_SAME_LETTER_COUNT.getInitialValueNumber(), targetIndex);
 
-    public static void decryption(int targetIndex) {
-        while (targetIndex < letterList.size()) {
-            targetIndex = checkSameLetter(letterList, targetIndex, false);
-            targetIndex++;
-        }
-    }
+			if (isSameLetterExist(sameLetterCount)) {
+				removeSameLetter(targetIndex, sameLetterCount);
+				targetIndex = INIT_INDEX.getInitialValueNumber();
+			}
+		}
+	}
 
-    public static int checkSameLetter(List<String> letterList, int targetIndex, boolean isSameLetterExist) {
-        for (int letterIndex = START_INDEX; letterIndex < letterList.size(); letterIndex++) {
-            int sameLetterCount = countSameLetter(letterList, INIT_SAME_LETTER_COUNT.getInitialValueNumber(), targetIndex);
+	public static boolean isSameLetterExist(int sameLetterCount) {
+		if (sameLetterCount > INIT_SAME_LETTER_COUNT.getInitialValueNumber()) {
+			return true;
+		}
+		return false;
+	}
 
-            if (isSameLetterExist(sameLetterCount)) {
-                removeSameLetter(letterList, targetIndex, sameLetterCount);
-                //계속 검사를 진행 하기 위해 변수 초기화
-                letterIndex -= INIT_INDEX.getInitialValueNumber();
-                isSameLetterExist = true;
-            }
-        }
-        return isSameLetterExist ? INIT_INDEX.getInitialValueNumber() : targetIndex;
-    }
+	public static int countSameLetter(int sameLetterCount, int targetIndex) {
+		int compareIndex = targetIndex + 1;
 
-    public static boolean isSameLetterExist(int sameLetterCount) {
-        if (sameLetterCount != INIT_SAME_LETTER_COUNT.getInitialValueNumber()) {
-            return true;
-        }
-        return false;
-    }
+		while (isCorrectRange(compareIndex) && isSameLetter(targetIndex, compareIndex)) {
+			sameLetterCount++;
+			compareIndex++;
+		}
+		return sameLetterCount;
+	}
 
-    public static int countSameLetter(List<String> letterList, int sameLetterCount, int targetIndex) {
-        int compareIndex = targetIndex + 1;
+	private static boolean isCorrectRange(int compareIndex) {
+		return compareIndex < letterList.size();
+	}
 
-        while (compareIndex < letterList.size() && isSameLetter(letterList, targetIndex, compareIndex)) {
-            sameLetterCount++;
-            compareIndex++;
-        }
-        return sameLetterCount;
-    }
+	public static boolean isSameLetter(int index, int compareIndex) {
+		if (letterList.get(index).equals(letterList.get(compareIndex))) {
+			return true;
+		}
+		return false;
+	}
 
-    public static void separateLetters(String cryptogram) {
-        String[] alphabets = cryptogram.split("");
+	public static void separateLetters(String cryptogram) {
+		String[] alphabets = cryptogram.split(REGEX);
 
-        for(String alphabet : alphabets){
-            letterList.add(alphabet);
-        }
-    }
+		for (String alphabet : alphabets) {
+			letterList.add(alphabet);
+		}
+	}
+
+
 }
