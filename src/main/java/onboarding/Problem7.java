@@ -1,18 +1,17 @@
 package onboarding;
 
+import static onboarding.enums.problem7.Point.*;
+
 import java.util.*;
 
 public class Problem7 {
-    public static final int FRIEND_POINT = 20;
-    public static final int ZERO_POINT = 0;
-    public static final int ONE_POINT = 1;
+    public static final int MAX_FRIEND_RECOMMEND = 5;
+    public static final int INIT_ZERO = 0;
     public static List<String> userFriend;
     public static Map<String, Integer> sameFriend;
     public static List<String> result;
     public static List<String> samePointList;
     public static String currentUser;
-    public static final int MAX_FRIEND_RECOMMEND = 5;
-    public static final int INIT_ZERO = 0;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         init(user);
@@ -21,8 +20,7 @@ public class Problem7 {
         findSameFriend(friends);
         findVisitor(visitors);
 
-        List<String> answer = makeOrder();
-        return answer;
+        return makeOrder();
     }
 
     public static void init(String user) {
@@ -91,10 +89,9 @@ public class Problem7 {
 
     public static void findVisitor(List<String> visitors) {
         for (String visitor : visitors) {
-
             if (!isSameWithUserFriend(visitor)) {
                 checkExistName(visitor);
-                addName(visitor, ONE_POINT);
+                addName(visitor, ONE_POINT.getNumber());
             }
         }
     }
@@ -110,7 +107,7 @@ public class Problem7 {
         for (String name : friendList) {
             if (!isSameWithUser(name) && !isSameWithUserFriend(name)) {
                 checkExistName(name);
-                addName(name, FRIEND_POINT);
+                addName(name, FRIEND_POINT.getNumber());
             }
         }
     }
@@ -120,12 +117,12 @@ public class Problem7 {
     }
 
     public static void checkExistName(String name) {
-        if (!isContainName(name)) {
-            sameFriend.put(name, ZERO_POINT);
+        if (!isExistName(name)) {
+            sameFriend.put(name, ZERO_POINT.getNumber());
         }
     }
 
-    public static boolean isContainName(String name) {
+    public static boolean isExistName(String name) {
         return sameFriend.containsKey(name);
     }
 
