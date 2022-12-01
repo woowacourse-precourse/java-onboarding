@@ -5,6 +5,13 @@ import java.util.List;
 
 public class Problem1_re {
 
+
+    public static void main(String[] args){
+
+        int page = 128;
+
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = 0;
 
@@ -44,13 +51,11 @@ public class Problem1_re {
     }
 
     public static int add(int page) {
-        return page/100 + page/10 + page%10;
+        return (page/100) + (page/10 - (page/100)*10) + (page%10);
     }
 
     public static int multi(int page) {
-        return page/100 * page/10 * page%10;
+        return (page/100) * (page/10 - (page/100)*10) * (page%10);
     }
-
-
 
 }
