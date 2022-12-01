@@ -8,36 +8,39 @@ import java.util.Set;
 
 public class User {
 
+    private static final String ID_REGEX = "^[a-z]*$";
+    private static final int ID_MAX_LENGTH = 30;
+    private static final int ID_MIN_LENGTH = 1;
+
     private final String id;
-    private final Set<User> friendSet;
-    private final Map<String, Integer> visitorMap;
+    private final Set<User> friends;
+    private final Map<String, Integer> visitors;
 
     public User(String id) {
         this.id = validateId(id);
-        this.friendSet = new HashSet<>();
-        this.visitorMap = new HashMap<>();
+        this.friends = new HashSet<>();
+        this.visitors = new HashMap<>();
     }
 
-    public void addFriend(User id) {
-        friendSet.add(id);
+    public void addFriend(User user) {
+        friends.add(user);
     }
 
     public void addVisitors(List<String> visitors) {
         for (String visitor : visitors) {
-            if (id.equals(visitor)) {
-                continue;
+            if (!id.equals(visitor)) {
+                Integer visitScore = this.visitors.getOrDefault(visitor, 0);
+                this.visitors.put(visitor, visitScore + 1);
             }
-            Integer visitScore = visitorMap.getOrDefault(visitor, 0);
-            visitorMap.put(visitor, visitScore + 1);
         }
     }
 
-    public Set<User> getFriendSet() {
-        return friendSet;
+    public Set<User> getFriends() {
+        return friends;
     }
 
-    public Map<String, Integer> getVisitorMap() {
-        return visitorMap;
+    public Map<String, Integer> getVisitors() {
+        return visitors;
     }
 
     public String getId() {
@@ -45,10 +48,11 @@ public class User {
     }
 
     private String validateId(String id) {
-        if (id.length() < 1 || id.length() > 30) {
-            throw new RuntimeException("Id 는 1자 이상 30자 이하의 길이만 가능합니다.");
-        } else if (!id.matches("^[a-z]*$")) {
-            throw new RuntimeException("Id 는 소문자만 사용 가능합니다.");
+        if (id.length() < ID_MIN_LENGTH || id.length() > ID_MAX_LENGTH) {
+            throw new IllegalArgumentException("Id 는 1자 이상 30자 이하의 길이만 가능합니다.");
+        }
+        if (!id.matches(ID_REGEX)) {
+            throw new IllegalArgumentException("Id 는 소문자만 사용 가능합니다.");
         }
         return id;
     }

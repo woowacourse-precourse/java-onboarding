@@ -20,15 +20,13 @@ public class Recommender {
             .orElseThrow(() -> new RuntimeException("NotFoundUser"));
 
         Map<String, User> userMap = sns.getUserMap();
-        Set<User> friendSet = targetUser.getFriendSet();
-        Map<String, Integer> visitorMap = targetUser.getVisitorMap();
+        Set<User> friendSet = targetUser.getFriends();
+        Map<String, Integer> visitorMap = targetUser.getVisitors();
 
         Map<String, Integer> recommendScoreMap = new HashMap<>();
         for (String userId : userMap.keySet()) {
             User user = userMap.get(userId);
-            if (isFriends(targetUser, user) || targetUser.equals(user)) {
-                continue;
-            } else {
+            if (!isFriends(targetUser, user) && !targetUser.equals(user)) {
                 int score = 0;
 
                 for (User friend : friendSet) {
@@ -59,6 +57,6 @@ public class Recommender {
     }
 
     private boolean isFriends(User user, User friend) {
-        return user.getFriendSet().contains(friend);
+        return user.getFriends().contains(friend);
     }
 }
