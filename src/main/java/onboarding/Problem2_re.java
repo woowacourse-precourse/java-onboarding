@@ -8,30 +8,36 @@ public class Problem2_re {
 
     public static void main(String[] args){
         String input ="browoanoommnaon";
-        String input2 = "browoanoommnaon";
+        String input2 = "zyelleyz";
         
         
-        List<String> list = changeStringToList(input);
-        System.out.println("list = " + list);
-        findDuplication(list);
+//        List<String> list = changeStringToList(input);
+//        System.out.println("list = " + list);
+//        findDuplication(list);
+        solution(input2);
     }
 
     public static String solution(String cryptogram) {
         String answer = "answer";
         List<String> list = new ArrayList<String>();
         list = changeStringToList(cryptogram);
+        int size = list.size();
+        while(true){
+            findDuplication(list);
+            if (list.size() == size) {
+                break;
+            }
+            size = list.size();
+        }
 
-//        while(true){
-//            findDuplication(list);
-//        }
+        System.out.println("list = " + list);
 
         return answer;
     }
 
     //문자열을 arrayList로 변환
     public static ArrayList<String> changeStringToList(String input){
-        ArrayList<String> list = new ArrayList<String>(Arrays.asList(input.split("")));
-        return list;
+        return new ArrayList<String>(Arrays.asList(input.split("")));
     }
 
     // 중복되는 부분의 인덱스를 찾는 메서드
