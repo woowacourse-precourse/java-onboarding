@@ -18,31 +18,30 @@ public class Problem6 {
 
     private static void setEmailListOfDuplicatedNickNames(List<List<String>> forms) {
         for (List<String> userForm : forms) {
-            String userNickName = userForm.get(NICKNAME_INDEX);
             String userEmail = userForm.get(EMAIL_INDEX);
-            int gapInCaseOfNoDuplication = calculateNormalGap(userNickName);
-            boolean isDuplicatedNickName =
-                    getSizeWithoutUser(forms, userForm) + gapInCaseOfNoDuplication > getSizeContainingUser(forms);
+
+            boolean isDuplicatedNickName = isDuplicatedNickName(forms, userForm);
             addEmailOfDuplicatedNickNames(userEmail, isDuplicatedNickName);
         }
     }
 
-    private static int calculateNormalGap(String userNickName) {
-        return userNickName.length() - 1;
+    private static boolean isDuplicatedNickName(List<List<String>> forms, List<String> userForm) {
+        String userNickName = userForm.get(NICKNAME_INDEX);
+        HashSet<String> truncatedNickNamesWithoutUser = getTruncatedNickNames(
+                getNickNamesWithoutUser(forms, userForm));
+        HashSet<String> truncatedNickNameOfUser = getTruncatedNickNames(List.of(userNickName));
+        for (String nickName : truncatedNickNameOfUser) {
+            if (truncatedNickNamesWithoutUser.contains(nickName)) {
+               return true;
+            }
+        }
+        return false;
     }
 
     private static void addEmailOfDuplicatedNickNames(String userEmail, boolean isDuplicatedNickName) {
         if (isDuplicatedNickName) {
             answer.add(userEmail);
         }
-    }
-
-    private static int getSizeContainingUser(List<List<String>> forms) {
-        return getTruncatedNickNames(getNickNamesContainingUser(forms)).size();
-    }
-
-    private static int getSizeWithoutUser(List<List<String>> forms, List<String> userForm) {
-        return getTruncatedNickNames(getNickNamesWithoutUser(forms, userForm)).size();
     }
 
     private static List<String> sortAnswer(List<String> answer) {
@@ -69,12 +68,6 @@ public class Problem6 {
                 .map(element -> element.get(NICKNAME_INDEX))
                 .collect(Collectors.toList());
         return nickNamesExceptUser;
-    }
-
-    private static List<String> getNickNamesContainingUser(List<List<String>> forms) {
-        return forms.stream()
-                .map(element -> element.get(NICKNAME_INDEX))
-                .collect(Collectors.toList());
     }
 
 }
