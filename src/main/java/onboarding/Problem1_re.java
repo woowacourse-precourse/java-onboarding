@@ -47,7 +47,8 @@ public class Problem1_re {
     public static int maxNum(int page) {
         List<Integer> left = new ArrayList<>(List.of(add(page),multi(page)));
         List<Integer> right = new ArrayList<>(List.of(add(page +1),multi(page+1)));
-        return 0;
+
+
     }
 
     public static int add(int page) {
