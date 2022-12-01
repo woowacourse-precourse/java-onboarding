@@ -9,19 +9,17 @@ public class Problem2_re {
     public static void main(String[] args){
         String input ="browoanoommnaon";
         String input2 = "zyelleyz";
+        String input3 = "ddogga";
 
-        System.out.println(solution(input));
+        System.out.println(solution(input3));
     }
 
     public static String solution(String cryptogram) {
-        List<String> list = new ArrayList<String>();
-        list = changeStringToList(cryptogram);
+        List<String> list = changeStringToList(cryptogram);
         int size = list.size();
         while(true){
             findDuplication(list);
-            if (list.size() == size) {
-                break;
-            }
+            if (list.size() == size) {break;}
             size = list.size();
         }
         return changeListToString(list);
@@ -39,13 +37,9 @@ public class Problem2_re {
 
     // 중복되는 부분의 인덱스를 찾는 메서드
     public static void findDuplication(List<String> list){
-        int startIdx = -1;
-        int endIdx = -1;
         for (int i = 0; i < list.size()-1; i++){
             if (list.get(i).equals(list.get(i+1))){
-                startIdx = i;
-                endIdx = findEndIdx(startIdx,list);
-                list = deleteString(startIdx,endIdx,list);
+                list = deleteString(i,findEndIdx(i,list),list);
                 i -= 1;
             }
         }
@@ -55,11 +49,10 @@ public class Problem2_re {
     public static int findEndIdx(int startIdx, List<String> list){
         int cnt = 0;
         for (int i = startIdx + 1; i< list.size()-1; i++){
-            if (list.get(i).equals(list.get(i+1))){
-                cnt +=1;
-                continue;
+            if (!list.get(i).equals(list.get(i+1))){
+                break;
             }
-            break;
+            cnt +=1;
         }
         return startIdx + 1 +cnt;
     }
@@ -69,8 +62,4 @@ public class Problem2_re {
         list.subList(startIdx, endIdx+1).clear();
         return list;
     }
-
-
-
-
 }
