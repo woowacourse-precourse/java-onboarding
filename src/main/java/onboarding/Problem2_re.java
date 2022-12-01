@@ -40,21 +40,32 @@ public class Problem2_re {
         int endIdx = -1;
         for (int i = 0; i < list.size()-1; i++){
             if (list.get(i).equals(list.get(i+1))){
-                System.out.println("i = " + i);
-                System.out.println(list.get(i));
                 startIdx = i;
-            }
-            if (!list.get(i).equals(list.get(i+1)) && startIdx != -1){
-                endIdx = i;
-                //중복을 제거하는 로직 수행
-                startIdx = -1;
-                endIdx = -1;
+                endIdx = findEndIdx(startIdx,list);
+                list = deleteString(startIdx,endIdx,list);
+                i -= 1;
             }
         }
-        System.out.println("startIdx = " + startIdx);
-        System.out.println("endIdx = " + endIdx);
     }
 
+    //endIdx 찾기
+    public static int findEndIdx(int startIdx, List<String> list){
+        int cnt = 0;
+        for (int i = startIdx + 1; i< list.size()-1; i++){
+            if (list.get(i).equals(list.get(i+1))){
+                cnt +=1;
+                continue;
+            }
+            break;
+        }
+        return startIdx + 1 +cnt;
+    }
+
+    // 중복을 찾는 메서드 구현
+    public static List<String> deleteString(int startIdx, int endIdx, List<String> list) {
+        list.subList(startIdx, endIdx+1).clear();
+        return list;
+    }
 
 
 
