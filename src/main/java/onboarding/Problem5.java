@@ -4,37 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
-    public static final int START_INDEX = 0;
-    public static final int UNIT_NUMBER = 9;
+    public static final int UNIT_COUNT = 9;
+    public static int[] units;
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = atm(initUnit(), money);
+        initUnit();
 
-        return answer;
+        return atm(money);
     }
 
-    public static int[] initUnit() {
-        int[] unit = new int[UNIT_NUMBER];
+    public static void initUnit() {
+        units = new int[UNIT_COUNT];
 
-        unit[0] = 50000;
-        unit[1] = 10000;
-        unit[2] = 5000;
-        unit[3] = 1000;
-        unit[4] = 500;
-        unit[5] = 100;
-        unit[6] = 50;
-        unit[7] = 10;
-        unit[8] = 1;
-
-        return unit;
+        units[0] = 50000;
+        units[1] = 10000;
+        units[2] = 5000;
+        units[3] = 1000;
+        units[4] = 500;
+        units[5] = 100;
+        units[6] = 50;
+        units[7] = 10;
+        units[8] = 1;
     }
 
-    public static List<Integer> atm(int[] unit, int money) {
+    public static List<Integer> atm(int money) {
         List<Integer> result = new ArrayList<>();
 
-        for (int index = START_INDEX; index < unit.length; index++) {
-            result.add(money / unit[index]);
-            money %= unit[index];
+        for (int unit : units) {
+            result.add(money / unit);
+            money %= unit;
         }
 
         return result;
