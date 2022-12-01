@@ -9,16 +9,11 @@ public class Problem2_re {
     public static void main(String[] args){
         String input ="browoanoommnaon";
         String input2 = "zyelleyz";
-        
-        
-//        List<String> list = changeStringToList(input);
-//        System.out.println("list = " + list);
-//        findDuplication(list);
-        solution(input2);
+
+        System.out.println(solution(input));
     }
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
         List<String> list = new ArrayList<String>();
         list = changeStringToList(cryptogram);
         int size = list.size();
@@ -29,15 +24,17 @@ public class Problem2_re {
             }
             size = list.size();
         }
-
-        System.out.println("list = " + list);
-
-        return answer;
+        return changeListToString(list);
     }
 
     //문자열을 arrayList로 변환
     public static ArrayList<String> changeStringToList(String input){
         return new ArrayList<String>(Arrays.asList(input.split("")));
+    }
+
+    //ArrayList를 문자열로 변환
+    public static String changeListToString(List<String> list){
+        return list.toString();
     }
 
     // 중복되는 부분의 인덱스를 찾는 메서드
