@@ -12,6 +12,7 @@ public class Problem7 {
     public static List<String> result;
     public static List<String> samePointList;
     public static String currentUser;
+    public static int count;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         init(user);
@@ -29,42 +30,46 @@ public class Problem7 {
         sameFriend = new HashMap<>();
         result = new ArrayList<>();
         samePointList = new ArrayList<>();
+        count = INIT_ZERO;
     }
 
     public static List<String> orderSamePointFriend(List<Map.Entry<String, Integer>> listEntries) {
-        int count = INIT_ZERO;
-
         for (int targetIndex = INIT_ZERO; targetIndex < listEntries.size(); targetIndex++) {
-            int targetPoint = listEntries.get(targetIndex).getValue();
-
             if (count >= MAX_FRIEND_RECOMMEND) {
                 return result;
             }
 
-            checkSamePointFriend(listEntries, targetIndex, targetPoint);
-            targetIndex = (samePointList.isEmpty() ? empty(listEntries, count, targetIndex): notEmpty(listEntries, targetIndex, count));
+            checkSamePointFriend(listEntries, targetIndex, listEntries.get(targetIndex).getValue());
+            targetIndex = (samePointList.isEmpty() ? empty(listEntries, targetIndex): notEmpty(listEntries, targetIndex));
         }
         return result;
     }
 
-    private static int empty(List<Map.Entry<String, Integer>> listEntries, int count, int targetIndex) {
+    private static int empty(List<Map.Entry<String, Integer>> listEntries, int targetIndex) {
         result.add(listEntries.get(targetIndex).getKey());
         count++;
         return targetIndex;
     }
 
-    public static int notEmpty(List<Map.Entry<String, Integer>> listEntries, int targetIndex, int count) {
-        samePointList.add(listEntries.get(targetIndex).getKey());
-        Collections.sort(samePointList);
-
-        for (int samePointListIndex = INIT_ZERO; samePointListIndex < samePointList.size(); samePointListIndex++) {
-            result.add(samePointList.get(samePointListIndex));
-            count++;
-        }
+    public static int notEmpty(List<Map.Entry<String, Integer>> listEntries, int targetIndex) {
+        orderSamePointName(listEntries, targetIndex);
+        addSamePointNameInResult();
         targetIndex += (samePointList.size() - 1);
         samePointList.clear();
 
         return targetIndex;
+    }
+
+    private static void orderSamePointName(List<Map.Entry<String, Integer>> listEntries, int targetIndex) {
+        samePointList.add(listEntries.get(targetIndex).getKey());
+        Collections.sort(samePointList);
+    }
+
+    private static void addSamePointNameInResult() {
+        for (String s : samePointList) {
+            result.add(s);
+            count++;
+        }
     }
 
     public static void checkSamePointFriend(List<Map.Entry<String, Integer>> listEntries, int targetIndex, int targetPoint) {
