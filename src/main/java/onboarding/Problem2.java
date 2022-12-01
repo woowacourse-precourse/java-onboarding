@@ -9,26 +9,26 @@ public class Problem2 {
     }
 
     private static Stack<Character> decrypt(String cryptogram) {
-        Stack<Character> stack = new Stack<>();
+        Stack<Character> result = new Stack<>();
         for (char alphabet : cryptogram.toCharArray()) {
-            if (stack.isEmpty()) {
-                stack.push(alphabet);
+            if (result.isEmpty()) {
+                result.push(alphabet);
                 continue;
             }
-            char top = stack.pop();
+            char top = result.pop();
             if (top != alphabet) {
-                stack.push(top);
-                stack.push(alphabet);
+                result.push(top);
+                result.push(alphabet);
             }
         }
-        return stack;
+        return result;
     }
 
     private static String formatAnswer(Stack<Character> stack) {
         StringBuilder answer = new StringBuilder();
-        Iterator<Character> iterator = stack.iterator();
-        while (iterator.hasNext()) {
-            answer.append(iterator.next());
+        Iterator<Character> word = stack.iterator();
+        while (word.hasNext()) {
+            answer.append(word.next());
         }
         return answer.toString();
     }

@@ -20,6 +20,7 @@ import static onboarding.problem1.Constants.RIGHT_REMAINDER;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import onboarding.problem1.ExceptionMessage;
 
@@ -51,8 +52,10 @@ public class Problem1 {
 
     private static List<Integer> getResults(List<Integer> player) {
         List<Integer> playerResults = new ArrayList<>();
-        for (int playerNumber : player) {
-            List<String> playerDigits = new ArrayList<>(splitNumber(playerNumber));
+
+        Iterator<Integer> playerNumber = player.iterator();
+        while (playerNumber.hasNext()) {
+            List<String> playerDigits = new ArrayList<>(splitNumber(playerNumber.next()));
             playerResults.addAll(getAdditionResults(playerDigits));
             playerResults.addAll(getMultiplicationResults(playerDigits));
         }
