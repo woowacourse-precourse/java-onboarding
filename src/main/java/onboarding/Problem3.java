@@ -1,50 +1,49 @@
 package onboarding;
 
+import static onboarding.enums.problem3.Index.*;
+import static onboarding.enums.problem3.ClapNumber.*;
+
+import java.util.Arrays;
+import java.util.List;
+
 public class Problem3 {
-    public static final int MEMOIZATION_START_INDEX = 3;
-    public static final int LETTER_START_INDEX = 0;
-    public static final char THREE = '3';
-    public static final char SIX = '6';
-    public static final char NINE = '9';
+	private static final String REGEX = "";
+	private static int[] memoization;
 
-    public static int solution(int number) {
-        int answer = countClap(initMemoizationArr(), number);
+	public static int solution(int number) {
+		initMemoizationArr();
 
-        return answer;
-    }
+		return countClap(number);
+	}
 
-    public static int[] initMemoizationArr() {
-        int[] memoization = new int[10001];
-        memoization[0] = 0;
-        memoization[1] = 0;
-        memoization[2] = 0;
+	public static void initMemoizationArr() {
+		memoization = new int[10001];
+		memoization[0] = memoization[1] = memoization[2] = 0;
+	}
 
-        return memoization;
-    }
+	public static int countClap(int number) {
+		for (int index = MEMOIZATION_START_INDEX.getNumber(); index < number + 1; index++) {
+			memoization[index] = memoization[index - 1];
+			checkThreeSixNine(Arrays.asList(String.valueOf(index).split(REGEX)), index);
+		}
+		return memoization[number];
+	}
 
-    public static int countClap(int[] memoization, int number) {
-        for (int index = MEMOIZATION_START_INDEX; index < number + 1; index++) {
-            String indexToString = String.valueOf(index);
-            memoization[index] = memoization[index - 1];
+	public static void checkThreeSixNine(List<String> list, int index) {
+		for (String number : list) {
+			if (isThreeSixNine(number)) {
+				clap(index);
+			}
+		}
+	}
 
-            checkThreeSixNine(memoization, indexToString, index);
-        }
-        return memoization[number];
-    }
+	public static void clap(int index) {
+		memoization[index]++;
+	}
 
-    public static void checkThreeSixNine(int[] memoization, String indexToString, int index) {
-        for (int letterIndex = LETTER_START_INDEX; letterIndex < indexToString.length(); letterIndex++) {
-            if (isThreeSixNine(indexToString, letterIndex)) {
-                clap(memoization,index);
-            }
-        }
-    }
-
-    public static void clap(int[] memoization,int index){
-        memoization[index]++;
-    }
-
-    public static boolean isThreeSixNine(String indexToString, int letterIndex) {
-        return (indexToString.charAt(letterIndex) == THREE || indexToString.charAt(letterIndex) == SIX || indexToString.charAt(letterIndex) == NINE);
-    }
+	public static boolean isThreeSixNine(String number) {
+		return (number.equals(THREE.getSpecialNumber())
+			|| number.equals(SIX.getSpecialNumber())
+			|| number.equals(NINE.getSpecialNumber()));
+	}
 }
