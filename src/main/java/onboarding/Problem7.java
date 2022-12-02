@@ -12,9 +12,9 @@ public class Problem7 {
         List<String> friendsList = findFriends(friends, user);
 
 
-        // fruebds 배열로 점수 리스트 만들기
+        // friends 배열로 점수 리스트 만들기
         for (List<String> f: friends){
-            graph = makeUserPointList(graph,f, user,friendsList);
+            graph = makeUserPointList(graph,f,user,friendsList);
         }
         // visitors 배열로 점수 리스트 추가하기
         graph = makeUserPointList(graph,visitors,user,friendsList);
@@ -38,7 +38,6 @@ public class Problem7 {
                 }else{
                     return o2.getValue().compareTo(o1.getValue());
                 }
-
             }
         });
 
@@ -48,9 +47,7 @@ public class Problem7 {
         }
 
         //리스트 5개로 자르기
-        if (answer.size() > 5) {
-            answer = answer.subList(0, 5);
-        }
+
 
 
 
@@ -74,8 +71,6 @@ public class Problem7 {
                 graph.put(friend.get(i),0);
             }
         }
-
-
         return graph;
     }
     

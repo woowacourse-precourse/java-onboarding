@@ -14,7 +14,7 @@
 
 
 mrko와 친구관계 : donut,shakevan
-mrko의 친구와 친구 관계(10점) : andole(2),jun(2)
+mrko의 친구와 친구 관계(10점) : andole(20),jun(20)
 mrko 타임라인 방문 횟수(1점) : bedi(3), donut(1), shakevan(1)
 
 즉 result = andole(20) == jun(20) > bedi(3) / donut과 shakevan는 이미 친구이다.
