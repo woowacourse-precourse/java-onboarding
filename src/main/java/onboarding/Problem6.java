@@ -23,9 +23,7 @@ public class Problem6 {
             List<String> words = findWords(crew.get(1));
             
             duplicatedNickIdx = isContainWord(wordsList,words,duplicatedNickIdx);
-
             wordsList.add(words);
-
         }
         
         
