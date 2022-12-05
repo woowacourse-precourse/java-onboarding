@@ -4,6 +4,9 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+        if (cryptogram.length() > 1000 || cryptogram.length() == 0) {
+            return "글자 수가 맞지 않습니다";
+        }
         Stack<Character> stack = new Stack<>();
         for (char c : cryptogram.toCharArray()) {
             stack = deleteRepetitiveChar(stack, c);
@@ -19,14 +22,14 @@ public class Problem2 {
         return answer;
     }
 
-    public static Stack deleteRepetitiveChar(Stack<Character> stack, char c){
+    public static Stack deleteRepetitiveChar(Stack<Character> stack, char c) {
         if (isCharRepeat(stack, c)) {
             return popStack(stack);
         }
         return pushCharToStack(stack, c);
     }
 
-    private static boolean isCharRepeat(Stack stack, char c){
+    private static boolean isCharRepeat(Stack stack, char c) {
         return isStackElementExists(stack) && isTopofStackEqualstoChar(stack, c);
     }
 
