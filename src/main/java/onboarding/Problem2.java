@@ -1,11 +1,15 @@
 package onboarding;
 
 import java.util.Stack;
+import java.util.regex.Pattern;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
         if (cryptogram.length() > 1000 || cryptogram.length() == 0) {
             return "글자 수가 맞지 않습니다";
+        }
+        if (!Pattern.matches("^[a-z]*$", cryptogram)) {
+            return "소문자 이외의 문자가 포함되었습니다";
         }
         Stack<Character> stack = new Stack<>();
         for (char c : cryptogram.toCharArray()) {
