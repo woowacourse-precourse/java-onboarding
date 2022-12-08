@@ -1,5 +1,6 @@
 package onboarding;
 
+import static java.util.Collections.max;
 import static onboarding.problem1.Constants.ADDITION_INITIAL_VALUE;
 import static onboarding.problem1.Constants.LEFT_PAGE_INDEX;
 import static onboarding.problem1.Constants.LEFT_REMAINDER;
@@ -19,7 +20,6 @@ import static onboarding.problem1.Constants.RIGHT_PAGE_INDEX;
 import static onboarding.problem1.Constants.RIGHT_REMAINDER;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import onboarding.problem1.ExceptionMessage;
@@ -47,7 +47,7 @@ public class Problem1 {
 
 
     private static int getScore(List<Integer> player) {
-        return Collections.max(getResults(player));
+        return max(getResults(player));
     }
 
     private static List<Integer> getResults(List<Integer> player) {
@@ -97,12 +97,12 @@ public class Problem1 {
     }
 
     private static void validatePageOddEven(List<Integer> player) throws IllegalArgumentException {
-        if (isLeftPageOddNumber(player) || isrightPageEvenNumber(player)) {
+        if (isLeftPageOddNumber(player) || isRightPageEvenNumber(player)) {
             throw new IllegalArgumentException(ExceptionMessage.PAGE_ODD_AND_EVEN.getMessage());
         }
     }
 
-    private static boolean isrightPageEvenNumber(List<Integer> player) throws IllegalArgumentException {
+    private static boolean isRightPageEvenNumber(List<Integer> player) throws IllegalArgumentException {
         return player.get(RIGHT_PAGE_INDEX) % QUOTIENT != RIGHT_REMAINDER;
     }
 
@@ -120,11 +120,11 @@ public class Problem1 {
         return List.of(String.valueOf(playerNumber).split(REGEX_NO_SPACE));
     }
 
-    private static int getSolution(int pobiScore, int crongScore) {
-        if (pobiScore > crongScore) {
+    private static int getSolution(int player1Score, int player2Score) {
+        if (player1Score > player2Score) {
             return RESULT_POBI_WIN;
         }
-        if (pobiScore < crongScore) {
+        if (player1Score < player2Score) {
             return RESULT_CRONG_WIN;
         }
         return RESULT_TIE;
